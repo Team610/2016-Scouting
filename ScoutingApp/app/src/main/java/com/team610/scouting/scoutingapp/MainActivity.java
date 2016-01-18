@@ -43,7 +43,26 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        //Transaction to Main Screen
+        initialTransaction();
+
     }
+
+    /**
+     * Initial fragment transaction
+     */
+    public void initialTransaction(){
+        FragmentTransaction transaction = getFragmentManager()
+                .beginTransaction();
+
+        InitialFragment initialFragment = new InitialFragment();
+
+        transaction.replace(R.id.main_container, initialFragment);
+
+        transaction.commit();
+    }
+
 
     @Override
     public void onBackPressed() {
@@ -104,14 +123,14 @@ public class MainActivity extends AppCompatActivity
 
     public void onClick(View v) {
         switch(v.getId()){
-            case R.id.test_Button:
+            case R.id.transition_Button:
 
                 FragmentTransaction transaction = getFragmentManager()
                         .beginTransaction();
 
-                AutoFragment autoFragment = new AutoFragment();
+                InitialFragment initialFragment = new InitialFragment();
 
-                transaction.replace(R.id.main_container, autoFragment);
+                transaction.replace(R.id.main_container, initialFragment);
                 //transaction.addToBackStack(null);
 
 
