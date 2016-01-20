@@ -14,4 +14,5 @@
     <string name="defenseScore">Defenses Score</string>
     <string name="shootingScore">Shooting Score</string>
     <string name="accuracyScore">Shooting %</string>
+    <string name="matches">Matches</string>
 </resources>
