@@ -55,7 +55,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/lowBar_ImageView"
-        android:src="@drawable/lowBar"
+        android:src="@drawable/lowbar"
         android:layout_alignTop="@+id/lowBar_TextView"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
