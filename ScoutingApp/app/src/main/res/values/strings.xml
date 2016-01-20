@@ -13,6 +13,6 @@
     <string name="MatchSetupSecretPassage">Secret Passage</string>
 
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="chooseDefenceTitle">Choose a Defence</string>
 
 </resources>
