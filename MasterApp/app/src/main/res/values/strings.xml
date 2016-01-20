@@ -8,4 +8,10 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="avgScore">Average Score</string>
+    <string name="teamNum">Team #</string>
+    <string name="autonScore">Auton Score</string>
+    <string name="defenseScore">Defenses Score</string>
+    <string name="shootingScore">Shooting Score</string>
+    <string name="accuracyScore">Shooting %</string>
 </resources>

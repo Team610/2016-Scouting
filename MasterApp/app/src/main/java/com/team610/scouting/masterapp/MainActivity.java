@@ -36,16 +36,11 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        //Check if fragment exists
-        if(findViewById(R.id.fragment_match) != null){
             //Check if the app was paused
-            if(savedInstanceState == null){
                 //Create Fragment to place in main activity
-                TeamFragment tFrag = new TeamFragment();
-                getFragmentManager().beginTransaction().add(R.id.main_container,tFrag).commit();
-            }
-        }
+                getFragmentManager().beginTransaction().add(R.id.main_container,new TeamFragment()).commit();
+
+
     }
 
     @Override

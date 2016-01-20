@@ -1,4 +1,4 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,6 +8,81 @@
     <!-- TODO: Update blank fragment layout -->
 
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/teamNumber"
+        android:layout_alignParentTop="true"
+        android:text="@string/teamNum" />
 
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
-</FrameLayout>
+        android:layout_below="@+id/teamNumber">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="@string/avgScore"
+                android:padding="3dip" />
+            <TextView
+                android:id="@+id/avgScoreBox"
+                android:gravity="right"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="@string/autonScore"
+                android:padding="3dip" />
+            <TextView
+                android:id="@+id/autonScoreBox"
+                android:gravity="right"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="@string/defenseScore"
+                android:padding="3dip" />
+            <TextView
+                android:id="@+id/defenseScoreBox"
+                android:gravity="right"
+                android:padding="3dip" />
+
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="@string/shootingScore"
+                />
+            <TextView
+                android:id="@+id/shootingScoreBox"
+                android:gravity="right"
+                android:padding="3dip" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="@string/accuracyScore"
+                android:padding="3dip" />
+            <TextView
+                android:id="@+id/accuracyScoreBox"
+                android:gravity="right"
+                android:padding="3dip" />
+
+        </TableRow>
+    </TableLayout>
+</RelativeLayout>
