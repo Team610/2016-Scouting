@@ -12,12 +12,12 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link MatchSetup.OnFragmentInteractionListener} interface
+ * {@link AutoFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link MatchSetup#newInstance} factory method to
+ * Use the {@link AutoFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MatchSetup extends Fragment {
+public class AutoFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -29,7 +29,7 @@ public class MatchSetup extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public MatchSetup() {
+    public AutoFragment() {
         // Required empty public constructor
     }
 
@@ -39,11 +39,11 @@ public class MatchSetup extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment MatchSetup.
+     * @return A new instance of fragment AutoFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MatchSetup newInstance(String param1, String param2) {
-        MatchSetup fragment = new MatchSetup();
+    public static AutoFragment newInstance(String param1, String param2) {
+        AutoFragment fragment = new AutoFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -64,7 +64,7 @@ public class MatchSetup extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_match_setup, container, false);
+        return inflater.inflate(R.layout.fragment_auto, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

@@ -9,5 +9,11 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="MatchSetupTitle">Match Setup and Defences</string>
     <string name="MatchSetupLowBar">Low Bar</string>
+
     <string name="MatchSetupSecretPassage">Secret Passage</string>
+
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
