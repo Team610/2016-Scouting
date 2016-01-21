@@ -1,4 +1,4 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,4 +7,107 @@
     <!-- TODO: Update blank fragment layout -->
 
 
-</FrameLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/chooseDefenceTitle"
+        android:id="@+id/choose_defence_title_TextView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:layout_width="200dp"
+        android:layout_height="175dp"
+        android:scaleType="fitXY"
+        android:id="@+id/sallyport_ImageButton"
+        android:src="@drawable/sallyport"
+        android:layout_below="@+id/choose_defence_title_TextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"/>
+
+    <ImageButton
+        android:layout_width="200dp"
+        android:layout_height="175dp"
+        android:scaleType="fitXY"
+        android:id="@+id/drawbridge_ImageButton"
+        android:layout_below="@+id/sallyport_ImageButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/drawbridge"/>
+
+    <ImageButton
+        android:layout_width="200dp"
+        android:layout_height="175dp"
+        android:scaleType="fitXY"
+        android:id="@+id/porticullis_ImageButton"
+        android:layout_alignTop="@+id/sallyport_ImageButton"
+        android:layout_toRightOf="@+id/sallyport_ImageButton"
+        android:layout_toEndOf="@+id/sallyport_ImageButton"
+        android:src="@drawable/portcullis" />
+
+    <ImageButton
+        android:layout_width="200dp"
+        android:layout_height="175dp"
+        android:scaleType="fitXY"
+        android:id="@+id/chevaldefrise_ImageButton"
+        android:layout_below="@+id/sallyport_ImageButton"
+        android:layout_toRightOf="@+id/sallyport_ImageButton"
+        android:layout_toEndOf="@+id/sallyport_ImageButton"
+        android:src="@drawable/chevaldefrise"/>
+
+    <ImageButton
+        android:layout_width="200dp"
+        android:layout_height="175dp"
+        android:scaleType="fitXY"
+        android:id="@+id/rockwall_ImageButton"
+        android:layout_alignTop="@+id/porticullis_ImageButton"
+        android:layout_toRightOf="@+id/porticullis_ImageButton"
+        android:layout_toEndOf="@+id/porticullis_ImageButton"
+        android:src="@drawable/rockwall"/>
+
+    <ImageButton
+        android:layout_width="200dp"
+        android:layout_height="175dp"
+        android:scaleType="fitXY"
+        android:id="@+id/roughterrain_ImageButton"
+        android:layout_below="@+id/rockwall_ImageButton"
+        android:layout_toRightOf="@+id/chevaldefrise_ImageButton"
+        android:layout_toEndOf="@+id/chevaldefrise_ImageButton"
+        android:src="@drawable/roughterrain"/>
+
+    <ImageButton
+        android:layout_width="200dp"
+        android:layout_height="175dp"
+        android:scaleType="fitXY"
+        android:id="@+id/ramparts_ImageButton"
+        android:layout_alignTop="@+id/rockwall_ImageButton"
+        android:layout_toRightOf="@+id/rockwall_ImageButton"
+        android:layout_toEndOf="@+id/rockwall_ImageButton"
+        android:src="@drawable/ramparts"/>
+
+    <ImageButton
+        android:layout_width="200dp"
+        android:layout_height="175dp"
+        android:scaleType="fitXY"
+        android:id="@+id/moat_ImageButton"
+        android:src="@drawable/moat"
+        android:layout_below="@+id/rockwall_ImageButton"
+        android:layout_toRightOf="@+id/rockwall_ImageButton"
+        android:layout_toEndOf="@+id/rockwall_ImageButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Defence Position #: "
+        android:id="@+id/defenseNumber_TextView"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/roughterrain_ImageButton"
+        android:layout_toStartOf="@+id/roughterrain_ImageButton"
+        android:layout_marginBottom="20dp"/>
+
+
+</RelativeLayout>

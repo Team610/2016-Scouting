@@ -16,16 +16,17 @@
         android:layout_alignParentStart="true"
         android:textSize="30dp"
         android:id="@+id/title_TextView" />
-<!--
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/secretpassage"
         android:id="@+id/secretPassage_ImageView"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-    -->
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/secretPassage_TextView"
+        android:layout_alignEnd="@+id/secretPassage_TextView" />
+
 
 
 
@@ -62,17 +63,35 @@
 
 
 
-    <!--
+
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
             android:id="@+id/lowBar_ImageView"
             android:src="@drawable/lowbar"
-            android:layout_alignTop="@+id/lowBar_TextView"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-    -->
-    
+            android:layout_below="@+id/title_TextView"
+            android:layout_alignRight="@+id/lowBar_TextView"
+            android:layout_alignEnd="@+id/lowBar_TextView" />
+<!--
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/defense_1_ScrollView"
+        android:layout_alignTop="@+id/secretPassage_TextView"
+        android:layout_toRightOf="@+id/secretPassage_TextView"
+        android:layout_toEndOf="@+id/secretPassage_TextView" >
 
+    </ScrollView>
+
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/sallyport_ImageButton"
+        android:src="@drawable/sallyport"
+        android:layout_below="@+id/defense_1_ScrollView"
+        android:layout_toRightOf="@+id/secretPassage_ImageView"
+        android:layout_toEndOf="@+id/secretPassage_ImageView" />
+
+-->
 
 </RelativeLayout>
