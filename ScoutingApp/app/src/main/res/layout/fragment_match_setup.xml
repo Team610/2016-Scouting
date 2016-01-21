@@ -16,7 +16,7 @@
         android:layout_alignParentStart="true"
         android:textSize="30dp"
         android:id="@+id/title_TextView" />
-
+<!--
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,6 +25,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+    -->
 
 
 
@@ -54,14 +55,24 @@
         android:layout_marginRight="64dp"
         android:layout_marginEnd="64dp" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/lowBar_ImageView"
-        android:src="@drawable/lowbar"
-        android:layout_alignTop="@+id/lowBar_TextView"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+
+
+
+       
+
+
+
+    <!--
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lowBar_ImageView"
+            android:src="@drawable/lowbar"
+            android:layout_alignTop="@+id/lowBar_TextView"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+    -->
+    
 
 
 </RelativeLayout>
