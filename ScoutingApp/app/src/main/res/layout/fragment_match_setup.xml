@@ -50,11 +50,9 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/MatchSetupLowBar"
         android:id="@+id/lowBar_TextView"
-        android:layout_alignTop="@+id/secretPassage_TextView"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="64dp"
-        android:layout_marginEnd="64dp" />
+        android:layout_above="@+id/defence3_ImageButton"
+        android:layout_toRightOf="@+id/defence4_ImageButton"
+        android:layout_toEndOf="@+id/defence4_ImageButton" />
 
 
 
@@ -65,33 +63,105 @@
 
 
         <ImageView
-            android:layout_width="250dp"
-            android:layout_height="250dp"
+            android:layout_width="150dp"
+            android:layout_height="125dp"
             android:id="@+id/lowBar_ImageView"
             android:src="@drawable/lowbar"
-            android:layout_below="@+id/title_TextView"
-            android:layout_alignRight="@+id/lowBar_TextView"
-            android:layout_alignEnd="@+id/lowBar_TextView" />
-<!--
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/defense_1_ScrollView"
-        android:layout_alignTop="@+id/secretPassage_TextView"
-        android:layout_toRightOf="@+id/secretPassage_TextView"
-        android:layout_toEndOf="@+id/secretPassage_TextView" >
-
-    </ScrollView>
+            android:layout_below="@+id/lowBar_TextView"
+            android:layout_toRightOf="@+id/defence4_ImageButton"
+            android:layout_toEndOf="@+id/defence4_ImageButton" />
 
     <ImageButton
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/sallyport_ImageButton"
-        android:src="@drawable/sallyport"
-        android:layout_below="@+id/defense_1_ScrollView"
+        android:layout_width="150dp"
+        android:layout_height="125dp"
+        android:id="@+id/defence1_ImageButton"
+        android:layout_below="@+id/secretPassage_TextView"
         android:layout_toRightOf="@+id/secretPassage_ImageView"
         android:layout_toEndOf="@+id/secretPassage_ImageView" />
 
--->
+    <ImageButton
+        android:layout_width="150dp"
+        android:layout_height="125dp"
+        android:id="@+id/defence2_ImageButton"
+        android:layout_alignTop="@+id/defence1_ImageButton"
+        android:layout_toRightOf="@+id/defence1_ImageButton"
+        android:layout_toEndOf="@+id/defence1_ImageButton" />
+
+    <ImageButton
+        android:layout_width="150dp"
+        android:layout_height="125dp"
+        android:id="@+id/defence3_ImageButton"
+        android:layout_alignTop="@+id/defence2_ImageButton"
+        android:layout_toRightOf="@+id/defence2_ImageButton"
+        android:layout_toEndOf="@+id/defence2_ImageButton" />
+
+    <ImageButton
+        android:layout_width="150dp"
+        android:layout_height="125dp"
+        android:id="@+id/defence4_ImageButton"
+        android:layout_below="@+id/lowBar_TextView"
+        android:layout_toRightOf="@+id/defence3_ImageButton"
+        android:layout_toEndOf="@+id/defence3_ImageButton" />
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text=""
+        android:id="@+id/defence1_TextView"
+        android:layout_below="@+id/defence1_ImageButton"
+        android:layout_toRightOf="@+id/secretPassage_ImageView"
+        android:layout_toEndOf="@+id/secretPassage_ImageView" />
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text=""
+        android:id="@+id/defence2_TextView"
+        android:layout_alignTop="@+id/defence1_TextView"
+        android:layout_alignLeft="@+id/defence2_ImageButton"
+        android:layout_alignStart="@+id/defence2_ImageButton" />
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text=""
+        android:id="@+id/defence3_TextView"
+        android:layout_below="@+id/lowBar_ImageView"
+        android:layout_alignLeft="@+id/defence3_ImageButton"
+        android:layout_alignStart="@+id/defence3_ImageButton" />
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/defence4_TextView"
+        android:layout_below="@+id/lowBar_ImageView"
+        android:layout_alignLeft="@+id/defence4_ImageButton"
+        android:layout_alignStart="@+id/defence4_ImageButton" />
+    <!--
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/defense_1_ScrollView"
+            android:layout_alignTop="@+id/secretPassage_TextView"
+            android:layout_toRightOf="@+id/secretPassage_TextView"
+            android:layout_toEndOf="@+id/secretPassage_TextView" >
+
+        </ScrollView>
+
+        <ImageButton
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/sallyport_ImageButton"
+            android:src="@drawable/sallyport"
+            android:layout_below="@+id/defense_1_ScrollView"
+            android:layout_toRightOf="@+id/secretPassage_ImageView"
+            android:layout_toEndOf="@+id/secretPassage_ImageView" />
+
+    -->
 
 </RelativeLayout>

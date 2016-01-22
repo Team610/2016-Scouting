@@ -7,6 +7,11 @@ public class MatchData {
     String[] defenceTypes = new String[5];
     static MatchData instance;
 
+    //MatchSetup
+    int selectedDefence;
+
+
+
     private MatchData(){
 
     }
