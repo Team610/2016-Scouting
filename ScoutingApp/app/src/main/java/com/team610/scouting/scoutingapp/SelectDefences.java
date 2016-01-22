@@ -1,12 +1,14 @@
 package com.team610.scouting.scoutingapp;
 
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 
 /**
@@ -22,6 +24,15 @@ public class SelectDefences extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+//    Button chevaldefrise;
+//    Button sallyport;
+//    Button roughterrain;
+//    Button rockwall;
+//    Button portcullis;
+//    Button drawbridge;
+//    Button moat;
+//    Button ramparts;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -89,6 +100,23 @@ public class SelectDefences extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.chevaldefrise_ImageButton:
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();;
+
+                Fragment matchSetupFragment = new MatchSetup();
+
+                transaction.replace(R.id.main_container, matchSetupFragment);
+                //transaction.addToBackStack(null);
+
+
+                transaction.commit();
+
+                break;
+        }
     }
 
     /**
