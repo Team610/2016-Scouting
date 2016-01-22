@@ -109,19 +109,147 @@
         android:layout_below="@id/matchText"
          />
 
-    <GridLayout
+    <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignBottom="@+id/matchText"
-        android:layout_toRightOf="@+id/matchList"
-        android:layout_toEndOf="@+id/matchList"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@id/teamNumber"
         android:layout_alignParentRight="true"
-
-        
+        android:layout_marginBottom="200dp"
+        android:id="@+id/defenseStatsTable"
         >
 
 
-    </GridLayout>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:text="Defense Stats"
+            android:textSize="25sp"
+            android:padding="3dip" />
+    </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="Portcullis"
+                android:textSize="@dimen/defenseTextSize"
+                android:padding="3dip" />
+            <TextView
+                android:id="@+id/portcullisAvgTime"
+                android:gravity="right"
+                android:padding="3dip" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="Cheval De Frise"
+                android:textSize="@dimen/defenseTextSize"
+                android:padding="3dip" />
+            <TextView
+                android:id="@+id/chevalDeFriseAvgTime"
+                android:gravity="right"
+                android:padding="3dip" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="Moat"
+                android:textSize="@dimen/defenseTextSize"
+                android:padding="3dip" />
+            <TextView
+                android:id="@+id/moatAvgTime"
+                android:gravity="right"
+                android:padding="3dip" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="Ramparts"
+                android:textSize="@dimen/defenseTextSize"
+                android:padding="3dip" />
+            <TextView
+                android:id="@+id/rampartsAvgTime"
+                android:gravity="right"
+                android:padding="3dip" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="Drawbridge"
+                android:textSize="@dimen/defenseTextSize"
+                android:padding="3dip" />
+            <TextView
+                android:id="@+id/drawbridgeAvgTime"
+                android:gravity="right"
+                android:padding="3dip" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="Sally Port"
+                android:textSize="@dimen/defenseTextSize"
+                android:padding="3dip" />
+            <TextView
+                android:id="@+id/sallyPortAvgTime"
+                android:gravity="right"
+                android:padding="3dip" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="Rock Wall"
+                android:textSize="@dimen/defenseTextSize"
+                android:padding="3dip" />
+            <TextView
+                android:id="@+id/rockWallAvgTime"
+                android:gravity="right"
+                android:padding="3dip" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="Rough Terrain"
+                android:textSize="@dimen/defenseTextSize"
+                android:padding="3dip" />
+            <TextView
+                android:id="@+id/roughTerrainAvgScore"
+                android:gravity="right"
+                android:padding="3dip" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="Low Bar"
+                android:textSize="@dimen/defenseTextSize"
+                android:padding="3dip" />
+            <TextView
+                android:id="@+id/lowBarAvgTime"
+                android:gravity="right"
+                android:padding="3dip" />
+        </TableRow>
+
+
+
+
+    </TableLayout>
+
+    <ExpandableListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/expandableListView"
+        android:layout_below="@+id/defenseStatsTable"
+        android:layout_toRightOf="@+id/matchList"
+        android:layout_toEndOf="@+id/matchList"
+        android:layout_marginTop="62dp" />
 
 
 </RelativeLayout>
