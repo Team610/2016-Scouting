@@ -6,7 +6,24 @@
     tools:context="com.team610.scouting.masterapp.MatchFragment">
 
 
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        layout="@layout/match_auton"
+        android:id="@+id/match_auton_layout"
+        />
 
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        layout="@layout/match_post"
+        android:id="@+id/match_post_layout"
+         />
 
-
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        layout="@layout/match_teleop"
+        android:id="@+id/match_teleop_layout"
+         />
 </RelativeLayout>

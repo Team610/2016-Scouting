@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -64,23 +65,19 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    public void onSaveInstanceState(Bundle b){
+        //Literally here to stop saving stuff
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-
+        MatchFragment frag = (MatchFragment) getFragmentManager().findFragmentById(R.id.fragment_match);
         //TODO
-        if (id == R.id.action_auton) {
-
-        }else if(id == R.id.action_teleop){
-
-        }else if(id == R.id.action_postMatch){
-
+        if(frag != null) {
+           frag.onMenuTap(id);
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -96,7 +93,6 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_matches) {
             MatchFragment mFrag = new MatchFragment();
             transaction.replace(R.id.main_container,mFrag).commit();
-
         } else if (id == R.id.nav_teams) {
             SplitScreenFragment mFrag = new SplitScreenFragment();
             transaction.replace(R.id.main_container,mFrag).commit();

@@ -94,15 +94,17 @@ public class SplitScreenFragment extends Fragment {
 
     @Override
     public void onDestroyView() {
+        if(!getActivity().isFinishing()) {
+            TeamFragment f = (TeamFragment) getFragmentManager()
+                    .findFragmentById(R.id.splitleft);
+            if (f != null)
+                getFragmentManager().beginTransaction().remove(f).commit();
+            f = (TeamFragment) getFragmentManager()
+                    .findFragmentById(R.id.splitright);
+            if (f != null)
+                getFragmentManager().beginTransaction().remove(f).commit();
+        }
         super.onDestroyView();
-        TeamFragment f = (TeamFragment) getFragmentManager()
-                .findFragmentById(R.id.splitleft);
-        if (f != null)
-            getFragmentManager().beginTransaction().remove(f).commit();
-        f = (TeamFragment) getFragmentManager()
-                .findFragmentById(R.id.splitright);
-        if (f != null)
-            getFragmentManager().beginTransaction().remove(f).commit();
     }
 
     /**

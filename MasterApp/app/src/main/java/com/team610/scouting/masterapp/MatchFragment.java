@@ -29,6 +29,7 @@ public class MatchFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
+
     public MatchFragment() {
         // Required empty public constructor
     }
@@ -72,6 +73,8 @@ public class MatchFragment extends Fragment {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
+
+
     }
 
     @Override
@@ -90,6 +93,23 @@ public class MatchFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
+    public void onMenuTap(int id) {
+        View    auton = getActivity().findViewById(R.id.match_auton_layout),
+                teleop = getActivity().findViewById(R.id.match_teleop_layout),
+                post = getActivity().findViewById(R.id.match_post_layout);
+        post.setVisibility(View.GONE);
+        teleop.setVisibility(View.GONE);
+        auton.setVisibility(View.GONE);
+        if (id == R.id.action_auton) {
+           auton.setVisibility(View.VISIBLE);
+        } else if (id == R.id.action_teleop) {
+            teleop.setVisibility(View.VISIBLE);
+        } else if (id == R.id.action_postMatch) {
+            post.setVisibility(View.VISIBLE);
+        }
+    }
+
 
     /**
      * This interface must be implemented by activities that contain this
