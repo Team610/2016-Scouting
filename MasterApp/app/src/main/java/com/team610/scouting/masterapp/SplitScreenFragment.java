@@ -1,5 +1,6 @@
 package com.team610.scouting.masterapp;
 
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -58,6 +59,9 @@ public class SplitScreenFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        FragmentTransaction trans = getFragmentManager().beginTransaction();
+        trans.add(R.id.splitleft,new TeamFragment());
+        trans.add(R.id.splitright,new TeamFragment()).commit();
     }
 
     @Override
@@ -94,16 +98,7 @@ public class SplitScreenFragment extends Fragment {
 
     @Override
     public void onDestroyView() {
-        if(!getActivity().isFinishing()) {
-            TeamFragment f = (TeamFragment) getFragmentManager()
-                    .findFragmentById(R.id.splitleft);
-            if (f != null)
-                getFragmentManager().beginTransaction().remove(f).commit();
-            f = (TeamFragment) getFragmentManager()
-                    .findFragmentById(R.id.splitright);
-            if (f != null)
-                getFragmentManager().beginTransaction().remove(f).commit();
-        }
+
         super.onDestroyView();
     }
 

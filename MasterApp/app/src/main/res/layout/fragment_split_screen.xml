@@ -7,23 +7,20 @@
     >
 
 
-    <fragment
+    <FrameLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:name="com.team610.scouting.masterapp.TeamFragment"
         android:id="@+id/splitleft"
         android:layout_gravity="left|center_vertical"
         android:layout_weight="0.5"
-        class="com.team610.scouting.masterapp.TeamFragment"
          />
 
-    <fragment
+    <FrameLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:name="com.team610.scouting.masterapp.TeamFragment"
         android:id="@+id/splitright"
         android:layout_weight="0.5"
         android:layout_gravity="right|center_vertical"
-        class="com.team610.scouting.masterapp.TeamFragment"
+
         />
 </LinearLayout>
