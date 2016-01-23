@@ -66,11 +66,11 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
 
     public void onStopTrackingTouch(SeekBar seekBar) {
         int mProgress = seekBar.getProgress();
-        if(mProgress > 0 & mProgress < 26) {
-            seekBar.setProgress(0);
+        if(mProgress >= 0 & mProgress < 26) {
+            seekBar.setProgress(10);
         } else if(mProgress > 25 & mProgress < 76) {
             seekBar.setProgress(50);
-        } else seekBar.setProgress(100);
+        } else seekBar.setProgress(90);
     }
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress,
