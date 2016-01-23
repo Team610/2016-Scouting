@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Team # "
+        android:id="@+id/matchTeamNumber"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Defense Crossed"
+        android:id="@+id/defenseCrossedText"
+        android:layout_below="@id/matchTeamNumber"
+        />
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="fitCenter"
+        android:id="@+id/defenseCrossedImage"
+        android:layout_toRightOf="@+id/defenseCrossedText"
+        android:src="@drawable/lowbar"
+        />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Spybot"
+        android:id="@+id/spybotCheckBox"
+        android:layout_below="@id/defenseCrossedText"
+
+         />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reaches Defense"
+        android:id="@+id/defenseReach"
+        android:layout_below="@+id/spybotCheckBox"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Ball "
+        android:id="@+id/ballLocationText"
+        android:layout_below="@+id/defenseReach"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Robot "
+        android:id="@+id/robotLocationText"
+        android:layout_below="@+id/ballLocationText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+</RelativeLayout>

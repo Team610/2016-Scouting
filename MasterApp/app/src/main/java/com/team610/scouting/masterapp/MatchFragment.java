@@ -4,7 +4,9 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v7.view.menu.ActionMenuItemView;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -65,7 +67,7 @@ public class MatchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root =  inflater.inflate(R.layout.fragment_match, container, false);
+        View root = inflater.inflate(R.layout.fragment_match, container, false);
         View auton = root.findViewById(R.id.match_auton_layout),
                 teleop = root.findViewById(R.id.match_teleop_layout);
         auton.setVisibility(View.GONE);
@@ -100,21 +102,26 @@ public class MatchFragment extends Fragment {
     }
 
     public void onMenuTap(int id) {
-        View auton = getActivity().findViewById(R.id.match_auton_layout),
-                teleop = getActivity().findViewById(R.id.match_teleop_layout),
-                post = getActivity().findViewById(R.id.match_post_layout);
-        post.setVisibility(View.GONE);
-        teleop.setVisibility(View.GONE);
-        auton.setVisibility(View.GONE);
-        if (id == R.id.action_auton) {
-            System.out.println("1");
-            auton.setVisibility(View.VISIBLE);
-        } else if (id == R.id.action_teleop) {
-            teleop.setVisibility(View.VISIBLE);
-            System.out.println("2");
-        } else if (id == R.id.action_postMatch) {
-            post.setVisibility(View.VISIBLE);
-            System.out.println("3");
+        if (id == R.id.action_matchNumber) {
+           ActionMenuItemView item = (ActionMenuItemView) getActivity().findViewById(R.id.action_matchNumber);
+           item.setTitle("Match # " + (int)(Math.random() * 1000));
+        } else {
+            View auton = getActivity().findViewById(R.id.match_auton_layout),
+                    teleop = getActivity().findViewById(R.id.match_teleop_layout),
+                    post = getActivity().findViewById(R.id.match_post_layout);
+            post.setVisibility(View.GONE);
+            teleop.setVisibility(View.GONE);
+            auton.setVisibility(View.GONE);
+            if (id == R.id.action_auton) {
+                System.out.println("1");
+                auton.setVisibility(View.VISIBLE);
+            } else if (id == R.id.action_teleop) {
+                teleop.setVisibility(View.VISIBLE);
+                System.out.println("2");
+            } else if (id == R.id.action_postMatch) {
+                post.setVisibility(View.VISIBLE);
+                System.out.println("3");
+            }
         }
     }
 
