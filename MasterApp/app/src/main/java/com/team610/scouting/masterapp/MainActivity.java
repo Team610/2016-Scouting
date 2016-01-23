@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity
 
 
     Menu actionbar;
+    Fragment mFrag;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,11 +74,11 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
-        MatchFragment frag = (MatchFragment) getFragmentManager().findFragmentById(R.id.fragment_match);
+        Log.d("S","sda");
         //TODO
-        if(frag != null) {
-           frag.onMenuTap(id);
+        if(mFrag instanceof MatchFragment) {
+            System.out.println("SDASDSA");
+            ((MatchFragment)mFrag).onMenuTap(id);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -91,13 +93,13 @@ public class MainActivity extends AppCompatActivity
         actionbar.setGroupVisible(R.id.matchMenuItems, id == R.id.nav_matches);
         //Switch fragments based on id
         if (id == R.id.nav_matches) {
-            MatchFragment mFrag = new MatchFragment();
+            mFrag = new MatchFragment();
             transaction.replace(R.id.main_container,mFrag).commit();
         } else if (id == R.id.nav_teams) {
-            SplitScreenFragment mFrag = new SplitScreenFragment();
+            mFrag = new SplitScreenFragment();
             transaction.replace(R.id.main_container,mFrag).commit();
         } else if (id == R.id.nav_field) {
-            FieldFragment mFrag = new FieldFragment();
+            mFrag = new FieldFragment();
             transaction.replace(R.id.main_container,mFrag).commit();
         }
 

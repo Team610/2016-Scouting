@@ -65,7 +65,12 @@ public class MatchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_match, container, false);
+        View root =  inflater.inflate(R.layout.fragment_match, container, false);
+        View auton = root.findViewById(R.id.match_auton_layout),
+                teleop = root.findViewById(R.id.match_teleop_layout);
+        auton.setVisibility(View.GONE);
+        teleop.setVisibility(View.GONE);
+        return root;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -95,18 +100,21 @@ public class MatchFragment extends Fragment {
     }
 
     public void onMenuTap(int id) {
-        View    auton = getActivity().findViewById(R.id.match_auton_layout),
+        View auton = getActivity().findViewById(R.id.match_auton_layout),
                 teleop = getActivity().findViewById(R.id.match_teleop_layout),
                 post = getActivity().findViewById(R.id.match_post_layout);
         post.setVisibility(View.GONE);
         teleop.setVisibility(View.GONE);
         auton.setVisibility(View.GONE);
         if (id == R.id.action_auton) {
-           auton.setVisibility(View.VISIBLE);
+            System.out.println("1");
+            auton.setVisibility(View.VISIBLE);
         } else if (id == R.id.action_teleop) {
             teleop.setVisibility(View.VISIBLE);
+            System.out.println("2");
         } else if (id == R.id.action_postMatch) {
             post.setVisibility(View.VISIBLE);
+            System.out.println("3");
         }
     }
 
