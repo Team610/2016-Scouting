@@ -15,9 +15,9 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Auto" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/fragment_teleop"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="Tele-Op" />
     </group>
 
     <item android:title="Communicate">

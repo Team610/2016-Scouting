@@ -1,10 +1,87 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="layout.Teleop">
+    tools:context=".TeleopFragment">
 
     <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Teleop"
+        android:textSize="25dp"
+        android:id="@+id/teleop_TextView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="High Goal"
+        android:id="@+id/highgoal_TextView"
+        android:layout_marginLeft="39dp"
+        android:layout_marginStart="39dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="166dp" />
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Switch"
+        android:id="@+id/switch1"
+        android:layout_alignBottom="@+id/highgoal_TextView"
+        android:textSize="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="163dp"
+        android:layout_marginEnd="163dp" />
+
+    <ImageButton
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="fitCenter"
+        android:id="@+id/plus_ImageButton"
+        android:src="@drawable/plus"
+        android:layout_below="@+id/highgoal_TextView"
+        android:layout_alignLeft="@+id/highgoal_TextView"
+        android:layout_alignStart="@+id/highgoal_TextView"
+        android:layout_marginTop="27dp" />
+
+    <ImageButton
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="fitCenter"
+        android:id="@+id/minus_ImageButton"
+        android:src="@drawable/minus"
+        android:layout_alignBottom="@+id/plus_ImageButton"
+        android:layout_toRightOf="@+id/plus_ImageButton"
+        />
+    <TableLayout
+        android:layout_width="500dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/minus_ImageButton"
+        android:id="@+id/tableLayout">
+
+        <include
+            android:id="@+id/tableRow1_ref"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            layout="@layout/description" />
+
+        <SeekBar
+            android:id="@+id/setgoal_SeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:max="100" />
 
 
-</FrameLayout>
+    </TableLayout>
+
+
+</RelativeLayout>

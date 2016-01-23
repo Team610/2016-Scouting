@@ -113,6 +113,9 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.fragment_auto) {
             AutoFragment mFrag = new AutoFragment();
             transaction.replace(R.id.main_container,mFrag).commit();
+        } else if(id == R.id.fragment_teleop){
+            TeleopFragment mFrag = new TeleopFragment();
+            transaction.replace(R.id.main_container,mFrag).commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
