@@ -248,7 +248,7 @@
     <ExpandableListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/commentsExpandableList"
+        android:id="@+id/commentsList"
         android:layout_toRightOf="@+id/matchList"
         android:layout_below="@id/commentText"
         />
