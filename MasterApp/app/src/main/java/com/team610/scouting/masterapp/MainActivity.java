@@ -5,6 +5,7 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -19,7 +20,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, MatchFragment.OnFragmentInteractionListener, SplitScreenFragment.OnFragmentInteractionListener, TeamFragment.OnFragmentInteractionListener, FieldFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +86,7 @@ public class MainActivity extends AppCompatActivity
             MatchFragment mFrag = new MatchFragment();
             transaction.replace(R.id.main_container,mFrag).commit();
         } else if (id == R.id.nav_teams) {
-            TeamFragment mFrag = new TeamFragment();
+            SplitScreenFragment mFrag = new SplitScreenFragment();
             transaction.replace(R.id.main_container,mFrag).commit();
         } else if (id == R.id.nav_field) {
             FieldFragment mFrag = new FieldFragment();
@@ -102,6 +103,12 @@ public class MainActivity extends AppCompatActivity
         NetworkInfo activeNetworkInfo = connectivityManager
                 .getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
+    //TODO idk wtf to do
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }
 

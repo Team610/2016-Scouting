@@ -111,23 +111,22 @@
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@id/teamNumber"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="200dp"
         android:id="@+id/defenseStatsTable"
         >
 
 
-    <TableRow
+        <TableRow
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <TextView
             android:text="Defense Stats"
             android:textSize="25sp"
             android:padding="3dip" />
-    </TableRow>
+         </TableRow>
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -236,20 +235,22 @@
                 android:gravity="right"
                 android:padding="3dip" />
         </TableRow>
-
-
-
-
     </TableLayout>
-
-    <ExpandableListView
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/expandableListView"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Comments"
+        android:id="@+id/commentText"
         android:layout_below="@+id/defenseStatsTable"
         android:layout_toRightOf="@+id/matchList"
-        android:layout_toEndOf="@+id/matchList"
-        android:layout_marginTop="62dp" />
-
+        />
+    <ExpandableListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/commentsExpandableList"
+        android:layout_toRightOf="@+id/matchList"
+        android:layout_below="@id/commentText"
+        />
 
 </RelativeLayout>
