@@ -34,6 +34,9 @@ public class SelectDefences extends Fragment {
 //    Button moat;
 //    Button ramparts;
 
+    int numOfDefence;
+    String defencePicked;
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -42,7 +45,13 @@ public class SelectDefences extends Fragment {
 
     public SelectDefences() {
         // Required empty public constructor
+
     }
+
+    public void openSelectDefences(){
+
+    }
+
 
     /**
      * Use this factory method to create a new instance of

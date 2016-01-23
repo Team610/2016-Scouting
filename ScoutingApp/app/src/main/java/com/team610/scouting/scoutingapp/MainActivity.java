@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity
             InitialFragment mFrag = new InitialFragment();
             transaction.replace(R.id.main_container,mFrag).commit();
         } else if (id == R.id.fragment_match_setup) {
-            MatchSetup mFrag = new MatchSetup();
+            MatchSetup mFrag = MatchSetup.getInstance();
             transaction.replace(R.id.main_container,mFrag).commit();
         } else if (id == R.id.fragment_auto) {
             AutoFragment mFrag = new AutoFragment();

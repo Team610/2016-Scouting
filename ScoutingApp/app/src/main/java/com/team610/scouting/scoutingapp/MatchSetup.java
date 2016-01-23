@@ -1,5 +1,6 @@
 package com.team610.scouting.scoutingapp;
 
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -29,8 +30,39 @@ public class MatchSetup extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
+    private static MatchSetup instance;
+    int selectedDefence;
+
+    MatchData thisMatch = MatchData.getInstance();
+    String[] defences = new String[4];
+    int match;
+    int team;
+
+
     public MatchSetup() {
         // Required empty public constructor
+        openMatchSetup();
+    }
+
+    public void openMatchSetup(){
+        for(int i = 0; i<4; i++){
+            defences[i] = thisMatch.defenceTypes[i];
+        }
+
+    }
+
+    public void saveData(){
+        for(int i= 0; i < 4; i++){
+            thisMatch.defenceTypes[i] = defences[i];
+        }
+    }
+
+
+    public static MatchSetup getInstance() {
+        if(instance == null){
+            instance = new MatchSetup();
+        }
+        return instance;
     }
 
     /**
@@ -71,6 +103,27 @@ public class MatchSetup extends Fragment {
 
 
     //yo
+
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.defence1_ImageButton:
+                selectedDefence = 1;
+
+                break;
+            case R.id.defence2_ImageButton:
+                selectedDefence = 2;
+
+                break;
+            case R.id.defence3_ImageButton:
+                selectedDefence = 3;
+
+                break;
+            case R.id.defence4_ImageButton:
+                selectedDefence = 4;
+
+                break;
+        }
+    }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
