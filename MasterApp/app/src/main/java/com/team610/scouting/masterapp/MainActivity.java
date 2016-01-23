@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
             //Check if the app was paused
                 //Create Fragment to place in main activity
-                getFragmentManager().beginTransaction().add(R.id.main_container,new TeamFragment()).commit();
+                getFragmentManager().beginTransaction().add(R.id.main_container,new SplitScreenFragment()).commit();
 
 
     }

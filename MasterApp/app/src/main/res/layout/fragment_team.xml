@@ -31,11 +31,11 @@
             android:layout_height="match_parent">
             <TextView
                 android:text="@string/avgScore"
-                android:padding="3dip" />
+                android:padding="@dimen/tablePadding" />
             <TextView
                 android:id="@+id/avgScoreBox"
                 android:gravity="right"
-                android:padding="3dip" />
+                android:padding="@dimen/tablePadding" />
         </TableRow>
 
         <TableRow
@@ -44,11 +44,11 @@
 
             <TextView
                 android:text="@string/autonScore"
-                android:padding="3dip" />
+                android:padding="@dimen/tablePadding" />
             <TextView
                 android:id="@+id/autonScoreBox"
                 android:gravity="right"
-                android:padding="3dip" />
+                android:padding="@dimen/tablePadding" />
         </TableRow>
 
         <TableRow
@@ -56,11 +56,11 @@
             android:layout_height="match_parent">
             <TextView
                 android:text="@string/defenseScore"
-                android:padding="3dip" />
+                android:padding="@dimen/tablePadding" />
             <TextView
                 android:id="@+id/defenseScoreBox"
                 android:gravity="right"
-                android:padding="3dip" />
+                android:padding="@dimen/tablePadding" />
 
         </TableRow>
         <TableRow
@@ -69,23 +69,23 @@
 
             <TextView
                 android:text="@string/shootingScore"
-                android:padding="3dip" />
+                android:padding="@dimen/tablePadding" />
 
             <TextView
                 android:id="@+id/shootingScoreBox"
                 android:gravity="right"
-                android:padding="3dip" />
+                android:padding="@dimen/tablePadding" />
         </TableRow>
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
                 android:text="@string/accuracyScore"
-                android:padding="3dip" />
+                android:padding="@dimen/tablePadding" />
             <TextView
                 android:id="@+id/accuracyScoreBox"
                 android:gravity="right"
-                android:padding="3dip" />
+                android:padding="@dimen/tablePadding" />
 
         </TableRow>
     </TableLayout>
@@ -96,10 +96,10 @@
         android:text="@string/matches"
         android:id="@+id/matchText"
         android:layout_below="@+id/scoreTable"
-        android:padding="10dip"
+
         />
     <ListView
-        android:padding="10dip"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/matchList"
@@ -125,7 +125,7 @@
         <TextView
             android:text="Defense Stats"
             android:textSize="25sp"
-            android:padding="3dip" />
+            android:padding="@dimen/tablePadding" />
          </TableRow>
         <TableRow
             android:layout_width="match_parent"
@@ -133,11 +133,11 @@
             <TextView
                 android:text="Portcullis"
                 android:textSize="@dimen/defenseTextSize"
-                android:padding="3dip" />
+                android:padding="@dimen/tablePadding" />
             <TextView
                 android:id="@+id/portcullisAvgTime"
                 android:gravity="right"
-                android:padding="3dip" />
+                android:padding="@dimen/tablePadding" />
         </TableRow>
         <TableRow
             android:layout_width="match_parent"
@@ -145,11 +145,11 @@
             <TextView
                 android:text="Cheval De Frise"
                 android:textSize="@dimen/defenseTextSize"
-                android:padding="3dip" />
+                android:padding="@dimen/tablePadding" />
             <TextView
                 android:id="@+id/chevalDeFriseAvgTime"
                 android:gravity="right"
-                android:padding="3dip" />
+                android:padding="@dimen/tablePadding" />
         </TableRow>
         <TableRow
             android:layout_width="match_parent"
@@ -157,11 +157,11 @@
             <TextView
                 android:text="Moat"
                 android:textSize="@dimen/defenseTextSize"
-                android:padding="3dip" />
+                android:padding="@dimen/tablePadding" />
             <TextView
                 android:id="@+id/moatAvgTime"
                 android:gravity="right"
-                android:padding="3dip" />
+                android:padding="@dimen/tablePadding" />
         </TableRow>
         <TableRow
             android:layout_width="match_parent"
@@ -169,11 +169,11 @@
             <TextView
                 android:text="Ramparts"
                 android:textSize="@dimen/defenseTextSize"
-                android:padding="3dip" />
+                android:padding="@dimen/tablePadding" />
             <TextView
                 android:id="@+id/rampartsAvgTime"
                 android:gravity="right"
-                android:padding="3dip" />
+                android:padding="@dimen/tablePadding" />
         </TableRow>
         <TableRow
             android:layout_width="match_parent"
@@ -181,11 +181,11 @@
             <TextView
                 android:text="Drawbridge"
                 android:textSize="@dimen/defenseTextSize"
-                android:padding="3dip" />
+                android:padding="@dimen/tablePadding" />
             <TextView
                 android:id="@+id/drawbridgeAvgTime"
                 android:gravity="right"
-                android:padding="3dip" />
+                android:padding="@dimen/tablePadding" />
         </TableRow>
         <TableRow
             android:layout_width="match_parent"
@@ -193,11 +193,11 @@
             <TextView
                 android:text="Sally Port"
                 android:textSize="@dimen/defenseTextSize"
-                android:padding="3dip" />
+                android:padding="@dimen/tablePadding" />
             <TextView
                 android:id="@+id/sallyPortAvgTime"
                 android:gravity="right"
-                android:padding="3dip" />
+                android:padding="@dimen/tablePadding" />
         </TableRow>
         <TableRow
             android:layout_width="match_parent"
@@ -205,11 +205,11 @@
             <TextView
                 android:text="Rock Wall"
                 android:textSize="@dimen/defenseTextSize"
-                android:padding="3dip" />
+                android:padding="@dimen/tablePadding" />
             <TextView
                 android:id="@+id/rockWallAvgTime"
                 android:gravity="right"
-                android:padding="3dip" />
+                android:padding="@dimen/tablePadding" />
         </TableRow>
         <TableRow
             android:layout_width="match_parent"
@@ -217,11 +217,11 @@
             <TextView
                 android:text="Rough Terrain"
                 android:textSize="@dimen/defenseTextSize"
-                android:padding="3dip" />
+                android:padding="@dimen/tablePadding" />
             <TextView
                 android:id="@+id/roughTerrainAvgScore"
                 android:gravity="right"
-                android:padding="3dip" />
+                android:padding="@dimen/tablePadding" />
         </TableRow>
         <TableRow
             android:layout_width="match_parent"
@@ -229,11 +229,11 @@
             <TextView
                 android:text="Low Bar"
                 android:textSize="@dimen/defenseTextSize"
-                android:padding="3dip" />
+                android:padding="@dimen/tablePadding" />
             <TextView
                 android:id="@+id/lowBarAvgTime"
                 android:gravity="right"
-                android:padding="3dip" />
+                android:padding="@dimen/tablePadding" />
         </TableRow>
     </TableLayout>
     <TextView

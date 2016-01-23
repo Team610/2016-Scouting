@@ -7,4 +7,5 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="defenseTextSize">15sp</dimen>
+    <dimen name="tablePadding">3dip</dimen>
 </resources>
