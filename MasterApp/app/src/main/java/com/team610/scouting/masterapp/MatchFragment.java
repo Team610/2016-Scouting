@@ -1,14 +1,17 @@
 package com.team610.scouting.masterapp;
 
+import android.app.AlertDialog;
+import android.app.Fragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.support.v7.view.menu.ActionMenuItemView;
+import android.text.InputType;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 
 /**
@@ -103,8 +106,10 @@ public class MatchFragment extends Fragment {
 
     public void onMenuTap(int id) {
         if (id == R.id.action_matchNumber) {
-           ActionMenuItemView item = (ActionMenuItemView) getActivity().findViewById(R.id.action_matchNumber);
-           item.setTitle("Match # " + (int)(Math.random() * 1000));
+            createDialog();
+            ActionMenuItemView item = (ActionMenuItemView) getActivity().findViewById(R.id.action_matchNumber);
+            item.setTitle("Match # " + matchNum);
+            //TODO LOAD DATA FROM MATCH
         } else {
             View auton = getActivity().findViewById(R.id.match_auton_layout),
                     teleop = getActivity().findViewById(R.id.match_teleop_layout),
@@ -136,6 +141,34 @@ public class MatchFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
+    private int matchNum;
+    public void createDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Choose Match");
+
+        // Set up the input
+        final EditText input = new EditText(getActivity());
+        // Specify the type to number
+        input.setInputType(InputType.TYPE_CLASS_NUMBER);
+        builder.setView(input);
+
+        // Set up the buttons
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                matchNum = Integer.valueOf(input.getText().toString());
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+    }
+
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
