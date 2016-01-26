@@ -78,7 +78,8 @@
         android:id="@+id/defence1_ImageButton"
         android:layout_below="@+id/secretPassage_TextView"
         android:layout_toRightOf="@+id/secretPassage_ImageView"
-        android:layout_toEndOf="@+id/secretPassage_ImageView" />
+        android:layout_toEndOf="@+id/secretPassage_ImageView"
+        android:onClick="onClick"/>
 
     <ImageButton
         android:layout_width="150dp"
@@ -86,7 +87,8 @@
         android:id="@+id/defence2_ImageButton"
         android:layout_alignTop="@+id/defence1_ImageButton"
         android:layout_toRightOf="@+id/defence1_ImageButton"
-        android:layout_toEndOf="@+id/defence1_ImageButton" />
+        android:layout_toEndOf="@+id/defence1_ImageButton"
+        android:onClick="onClick"/>
 
     <ImageButton
         android:layout_width="150dp"
@@ -94,7 +96,8 @@
         android:id="@+id/defence3_ImageButton"
         android:layout_alignTop="@+id/defence2_ImageButton"
         android:layout_toRightOf="@+id/defence2_ImageButton"
-        android:layout_toEndOf="@+id/defence2_ImageButton" />
+        android:layout_toEndOf="@+id/defence2_ImageButton"
+        android:onClick="onClick"/>
 
     <ImageButton
         android:layout_width="150dp"
@@ -102,7 +105,8 @@
         android:id="@+id/defence4_ImageButton"
         android:layout_below="@+id/lowBar_TextView"
         android:layout_toRightOf="@+id/defence3_ImageButton"
-        android:layout_toEndOf="@+id/defence3_ImageButton" />
+        android:layout_toEndOf="@+id/defence3_ImageButton"
+        android:onClick="onClick"/>
 
     <TextView
         android:layout_width="150dp"

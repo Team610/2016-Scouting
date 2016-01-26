@@ -47,44 +47,38 @@ public class MatchSetup extends Fragment {
     public MatchSetup() {
         // Required empty public constructor
 
-        defenceButtons = new ImageButton[] {(ImageButton) getView().findViewById(R.id.defence1_ImageButton),
-                (ImageButton) getView().findViewById(R.id.defence2_ImageButton),
-                (ImageButton) getView().findViewById(R.id.defence3_ImageButton),
-                (ImageButton) getView().findViewById(R.id.defence4_ImageButton)};
 
-        openMatchSetup();
+
+       // openMatchSetup();
     }
 
     public void openMatchSetup(){
+
+
+
         for(int i = 0; i<4; i++){
             defences[i] = thisMatch.defenceTypes[i];
         }
         for(int i = 0; i < 4; i++){
-            if(defences[i].equals("porticullis")) {
-                defenceButtons[i].setBackgroundResource(R.drawable.portcullis);
+            if(defences[i] != null) {
+                if (defences[i].equals("porticullis")) {
+                    defenceButtons[i].setBackgroundResource(R.drawable.portcullis);
+                } else if (defences[i].equals("moat")) {
+                    defenceButtons[i].setBackgroundResource(R.drawable.moat);
+                } else if (defences[i].equals("ramparts")) {
+                    defenceButtons[i].setBackgroundResource(R.drawable.ramparts);
+                } else if (defences[i].equals("rockwall")) {
+                    defenceButtons[i].setBackgroundResource(R.drawable.rockwall);
+                } else if (defences[i].equals("roughterrain")) {
+                    defenceButtons[i].setBackgroundResource(R.drawable.roughterrain);
+                } else if (defences[i].equals("sallyport")) {
+                    defenceButtons[i].setBackgroundResource(R.drawable.sallyport);
+                } else if (defences[i].equals("drawbridge")) {
+                    defenceButtons[i].setBackgroundResource(R.drawable.drawbridge);
+                } else if (defences[i].equals("chevaldefrise")) {
+                    defenceButtons[i].setBackgroundResource(R.drawable.chevaldefrise);
+                }
             }
-            else if(defences[i].equals("moat")){
-                defenceButtons[i].setBackgroundResource(R.drawable.moat);
-            }
-            else if(defences[i].equals("ramparts")){
-                defenceButtons[i].setBackgroundResource(R.drawable.ramparts);
-            }
-            else if(defences[i].equals("rockwall")){
-                defenceButtons[i].setBackgroundResource(R.drawable.rockwall);
-            }
-            else if(defences[i].equals("roughterrain")){
-                defenceButtons[i].setBackgroundResource(R.drawable.roughterrain);
-            }
-            else if(defences[i].equals("sallyport")){
-                defenceButtons[i].setBackgroundResource(R.drawable.sallyport);
-            }
-            else if(defences[i].equals("drawbridge")){
-                defenceButtons[i].setBackgroundResource(R.drawable.drawbridge);
-            }
-            else if(defences[i].equals("chevaldefrise")){
-                defenceButtons[i].setBackgroundResource(R.drawable.chevaldefrise);
-            }
-
         }
 
     }
@@ -128,13 +122,25 @@ public class MatchSetup extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
+
+        //openMatchSetup();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_match_setup, container, false);
+        View v = inflater.inflate(R.layout.fragment_match_setup, container, false);
+
+        defenceButtons = new ImageButton[] {(ImageButton) v.findViewById(R.id.defence1_ImageButton),
+                (ImageButton) v.findViewById(R.id.defence2_ImageButton),
+                (ImageButton) v.findViewById(R.id.defence3_ImageButton),
+                (ImageButton) v.findViewById(R.id.defence4_ImageButton)};
+        openMatchSetup();
+
+        return v;
 
     }
 

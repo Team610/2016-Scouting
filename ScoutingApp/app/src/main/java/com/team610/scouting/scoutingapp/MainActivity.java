@@ -17,7 +17,10 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,MatchSetup.OnFragmentInteractionListener,
-            TeleopFragment.OnFragmentInteractionListener{
+            TeleopFragment.OnFragmentInteractionListener,
+            InitialFragment.OnFragmentInteractionListener,
+            AutoFragment.OnFragmentInteractionListener,
+            SelectDefences.OnFragmentInteractionListener{
 
 
 
@@ -152,6 +155,20 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onTeleopFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onInitialFragmentInteraction(Uri uri) {
+
+    }
+    @Override
+    public void onAutonFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onSelectDefencesFragmentInteraction(Uri uri) {
 
     }
 }
