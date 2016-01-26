@@ -36,6 +36,7 @@ public class SelectDefences extends Fragment {
 
     int numOfDefence;
     String defencePicked;
+    static SelectDefences instance;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -48,8 +49,15 @@ public class SelectDefences extends Fragment {
 
     }
 
-    public void openSelectDefences(){
+    public void openSelectDefences(int numOfDefence){
+        this.numOfDefence = numOfDefence;
+    }
 
+    public static SelectDefences getInstance() {
+        if(instance == null){
+            instance = new SelectDefences();
+        }
+        return instance;
     }
 
 
@@ -112,12 +120,16 @@ public class SelectDefences extends Fragment {
     }
 
     public void onClick(View v) {
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        Fragment matchSetupFragment;
         switch (v.getId()) {
             case R.id.chevaldefrise_ImageButton:
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();;
 
-                Fragment matchSetupFragment = new MatchSetup();
+                MatchData.getInstance().defenceTypes[numOfDefence] = "chevaldefrise";
 
+
+                matchSetupFragment = MatchSetup.getInstance();
+                MatchSetup.getInstance().openMatchSetup();
                 transaction.replace(R.id.main_container, matchSetupFragment);
                 //transaction.addToBackStack(null);
 
@@ -125,6 +137,92 @@ public class SelectDefences extends Fragment {
                 transaction.commit();
 
                 break;
+            case R.id.moat_ImageButton:
+                MatchData.getInstance().defenceTypes[numOfDefence] = "moat";
+
+
+                matchSetupFragment = MatchSetup.getInstance();
+                MatchSetup.getInstance().openMatchSetup();
+                transaction.replace(R.id.main_container, matchSetupFragment);
+                //transaction.addToBackStack(null);
+
+
+                transaction.commit();
+                break;
+            case R.id.ramparts_ImageButton:
+                MatchData.getInstance().defenceTypes[numOfDefence] = "ramparts";
+
+
+                matchSetupFragment = MatchSetup.getInstance();
+                MatchSetup.getInstance().openMatchSetup();
+                transaction.replace(R.id.main_container, matchSetupFragment);
+                //transaction.addToBackStack(null);
+
+
+                transaction.commit();
+                break;
+            case R.id.drawbridge_ImageButton:
+                MatchData.getInstance().defenceTypes[numOfDefence] = "drawbridge";
+
+
+                matchSetupFragment = MatchSetup.getInstance();
+                MatchSetup.getInstance().openMatchSetup();
+                transaction.replace(R.id.main_container, matchSetupFragment);
+                //transaction.addToBackStack(null);
+
+
+                transaction.commit();
+                break;
+            case R.id.porticullis_ImageButton:
+                MatchData.getInstance().defenceTypes[numOfDefence] = "porticullis";
+
+
+                matchSetupFragment = MatchSetup.getInstance();
+                MatchSetup.getInstance().openMatchSetup();
+                transaction.replace(R.id.main_container, matchSetupFragment);
+                //transaction.addToBackStack(null);
+
+
+                transaction.commit();
+                break;
+            case R.id.sallyport_ImageButton:
+                MatchData.getInstance().defenceTypes[numOfDefence] = "sallyport";
+
+
+                matchSetupFragment = MatchSetup.getInstance();
+                MatchSetup.getInstance().openMatchSetup();
+                transaction.replace(R.id.main_container, matchSetupFragment);
+                //transaction.addToBackStack(null);
+
+
+                transaction.commit();
+                break;
+            case R.id.rockwall_ImageButton:
+                MatchData.getInstance().defenceTypes[numOfDefence] = "rockwall";
+
+
+                matchSetupFragment = MatchSetup.getInstance();
+                MatchSetup.getInstance().openMatchSetup();
+                transaction.replace(R.id.main_container, matchSetupFragment);
+                //transaction.addToBackStack(null);
+
+
+                transaction.commit();
+                break;
+            case R.id.roughterrain_ImageButton:
+                MatchData.getInstance().defenceTypes[numOfDefence] = "roughterrain";
+
+
+                matchSetupFragment = MatchSetup.getInstance();
+                MatchSetup.getInstance().openMatchSetup();
+                transaction.replace(R.id.main_container, matchSetupFragment);
+                //transaction.addToBackStack(null);
+
+
+                transaction.commit();
+                break;
+
+
         }
     }
 

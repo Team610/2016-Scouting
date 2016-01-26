@@ -1,6 +1,7 @@
 package com.team610.scouting.scoutingapp;
 
 import android.app.FragmentTransaction;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -15,7 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,InitialFragment.OnFragmentInteractionListener {
 
 
 
@@ -140,5 +141,10 @@ public class MainActivity extends AppCompatActivity
 
                 break;
         }
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }

@@ -2,12 +2,14 @@ package com.team610.scouting.scoutingapp;
 
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 
 /**
@@ -18,7 +20,7 @@ import android.view.ViewGroup;
  * Use the {@link MatchSetup#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MatchSetup extends Fragment {
+public class MatchSetup extends Fragment implements InitialFragment.OnFragmentInteractionListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -38,15 +40,51 @@ public class MatchSetup extends Fragment {
     int match;
     int team;
 
+    ImageButton[] defenceButtons;
+
+
 
     public MatchSetup() {
         // Required empty public constructor
+
+        defenceButtons = new ImageButton[] {(ImageButton) getView().findViewById(R.id.defence1_ImageButton),
+                (ImageButton) getView().findViewById(R.id.defence2_ImageButton),
+                (ImageButton) getView().findViewById(R.id.defence3_ImageButton),
+                (ImageButton) getView().findViewById(R.id.defence4_ImageButton)};
+
         openMatchSetup();
     }
 
     public void openMatchSetup(){
         for(int i = 0; i<4; i++){
             defences[i] = thisMatch.defenceTypes[i];
+        }
+        for(int i = 0; i < 4; i++){
+            if(defences[i].equals("porticullis")) {
+                defenceButtons[i].setBackgroundResource(R.drawable.portcullis);
+            }
+            else if(defences[i].equals("moat")){
+                defenceButtons[i].setBackgroundResource(R.drawable.moat);
+            }
+            else if(defences[i].equals("ramparts")){
+                defenceButtons[i].setBackgroundResource(R.drawable.ramparts);
+            }
+            else if(defences[i].equals("rockwall")){
+                defenceButtons[i].setBackgroundResource(R.drawable.rockwall);
+            }
+            else if(defences[i].equals("roughterrain")){
+                defenceButtons[i].setBackgroundResource(R.drawable.roughterrain);
+            }
+            else if(defences[i].equals("sallyport")){
+                defenceButtons[i].setBackgroundResource(R.drawable.sallyport);
+            }
+            else if(defences[i].equals("drawbridge")){
+                defenceButtons[i].setBackgroundResource(R.drawable.drawbridge);
+            }
+            else if(defences[i].equals("chevaldefrise")){
+                defenceButtons[i].setBackgroundResource(R.drawable.chevaldefrise);
+            }
+
         }
 
     }
@@ -109,17 +147,61 @@ public class MatchSetup extends Fragment {
             case R.id.defence1_ImageButton:
                 selectedDefence = 1;
 
+                FragmentTransaction transaction = getFragmentManager()
+                        .beginTransaction();
+
+                SelectDefences fragment = SelectDefences.getInstance();
+                fragment.openSelectDefences(selectedDefence);
+
+                transaction.replace(R.id.main_container, fragment);
+                //transaction.addToBackStack(null);
+
+
+                transaction.commit();
+
                 break;
             case R.id.defence2_ImageButton:
                 selectedDefence = 2;
+                FragmentTransaction transaction2 = getFragmentManager()
+                        .beginTransaction();
+
+                SelectDefences fragment2 = SelectDefences.getInstance();
+                fragment2.openSelectDefences(selectedDefence);
+
+                transaction2.replace(R.id.main_container, fragment2);
+                //transaction.addToBackStack(null);
+
+
+                transaction2.commit();
 
                 break;
             case R.id.defence3_ImageButton:
                 selectedDefence = 3;
+                FragmentTransaction transaction3 = getFragmentManager()
+                        .beginTransaction();
+
+                SelectDefences fragment3 = SelectDefences.getInstance();
+                fragment3.openSelectDefences(selectedDefence);
+                transaction3.replace(R.id.main_container, fragment3);
+                //transaction.addToBackStack(null);
+
+
+                transaction3.commit();
 
                 break;
             case R.id.defence4_ImageButton:
                 selectedDefence = 4;
+                FragmentTransaction transaction4 = getFragmentManager()
+                        .beginTransaction();
+
+                SelectDefences fragment4 = SelectDefences.getInstance();
+
+                fragment4.openSelectDefences(selectedDefence);
+                transaction4.replace(R.id.main_container, fragment4);
+                //transaction.addToBackStack(null);
+
+
+                transaction4.commit();
 
                 break;
         }
@@ -147,6 +229,11 @@ public class MatchSetup extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 
     /**
