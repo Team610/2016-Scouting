@@ -122,6 +122,9 @@ public class SelectDefences extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         Fragment matchSetupFragment;
+
+        //System.out.print("debug");
+
         switch (v.getId()) {
             case R.id.chevaldefrise_ImageButton:
 

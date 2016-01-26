@@ -2,6 +2,7 @@ package com.team610.scouting.scoutingapp;
 
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
@@ -20,7 +21,7 @@ import android.widget.ImageButton;
  * Use the {@link MatchSetup#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MatchSetup extends Fragment {
+public class MatchSetup extends Fragment implements View.OnClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -140,6 +141,35 @@ public class MatchSetup extends Fragment {
                 (ImageButton) v.findViewById(R.id.defence4_ImageButton)};
         openMatchSetup();
 
+        for(int i = 0; i < 4; i++) {
+            selectedDefence = i;
+            defenceButtons[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+
+
+                            FragmentTransaction transaction = getFragmentManager()
+                                    .beginTransaction();
+
+                            SelectDefences fragment = SelectDefences.getInstance();
+                            fragment.openSelectDefences(selectedDefence);
+
+                            transaction.replace(R.id.main_container, fragment);
+                            //transaction.addToBackStack(null);
+
+
+                            transaction.commit();
+
+
+
+                }
+            });
+        }
+
+        //Debug
+        //System.out.print("Where is this printing");
+
         return v;
 
     }
@@ -149,86 +179,92 @@ public class MatchSetup extends Fragment {
     //yo
 
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.defence1_ImageButton:
-                selectedDefence = 1;
 
-                FragmentTransaction transaction = getFragmentManager()
-                        .beginTransaction();
-
-                SelectDefences fragment = SelectDefences.getInstance();
-                fragment.openSelectDefences(selectedDefence);
-
-                transaction.replace(R.id.main_container, fragment);
-                //transaction.addToBackStack(null);
-
-
-                transaction.commit();
-
-                break;
-            case R.id.defence2_ImageButton:
-                selectedDefence = 2;
-                FragmentTransaction transaction2 = getFragmentManager()
-                        .beginTransaction();
-
-                SelectDefences fragment2 = SelectDefences.getInstance();
-                fragment2.openSelectDefences(selectedDefence);
-
-                transaction2.replace(R.id.main_container, fragment2);
-                //transaction.addToBackStack(null);
-
-
-                transaction2.commit();
-
-                break;
-            case R.id.defence3_ImageButton:
-                selectedDefence = 3;
-                FragmentTransaction transaction3 = getFragmentManager()
-                        .beginTransaction();
-
-                SelectDefences fragment3 = SelectDefences.getInstance();
-                fragment3.openSelectDefences(selectedDefence);
-                transaction3.replace(R.id.main_container, fragment3);
-                //transaction.addToBackStack(null);
-
-
-                transaction3.commit();
-
-                break;
-            case R.id.defence4_ImageButton:
-                selectedDefence = 4;
-                FragmentTransaction transaction4 = getFragmentManager()
-                        .beginTransaction();
-
-                SelectDefences fragment4 = SelectDefences.getInstance();
-
-                fragment4.openSelectDefences(selectedDefence);
-                transaction4.replace(R.id.main_container, fragment4);
-                //transaction.addToBackStack(null);
-
-
-                transaction4.commit();
-
-                break;
-        }
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onMatchSetupFragmentInteraction(uri);
-        }
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
+        //Debug
+        //System.out.print("clicked in Match Setup");
+//        defenceButtons[0].setVisibility(View.INVISIBLE);
+//
+//
+//        switch (v.getId()) {
+//            case R.id.defence1_ImageButton:
+//                selectedDefence = 1;
+//
+//                FragmentTransaction transaction = getFragmentManager()
+//                        .beginTransaction();
+//
+//                SelectDefences fragment = SelectDefences.getInstance();
+//                fragment.openSelectDefences(selectedDefence);
+//
+//                transaction.replace(R.id.main_container, fragment);
+//                //transaction.addToBackStack(null);
+//
+//
+//                transaction.commit();
+//
+//                break;
+//            case R.id.defence2_ImageButton:
+//                selectedDefence = 2;
+//                FragmentTransaction transaction2 = getFragmentManager()
+//                        .beginTransaction();
+//
+//                SelectDefences fragment2 = SelectDefences.getInstance();
+//                fragment2.openSelectDefences(selectedDefence);
+//
+//                transaction2.replace(R.id.main_container, fragment2);
+//                //transaction.addToBackStack(null);
+//
+//
+//                transaction2.commit();
+//
+//                break;
+//            case R.id.defence3_ImageButton:
+//                selectedDefence = 3;
+//                FragmentTransaction transaction3 = getFragmentManager()
+//                        .beginTransaction();
+//
+//                SelectDefences fragment3 = SelectDefences.getInstance();
+//                fragment3.openSelectDefences(selectedDefence);
+//                transaction3.replace(R.id.main_container, fragment3);
+//                //transaction.addToBackStack(null);
+//
+//
+//                transaction3.commit();
+//
+//                break;
+//            case R.id.defence4_ImageButton:
+//                selectedDefence = 4;
+//                FragmentTransaction transaction4 = getFragmentManager()
+//                        .beginTransaction();
+//
+//                SelectDefences fragment4 = SelectDefences.getInstance();
+//
+//                fragment4.openSelectDefences(selectedDefence);
+//                transaction4.replace(R.id.main_container, fragment4);
+//                //transaction.addToBackStack(null);
+//
+//
+//                transaction4.commit();
+//
+//                break;
+//        }
+//    }
+//
+//    // TODO: Rename method, update argument and hook method into UI event
+//    public void onButtonPressed(Uri uri) {
+//        if (mListener != null) {
+//            mListener.onMatchSetupFragmentInteraction(uri);
+//        }
+//    }
+//
+//    @Override
+//    public void onAttach(Context context) {
+//        super.onAttach(context);
+//        if (context instanceof OnFragmentInteractionListener) {
+//            mListener = (OnFragmentInteractionListener) context;
+//        } else {
+//            throw new RuntimeException(context.toString()
+//                    + " must implement OnFragmentInteractionListener");
+//        }
     }
 
     @Override

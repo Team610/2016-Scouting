@@ -79,7 +79,7 @@
         android:layout_below="@+id/secretPassage_TextView"
         android:layout_toRightOf="@+id/secretPassage_ImageView"
         android:layout_toEndOf="@+id/secretPassage_ImageView"
-        android:onClick="onClick"/>
+        android:onClick="onClick" />
 
     <ImageButton
         android:layout_width="150dp"
