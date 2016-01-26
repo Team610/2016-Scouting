@@ -20,7 +20,7 @@ import android.widget.ImageButton;
  * Use the {@link MatchSetup#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MatchSetup extends Fragment implements InitialFragment.OnFragmentInteractionListener {
+public class MatchSetup extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -210,7 +210,7 @@ public class MatchSetup extends Fragment implements InitialFragment.OnFragmentIn
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+            mListener.onMatchSetupFragmentInteraction(uri);
         }
     }
 
@@ -231,10 +231,7 @@ public class MatchSetup extends Fragment implements InitialFragment.OnFragmentIn
         mListener = null;
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
 
-    }
 
     /**
      * This interface must be implemented by activities that contain this
@@ -248,6 +245,6 @@ public class MatchSetup extends Fragment implements InitialFragment.OnFragmentIn
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onMatchSetupFragmentInteraction(Uri uri);
     }
 }

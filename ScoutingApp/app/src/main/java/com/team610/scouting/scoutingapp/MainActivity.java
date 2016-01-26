@@ -16,7 +16,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,InitialFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener,MatchSetup.OnFragmentInteractionListener,
+            TeleopFragment.OnFragmentInteractionListener{
 
 
 
@@ -143,8 +144,14 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+
     @Override
-    public void onFragmentInteraction(Uri uri) {
+    public void onMatchSetupFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onTeleopFragmentInteraction(Uri uri) {
 
     }
 }
