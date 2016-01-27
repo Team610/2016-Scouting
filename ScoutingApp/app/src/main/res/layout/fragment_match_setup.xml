@@ -56,8 +56,8 @@
 
 
         <ImageView
-            android:layout_width="@dimens/lowbar_width"
-            android:layout_height="@dimens/lowbar_height"
+            android:layout_width="@dimen/lowbar_width"
+            android:layout_height="@dimen/lowbar_height"
             android:scaleType="fitXY"
             android:id="@+id/lowBar_ImageView"
             android:src="@drawable/lowbar"
@@ -66,8 +66,8 @@
             android:layout_toEndOf="@+id/defence4_ImageButton" />
 
     <ImageButton
-        android:layout_width="@dimens/setup_button_layout_width"
-        android:layout_height="@dimens/setup_button_layout_height"
+        android:layout_width="@dimen/setup_button_layout_width"
+        android:layout_height="@dimen/setup_button_layout_height"
         android:id="@+id/defence1_ImageButton"
         android:layout_below="@+id/secretPassage_TextView"
         android:layout_toRightOf="@+id/secretPassage_ImageView"
@@ -75,8 +75,8 @@
         android:onClick="onClick" />
 
     <ImageButton
-        android:layout_width="@dimens/setup_button_layout_width"
-        android:layout_height="@dimens/setup_button_layout_height"
+        android:layout_width="@dimen/setup_button_layout_width"
+        android:layout_height="@dimen/setup_button_layout_height"
         android:id="@+id/defence2_ImageButton"
         android:layout_alignTop="@+id/defence1_ImageButton"
         android:layout_toRightOf="@+id/defence1_ImageButton"
@@ -84,8 +84,8 @@
         android:onClick="onClick"/>
 
     <ImageButton
-        android:layout_width="@dimens/setup_button_layout_width"
-        android:layout_height="@dimens/setup_button_layout_height"
+        android:layout_width="@dimen/setup_button_layout_width"
+        android:layout_height="@dimen/setup_button_layout_height"
         android:id="@+id/defence3_ImageButton"
         android:layout_alignTop="@+id/defence2_ImageButton"
         android:layout_toRightOf="@+id/defence2_ImageButton"
@@ -93,8 +93,8 @@
         android:onClick="onClick"/>
 
     <ImageButton
-        android:layout_width="@dimens/setup_button_layout_width"
-        android:layout_height="@dimens/setup_button_layout_height"
+        android:layout_width="@dimen/setup_button_layout_width"
+        android:layout_height="@dimen/setup_button_layout_height"
         android:id="@+id/defence4_ImageButton"
         android:layout_below="@+id/lowBar_TextView"
         android:layout_toRightOf="@+id/defence3_ImageButton"
@@ -130,6 +130,51 @@
         android:layout_below="@+id/lowBar_ImageView"
         android:layout_alignLeft="@+id/defence3_ImageButton"
         android:layout_alignStart="@+id/defence3_ImageButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/MatchSetupMatchNum"
+        android:id="@+id/matchNum_TextView"
+        android:layout_alignBottom="@+id/secretPassage_ImageView"
+        android:layout_toRightOf="@+id/defence1_TextView"
+        android:layout_toEndOf="@+id/defence1_TextView"
+        android:layout_marginBottom="79dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="30dp"
+        android:text="@string/MatchSetupTeamNum"
+        android:id="@+id/teamNum_TextView"
+        android:layout_alignBottom="@+id/secretPassage_ImageView"
+        android:layout_alignLeft="@+id/matchNum_TextView"
+        android:layout_alignStart="@+id/matchNum_TextView" />
+
+    <EditText
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:textSize="20dp"
+        android:inputType="number"
+        android:id="@+id/matchNum_EditText"
+        android:layout_alignTop="@+id/matchNum_TextView"
+        android:layout_alignLeft="@+id/defence3_TextView"
+        android:layout_alignStart="@+id/defence3_TextView" />
+
+    <EditText
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:inputType="number"
+        android:id="@+id/teamNum_EditText"
+        android:layout_alignTop="@+id/teamNum_TextView"
+        android:layout_alignLeft="@+id/matchNum_EditText"
+        android:layout_alignStart="@+id/matchNum_EditText" />
+
 
 
 

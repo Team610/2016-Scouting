@@ -282,113 +282,113 @@ public class SelectDefences extends Fragment implements View.OnClickListener {
     }
 
     public void onClick(View v) {
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        Fragment matchSetupFragment;
-
-        //System.out.print("debug");
-
-        switch (v.getId()) {
-            case R.id.chevaldefrise_ImageButton:
-
-                MatchData.getInstance().defenceTypes[numOfDefence] = "chevaldefrise";
-
-
-                matchSetupFragment = MatchSetup.getInstance();
-                MatchSetup.getInstance().openMatchSetup();
-                transaction.replace(R.id.main_container, matchSetupFragment);
-                //transaction.addToBackStack(null);
-
-
-                transaction.commit();
-
-                break;
-            case R.id.moat_ImageButton:
-                MatchData.getInstance().defenceTypes[numOfDefence] = "moat";
-
-
-                matchSetupFragment = MatchSetup.getInstance();
-                MatchSetup.getInstance().openMatchSetup();
-                transaction.replace(R.id.main_container, matchSetupFragment);
-                //transaction.addToBackStack(null);
-
-
-                transaction.commit();
-                break;
-            case R.id.ramparts_ImageButton:
-                MatchData.getInstance().defenceTypes[numOfDefence] = "ramparts";
-
-
-                matchSetupFragment = MatchSetup.getInstance();
-                MatchSetup.getInstance().openMatchSetup();
-                transaction.replace(R.id.main_container, matchSetupFragment);
-                //transaction.addToBackStack(null);
-
-
-                transaction.commit();
-                break;
-            case R.id.drawbridge_ImageButton:
-                MatchData.getInstance().defenceTypes[numOfDefence] = "drawbridge";
-
-
-                matchSetupFragment = MatchSetup.getInstance();
-                MatchSetup.getInstance().openMatchSetup();
-                transaction.replace(R.id.main_container, matchSetupFragment);
-                //transaction.addToBackStack(null);
-
-
-                transaction.commit();
-                break;
-            case R.id.porticullis_ImageButton:
-                MatchData.getInstance().defenceTypes[numOfDefence] = "porticullis";
-
-
-                matchSetupFragment = MatchSetup.getInstance();
-                MatchSetup.getInstance().openMatchSetup();
-                transaction.replace(R.id.main_container, matchSetupFragment);
-                //transaction.addToBackStack(null);
-
-
-                transaction.commit();
-                break;
-            case R.id.sallyport_ImageButton:
-                MatchData.getInstance().defenceTypes[numOfDefence] = "sallyport";
-
-
-                matchSetupFragment = MatchSetup.getInstance();
-                MatchSetup.getInstance().openMatchSetup();
-                transaction.replace(R.id.main_container, matchSetupFragment);
-                //transaction.addToBackStack(null);
-
-
-                transaction.commit();
-                break;
-            case R.id.rockwall_ImageButton:
-                MatchData.getInstance().defenceTypes[numOfDefence] = "rockwall";
-
-
-                matchSetupFragment = MatchSetup.getInstance();
-                MatchSetup.getInstance().openMatchSetup();
-                transaction.replace(R.id.main_container, matchSetupFragment);
-                //transaction.addToBackStack(null);
-
-
-                transaction.commit();
-                break;
-            case R.id.roughterrain_ImageButton:
-                MatchData.getInstance().defenceTypes[numOfDefence] = "roughterrain";
-
-
-                matchSetupFragment = MatchSetup.getInstance();
-                MatchSetup.getInstance().openMatchSetup();
-                transaction.replace(R.id.main_container, matchSetupFragment);
-                //transaction.addToBackStack(null);
-
-
-                transaction.commit();
-                break;
-
-
-        }
+//        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//        Fragment matchSetupFragment;
+//
+//        //System.out.print("debug");
+//
+//        switch (v.getId()) {
+//            case R.id.chevaldefrise_ImageButton:
+//
+//                MatchData.getInstance().defenceTypes[numOfDefence] = "chevaldefrise";
+//
+//
+//                matchSetupFragment = MatchSetup.getInstance();
+//                MatchSetup.getInstance().openMatchSetup();
+//                transaction.replace(R.id.main_container, matchSetupFragment);
+//                //transaction.addToBackStack(null);
+//
+//
+//                transaction.commit();
+//
+//                break;
+//            case R.id.moat_ImageButton:
+//                MatchData.getInstance().defenceTypes[numOfDefence] = "moat";
+//
+//
+//                matchSetupFragment = MatchSetup.getInstance();
+//                MatchSetup.getInstance().openMatchSetup();
+//                transaction.replace(R.id.main_container, matchSetupFragment);
+//                //transaction.addToBackStack(null);
+//
+//
+//                transaction.commit();
+//                break;
+//            case R.id.ramparts_ImageButton:
+//                MatchData.getInstance().defenceTypes[numOfDefence] = "ramparts";
+//
+//
+//                matchSetupFragment = MatchSetup.getInstance();
+//                MatchSetup.getInstance().openMatchSetup();
+//                transaction.replace(R.id.main_container, matchSetupFragment);
+//                //transaction.addToBackStack(null);
+//
+//
+//                transaction.commit();
+//                break;
+//            case R.id.drawbridge_ImageButton:
+//                MatchData.getInstance().defenceTypes[numOfDefence] = "drawbridge";
+//
+//
+//                matchSetupFragment = MatchSetup.getInstance();
+//                MatchSetup.getInstance().openMatchSetup();
+//                transaction.replace(R.id.main_container, matchSetupFragment);
+//                //transaction.addToBackStack(null);
+//
+//
+//                transaction.commit();
+//                break;
+//            case R.id.porticullis_ImageButton:
+//                MatchData.getInstance().defenceTypes[numOfDefence] = "porticullis";
+//
+//
+//                matchSetupFragment = MatchSetup.getInstance();
+//                MatchSetup.getInstance().openMatchSetup();
+//                transaction.replace(R.id.main_container, matchSetupFragment);
+//                //transaction.addToBackStack(null);
+//
+//
+//                transaction.commit();
+//                break;
+//            case R.id.sallyport_ImageButton:
+//                MatchData.getInstance().defenceTypes[numOfDefence] = "sallyport";
+//
+//
+//                matchSetupFragment = MatchSetup.getInstance();
+//                MatchSetup.getInstance().openMatchSetup();
+//                transaction.replace(R.id.main_container, matchSetupFragment);
+//                //transaction.addToBackStack(null);
+//
+//
+//                transaction.commit();
+//                break;
+//            case R.id.rockwall_ImageButton:
+//                MatchData.getInstance().defenceTypes[numOfDefence] = "rockwall";
+//
+//
+//                matchSetupFragment = MatchSetup.getInstance();
+//                MatchSetup.getInstance().openMatchSetup();
+//                transaction.replace(R.id.main_container, matchSetupFragment);
+//                //transaction.addToBackStack(null);
+//
+//
+//                transaction.commit();
+//                break;
+//            case R.id.roughterrain_ImageButton:
+//                MatchData.getInstance().defenceTypes[numOfDefence] = "roughterrain";
+//
+//
+//                matchSetupFragment = MatchSetup.getInstance();
+//                MatchSetup.getInstance().openMatchSetup();
+//                transaction.replace(R.id.main_container, matchSetupFragment);
+//                //transaction.addToBackStack(null);
+//
+//
+//                transaction.commit();
+//                break;
+//
+//
+//        }
     }
 
     /**

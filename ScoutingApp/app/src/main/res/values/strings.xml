@@ -12,8 +12,12 @@
 
     <string name="MatchSetupSecretPassage">Secret Passage</string>
 
+    <string name="MatchSetupMatchNum">Match #: </string>
+    <string name="MatchSetupTeamNum">Team #: </string>
 
     <string name="chooseDefenceTitle">Choose a Defence</string>
+
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
