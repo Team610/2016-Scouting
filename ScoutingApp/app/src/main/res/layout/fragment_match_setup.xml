@@ -55,16 +55,9 @@
         android:layout_toEndOf="@+id/defence4_ImageButton" />
 
 
-
-
-       
-
-
-
-
         <ImageView
-            android:layout_width="250dp"
-            android:layout_height="250dp"
+            android:layout_width="@dimen/lowbar_width"
+            android:layout_height="@dimen/lowbar_height"
             android:scaleType="fitXY"
             android:id="@+id/lowBar_ImageView"
             android:src="@drawable/lowbar"
@@ -73,8 +66,8 @@
             android:layout_toEndOf="@+id/defence4_ImageButton" />
 
     <ImageButton
-        android:layout_width="150dp"
-        android:layout_height="125dp"
+        android:layout_width="@dimen/setup_button_layout_width"
+        android:layout_height="@dimen/setup_button_layout_height"
         android:id="@+id/defence1_ImageButton"
         android:layout_below="@+id/secretPassage_TextView"
         android:layout_toRightOf="@+id/secretPassage_ImageView"
@@ -82,8 +75,8 @@
         android:onClick="onClick" />
 
     <ImageButton
-        android:layout_width="150dp"
-        android:layout_height="125dp"
+        android:layout_width="@dimen/setup_button_layout_width"
+        android:layout_height="@dimen/setup_button_layout_height"
         android:id="@+id/defence2_ImageButton"
         android:layout_alignTop="@+id/defence1_ImageButton"
         android:layout_toRightOf="@+id/defence1_ImageButton"
@@ -91,8 +84,8 @@
         android:onClick="onClick"/>
 
     <ImageButton
-        android:layout_width="150dp"
-        android:layout_height="125dp"
+        android:layout_width="@dimen/setup_button_layout_width"
+        android:layout_height="@dimen/setup_button_layout_height"
         android:id="@+id/defence3_ImageButton"
         android:layout_alignTop="@+id/defence2_ImageButton"
         android:layout_toRightOf="@+id/defence2_ImageButton"
@@ -100,8 +93,8 @@
         android:onClick="onClick"/>
 
     <ImageButton
-        android:layout_width="150dp"
-        android:layout_height="125dp"
+        android:layout_width="@dimen/setup_button_layout_width"
+        android:layout_height="@dimen/setup_button_layout_height"
         android:id="@+id/defence4_ImageButton"
         android:layout_below="@+id/lowBar_TextView"
         android:layout_toRightOf="@+id/defence3_ImageButton"
@@ -138,15 +131,6 @@
         android:layout_alignLeft="@+id/defence3_ImageButton"
         android:layout_alignStart="@+id/defence3_ImageButton" />
 
-    <TextView
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
-        android:id="@+id/defence4_TextView"
-        android:layout_below="@+id/lowBar_ImageView"
-        android:layout_alignLeft="@+id/defence4_ImageButton"
-        android:layout_alignStart="@+id/defence4_ImageButton" />
     <!--
         <ScrollView
             android:layout_width="wrap_content"
