@@ -10,6 +10,7 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageButton;
 
 
@@ -42,6 +43,8 @@ public class MatchSetup extends Fragment implements View.OnClickListener {
     int team;
 
     ImageButton[] defenceButtons;
+    EditText matchNum;
+    EditText teamNum;
 
 
 
@@ -88,6 +91,8 @@ public class MatchSetup extends Fragment implements View.OnClickListener {
         for(int i= 0; i < 4; i++){
             thisMatch.defenceTypes[i] = defences[i];
         }
+        //thisMatch.match = teamNum.g;
+
     }
 
 
@@ -141,6 +146,8 @@ public class MatchSetup extends Fragment implements View.OnClickListener {
                 (ImageButton) v.findViewById(R.id.defence4_ImageButton)};
         openMatchSetup();
 
+        matchNum = (EditText) v.findViewById(R.id.matchNum_EditText);
+        teamNum = (EditText) v.findViewById(R.id.teamNum_EditText);
 
             //selectedDefence = i+1;
             //MatchData.getInstance().selectedDefenceMatchSetup = selectedDefence;
