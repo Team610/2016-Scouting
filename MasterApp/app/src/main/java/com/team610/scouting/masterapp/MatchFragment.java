@@ -107,8 +107,7 @@ public class MatchFragment extends Fragment {
     public void onMenuTap(int id) {
         if (id == R.id.action_matchNumber) {
             createDialog();
-            ActionMenuItemView item = (ActionMenuItemView) getActivity().findViewById(R.id.action_matchNumber);
-            item.setTitle("Match # " + matchNum);
+
             //TODO LOAD DATA FROM MATCH
         } else {
             View auton = getActivity().findViewById(R.id.match_auton_layout),
@@ -157,6 +156,7 @@ public class MatchFragment extends Fragment {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 matchNum = Integer.valueOf(input.getText().toString());
+                loadMatchData();
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -167,6 +167,11 @@ public class MatchFragment extends Fragment {
         });
 
         builder.show();
+    }
+
+    public void loadMatchData(){
+        ActionMenuItemView item = (ActionMenuItemView) getActivity().findViewById(R.id.action_matchNumber);
+        item.setTitle("Match # " + matchNum);
     }
 
     public interface OnFragmentInteractionListener {

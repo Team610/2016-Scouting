@@ -1,4 +1,4 @@
-package com.team610.scouting.masterapp;
+package com.team610.scouting.masterapp.views;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+
+import com.team610.scouting.masterapp.R;
 
 /**
  * TODO: document your custom view class.
