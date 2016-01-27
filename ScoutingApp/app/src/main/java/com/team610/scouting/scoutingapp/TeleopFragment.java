@@ -93,6 +93,8 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
         sb1 = (SeekBar) rootView.findViewById(R.id.setgoal_SeekBar);
         sb1.setOnSeekBarChangeListener(this);
 
+        sb1.setProgress(50);
+
         return rootView;
         //return inflater.inflate(R.layout.fragment_teleop, container, false);
 
