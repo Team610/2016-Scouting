@@ -8,7 +8,7 @@ public class MatchData {
     static MatchData instance;
 
     //MatchSetup
-    int selectedDefenceMatchSetup;
+    public int selectedDefenceMatchSetup;
 
 
 

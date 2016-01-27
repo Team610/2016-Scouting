@@ -141,31 +141,94 @@ public class MatchSetup extends Fragment implements View.OnClickListener {
                 (ImageButton) v.findViewById(R.id.defence4_ImageButton)};
         openMatchSetup();
 
-        for(int i = 0; i < 4; i++) {
-            selectedDefence = i;
-            defenceButtons[i].setOnClickListener(new View.OnClickListener() {
+
+            //selectedDefence = i+1;
+            //MatchData.getInstance().selectedDefenceMatchSetup = selectedDefence;
+            defenceButtons[0].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
+                    MatchData.getInstance().selectedDefenceMatchSetup = 1;
+                    FragmentTransaction transaction = getFragmentManager()
+                            .beginTransaction();
+
+                    SelectDefences fragment = SelectDefences.getInstance();
+                    fragment.openSelectDefences();
+
+                    transaction.replace(R.id.main_container, fragment);
+                    //transaction.addToBackStack(null);
 
 
-                            FragmentTransaction transaction = getFragmentManager()
-                                    .beginTransaction();
-
-                            SelectDefences fragment = SelectDefences.getInstance();
-                            fragment.openSelectDefences(selectedDefence);
-
-                            transaction.replace(R.id.main_container, fragment);
-                            //transaction.addToBackStack(null);
-
-
-                            transaction.commit();
-
+                    transaction.commit();
 
 
                 }
+
             });
-        }
+            defenceButtons[1].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    MatchData.getInstance().selectedDefenceMatchSetup = 2;
+                    FragmentTransaction transaction = getFragmentManager()
+                            .beginTransaction();
+
+                    SelectDefences fragment = SelectDefences.getInstance();
+                    fragment.openSelectDefences();
+
+                    transaction.replace(R.id.main_container, fragment);
+                    //transaction.addToBackStack(null);
+
+
+                    transaction.commit();
+
+
+                }
+
+            });
+            defenceButtons[2].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    MatchData.getInstance().selectedDefenceMatchSetup = 3;
+                    FragmentTransaction transaction = getFragmentManager()
+                            .beginTransaction();
+
+                    SelectDefences fragment = SelectDefences.getInstance();
+                    fragment.openSelectDefences();
+
+                    transaction.replace(R.id.main_container, fragment);
+                    //transaction.addToBackStack(null);
+
+
+                    transaction.commit();
+
+
+                }
+
+            });
+            defenceButtons[3].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    MatchData.getInstance().selectedDefenceMatchSetup = 4;
+                    FragmentTransaction transaction = getFragmentManager()
+                            .beginTransaction();
+
+                    SelectDefences fragment = SelectDefences.getInstance();
+                    fragment.openSelectDefences();
+
+                    transaction.replace(R.id.main_container, fragment);
+                    //transaction.addToBackStack(null);
+
+
+                    transaction.commit();
+
+
+                }
+
+            });
+
 
         //Debug
         //System.out.print("Where is this printing");

@@ -103,7 +103,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Defence Position #: "
-        android:id="@+id/defenseNumber_TextView"
+        android:id="@+id/defenceNumber_TextView"
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/roughterrain_ImageButton"
         android:layout_toStartOf="@+id/roughterrain_ImageButton"

@@ -2,6 +2,7 @@ package com.team610.scouting.scoutingapp;
 
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -9,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 
 /**
@@ -25,14 +28,16 @@ public class SelectDefences extends Fragment implements View.OnClickListener {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-//    Button chevaldefrise;
-//    Button sallyport;
-//    Button roughterrain;
-//    Button rockwall;
-//    Button portcullis;
-//    Button drawbridge;
-//    Button moat;
-//    Button ramparts;
+    ImageButton chevaldefrise;
+    ImageButton sallyport;
+    ImageButton roughterrain;
+    ImageButton rockwall;
+    ImageButton portcullis;
+    ImageButton drawbridge;
+    ImageButton moat;
+    ImageButton ramparts;
+
+    TextView selectedDefenceOutput;
 
     int numOfDefence;
     String defencePicked;
@@ -49,8 +54,11 @@ public class SelectDefences extends Fragment implements View.OnClickListener {
 
     }
 
-    public void openSelectDefences(int numOfDefence){
-        this.numOfDefence = numOfDefence;
+    public void openSelectDefences(){
+
+        //this.numOfDefence = numOfDefence;
+        this.numOfDefence = MatchData.getInstance().selectedDefenceMatchSetup;
+        //selectedDefenceOutput.setText("Defence Position #: "+ numOfDefence);
     }
 
     public static SelectDefences getInstance() {
@@ -92,7 +100,161 @@ public class SelectDefences extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_select_defences, container, false);
+        View v = inflater.inflate(R.layout.fragment_select_defences, container, false);
+
+        selectedDefenceOutput = (TextView) v.findViewById(R.id.defenceNumber_TextView);
+        selectedDefenceOutput.setText("Defence Position #: "+ numOfDefence);
+
+
+
+
+        portcullis = (ImageButton) v.findViewById(R.id.porticullis_ImageButton);
+        portcullis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MatchData.getInstance().defenceTypes[numOfDefence-1] = "porticullis";
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                Fragment matchSetupFragment;
+
+                matchSetupFragment = MatchSetup.getInstance();
+                MatchSetup.getInstance().openMatchSetup();
+                transaction.replace(R.id.main_container, matchSetupFragment);
+                //transaction.addToBackStack(null);
+
+
+                transaction.commit();
+            }
+            });
+
+        ramparts = (ImageButton) v.findViewById(R.id.ramparts_ImageButton);
+        ramparts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MatchData.getInstance().defenceTypes[numOfDefence-1] = "ramparts";
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                Fragment matchSetupFragment;
+
+                matchSetupFragment = MatchSetup.getInstance();
+                MatchSetup.getInstance().openMatchSetup();
+                transaction.replace(R.id.main_container, matchSetupFragment);
+                //transaction.addToBackStack(null);
+
+
+                transaction.commit();
+            }
+        });
+
+        chevaldefrise = (ImageButton) v.findViewById(R.id.chevaldefrise_ImageButton);
+        chevaldefrise.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MatchData.getInstance().defenceTypes[numOfDefence-1] = "chevaldefrise";
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                Fragment matchSetupFragment;
+
+                matchSetupFragment = MatchSetup.getInstance();
+                MatchSetup.getInstance().openMatchSetup();
+                transaction.replace(R.id.main_container, matchSetupFragment);
+                //transaction.addToBackStack(null);
+
+
+                transaction.commit();
+            }
+        });
+
+        rockwall = (ImageButton) v.findViewById(R.id.rockwall_ImageButton);
+        rockwall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MatchData.getInstance().defenceTypes[numOfDefence-1] = "rockwall";
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                Fragment matchSetupFragment;
+
+                matchSetupFragment = MatchSetup.getInstance();
+                MatchSetup.getInstance().openMatchSetup();
+                transaction.replace(R.id.main_container, matchSetupFragment);
+                //transaction.addToBackStack(null);
+
+
+                transaction.commit();
+            }
+        });
+
+        roughterrain = (ImageButton) v.findViewById(R.id.roughterrain_ImageButton);
+        roughterrain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MatchData.getInstance().defenceTypes[numOfDefence-1] = "roughterrain";
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                Fragment matchSetupFragment;
+
+                matchSetupFragment = MatchSetup.getInstance();
+                MatchSetup.getInstance().openMatchSetup();
+                transaction.replace(R.id.main_container, matchSetupFragment);
+                //transaction.addToBackStack(null);
+
+
+                transaction.commit();
+            }
+        });
+
+        moat = (ImageButton) v.findViewById(R.id.moat_ImageButton);
+        moat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MatchData.getInstance().defenceTypes[numOfDefence-1] = "moat";
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                Fragment matchSetupFragment;
+
+                matchSetupFragment = MatchSetup.getInstance();
+                MatchSetup.getInstance().openMatchSetup();
+                transaction.replace(R.id.main_container, matchSetupFragment);
+                //transaction.addToBackStack(null);
+
+
+                transaction.commit();
+            }
+        });
+
+        sallyport = (ImageButton) v.findViewById(R.id.sallyport_ImageButton);
+        sallyport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MatchData.getInstance().defenceTypes[numOfDefence-1] = "sallyport";
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                Fragment matchSetupFragment;
+
+                matchSetupFragment = MatchSetup.getInstance();
+                MatchSetup.getInstance().openMatchSetup();
+                transaction.replace(R.id.main_container, matchSetupFragment);
+                //transaction.addToBackStack(null);
+
+
+                transaction.commit();
+            }
+        });
+
+        drawbridge = (ImageButton) v.findViewById(R.id.drawbridge_ImageButton);
+        drawbridge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MatchData.getInstance().defenceTypes[numOfDefence-1] = "drawbridge";
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                Fragment matchSetupFragment;
+
+                matchSetupFragment = MatchSetup.getInstance();
+                MatchSetup.getInstance().openMatchSetup();
+                transaction.replace(R.id.main_container, matchSetupFragment);
+                //transaction.addToBackStack(null);
+
+
+                transaction.commit();
+            }
+        });
+
+
+
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
