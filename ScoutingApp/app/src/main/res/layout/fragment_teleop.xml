@@ -110,9 +110,65 @@
 
         </TableRow>
 
+    </TableLayout>
 
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tableLayout"
+        android:id="@+id/tableLayout2"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="40dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Misses"
+            android:id="@+id/misses_TextView"
+            android:gravity="center"
+
+            />
+
+
+        <TableRow>
+
+            <RelativeLayout>
+
+
+
+                <ImageButton
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:scaleType="fitCenter"
+                    android:id="@+id/plus_misses_ImageButton"
+                    android:src="@drawable/plus"
+                    android:gravity="left"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="27dp"
+                    android:layout_centerHorizontal="true"
+                    />
+
+                <ImageButton
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:scaleType="fitCenter"
+                    android:id="@+id/minus_misses_ImageButton"
+                    android:src="@drawable/minus"
+                    android:gravity="right"
+                    android:layout_toRightOf="@+id/plus_misses_ImageButton"
+                    android:layout_alignBottom="@+id/plus_misses_ImageButton"
+
+                    />
+
+            </RelativeLayout>
+
+        </TableRow>
 
     </TableLayout>
+
+
 
 
 </RelativeLayout>
