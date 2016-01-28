@@ -29,11 +29,20 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
     private String mParam2;
     SeekBar sb1;
 
+    private static TeleopFragment instance;
+
 
     private OnFragmentInteractionListener mListener;
 
     public TeleopFragment() {
         // Required empty public constructor
+    }
+
+    public static TeleopFragment getInstance(){
+        if(instance == null){
+            instance = new TeleopFragment();
+        }
+        return instance;
     }
 
     /**

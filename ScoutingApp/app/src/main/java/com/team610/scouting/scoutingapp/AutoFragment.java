@@ -29,6 +29,9 @@ public class AutoFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
+    private static AutoFragment instance;
+
+
     public AutoFragment() {
         // Required empty public constructor
     }
@@ -49,6 +52,13 @@ public class AutoFragment extends Fragment {
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    public static AutoFragment getInstance(){
+        if(instance == null){
+            instance = new AutoFragment();
+        }
+        return instance;
     }
 
     @Override

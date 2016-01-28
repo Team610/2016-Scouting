@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity
         FragmentTransaction transaction = getFragmentManager()
                 .beginTransaction();
 
-        InitialFragment initialFragment = new InitialFragment();
+        MatchSetup initialFragment = new MatchSetup();
 
         transaction.replace(R.id.main_container, initialFragment);
 
@@ -110,22 +110,42 @@ public class MainActivity extends AppCompatActivity
         FragmentTransaction transaction = getFragmentManager()
                 .beginTransaction();
         if (id == R.id.fragment_initial) {
+
+            saveAllFragmentData();
+
             InitialFragment mFrag = new InitialFragment();
             transaction.replace(R.id.main_container,mFrag).commit();
         } else if (id == R.id.fragment_match_setup) {
+
+            saveAllFragmentData();
+
             MatchSetup mFrag = MatchSetup.getInstance();
+            mFrag.openMatchSetup();
             transaction.replace(R.id.main_container,mFrag).commit();
         } else if (id == R.id.fragment_auto) {
-            AutoFragment mFrag = new AutoFragment();
+
+            saveAllFragmentData();
+
+            AutoFragment mFrag = AutoFragment.getInstance();
             transaction.replace(R.id.main_container,mFrag).commit();
         } else if(id == R.id.fragment_teleop){
-            TeleopFragment mFrag = new TeleopFragment();
+
+            saveAllFragmentData();
+
+            TeleopFragment mFrag = TeleopFragment.getInstance();
             transaction.replace(R.id.main_container,mFrag).commit();
         }
+
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public static void saveAllFragmentData(){
+        MatchSetup.getInstance().saveData();
+        //
     }
 
     public void onClick(View v) {
