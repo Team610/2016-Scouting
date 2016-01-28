@@ -91,7 +91,7 @@ public class MatchSetup extends Fragment implements View.OnClickListener {
         for(int i= 0; i < 4; i++){
             thisMatch.defenceTypes[i] = defences[i];
         }
-        //thisMatch.match = teamNum.g;
+        thisMatch.match = Integer.parseInt(teamNum.getText().toString());
 
     }
 
