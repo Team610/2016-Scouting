@@ -13,4 +13,7 @@
     <dimen name="lowbar_width">130dp</dimen>
     <dimen name="lowbar_height">100dp</dimen>
 
+    <!-- dimens for fragment_teleop -->
+    <dimen name="table_text_size">17dp</dimen>
+
 </resources>

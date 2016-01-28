@@ -76,6 +76,7 @@
             />
 
 
+
         <TableRow>
 
             <RelativeLayout>
@@ -169,6 +170,203 @@
     </TableLayout>
 
 
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/tableLayout"
+        android:layout_alignBottom="@+id/tableLayout"
+        android:layout_marginLeft="30dp">
+
+
+
+        <TableRow>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="        "
+                android:id="@+id/spaces_table_TextView"
+                android:gravity="left"
+
+                />
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="High goal"
+                android:textSize="@dimen/table_text_size"
+                android:id="@+id/highgoal_table_TextView"
+                android:gravity="center"
+                android:layout_marginLeft="10dp"
+                />
+
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp">
+                <View style="@style/Divider" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Low goal"
+                android:id="@+id/lowgoal_table_TextView"
+                android:gravity="center"
+                android:textSize="@dimen/table_text_size"
+
+                />
+
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp">
+
+                <View style="@style/Divider" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Courtyard Drops"
+                android:textSize="@dimen/table_text_size"
+
+                />
+
+        </TableRow>
+
+
+        <TableRow android:layout_height="1px" android:background="@color/Blue">
+            <View android:layout_span="2" android:layout_height="1px"
+                android:layout_width="fill_parent" android:text="">
+            </View>
+        </TableRow>
+
+
+
+        <TableRow
+
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Scores"
+                android:textSize="@dimen/table_text_size"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:gravity="center"
+                android:textSize="@dimen/table_text_size"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:gravity="center"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:gravity="center"
+                android:textSize="@dimen/table_text_size"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:gravity="center"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:gravity="center"
+                android:textSize="@dimen/table_text_size"
+                />
+
+
+
+
+        </TableRow>
+
+        <TableRow android:layout_height="1px" android:background="@color/Blue">
+            <TextView android:layout_span="2" android:layout_height="1px"
+                android:layout_width="fill_parent" android:text="">
+            </TextView>
+        </TableRow>
+
+        <TableRow
+
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Misses"
+                android:textSize="@dimen/table_text_size"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:gravity="center"
+                android:textSize="@dimen/table_text_size"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:gravity="center"
+                android:textSize="@dimen/table_text_size"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:gravity="center"
+                android:textSize="@dimen/table_text_size"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:gravity="center"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:gravity="center"
+                android:textSize="@dimen/table_text_size"
+                />
+
+
+        </TableRow>
+
+
+    </TableLayout>
 
 
 </RelativeLayout>
