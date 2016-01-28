@@ -8,4 +8,5 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="defenseTextSize">15sp</dimen>
     <dimen name="tablePadding">3dip</dimen>
+    <dimen name="teleop_circle_width">50dp</dimen>
 </resources>

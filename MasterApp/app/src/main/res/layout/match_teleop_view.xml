@@ -111,6 +111,24 @@
                 android:layout_height="wrap_content"
                 android:text="Defenses"
                 />
+            <ImageView
+                android:layout_height="@dimen/teleop_circle_width"
+                android:layout_width="@dimen/teleop_circle_width"
+                android:src="@drawable/green_circle"
+                android:id="@+id/teleop_green_circle"
+                />
+            <ImageView
+                android:layout_height="@dimen/teleop_circle_width"
+                android:layout_width="@dimen/teleop_circle_width"
+                android:src="@drawable/yellow_circle"
+                android:id="@+id/teleop_yellow_circle"
+                />
+            <ImageView
+                android:layout_height="@dimen/teleop_circle_width"
+                android:layout_width="@dimen/teleop_circle_width"
+                android:src="@drawable/red_circle"
+                android:id="@+id/teleop_red_circle"
+                />
 
 
 
