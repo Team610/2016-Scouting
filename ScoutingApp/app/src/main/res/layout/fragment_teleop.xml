@@ -267,6 +267,7 @@
                 android:text="0"
                 android:gravity="center"
                 android:textSize="@dimen/table_text_size"
+                android:id="@+id/highGoal_scores_TextView"
                 />
 
             <TextView
@@ -283,6 +284,7 @@
                 android:text="0"
                 android:gravity="center"
                 android:textSize="@dimen/table_text_size"
+                android:id="@+id/lowGoal_scores_TextView"
                 />
 
             <TextView
@@ -298,6 +300,7 @@
                 android:text="0"
                 android:gravity="center"
                 android:textSize="@dimen/table_text_size"
+                android:id="@+id/courtyard_scores_TextView"
                 />
 
 
@@ -328,6 +331,7 @@
                 android:text="0"
                 android:gravity="center"
                 android:textSize="@dimen/table_text_size"
+                android:id="@+id/highgoal_misses_TextView"
                 />
 
             <TextView
@@ -344,6 +348,7 @@
                 android:text="0"
                 android:gravity="center"
                 android:textSize="@dimen/table_text_size"
+                android:id="@+id/lowgoal_misses_TextView"
                 />
 
             <TextView
@@ -360,6 +365,7 @@
                 android:text="0"
                 android:gravity="center"
                 android:textSize="@dimen/table_text_size"
+                android:id="@+id/courtyard_misses_TextView"
                 />
 
 
