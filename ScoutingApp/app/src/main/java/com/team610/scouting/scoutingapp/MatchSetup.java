@@ -39,8 +39,8 @@ public class MatchSetup extends Fragment implements View.OnClickListener {
 
     MatchData thisMatch = MatchData.getInstance();
     String[] defences = new String[4];
-    int match;
-    int team;
+    int match = 0;
+    int team = 0;
 
     ImageButton[] defenceButtons;
     EditText matchNum;
@@ -91,8 +91,18 @@ public class MatchSetup extends Fragment implements View.OnClickListener {
         for(int i= 0; i < 4; i++){
             thisMatch.defenceTypes[i] = defences[i];
         }
-        thisMatch.match = Integer.parseInt(matchNum.getText().toString());
-        thisMatch.team = Integer.parseInt(teamNum.getText().toString());
+
+        //Integer.parseInt("ps");
+
+        thisMatch.match = match;
+        thisMatch.team = team;
+
+//        if(matchNum.getText().toString().length() > 0) {
+//            thisMatch.match = Integer.parseInt(matchNum.getText().toString());
+//        }
+//        if(teamNum.getText().length() >0) {
+//            thisMatch.team = Integer.parseInt(teamNum.getText().toString());
+//        }
 
     }
 
@@ -149,6 +159,12 @@ public class MatchSetup extends Fragment implements View.OnClickListener {
 
         matchNum = (EditText) v.findViewById(R.id.matchNum_EditText);
         teamNum = (EditText) v.findViewById(R.id.teamNum_EditText);
+        if( matchNum.getText().toString().length() > 0) {
+            match = Integer.parseInt(matchNum.getText().toString());
+        }
+        if(teamNum.getText().toString().length() > 0) {
+            team = Integer.parseInt(teamNum.getText().toString());
+        }
 
             //selectedDefence = i+1;
             //MatchData.getInstance().selectedDefenceMatchSetup = selectedDefence;

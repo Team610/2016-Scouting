@@ -28,12 +28,11 @@
         android:layout_height="wrap_content"
         android:text="Reach the defence"
         android:id="@+id/reachTheDefence_checkBox"
+        android:checked="false"
+        android:textSize="25dp"
         android:layout_below="@+id/autoTitle_TextView"
         android:layout_alignLeft="@+id/autoTitle_TextView"
-        android:layout_alignStart="@+id/autoTitle_TextView"
-        android:layout_marginTop="59dp"
-        android:checked="false"
-        android:textSize="25dp" />
+        android:layout_alignStart="@+id/autoTitle_TextView" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -41,11 +40,11 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Ball:"
         android:id="@+id/ball_TextView"
-        android:layout_below="@+id/reachTheDefence_checkBox"
+        android:textSize="30dp"
+        android:layout_alignTop="@id/reachTheDefence_checkBox"
+        android:layout_marginTop="250dp"
         android:layout_alignLeft="@+id/reachTheDefence_checkBox"
-        android:layout_alignStart="@+id/reachTheDefence_checkBox"
-        android:layout_marginTop="50dp"
-        android:textSize="30dp" />
+        android:layout_alignStart="@+id/reachTheDefence_checkBox" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -85,11 +84,11 @@
         android:layout_height="wrap_content"
         android:text="Spybot"
         android:id="@+id/spybot_checkBox"
-        android:layout_below="@+id/courtyard_checkBox"
-        android:layout_alignLeft="@+id/courtyard_checkBox"
-        android:layout_alignStart="@+id/courtyard_checkBox"
         android:checked="false"
-        android:textSize="25dp" />
+        android:textSize="25dp"
+        android:layout_alignTop="@+id/reachTheDefence_checkBox"
+        android:layout_toRightOf="@+id/robotEnd_textView"
+        android:layout_toEndOf="@+id/robotEnd_textView" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -100,6 +99,7 @@
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/highGoal_checkBox"
         android:layout_toEndOf="@+id/highGoal_checkBox"
+        android:layout_alignTop="@+id/ball_TextView"
         android:layout_marginLeft="125dp"
         android:layout_marginStart="125dp"
         android:textSize="30dp" />

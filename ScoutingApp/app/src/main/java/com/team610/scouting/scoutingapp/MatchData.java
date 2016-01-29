@@ -13,6 +13,15 @@ public class MatchData {
     public int match;
     public int team;
 
+    //Auton
+    public boolean spybot;
+    public boolean scoredHighGoal;
+    public boolean scoredLowGoal;
+    public boolean placedCourtyard;
+    public boolean endedCourtyard;
+    public boolean endedNeutralZone;
+    public boolean reachDefence;
+
 
 
     private MatchData(){

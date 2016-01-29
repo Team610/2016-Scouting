@@ -117,7 +117,7 @@ public class SelectDefences extends Fragment implements View.OnClickListener {
                 Fragment matchSetupFragment;
 
                 matchSetupFragment = MatchSetup.getInstance();
-                MatchSetup.getInstance().openMatchSetup();
+                //MatchSetup.getInstance().openMatchSetup();
                 transaction.replace(R.id.main_container, matchSetupFragment);
                 //transaction.addToBackStack(null);
 
@@ -135,7 +135,7 @@ public class SelectDefences extends Fragment implements View.OnClickListener {
                 Fragment matchSetupFragment;
 
                 matchSetupFragment = MatchSetup.getInstance();
-                MatchSetup.getInstance().openMatchSetup();
+                //MatchSetup.getInstance().openMatchSetup();
                 transaction.replace(R.id.main_container, matchSetupFragment);
                 //transaction.addToBackStack(null);
 
@@ -153,7 +153,7 @@ public class SelectDefences extends Fragment implements View.OnClickListener {
                 Fragment matchSetupFragment;
 
                 matchSetupFragment = MatchSetup.getInstance();
-                MatchSetup.getInstance().openMatchSetup();
+                //MatchSetup.getInstance().openMatchSetup();
                 transaction.replace(R.id.main_container, matchSetupFragment);
                 //transaction.addToBackStack(null);
 
@@ -171,7 +171,7 @@ public class SelectDefences extends Fragment implements View.OnClickListener {
                 Fragment matchSetupFragment;
 
                 matchSetupFragment = MatchSetup.getInstance();
-                MatchSetup.getInstance().openMatchSetup();
+                //MatchSetup.getInstance().openMatchSetup();
                 transaction.replace(R.id.main_container, matchSetupFragment);
                 //transaction.addToBackStack(null);
 
@@ -189,7 +189,7 @@ public class SelectDefences extends Fragment implements View.OnClickListener {
                 Fragment matchSetupFragment;
 
                 matchSetupFragment = MatchSetup.getInstance();
-                MatchSetup.getInstance().openMatchSetup();
+                //MatchSetup.getInstance().openMatchSetup();
                 transaction.replace(R.id.main_container, matchSetupFragment);
                 //transaction.addToBackStack(null);
 
@@ -207,7 +207,7 @@ public class SelectDefences extends Fragment implements View.OnClickListener {
                 Fragment matchSetupFragment;
 
                 matchSetupFragment = MatchSetup.getInstance();
-                MatchSetup.getInstance().openMatchSetup();
+                //MatchSetup.getInstance().openMatchSetup();
                 transaction.replace(R.id.main_container, matchSetupFragment);
                 //transaction.addToBackStack(null);
 
@@ -225,7 +225,7 @@ public class SelectDefences extends Fragment implements View.OnClickListener {
                 Fragment matchSetupFragment;
 
                 matchSetupFragment = MatchSetup.getInstance();
-                MatchSetup.getInstance().openMatchSetup();
+                //MatchSetup.getInstance().openMatchSetup();
                 transaction.replace(R.id.main_container, matchSetupFragment);
                 //transaction.addToBackStack(null);
 
@@ -243,7 +243,7 @@ public class SelectDefences extends Fragment implements View.OnClickListener {
                 Fragment matchSetupFragment;
 
                 matchSetupFragment = MatchSetup.getInstance();
-                MatchSetup.getInstance().openMatchSetup();
+                //MatchSetup.getInstance().openMatchSetup();
                 transaction.replace(R.id.main_container, matchSetupFragment);
                 //transaction.addToBackStack(null);
 

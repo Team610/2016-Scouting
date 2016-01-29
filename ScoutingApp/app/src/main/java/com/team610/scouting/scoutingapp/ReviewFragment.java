@@ -3,22 +3,21 @@ package com.team610.scouting.scoutingapp;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link AutoFragment.OnFragmentInteractionListener} interface
+ * {@link ReviewFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link AutoFragment#newInstance} factory method to
+ * Use the {@link ReviewFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AutoFragment extends Fragment {
+public class ReviewFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -30,16 +29,7 @@ public class AutoFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    private static AutoFragment instance;
-
-    CheckBox reachedDefence;
-    CheckBox spybot;
-    CheckBox scoreHighGoal;
-    CheckBox scoreLowGoal;
-    //CheckBox s
-
-
-    public AutoFragment() {
+    public ReviewFragment() {
         // Required empty public constructor
     }
 
@@ -49,23 +39,16 @@ public class AutoFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment AutoFragment.
+     * @return A new instance of fragment ReviewFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static AutoFragment newInstance(String param1, String param2) {
-        AutoFragment fragment = new AutoFragment();
+    public static ReviewFragment newInstance(String param1, String param2) {
+        ReviewFragment fragment = new ReviewFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
-    }
-
-    public static AutoFragment getInstance(){
-        if(instance == null){
-            instance = new AutoFragment();
-        }
-        return instance;
     }
 
     @Override
@@ -77,21 +60,17 @@ public class AutoFragment extends Fragment {
         }
     }
 
-    public void saveData(){
-
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_auto, container, false);
+        return inflater.inflate(R.layout.fragment_review, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onAutonFragmentInteraction(uri);
+            mListener.onReviewFragmentInteraction(uri);
         }
     }
 
@@ -124,6 +103,6 @@ public class AutoFragment extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onAutonFragmentInteraction(Uri uri);
+        void onReviewFragmentInteraction(Uri uri);
     }
 }

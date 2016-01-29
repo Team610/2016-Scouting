@@ -1,5 +1,6 @@
 package com.team610.scouting.scoutingapp;
 
+import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.net.Uri;
 import android.os.Bundle;
@@ -20,7 +21,8 @@ public class MainActivity extends AppCompatActivity
             TeleopFragment.OnFragmentInteractionListener,
             InitialFragment.OnFragmentInteractionListener,
             AutoFragment.OnFragmentInteractionListener,
-            SelectDefences.OnFragmentInteractionListener{
+            SelectDefences.OnFragmentInteractionListener,
+        ReviewFragment.OnFragmentInteractionListener{
 
 
 
@@ -135,6 +137,13 @@ public class MainActivity extends AppCompatActivity
             TeleopFragment mFrag = TeleopFragment.getInstance();
             transaction.replace(R.id.main_container,mFrag).commit();
         }
+//        else if(id == R.id.fragment_review){
+//
+//            saveAllFragmentData();
+//
+//            ReviewFragment mFrag = new ReviewFragment();
+//            transaction.replace(R.id.main_container,mFrag).commit();
+//        }
 
 
 
@@ -191,4 +200,11 @@ public class MainActivity extends AppCompatActivity
     public void onSelectDefencesFragmentInteraction(Uri uri) {
 
     }
+
+    @Override
+    public void onReviewFragmentInteraction(Uri uri) {
+
+    }
+
+
 }
