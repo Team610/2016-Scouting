@@ -73,7 +73,7 @@ public class MatchFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_match, container, false);
         View auton = root.findViewById(R.id.match_auton_layout),
                 teleop = root.findViewById(R.id.match_teleop_layout);
-        auton.setVisibility(View.GONE);
+        auton.setVisibility(View.VISIBLE);
         teleop.setVisibility(View.GONE);
         return root;
     }
@@ -117,15 +117,25 @@ public class MatchFragment extends Fragment {
             teleop.setVisibility(View.GONE);
             auton.setVisibility(View.GONE);
             if (id == R.id.action_auton) {
-                System.out.println("1");
+
                 auton.setVisibility(View.VISIBLE);
             } else if (id == R.id.action_teleop) {
                 teleop.setVisibility(View.VISIBLE);
-                System.out.println("2");
+
             } else if (id == R.id.action_postMatch) {
+
                 post.setVisibility(View.VISIBLE);
-                System.out.println("3");
             }
+            //possible WIP fix to the hack invisble views
+//            LayoutInflater inflater = LayoutInflater.from(getActivity());
+//            View inflatedLayout;
+//            if (id == R.id.action_auton) {
+//                inflatedLayout= inflater.inflate(R.layout.match_auton, null, false);
+//            } else if (id == R.id.action_teleop) {
+//                inflatedLayout= inflater.inflate(R.layout.match_teleop, null, false);
+//            } else if (id == R.id.action_postMatch) {
+//                inflatedLayout= inflater.inflate(R.layout.match_post, null, false);
+//            }
         }
     }
 

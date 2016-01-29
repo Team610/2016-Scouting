@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         layout="@layout/match_auton"
-        android:id="@+id/match_auton_layout"
+        android:id="@+id/match_layout"
         />
 
     <include
@@ -26,11 +26,61 @@
         layout="@layout/match_teleop"
         android:id="@+id/match_teleop_layout"
          />
+    <!--
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/match_team1"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            />
 
-    <AdapterViewFlipper
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/adapterViewFlipper"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/match_team2"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/match_team3"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            />
+
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/match_team4"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/match_team5"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/match_team6"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            />
+    -->
+
 </RelativeLayout>

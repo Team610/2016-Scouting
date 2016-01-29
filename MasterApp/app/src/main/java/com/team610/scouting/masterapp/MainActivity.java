@@ -67,9 +67,6 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    public void onSaveInstanceState(Bundle b){
-        //Literally here to stop saving stuff
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
