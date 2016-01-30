@@ -93,6 +93,16 @@ public class MatchSetup extends Fragment implements View.OnClickListener {
         }
 
         //Integer.parseInt("ps");
+        if(matchNum != null && matchNum.getText() != null) {
+            if (matchNum.getText().toString().length() > 0) {
+                match = Integer.parseInt(matchNum.getText().toString());
+            }
+        }
+        if(teamNum != null && teamNum.getText() != null) {
+            if (teamNum.getText().toString().length() > 0) {
+                team = Integer.parseInt(teamNum.getText().toString());
+            }
+        }
 
         thisMatch.match = match;
         thisMatch.team = team;
@@ -151,20 +161,31 @@ public class MatchSetup extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_match_setup, container, false);
 
+        //thisMatch = MatchData.getInstance();
+
         defenceButtons = new ImageButton[] {(ImageButton) v.findViewById(R.id.defence1_ImageButton),
                 (ImageButton) v.findViewById(R.id.defence2_ImageButton),
                 (ImageButton) v.findViewById(R.id.defence3_ImageButton),
                 (ImageButton) v.findViewById(R.id.defence4_ImageButton)};
         openMatchSetup();
 
+
+        //COME BACK TO THIS
+        //weird issue of losing the edit text on first try
+        //setText fixes this, but causes 0s at beginning, also annoying
         matchNum = (EditText) v.findViewById(R.id.matchNum_EditText);
+        matchNum.setText(""+ thisMatch.match);
         teamNum = (EditText) v.findViewById(R.id.teamNum_EditText);
-        if( matchNum.getText().toString().length() > 0) {
-            match = Integer.parseInt(matchNum.getText().toString());
-        }
-        if(teamNum.getText().toString().length() > 0) {
-            team = Integer.parseInt(teamNum.getText().toString());
-        }
+        teamNum.setText(""+thisMatch.team);
+
+
+
+//        if( matchNum.getText().toString().length() > 0) {
+//            match = Integer.parseInt(matchNum.getText().toString());
+//        }
+//        if(teamNum.getText().toString().length() > 0) {
+//            team = Integer.parseInt(teamNum.getText().toString());
+//        }
 
             //selectedDefence = i+1;
             //MatchData.getInstance().selectedDefenceMatchSetup = selectedDefence;
@@ -261,6 +282,11 @@ public class MatchSetup extends Fragment implements View.OnClickListener {
 
     }
 
+    @Override
+    public void onPause() {
+        saveData();
+        super.onPause();
+    }
 
 
     //yo
@@ -376,4 +402,6 @@ public class MatchSetup extends Fragment implements View.OnClickListener {
         // TODO: Update argument type and name
         void onMatchSetupFragmentInteraction(Uri uri);
     }
+
+
 }

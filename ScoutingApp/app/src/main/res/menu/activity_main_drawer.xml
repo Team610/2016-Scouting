@@ -19,6 +19,11 @@
             android:id="@+id/fragment_teleop"
             android:icon="@drawable/ic_menu_manage"
             android:title="Tele-Op" />
+        <item
+            android:id="@+id/frament_review"
+            android:icon="@drawable/ic_menu_send"
+            android:title="Review Data" />
+
     </group>
 
 

@@ -109,41 +109,44 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        saveAllFragmentData();
+
+
         FragmentTransaction transaction = getFragmentManager()
                 .beginTransaction();
         if (id == R.id.fragment_initial) {
 
-            saveAllFragmentData();
+            //saveAllFragmentData();
 
             InitialFragment mFrag = new InitialFragment();
             transaction.replace(R.id.main_container,mFrag).commit();
         } else if (id == R.id.fragment_match_setup) {
 
-            saveAllFragmentData();
+            //saveAllFragmentData();
 
             MatchSetup mFrag = MatchSetup.getInstance();
             mFrag.openMatchSetup();
             transaction.replace(R.id.main_container,mFrag).commit();
         } else if (id == R.id.fragment_auto) {
 
-            saveAllFragmentData();
+            //saveAllFragmentData();
 
             AutoFragment mFrag = AutoFragment.getInstance();
             transaction.replace(R.id.main_container,mFrag).commit();
         } else if(id == R.id.fragment_teleop){
 
-            saveAllFragmentData();
+            //saveAllFragmentData();
 
             TeleopFragment mFrag = TeleopFragment.getInstance();
             transaction.replace(R.id.main_container,mFrag).commit();
         }
-//        else if(id == R.id.fragment_review){
-//
-//            saveAllFragmentData();
-//
-//            ReviewFragment mFrag = new ReviewFragment();
-//            transaction.replace(R.id.main_container,mFrag).commit();
-//        }
+        else if(id == R.id.frament_review){
+
+            //saveAllFragmentData();
+
+            ReviewFragment mFrag = new ReviewFragment();
+            transaction.replace(R.id.main_container,mFrag).commit();
+        }
 
 
 
