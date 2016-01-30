@@ -1,5 +1,8 @@
 package com.team610.scouting.scoutingapp;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by jackw on 2016-01-18.
  */
@@ -45,6 +48,21 @@ public class MatchData {
             instance = new MatchData();
         }
         return instance;
+    }
+
+    public static void updateTeleop(){
+//        MainActivity.rootRef.child("init").setValue(highGoalScores);
+//        MainActivity.rootRef.child("init").setValue(lowGoalScores);
+//        MainActivity.rootRef.child("init").setValue(courtyardScores);
+//        MainActivity.rootRef.child("init").setValue(highGoalMisses);
+//        MainActivity.rootRef.child("init").setValue(lowGoalMisses);
+//        MainActivity.rootRef.child("init").setValue(courtyardMisses);
+
+        Map<String, Object> score = new HashMap<String, Object>();
+        score.put("high goal scores", highGoalScores);
+        score.put("low goal scores", lowGoalScores);
+
+        MainActivity.rootRef.updateChildren(score);
     }
 
     public static void newMatch(){
