@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,6 +17,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.ImageButton;
+
+import com.firebase.client.Firebase;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,MatchSetup.OnFragmentInteractionListener,
@@ -26,6 +31,8 @@ public class MainActivity extends AppCompatActivity
         ReviewFragment.OnFragmentInteractionListener{
 
     public static Vibrator vib;
+    public static Firebase rootRef;
+
 
 
 
@@ -37,6 +44,14 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         vib = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
+
+
+
+
+        Firebase.setAndroidContext(this);
+
+        //Init the firebase
+         rootRef = new Firebase("https://scouting-app.firebaseio.com/");
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +73,21 @@ public class MainActivity extends AppCompatActivity
 
         //Transaction to Main Screen
         initialTransaction();
+
+//        transitionButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//
+//
+//            }
+//        });
+
+    }
+
+    public void updateDataTest(){
+
+        rootRef.setValue(5);
 
     }
 
@@ -169,16 +199,7 @@ public class MainActivity extends AppCompatActivity
         switch(v.getId()){
             case R.id.transition_Button:
 
-                FragmentTransaction transaction = getFragmentManager()
-                        .beginTransaction();
-
-                InitialFragment initialFragment = new InitialFragment();
-
-                transaction.replace(R.id.main_container, initialFragment);
-                //transaction.addToBackStack(null);
-
-
-                transaction.commit();
+                Log.d("TEST", "TEST");
 
                 break;
         }

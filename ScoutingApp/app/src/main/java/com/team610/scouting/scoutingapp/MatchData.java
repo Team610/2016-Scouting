@@ -24,6 +24,16 @@ public class MatchData {
     public boolean endedNeutralZone;
     public boolean reachDefence;
 
+    //Teleop
+
+    public static int highGoalScores = 0;
+    public static int lowGoalScores = 0;
+    public static int courtyardScores = 0;
+    public static int highGoalMisses = 0;
+    public static int lowGoalMisses = 0;
+    public static int courtyardMisses = 0;
+
+
 
 
     private MatchData(){
