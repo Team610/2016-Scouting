@@ -9,8 +9,14 @@
         android:layout_alignParentLeft="true"
         >
         <TableRow>
-
-
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Total Points Scored "
+                android:id="@+id/team_total_points"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
         </TableRow>
        </TableLayout>
 </RelativeLayout>

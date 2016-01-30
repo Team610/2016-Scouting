@@ -19,10 +19,16 @@
         android:orderInCategory="100"
         android:title="Post Match"
         app:showAsAction="ifRoom" />
-       <item
-           android:id="@+id/action_matchNumber"
-           android:orderInCategory="25"
-           android:title="Match #"
-           app:showAsAction="ifRoom"/>
-        </group>
+    <item
+        android:id="@+id/action_matchNumber"
+        android:orderInCategory="25"
+        android:title="Match #"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:title="Team"
+        android:id="@+id/action_team"
+        android:orderInCategory="20"
+        app:showAsAction="ifRoom"
+        />
+   </group>
 </menu>

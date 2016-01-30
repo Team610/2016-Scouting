@@ -11,7 +11,11 @@ import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
 
 /**
@@ -34,6 +38,9 @@ public class MatchFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
+
+    private int matchNum;
+   // public static String teamNum;
 
     public MatchFragment() {
         // Required empty public constructor
@@ -106,9 +113,12 @@ public class MatchFragment extends Fragment {
 
     public void onMenuTap(int id) {
         if (id == R.id.action_matchNumber) {
-            createDialog();
+            createMatchDialog();
 
             //TODO LOAD DATA FROM MATCH
+        }else if(id == R.id.action_team){
+            createTeamChoiceDialog();
+
         } else {
             View auton = getActivity().findViewById(R.id.match_auton_layout),
                     teleop = getActivity().findViewById(R.id.match_teleop_layout),
@@ -139,6 +149,11 @@ public class MatchFragment extends Fragment {
         }
     }
 
+    private void createTeamDialog(String num) {
+        TeamDialog dialog = TeamDialog.newInstance(Integer.valueOf(num));
+        dialog.show(getFragmentManager(),"Team Data");
+    }
+
 
     /**
      * This interface must be implemented by activities that contain this
@@ -150,8 +165,8 @@ public class MatchFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    private int matchNum;
-    public void createDialog() {
+
+    public void createMatchDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Choose Match");
 
@@ -178,6 +193,32 @@ public class MatchFragment extends Fragment {
 
         builder.show();
     }
+
+    public void createTeamChoiceDialog(){
+        //TODO MAKE DYNAMIC
+       final String[] teams = {"1","2","3","4","5","6"};
+      //  ListAdapter adapter =  new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,teams);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Choose Team")
+                .setItems(teams, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                      //  teamNum = teams[which];
+                        createTeamDialog(teams[which]);
+                    }
+                });
+        //Set up negative button
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+    }
+
+
 
     public void loadMatchData(){
         ActionMenuItemView item = (ActionMenuItemView) getActivity().findViewById(R.id.action_matchNumber);
