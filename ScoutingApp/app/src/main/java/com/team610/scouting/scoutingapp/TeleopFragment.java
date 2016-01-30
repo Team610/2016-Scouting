@@ -5,6 +5,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +32,10 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+
+
+
     SeekBar sb1;
 
     //plus button
@@ -101,6 +106,8 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
+
         }
 
     }
@@ -153,18 +160,19 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(state == 0) {
+                if (state == 0) {
                     highGoalScores++;
                     highGoalScoresTextView.setText("" + highGoalScores);
-                }
-                else if(state == 1){
+                } else if (state == 1) {
                     lowGoalScores++;
                     lowGoalScoresTextView.setText("" + lowGoalScores);
-                }
-                else{
+                } else {
                     courtyardScores++;
                     courtyardScoresTextView.setText("" + courtyardScores);
                 }
+
+                MainActivity.vib.vibrate(10000);
+
             }
         });
 
