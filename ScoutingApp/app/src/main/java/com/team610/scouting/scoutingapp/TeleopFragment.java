@@ -117,12 +117,15 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
         if(mProgress >= 0 & mProgress < 26) {
             seekBar.setProgress(10);
             state = 0;
+            MainActivity.vib.vibrate(100);
         } else if(mProgress > 25 & mProgress < 76) {
             seekBar.setProgress(50);
             state = 1;
+            MainActivity.vib.vibrate(100);
         } else{
             seekBar.setProgress(90);
             state = 2;
+            MainActivity.vib.vibrate(100);
         }
     }
     @Override
@@ -171,7 +174,7 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
                     courtyardScoresTextView.setText("" + courtyardScores);
                 }
 
-                MainActivity.vib.vibrate(10000);
+                MainActivity.vib.vibrate(100);
 
             }
         });
@@ -202,6 +205,8 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
                     }
                     courtyardScoresTextView.setText("" + courtyardScores);
                 }
+
+                MainActivity.vib.vibrate(100);
             }
         });
 
@@ -232,6 +237,8 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
                     courtyardMisses++;
                     courtyardMissesTextView.setText("" + courtyardMisses);
                 }
+
+                MainActivity.vib.vibrate(100);
             }
         });
 
@@ -260,6 +267,8 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
                     }
                     courtyardMissesTextView.setText("" + courtyardMisses);
                 }
+
+                MainActivity.vib.vibrate(100);
             }
         });
 
