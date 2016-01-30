@@ -1,5 +1,6 @@
 package com.team610.scouting.scoutingapp;
 
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -7,7 +8,10 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.SeekBar;
+import android.widget.TextView;
 
 
 /**
@@ -28,6 +32,34 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
     private String mParam1;
     private String mParam2;
     SeekBar sb1;
+
+    //plus button
+    ImageButton plus;
+    ImageButton minus;
+
+    TextView highGoalScoresTextView;
+    int highGoalScores = 0;
+
+    TextView lowGoalScoresTextView;
+    int lowGoalScores = 0;
+
+    TextView courtyardScoresTextView;
+    int courtyardScores = 0;
+
+    int state = 1;
+
+    ImageButton plusMisses;
+    ImageButton minusMisses;
+
+    TextView highGoalMissesTextView;
+    int highGoalMisses = 0;
+
+    TextView lowGoalMissesTextView;
+    int lowGoalMisses = 0;
+
+    TextView courtyardMissesTextView;
+    int courtyardMisses = 0;
+
 
     private static TeleopFragment instance;
 
@@ -77,9 +109,14 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
         int mProgress = seekBar.getProgress();
         if(mProgress >= 0 & mProgress < 26) {
             seekBar.setProgress(10);
+            state = 0;
         } else if(mProgress > 25 & mProgress < 76) {
             seekBar.setProgress(50);
-        } else seekBar.setProgress(90);
+            state = 1;
+        } else{
+            seekBar.setProgress(90);
+            state = 2;
+        }
     }
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress,
@@ -91,6 +128,8 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
         // we don't need it
     }
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -98,6 +137,124 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
 
         View rootView = inflater.inflate(R.layout.fragment_teleop,
                 container, false);
+
+        highGoalScoresTextView = (TextView) rootView.findViewById(R.id.highGoal_scores_TextView);
+        lowGoalScoresTextView = (TextView) rootView.findViewById(R.id.lowGoal_scores_TextView);
+        courtyardScoresTextView = (TextView) rootView.findViewById(R.id.courtyard_scores_TextView);
+
+        highGoalScoresTextView.setText("" + highGoalScores);
+        lowGoalScoresTextView.setText("" + lowGoalScores);
+        courtyardScoresTextView.setText("" + courtyardScores);
+
+
+        //plus button
+        plus = (ImageButton) rootView.findViewById(R.id.plus_ImageButton);
+
+        plus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(state == 0) {
+                    highGoalScores++;
+                    highGoalScoresTextView.setText("" + highGoalScores);
+                }
+                else if(state == 1){
+                    lowGoalScores++;
+                    lowGoalScoresTextView.setText("" + lowGoalScores);
+                }
+                else{
+                    courtyardScores++;
+                    courtyardScoresTextView.setText("" + courtyardScores);
+                }
+            }
+        });
+
+        minus = (ImageButton) rootView.findViewById(R.id.minus_ImageButton);
+
+        minus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(state == 0) {
+                    highGoalScores--;
+                    if(highGoalScores < 0){
+                        highGoalScores = 0;
+                    }
+                    highGoalScoresTextView.setText("" + highGoalScores);
+                }
+                else if(state == 1){
+                    lowGoalScores--;
+                    if(lowGoalScores < 0){
+                        lowGoalScores = 0;
+                    }
+                    lowGoalScoresTextView.setText("" + lowGoalScores);
+                }
+                else{
+                    courtyardScores--;
+                    if(courtyardScores < 0){
+                        courtyardScores = 0;
+                    }
+                    courtyardScoresTextView.setText("" + courtyardScores);
+                }
+            }
+        });
+
+        highGoalMissesTextView = (TextView) rootView.findViewById(R.id.highgoal_misses_TextView);
+        lowGoalMissesTextView = (TextView) rootView.findViewById(R.id.lowgoal_misses_TextView);
+        courtyardMissesTextView = (TextView) rootView.findViewById(R.id.courtyard_misses_TextView);
+
+        plusMisses = (ImageButton) rootView.findViewById(R.id.plus_misses_ImageButton);
+        minusMisses = (ImageButton) rootView.findViewById(R.id.minus_misses_ImageButton);
+
+        highGoalMissesTextView.setText("" + highGoalMisses);
+        lowGoalMissesTextView.setText("" + lowGoalMisses);
+        courtyardMissesTextView.setText("" + courtyardMisses);
+
+
+        plusMisses.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(state == 0) {
+                    highGoalMisses++;
+                    highGoalMissesTextView.setText("" + highGoalMisses);
+                }
+                else if(state == 1){
+                    lowGoalMisses++;
+                    lowGoalMissesTextView.setText("" + lowGoalMisses);
+                }
+                else{
+                    courtyardMisses++;
+                    courtyardMissesTextView.setText("" + courtyardMisses);
+                }
+            }
+        });
+
+
+        minusMisses.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(state == 0) {
+                    highGoalMisses--;
+                    if(highGoalMisses < 0){
+                        highGoalMisses = 0;
+                    }
+                    highGoalMissesTextView.setText("" + highGoalMisses);
+                }
+                else if(state == 1){
+                    lowGoalMisses--;
+                    if(lowGoalMisses < 0){
+                        lowGoalMisses = 0;
+                    }
+                    lowGoalMissesTextView.setText("" + lowGoalMisses);
+                }
+                else{
+                    courtyardMisses--;
+                    if(courtyardMisses < 0){
+                        courtyardMisses = 0;
+                    }
+                    courtyardMissesTextView.setText("" + courtyardMisses);
+                }
+            }
+        });
+
 
         sb1 = (SeekBar) rootView.findViewById(R.id.setgoal_SeekBar);
         sb1.setOnSeekBarChangeListener(this);
