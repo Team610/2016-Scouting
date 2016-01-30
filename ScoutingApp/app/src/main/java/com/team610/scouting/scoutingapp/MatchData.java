@@ -61,9 +61,15 @@ public class MatchData {
         Map<String, Object> score = new HashMap<String, Object>();
         score.put("high goal scores", highGoalScores);
         score.put("low goal scores", lowGoalScores);
+        score.put("courtyard scores", courtyardScores);
+        score.put("high goal misses", highGoalMisses);
+        score.put("low goal misses", lowGoalMisses);
+        score.put("courtyard misses", courtyardMisses);
 
         MainActivity.rootRef.updateChildren(score);
     }
+
+
 
     public static void newMatch(){
         instance = new MatchData();
