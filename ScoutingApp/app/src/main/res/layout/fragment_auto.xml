@@ -15,13 +15,12 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Autonomous"
         android:id="@+id/autoTitle_TextView"
+        android:textSize="25dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="54dp"
-        android:layout_marginStart="54dp"
-        android:layout_marginTop="54dp"
-        android:textSize="25dp" />
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"/>
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -41,10 +40,10 @@
         android:text="Ball:"
         android:id="@+id/ball_TextView"
         android:textSize="30dp"
-        android:layout_alignTop="@id/reachTheDefence_checkBox"
-        android:layout_marginTop="250dp"
+        android:layout_below="@+id/reachTheDefence_checkBox"
         android:layout_alignLeft="@+id/reachTheDefence_checkBox"
-        android:layout_alignStart="@+id/reachTheDefence_checkBox" />
+        android:layout_alignStart="@+id/reachTheDefence_checkBox"
+        android:layout_marginTop="190dp"/>
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -87,8 +86,8 @@
         android:checked="false"
         android:textSize="25dp"
         android:layout_alignTop="@+id/reachTheDefence_checkBox"
-        android:layout_toRightOf="@+id/robotEnd_textView"
-        android:layout_toEndOf="@+id/robotEnd_textView" />
+        android:layout_toRightOf="@+id/neutralZone_CheckBox"
+        android:layout_toEndOf="@+id/neutralZone_CheckBox" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -96,13 +95,12 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Where did you robot end up:"
         android:id="@+id/robotEnd_textView"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/highGoal_checkBox"
-        android:layout_toEndOf="@+id/highGoal_checkBox"
+        android:layout_marginLeft="101dp"
+        android:layout_marginStart="101dp"
+        android:textSize="30dp"
         android:layout_alignTop="@+id/ball_TextView"
-        android:layout_marginLeft="125dp"
-        android:layout_marginStart="125dp"
-        android:textSize="30dp" />
+        android:layout_toRightOf="@+id/highGoal_checkBox"
+        android:layout_toEndOf="@+id/highGoal_checkBox" />
 
     <CheckBox
         android:layout_width="wrap_content"
