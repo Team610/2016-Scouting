@@ -124,5 +124,48 @@
         android:checked="false"
         android:textSize="25dp" />
 
+    <ImageButton
+        android:layout_width="@dimen/setup_button_layout_width"
+        android:layout_height="@dimen/setup_button_layout_height"
+        android:id="@+id/defence1_ImageButton"
+        android:layout_below="@+id/reachTheDefence_checkBox"
+        android:layout_alignLeft="@+id/reachTheDefence_checkBox"
+        android:layout_alignStart="@+id/reachTheDefence_checkBox"
+        android:layout_marginTop="30dp"/>
+
+    <ImageButton
+        android:layout_width="@dimen/setup_button_layout_width"
+        android:layout_height="@dimen/setup_button_layout_height"
+        android:id="@+id/defence2_ImageButton"
+        android:layout_alignTop="@+id/defence1_ImageButton"
+        android:layout_toRightOf="@+id/defence1_ImageButton"
+        android:layout_toEndOf="@+id/defence1_ImageButton" />
+
+    <ImageButton
+        android:layout_width="@dimen/setup_button_layout_width"
+        android:layout_height="@dimen/setup_button_layout_height"
+        android:id="@+id/defence3_ImageButton"
+        android:layout_alignTop="@+id/defence2_ImageButton"
+        android:layout_toRightOf="@+id/defence2_ImageButton"
+        android:layout_toEndOf="@+id/defence2_ImageButton" />
+
+    <ImageButton
+        android:layout_width="@dimen/setup_button_layout_width"
+        android:layout_height="@dimen/setup_button_layout_height"
+        android:id="@+id/defence4_ImageButton"
+        android:layout_alignTop="@+id/defence3_ImageButton"
+        android:layout_toRightOf="@+id/defence3_ImageButton"
+        android:layout_toEndOf="@+id/defence3_ImageButton" />
+
+    <ImageButton
+        android:layout_width="@dimen/setup_button_layout_width"
+        android:layout_height="@dimen/setup_button_layout_height"
+        android:id="@+id/lowBar_defence_ImageButton"
+        android:layout_alignTop="@+id/defence4_ImageButton"
+        android:layout_toRightOf="@+id/defence4_ImageButton"
+        android:layout_toEndOf="@+id/defence4_ImageButton"
+        android:src="@drawable/lowbar"
+        android:scaleType="fitXY"/>
+
 
 </RelativeLayout>
