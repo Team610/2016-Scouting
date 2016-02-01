@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity
     public static Vibrator vib;
     public static Firebase rootRef;
 
+    public static Firebase gameRef;
+
 
 
 

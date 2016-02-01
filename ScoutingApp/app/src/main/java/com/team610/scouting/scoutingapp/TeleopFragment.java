@@ -145,6 +145,7 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
+        // need this line to link xml!!!!
         View rootView = inflater.inflate(R.layout.fragment_teleop,
                 container, false);
 

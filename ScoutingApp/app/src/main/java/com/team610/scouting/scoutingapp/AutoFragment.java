@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.TextView;
 
 
 /**
@@ -32,10 +33,11 @@ public class AutoFragment extends Fragment {
 
     private static AutoFragment instance;
 
-    CheckBox reachedDefence;
-    CheckBox spybot;
-    CheckBox scoreHighGoal;
-    CheckBox scoreLowGoal;
+    CheckBox reachedDefenceCheckBox;
+    CheckBox spybotCheckBox;
+    CheckBox scoreHighGoalCheckBox;
+    CheckBox scoreLowGoalCheckBox;
+
     //CheckBox s
 
 
@@ -85,8 +87,22 @@ public class AutoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_auto, container, false);
+
+        View rootView = inflater.inflate(R.layout.fragment_auto,
+                container, false);
+
+        reachedDefenceCheckBox = (CheckBox) rootView.findViewById(R.id.reachTheDefence_checkBox);
+        spybotCheckBox = (CheckBox) rootView.findViewById(R.id.spybot_checkBox);
+        scoreHighGoalCheckBox= (CheckBox) rootView.findViewById(R.id.highGoal_checkBox);
+        scoreLowGoalCheckBox = (CheckBox) rootView.findViewById(R.id.lowGoal_checkBox);
+
+
+
+
+        return rootView;
     }
+
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

@@ -19,13 +19,13 @@ public class MatchData {
 
 
     //Auton
-    public boolean spybot;
-    public boolean scoredHighGoal;
-    public boolean scoredLowGoal;
-    public boolean placedCourtyard;
-    public boolean endedCourtyard;
-    public boolean endedNeutralZone;
-    public boolean reachDefence;
+    public static boolean spybot;
+    public static boolean scoredHighGoal;
+    public static boolean scoredLowGoal;
+    public static boolean placedCourtyard;
+    public static boolean endedCourtyard;
+    public static boolean endedNeutralZone;
+    public static boolean reachDefence;
 
     //Teleop
 
@@ -35,6 +35,9 @@ public class MatchData {
     public static int highGoalMisses = 0;
     public static int lowGoalMisses = 0;
     public static int courtyardMisses = 0;
+
+    //New FireBase Ref
+
 
 
 
@@ -68,6 +71,30 @@ public class MatchData {
 
         MainActivity.rootRef.updateChildren(score);
     }
+
+    public static void updateAuto(){
+        Map<String, Object> auto = new HashMap<String, Object>();
+
+//        public boolean spybot;
+//        public boolean scoredHighGoal;
+//        public boolean scoredLowGoal;
+//        public boolean placedCourtyard;
+//        public boolean endedCourtyard;
+//        public boolean endedNeutralZone;
+//        public boolean reachDefence;
+        auto.put("spybot", spybot);
+        auto.put("Scored High Goal",scoredHighGoal);
+        auto.put("Scored Low Goal", scoredLowGoal);
+        auto.put("Placed Courtyard", placedCourtyard);
+        auto.put("Ended Courtyard", endedCourtyard);
+        auto.put("Ended Neutral Zone", endedNeutralZone);
+        auto.put("Reach Defence", reachDefence);
+        MainActivity.rootRef.updateChildren(auto);
+
+
+    }
+
+
 
 
 
