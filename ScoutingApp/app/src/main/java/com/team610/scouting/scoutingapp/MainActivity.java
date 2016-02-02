@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity
         FragmentTransaction transaction = getFragmentManager()
                 .beginTransaction();
 
-        MatchSetup initialFragment = new MatchSetup();
+        MatchSetup initialFragment = MatchSetup.getInstance();
 
         transaction.replace(R.id.main_container, initialFragment);
 

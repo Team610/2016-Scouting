@@ -1,5 +1,6 @@
 package com.team610.scouting.scoutingapp;
 
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 
 
 /**
@@ -28,6 +30,8 @@ public class AutoFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    String[] defences = new String[4];
+
     private OnFragmentInteractionListener mListener;
 
     private static AutoFragment instance;
@@ -37,6 +41,13 @@ public class AutoFragment extends Fragment {
     CheckBox scoreHighGoal;
     CheckBox scoreLowGoal;
     //CheckBox s
+
+    ImageButton defence1;
+    ImageButton defence2;
+    ImageButton defence3;
+    ImageButton defence4;
+    ImageButton lowBarDefence5;
+
 
 
     public AutoFragment() {
@@ -77,6 +88,10 @@ public class AutoFragment extends Fragment {
         }
     }
 
+    public void openAutonFragment(){
+
+    }
+
     public void saveData(){
 
     }
@@ -84,8 +99,28 @@ public class AutoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_auto, container, false);
+
+        defence1 = (ImageButton) v.findViewById(R.id.defence1_ImageButton);
+        defence2 = (ImageButton) v.findViewById(R.id.defence2_ImageButton);
+        defence3 = (ImageButton) v.findViewById(R.id.defence3_ImageButton);
+        defence4 = (ImageButton) v.findViewById(R.id.defence4_ImageButton);
+        lowBarDefence5 = (ImageButton) v.findViewById(R.id.lowBar_defence_ImageButton);
+
+        defence1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+            }
+
+        });
+
+
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_auto, container, false);
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
