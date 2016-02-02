@@ -174,9 +174,9 @@ public class MatchSetup extends Fragment implements View.OnClickListener {
         //weird issue of losing the edit text on first try
         //setText fixes this, but causes 0s at beginning, also annoying
         matchNum = (EditText) v.findViewById(R.id.matchNum_EditText);
-        matchNum.setText(""+ thisMatch.match);
+        //matchNum.setText(""+ thisMatch.match);
         teamNum = (EditText) v.findViewById(R.id.teamNum_EditText);
-        teamNum.setText(""+thisMatch.team);
+        //teamNum.setText(""+thisMatch.team);
 
 
 
