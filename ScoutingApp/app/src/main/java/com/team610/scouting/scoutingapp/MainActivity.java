@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity
     public static Vibrator vib;
     public static Firebase rootRef;
 
-    public static Firebase gameRef;
+
 
 
 
@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity
 
         //Init the firebase
          rootRef = new Firebase("https://scouting-app.firebaseio.com/");
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import com.firebase.client.Firebase;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -95,6 +97,9 @@ public class AutoFragment extends Fragment {
         spybotCheckBox = (CheckBox) rootView.findViewById(R.id.spybot_checkBox);
         scoreHighGoalCheckBox= (CheckBox) rootView.findViewById(R.id.highGoal_checkBox);
         scoreLowGoalCheckBox = (CheckBox) rootView.findViewById(R.id.lowGoal_checkBox);
+
+        //delete this
+        MatchData.updateAuto();
 
 
 

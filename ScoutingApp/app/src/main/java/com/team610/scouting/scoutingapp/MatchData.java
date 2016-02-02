@@ -1,5 +1,7 @@
 package com.team610.scouting.scoutingapp;
 
+import com.firebase.client.Firebase;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,11 +9,12 @@ import java.util.Map;
  * Created by jackw on 2016-01-18.
  */
 public class MatchData {
-    public String[] defenceTypes = new String[4];
+
+    public int selectedDefenceMatchSetup;
     static MatchData instance;
 
     //MatchSetup
-    public int selectedDefenceMatchSetup;
+    public String[] defenceTypes = new String[4];
     public int match;
     public int team;
 
@@ -36,13 +39,21 @@ public class MatchData {
     public static int lowGoalMisses = 0;
     public static int courtyardMisses = 0;
 
-    //New FireBase Ref
-
+    //FireBase Refs
+    static Firebase autoRef;
+    static Firebase teleRef;
+    static Firebase matchRef;
 
 
 
 
     private MatchData(){
+
+
+        matchRef = MainActivity.rootRef.child("Match" + match);
+
+        autoRef = matchRef.child("Auto");
+        teleRef = matchRef.child("Teleop");
 
     }
 
@@ -69,7 +80,7 @@ public class MatchData {
         score.put("low goal misses", lowGoalMisses);
         score.put("courtyard misses", courtyardMisses);
 
-        MainActivity.rootRef.updateChildren(score);
+        teleRef.updateChildren(score);
     }
 
     public static void updateAuto(){
@@ -89,7 +100,7 @@ public class MatchData {
         auto.put("Ended Courtyard", endedCourtyard);
         auto.put("Ended Neutral Zone", endedNeutralZone);
         auto.put("Reach Defence", reachDefence);
-        MainActivity.rootRef.updateChildren(auto);
+        autoRef.updateChildren(auto);
 
 
     }
