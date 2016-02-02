@@ -2,6 +2,8 @@ package com.team610.scouting.scoutingapp;
 
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -41,6 +43,10 @@ public class AutoFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     private static AutoFragment instance;
+
+    MatchData thisMatch = MatchData.getInstance();
+
+    String drivenToDefence;
 
     CheckBox reachedDefenceCheckBox;
     CheckBox spybotCheckBox;
@@ -97,6 +103,38 @@ public class AutoFragment extends Fragment {
 
     public void openAutonFragment(){
 
+        for(int i = 0; i<4; i++){
+            defences[i] = thisMatch.defenceTypes[i];
+        }
+
+        setDefenceButtonPics(defence1,0);
+        setDefenceButtonPics(defence2,1);
+        setDefenceButtonPics(defence3,2);
+        setDefenceButtonPics(defence4, 3);
+
+
+    }
+
+    public void setDefenceButtonPics(ImageButton defence , int i){
+        if(defences[i] != null) {
+            if (defences[i].equals("porticullis")) {
+                defence.setBackgroundResource(R.drawable.portcullis);
+            } else if (defences[i].equals("moat")) {
+                defence.setBackgroundResource(R.drawable.moat);
+            } else if (defences[i].equals("ramparts")) {
+                defence.setBackgroundResource(R.drawable.ramparts);
+            } else if (defences[i].equals("rockwall")) {
+                defence.setBackgroundResource(R.drawable.rockwall);
+            } else if (defences[i].equals("roughterrain")) {
+                defence.setBackgroundResource(R.drawable.roughterrain);
+            } else if (defences[i].equals("sallyport")) {
+                defence.setBackgroundResource(R.drawable.sallyport);
+            } else if (defences[i].equals("drawbridge")) {
+                defence.setBackgroundResource(R.drawable.drawbridge);
+            } else if (defences[i].equals("chevaldefrise")) {
+                defence.setBackgroundResource(R.drawable.chevaldefrise);
+            }
+        }
     }
 
     public void saveData(){
@@ -106,31 +144,81 @@ public class AutoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_auto, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_auto, container, false);
 
-        defence1 = (ImageButton) v.findViewById(R.id.defence1_ImageButton);
-        defence2 = (ImageButton) v.findViewById(R.id.defence2_ImageButton);
-        defence3 = (ImageButton) v.findViewById(R.id.defence3_ImageButton);
-        defence4 = (ImageButton) v.findViewById(R.id.defence4_ImageButton);
-        lowBarDefence5 = (ImageButton) v.findViewById(R.id.lowBar_defence_ImageButton);
+        defence1 = (ImageButton) rootView.findViewById(R.id.defence1_ImageButton);
+        defence2 = (ImageButton) rootView.findViewById(R.id.defence2_ImageButton);
+        defence3 = (ImageButton) rootView.findViewById(R.id.defence3_ImageButton);
+        defence4 = (ImageButton) rootView.findViewById(R.id.defence4_ImageButton);
+        lowBarDefence5 = (ImageButton) rootView.findViewById(R.id.lowBar_defence_ImageButton);
 
         defence1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                drivenToDefence = defences[0];
 
+                colourPickedDefence(1);
+            }
 
+        });
+        defence2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                drivenToDefence = defences[1];
+
+                colourPickedDefence(2);
+            }
+
+        });
+
+        defence3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                drivenToDefence = defences[2];
+
+                colourPickedDefence(3);
+            }
+
+        });
+
+        defence4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                drivenToDefence = defences[3];
+
+                colourPickedDefence(4);
+            }
+
+        });
+        lowBarDefence5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                drivenToDefence = "lowbar";
+
+                colourPickedDefence(5);
             }
 
         });
 
 
 
+
+
+
+
+        openAutonFragment();
+
+
+
         // Inflate the layout for this fragment
 
 
-        View rootView = inflater.inflate(R.layout.fragment_auto,
-                container, false);
+
 
         reachedDefenceCheckBox = (CheckBox) rootView.findViewById(R.id.reachTheDefence_checkBox);
         spybotCheckBox = (CheckBox) rootView.findViewById(R.id.spybot_checkBox);
@@ -144,6 +232,42 @@ public class AutoFragment extends Fragment {
 
 
         return rootView;
+    }
+
+    
+    //need to fix
+    public void colourPickedDefence(int i){
+
+        if(i == 1){
+            defence1.setColorFilter(544, PorterDuff.Mode.SRC);
+        }else {
+            defence1.setColorFilter(5, PorterDuff.Mode.SRC);
+        }
+
+        if(i == 2){
+            defence1.setColorFilter(5, PorterDuff.Mode.SRC);
+        }else {
+            defence1.setColorFilter(5, PorterDuff.Mode.SRC);
+        }
+        if(i == 3){
+            defence1.setColorFilter(5, PorterDuff.Mode.SRC);
+        }else {
+            defence1.setColorFilter(5, PorterDuff.Mode.SRC);
+        }
+        if(i == 4){
+            defence1.setColorFilter(5, PorterDuff.Mode.SRC);
+        }else {
+            defence1.setColorFilter(5, PorterDuff.Mode.SRC);
+        }
+
+        if(i == 5){
+            defence1.setColorFilter(5, PorterDuff.Mode.SRC);
+        }else {
+            defence1.setColorFilter(5, PorterDuff.Mode.SRC);
+        }
+
+
+
     }
 
 
