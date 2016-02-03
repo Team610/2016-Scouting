@@ -2,7 +2,9 @@ package com.team610.scouting.scoutingapp;
 
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
@@ -234,36 +236,36 @@ public class AutoFragment extends Fragment {
         return rootView;
     }
 
-    
+
     //need to fix
     public void colourPickedDefence(int i){
 
         if(i == 1){
-            defence1.setColorFilter(544, PorterDuff.Mode.SRC);
+            //defence1.setBackgroundTintList(ColorStateList.valueOf(Color.CYAN));
+            //defence1.setColorFilter(Color.CYAN, PorterDuff.Mode.DST_OVER);
+            //defence1.setBackgroundColor(Color.CYAN);
         }else {
-            defence1.setColorFilter(5, PorterDuff.Mode.SRC);
+            //defence1.clearColorFilter();
         }
-
         if(i == 2){
-            defence1.setColorFilter(5, PorterDuff.Mode.SRC);
+            //defence2.setColorFilter(Color.CYAN, PorterDuff.Mode.DST_OVER);
         }else {
-            defence1.setColorFilter(5, PorterDuff.Mode.SRC);
+            //defence2.clearColorFilter();
         }
         if(i == 3){
-            defence1.setColorFilter(5, PorterDuff.Mode.SRC);
+            //defence3.setColorFilter(Color.CYAN, PorterDuff.Mode.DST_OVER);
         }else {
-            defence1.setColorFilter(5, PorterDuff.Mode.SRC);
+            //defence3.clearColorFilter();
         }
         if(i == 4){
-            defence1.setColorFilter(5, PorterDuff.Mode.SRC);
+            //defence4.setColorFilter(Color.CYAN, PorterDuff.Mode.DST_OVER);
         }else {
-            defence1.setColorFilter(5, PorterDuff.Mode.SRC);
+            //defence4.clearColorFilter();
         }
-
         if(i == 5){
-            defence1.setColorFilter(5, PorterDuff.Mode.SRC);
+            //lowBarDefence5.setColorFilter(Color.CYAN, PorterDuff.Mode.DST_OVER);
         }else {
-            defence1.setColorFilter(5, PorterDuff.Mode.SRC);
+            //lowBarDefence5.clearColorFilter();
         }
 
 

@@ -131,7 +131,7 @@
         android:layout_below="@+id/reachTheDefence_checkBox"
         android:layout_alignLeft="@+id/reachTheDefence_checkBox"
         android:layout_alignStart="@+id/reachTheDefence_checkBox"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="30dp" />
 
     <ImageButton
         android:layout_width="@dimen/setup_button_layout_width"
