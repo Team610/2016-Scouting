@@ -14,10 +14,12 @@ public class MatchData {
     static MatchData instance;
 
     //MatchSetup
-    public String[] defenceTypes = new String[4];
-    public int match;
-    public int team;
+    public static String[] defenceTypes = new String[4];
+    public static int match;
+    public int team = 0;
 
+    //Change
+    static String competition = "GTC";
 
 
 
@@ -40,9 +42,15 @@ public class MatchData {
     public static int courtyardMisses = 0;
 
     //FireBase Refs
+    static Firebase competitionRef;
+
+    static Firebase matchRef;
+
+
+    static Firebase matchSetupRef;
     static Firebase autoRef;
     static Firebase teleRef;
-    static Firebase matchRef;
+
 
 
 
@@ -50,10 +58,7 @@ public class MatchData {
     private MatchData(){
 
 
-        matchRef = MainActivity.rootRef.child("Match" + match);
 
-        autoRef = matchRef.child("Auto");
-        teleRef = matchRef.child("Teleop");
 
     }
 
@@ -63,6 +68,34 @@ public class MatchData {
         }
         return instance;
     }
+
+    public static void createBranches(){
+        competitionRef = MainActivity.rootRef.child(competition);
+        matchRef = competitionRef.child("Match " + match);
+
+        matchSetupRef = matchRef.child("Match Setup");
+        autoRef = matchRef.child("Auto");
+        teleRef = matchRef.child("Teleop");
+
+
+    }
+    public static void updateMatchSetup(){
+
+        createBranches();
+        Map<String, Object> defences = new HashMap<String, Object>();
+        defences.put("Defence 1", defenceTypes[0]);
+        defences.put("Defence 2", defenceTypes[1]);
+        defences.put("Defence 3", defenceTypes[2]);
+        defences.put("Defence 4", defenceTypes[3]);
+
+        matchSetupRef.updateChildren(defences);
+
+
+    }
+
+
+
+
 
     public static void updateTeleop(){
 //        MainActivity.rootRef.child("init").setValue(highGoalScores);
@@ -84,6 +117,7 @@ public class MatchData {
     }
 
     public static void updateAuto(){
+
         Map<String, Object> auto = new HashMap<String, Object>();
 
 //        public boolean spybot;

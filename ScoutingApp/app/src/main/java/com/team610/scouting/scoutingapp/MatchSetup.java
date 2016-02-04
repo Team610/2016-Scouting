@@ -38,6 +38,7 @@ public class MatchSetup extends Fragment implements View.OnClickListener {
     int selectedDefence;
 
     MatchData thisMatch = MatchData.getInstance();
+
     String[] defences = new String[4];
     int match = 0;
     int team = 0;
@@ -286,6 +287,8 @@ public class MatchSetup extends Fragment implements View.OnClickListener {
     public void onPause() {
         saveData();
         super.onPause();
+        //delete
+        MatchData.updateMatchSetup();
     }
 
 
