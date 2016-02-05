@@ -106,7 +106,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Courtyard"
-        android:id="@+id/checkBox"
+        android:id="@+id/ended_courtyard_checkBox"
         android:layout_alignTop="@+id/highGoal_checkBox"
         android:layout_alignLeft="@+id/robotEnd_textView"
         android:layout_alignStart="@+id/robotEnd_textView"

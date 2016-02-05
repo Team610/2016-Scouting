@@ -54,6 +54,9 @@ public class AutoFragment extends Fragment {
     CheckBox spybotCheckBox;
     CheckBox scoreHighGoalCheckBox;
     CheckBox scoreLowGoalCheckBox;
+    CheckBox droppedInCourtyardCheckBox;
+    CheckBox endedInCourtyardCheckBox;
+    CheckBox endedInNeutralCheckBox;
 
     //CheckBox s
 
@@ -93,6 +96,18 @@ public class AutoFragment extends Fragment {
         }
         return instance;
     }
+
+    public void saveData(){
+        thisMatch.spybot = spybotCheckBox.isChecked();
+        thisMatch.scoredHighGoal = scoreHighGoalCheckBox.isChecked();
+        thisMatch.scoredLowGoal = scoreLowGoalCheckBox.isChecked();
+        thisMatch.placedCourtyard = droppedInCourtyardCheckBox.isChecked();
+        thisMatch.reachDefence = reachedDefenceCheckBox.isChecked();
+        thisMatch.endedNeutralZone = endedInNeutralCheckBox.isChecked();
+        thisMatch.endedCourtyard = endedInCourtyardCheckBox.isChecked();
+
+    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -161,9 +176,6 @@ public class AutoFragment extends Fragment {
         }
     }
 
-    public void saveData(){
-
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -228,10 +240,10 @@ public class AutoFragment extends Fragment {
             public void onClick(View v) {
 
 
-                if(drivenToDefence !=null && !drivenToDefence.equals(defences[3])  || drivenToDefence == null) {
+                if (drivenToDefence != null && !drivenToDefence.equals(defences[3]) || drivenToDefence == null) {
                     drivenToDefence = defences[3];
                     colourPickedDefence(4);
-                }else{
+                } else {
                     drivenToDefence = null;
                     colourPickedDefence(0);
                 }
@@ -243,10 +255,10 @@ public class AutoFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if(drivenToDefence !=null && !drivenToDefence.equals("lowbar") || drivenToDefence == null) {
+                if (drivenToDefence != null && !drivenToDefence.equals("lowbar") || drivenToDefence == null) {
                     drivenToDefence = "lowbar";
                     colourPickedDefence(5);
-                }else{
+                } else {
                     drivenToDefence = null;
                     colourPickedDefence(0);
                 }
@@ -273,6 +285,9 @@ public class AutoFragment extends Fragment {
         spybotCheckBox = (CheckBox) rootView.findViewById(R.id.spybot_checkBox);
         scoreHighGoalCheckBox= (CheckBox) rootView.findViewById(R.id.highGoal_checkBox);
         scoreLowGoalCheckBox = (CheckBox) rootView.findViewById(R.id.lowGoal_checkBox);
+        droppedInCourtyardCheckBox = (CheckBox) rootView.findViewById(R.id.courtyard_checkBox);
+        endedInCourtyardCheckBox = (CheckBox) rootView.findViewById(R.id.ended_courtyard_checkBox);
+        endedInNeutralCheckBox = (CheckBox) rootView.findViewById(R.id.neutralZone_CheckBox);
 
         //delete this
         MatchData.updateAuto();
@@ -353,6 +368,12 @@ public class AutoFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onPause() {
+        saveData();
+        super.onPause();
     }
 
     /**

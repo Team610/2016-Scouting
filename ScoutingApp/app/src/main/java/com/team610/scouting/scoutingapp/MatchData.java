@@ -31,6 +31,7 @@ public class MatchData {
     public static boolean endedCourtyard;
     public static boolean endedNeutralZone;
     public static boolean reachDefence;
+    public static String crossedDefence;
 
     //Teleop
 
