@@ -42,6 +42,18 @@ public class MatchData {
     public static int lowGoalMisses = 0;
     public static int courtyardMisses = 0;
 
+    //defences crossed in teleop
+    public static int porticullisCross = 0;
+    public static int moatCross = 0;
+    public static int rampartsCross = 0;
+    public static int rockwallCross = 0;
+    public static int roughterrainCross = 0;
+    public static int sallyportCross = 0;
+    public static int drawbridgeCross = 0;
+    public static int chevaldefriseCross  = 0;
+
+
+
     //FireBase Refs
     static Firebase competitionRef;
 
