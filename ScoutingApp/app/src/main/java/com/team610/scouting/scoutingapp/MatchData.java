@@ -16,7 +16,7 @@ public class MatchData {
     //MatchSetup
     public static String[] defenceTypes = new String[4];
     public static int match;
-    public int team = 0;
+    public static int team = 0;
 
     //Change
     static String competition = "GTC";
@@ -34,6 +34,7 @@ public class MatchData {
 
     //Teleop
 
+    //scores in teleop
     public static int highGoalScores = 0;
     public static int lowGoalScores = 0;
     public static int courtyardScores = 0;
@@ -45,11 +46,12 @@ public class MatchData {
     static Firebase competitionRef;
 
     static Firebase matchRef;
-
+    static Firebase teamRef;
 
     static Firebase matchSetupRef;
     static Firebase autoRef;
     static Firebase teleRef;
+
 
 
 
@@ -73,9 +75,11 @@ public class MatchData {
         competitionRef = MainActivity.rootRef.child(competition);
         matchRef = competitionRef.child("Match " + match);
 
-        matchSetupRef = matchRef.child("Match Setup");
-        autoRef = matchRef.child("Auto");
-        teleRef = matchRef.child("Teleop");
+        teamRef = matchRef.child(" " + team);
+
+        matchSetupRef = teamRef.child("Match Setup");
+        autoRef = teamRef.child("Auto");
+        teleRef = teamRef.child("Teleop");
 
 
     }
@@ -120,13 +124,6 @@ public class MatchData {
 
         Map<String, Object> auto = new HashMap<String, Object>();
 
-//        public boolean spybot;
-//        public boolean scoredHighGoal;
-//        public boolean scoredLowGoal;
-//        public boolean placedCourtyard;
-//        public boolean endedCourtyard;
-//        public boolean endedNeutralZone;
-//        public boolean reachDefence;
         auto.put("spybot", spybot);
         auto.put("Scored High Goal",scoredHighGoal);
         auto.put("Scored Low Goal", scoredLowGoal);
@@ -144,7 +141,31 @@ public class MatchData {
 
 
     public static void newMatch(){
+
         instance = new MatchData();
+
+        //reset values
+        spybot = false;
+        scoredHighGoal = false;
+        scoredLowGoal = false;
+        placedCourtyard = false;
+        endedCourtyard = false;
+        endedNeutralZone = false;
+        reachDefence = false;
+
+        highGoalScores = 0;
+        lowGoalScores = 0;
+        courtyardScores = 0;
+        highGoalMisses = 0;
+        lowGoalMisses = 0;
+        courtyardMisses = 0;
+
+        match = 0;
+        team = 0;
+
+
+
+
     }
 }
 
