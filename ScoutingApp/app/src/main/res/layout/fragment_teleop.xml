@@ -37,7 +37,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="166dp"
+        android:layout_marginTop="225dp"
         android:id="@+id/goalSlider_TableLayout">
 
         <include
@@ -373,6 +373,49 @@
 
 
     </TableLayout>
+
+    <ImageButton
+        android:layout_width="@dimen/setup_button_layout_width"
+        android:layout_height="@dimen/setup_button_layout_height"
+        android:id="@+id/defence1_ImageButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/goalSlider_TableLayout"
+        android:layout_alignStart="@+id/goalSlider_TableLayout"
+        android:layout_marginLeft="55dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="51dp" />
+
+    <ImageButton
+        android:layout_width="@dimen/setup_button_layout_width"
+        android:layout_height="@dimen/setup_button_layout_height"
+        android:id="@+id/defence2_ImageButton"
+        android:layout_alignTop="@+id/defence1_ImageButton"
+        android:layout_toRightOf="@+id/defence1_ImageButton"
+        android:layout_toEndOf="@+id/defence1_ImageButton" />
+
+    <ImageButton
+        android:layout_width="@dimen/setup_button_layout_width"
+        android:layout_height="@dimen/setup_button_layout_height"
+        android:id="@+id/defence3_ImageButton"
+        android:layout_alignTop="@+id/defence2_ImageButton"
+        android:layout_toRightOf="@+id/defence2_ImageButton"
+        android:layout_toEndOf="@+id/defence2_ImageButton" />
+
+    <ImageButton
+        android:layout_width="@dimen/setup_button_layout_width"
+        android:layout_height="@dimen/setup_button_layout_height"
+        android:id="@+id/defence4_ImageButton"
+        android:layout_alignTop="@+id/defence3_ImageButton"
+        android:layout_toRightOf="@+id/defence3_ImageButton"
+        android:layout_toEndOf="@+id/defence3_ImageButton" />
+
+    <ImageButton
+        android:layout_width="@dimen/setup_button_layout_width"
+        android:layout_height="@dimen/setup_button_layout_height"
+        android:id="@+id/defence5_lowbar_ImageButton"
+        android:layout_alignTop="@+id/defence4_ImageButton"
+        android:layout_toRightOf="@+id/defence4_ImageButton"
+        android:layout_toEndOf="@+id/defence4_ImageButton" />
 
 
 </RelativeLayout>

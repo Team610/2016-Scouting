@@ -49,6 +49,7 @@ public class AutoFragment extends Fragment {
     MatchData thisMatch = MatchData.getInstance();
 
     String drivenToDefence;
+    int defenceNumDrivenTo;
 
     CheckBox reachedDefenceCheckBox;
     CheckBox spybotCheckBox;
@@ -105,7 +106,7 @@ public class AutoFragment extends Fragment {
         thisMatch.reachDefence = reachedDefenceCheckBox.isChecked();
         thisMatch.endedNeutralZone = endedInNeutralCheckBox.isChecked();
         thisMatch.endedCourtyard = endedInCourtyardCheckBox.isChecked();
-
+        thisMatch.crossedDefence = drivenToDefence;
     }
 
 
@@ -123,12 +124,45 @@ public class AutoFragment extends Fragment {
         for(int i = 0; i<4; i++){
             defences[i] = thisMatch.defenceTypes[i];
         }
+        if(thisMatch.crossedDefence != null) {
+            drivenToDefence = thisMatch.crossedDefence;
+        }
 
-        setDefenceButtonPics(defence1,0, false);
+        setDefenceButtonPics(defence1, 0, false);
         setDefenceButtonPics(defence2,1, false);
         setDefenceButtonPics(defence3,2, false);
         setDefenceButtonPics(defence4, 3, false);
 
+        if(defenceNumDrivenTo == 5){
+            lowBarDefence5.setImageResource(R.drawable.lowbarselected);
+        }
+        else{
+            lowBarDefence5.setImageResource(R.drawable.lowbar);
+        }
+        if(defenceNumDrivenTo == 4){
+            setDefenceButtonPics(defence1, 0, false);
+            setDefenceButtonPics(defence2,1, false);
+            setDefenceButtonPics(defence3,2, false);
+            setDefenceButtonPics(defence4, 3, true);
+        }
+        else if(defenceNumDrivenTo == 3){
+            setDefenceButtonPics(defence1, 0, false);
+            setDefenceButtonPics(defence2,1, false);
+            setDefenceButtonPics(defence3,2, true);
+            setDefenceButtonPics(defence4, 3, false);
+        }
+        else if(defenceNumDrivenTo == 2){
+            setDefenceButtonPics(defence1, 0, false);
+            setDefenceButtonPics(defence2,1, true);
+            setDefenceButtonPics(defence3,2, false);
+            setDefenceButtonPics(defence4, 3, false);
+        }
+        else if(defenceNumDrivenTo == 1){
+            setDefenceButtonPics(defence1, 0, true);
+            setDefenceButtonPics(defence2,1, false);
+            setDefenceButtonPics(defence3,2, false);
+            setDefenceButtonPics(defence4, 3, false);
+        }
 
     }
 
@@ -196,9 +230,11 @@ public class AutoFragment extends Fragment {
                 if(drivenToDefence !=null && !drivenToDefence.equals(defences[0])  || drivenToDefence == null) {
                     drivenToDefence = defences[0];
                     colourPickedDefence(1);
+                    defenceNumDrivenTo = 1;
                 }else{
                     drivenToDefence = null;
                     colourPickedDefence(0);
+                    defenceNumDrivenTo = 0;
                 }
             }
 
@@ -210,9 +246,11 @@ public class AutoFragment extends Fragment {
                 if(drivenToDefence !=null && !drivenToDefence.equals(defences[1])  || drivenToDefence == null) {
                     drivenToDefence = defences[1];
                     colourPickedDefence(2);
+                    defenceNumDrivenTo = 2;
                 }else{
                     drivenToDefence = null;
                     colourPickedDefence(0);
+                    defenceNumDrivenTo = 0;
                 }
             }
 
@@ -225,9 +263,11 @@ public class AutoFragment extends Fragment {
                 if(drivenToDefence !=null && !drivenToDefence.equals(defences[2])  || drivenToDefence == null) {
                     drivenToDefence = defences[2];
                     colourPickedDefence(3);
+                    defenceNumDrivenTo = 3;
                 }else{
                     drivenToDefence = null;
                     colourPickedDefence(0);
+                    defenceNumDrivenTo = 0;
                 }
 
 
@@ -243,9 +283,11 @@ public class AutoFragment extends Fragment {
                 if (drivenToDefence != null && !drivenToDefence.equals(defences[3]) || drivenToDefence == null) {
                     drivenToDefence = defences[3];
                     colourPickedDefence(4);
+                    defenceNumDrivenTo = 4;
                 } else {
                     drivenToDefence = null;
                     colourPickedDefence(0);
+                    defenceNumDrivenTo = 0;
                 }
 
             }
@@ -258,9 +300,11 @@ public class AutoFragment extends Fragment {
                 if (drivenToDefence != null && !drivenToDefence.equals("lowbar") || drivenToDefence == null) {
                     drivenToDefence = "lowbar";
                     colourPickedDefence(5);
+                    defenceNumDrivenTo = 5;
                 } else {
                     drivenToDefence = null;
                     colourPickedDefence(0);
+                    defenceNumDrivenTo = 0;
                 }
             }
 
