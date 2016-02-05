@@ -109,32 +109,54 @@ public class AutoFragment extends Fragment {
             defences[i] = thisMatch.defenceTypes[i];
         }
 
-        setDefenceButtonPics(defence1,0);
-        setDefenceButtonPics(defence2,1);
-        setDefenceButtonPics(defence3,2);
-        setDefenceButtonPics(defence4, 3);
+        setDefenceButtonPics(defence1,0, false);
+        setDefenceButtonPics(defence2,1, false);
+        setDefenceButtonPics(defence3,2, false);
+        setDefenceButtonPics(defence4, 3, false);
 
 
     }
 
-    public void setDefenceButtonPics(ImageButton defence , int i){
-        if(defences[i] != null) {
-            if (defences[i].equals("porticullis")) {
-                defence.setBackgroundResource(R.drawable.portcullis);
-            } else if (defences[i].equals("moat")) {
-                defence.setBackgroundResource(R.drawable.moat);
-            } else if (defences[i].equals("ramparts")) {
-                defence.setBackgroundResource(R.drawable.ramparts);
-            } else if (defences[i].equals("rockwall")) {
-                defence.setBackgroundResource(R.drawable.rockwall);
-            } else if (defences[i].equals("roughterrain")) {
-                defence.setBackgroundResource(R.drawable.roughterrain);
-            } else if (defences[i].equals("sallyport")) {
-                defence.setBackgroundResource(R.drawable.sallyport);
-            } else if (defences[i].equals("drawbridge")) {
-                defence.setBackgroundResource(R.drawable.drawbridge);
-            } else if (defences[i].equals("chevaldefrise")) {
-                defence.setBackgroundResource(R.drawable.chevaldefrise);
+    public void setDefenceButtonPics(ImageButton defence , int i, boolean selected){
+        if(selected){
+            if (defences[i] != null) {
+                if (defences[i].equals("porticullis")) {
+                    defence.setImageResource(R.drawable.portcullisselected);
+                } else if (defences[i].equals("moat")) {
+                    defence.setImageResource(R.drawable.moatselected);
+                } else if (defences[i].equals("ramparts")) {
+                    defence.setImageResource(R.drawable.rampartsselected);
+                } else if (defences[i].equals("rockwall")) {
+                    defence.setImageResource(R.drawable.rockwallselected);
+                } else if (defences[i].equals("roughterrain")) {
+                    defence.setImageResource(R.drawable.roughterrainselected); //two of roughterrainselected for some reason, check this out
+                } else if (defences[i].equals("sallyport")) {
+                    defence.setImageResource(R.drawable.sallyportselected);
+                } else if (defences[i].equals("drawbridge")) {
+                    defence.setImageResource(R.drawable.drawbridgeselected);
+                } else if (defences[i].equals("chevaldefrise")) {
+                    defence.setImageResource(R.drawable.chevaldefriseselected);
+                }
+            }
+        }else {
+            if (defences[i] != null) {
+                if (defences[i].equals("porticullis")) {
+                    defence.setImageResource(R.drawable.portcullis);
+                } else if (defences[i].equals("moat")) {
+                    defence.setImageResource(R.drawable.moat);
+                } else if (defences[i].equals("ramparts")) {
+                    defence.setImageResource(R.drawable.ramparts);
+                } else if (defences[i].equals("rockwall")) {
+                    defence.setImageResource(R.drawable.rockwall);
+                } else if (defences[i].equals("roughterrain")) {
+                    defence.setImageResource(R.drawable.roughterrain);
+                } else if (defences[i].equals("sallyport")) {
+                    defence.setImageResource(R.drawable.sallyport);
+                } else if (defences[i].equals("drawbridge")) {
+                    defence.setImageResource(R.drawable.drawbridge);
+                } else if (defences[i].equals("chevaldefrise")) {
+                    defence.setImageResource(R.drawable.chevaldefrise);
+                }
             }
         }
     }
@@ -158,9 +180,14 @@ public class AutoFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                drivenToDefence = defences[0];
 
-                colourPickedDefence(1);
+                if(drivenToDefence !=null && !drivenToDefence.equals(defences[0])  || drivenToDefence == null) {
+                    drivenToDefence = defences[0];
+                    colourPickedDefence(1);
+                }else{
+                    drivenToDefence = null;
+                    colourPickedDefence(0);
+                }
             }
 
         });
@@ -168,9 +195,13 @@ public class AutoFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                drivenToDefence = defences[1];
-
-                colourPickedDefence(2);
+                if(drivenToDefence !=null && !drivenToDefence.equals(defences[1])  || drivenToDefence == null) {
+                    drivenToDefence = defences[1];
+                    colourPickedDefence(2);
+                }else{
+                    drivenToDefence = null;
+                    colourPickedDefence(0);
+                }
             }
 
         });
@@ -179,9 +210,15 @@ public class AutoFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                drivenToDefence = defences[2];
+                if(drivenToDefence !=null && !drivenToDefence.equals(defences[2])  || drivenToDefence == null) {
+                    drivenToDefence = defences[2];
+                    colourPickedDefence(3);
+                }else{
+                    drivenToDefence = null;
+                    colourPickedDefence(0);
+                }
 
-                colourPickedDefence(3);
+
             }
 
         });
@@ -190,9 +227,15 @@ public class AutoFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                drivenToDefence = defences[3];
 
-                colourPickedDefence(4);
+                if(drivenToDefence !=null && !drivenToDefence.equals(defences[3])  || drivenToDefence == null) {
+                    drivenToDefence = defences[3];
+                    colourPickedDefence(4);
+                }else{
+                    drivenToDefence = null;
+                    colourPickedDefence(0);
+                }
+
             }
 
         });
@@ -200,9 +243,13 @@ public class AutoFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                drivenToDefence = "lowbar";
-
-                colourPickedDefence(5);
+                if(drivenToDefence !=null && !drivenToDefence.equals("lowbar") || drivenToDefence == null) {
+                    drivenToDefence = "lowbar";
+                    colourPickedDefence(5);
+                }else{
+                    drivenToDefence = null;
+                    colourPickedDefence(0);
+                }
             }
 
         });
@@ -244,27 +291,37 @@ public class AutoFragment extends Fragment {
             //defence1.setBackgroundTintList(ColorStateList.valueOf(Color.CYAN));
             //defence1.setColorFilter(Color.CYAN, PorterDuff.Mode.DST_OVER);
             //defence1.setBackgroundColor(Color.CYAN);
+            setDefenceButtonPics(defence1, 0, true);
         }else {
             //defence1.clearColorFilter();
+            setDefenceButtonPics(defence1, 0, false);
         }
         if(i == 2){
             //defence2.setColorFilter(Color.CYAN, PorterDuff.Mode.DST_OVER);
+            setDefenceButtonPics(defence2,1,true);
         }else {
             //defence2.clearColorFilter();
+            setDefenceButtonPics(defence2, 1, false);
         }
         if(i == 3){
+            setDefenceButtonPics(defence3, 2, true);
             //defence3.setColorFilter(Color.CYAN, PorterDuff.Mode.DST_OVER);
         }else {
+            setDefenceButtonPics(defence3, 2, false);
             //defence3.clearColorFilter();
         }
         if(i == 4){
+            setDefenceButtonPics(defence4, 3, true);
             //defence4.setColorFilter(Color.CYAN, PorterDuff.Mode.DST_OVER);
         }else {
+            setDefenceButtonPics(defence4, 3, false);
             //defence4.clearColorFilter();
         }
         if(i == 5){
             //lowBarDefence5.setColorFilter(Color.CYAN, PorterDuff.Mode.DST_OVER);
+            lowBarDefence5.setImageResource(R.drawable.lowbarselected);
         }else {
+            lowBarDefence5.setImageResource(R.drawable.lowbar);
             //lowBarDefence5.clearColorFilter();
         }
 
