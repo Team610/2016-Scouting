@@ -130,6 +130,25 @@ public class MatchData {
         score.put("low goal misses", lowGoalMisses);
         score.put("courtyard misses", courtyardMisses);
 
+        /*public static int porticullisCross = 0;
+        public static int moatCross = 0;
+        public static int rampartsCross = 0;
+        public static int rockwallCross = 0;
+        public static int roughterrainCross = 0;
+        public static int sallyportCross = 0;
+        public static int drawbridgeCross = 0;
+        public static int chevaldefriseCross  = 0; */
+
+        score.put("moat crosses", moatCross);
+        score.put("porticullis crosses", porticullisCross);
+        score.put("ramparts crosses", rampartsCross);
+        score.put("rockwall crosses", rockwallCross);
+        score.put("roughterrain crosses", roughterrainCross);
+        score.put("sallyport crosses", sallyportCross);
+        score.put("drawbridge crosses", drawbridgeCross);
+        score.put("chevaldefrise", chevaldefriseCross);
+
+
         teleRef.updateChildren(score);
     }
 
