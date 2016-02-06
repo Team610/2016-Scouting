@@ -45,17 +45,20 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
+                android:id="@+id/match_teleop_high_goals"
+                android:gravity="center"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
+                android:id="@+id/match_teleop_high_attempts"
+                android:gravity="center"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
+                android:id="@+id/match_teleop_high_percent"
+                android:gravity="center"
                 />
 
         </TableRow>
@@ -68,17 +71,20 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
+                android:id="@+id/match_teleop_low_goals"
+                android:gravity="center"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
+                android:id="@+id/match_teleop_low_attempts"
+                android:gravity="center"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
+                android:gravity="center"
+                android:id="@+id/match_teleop_low_percent"
                 />
 
         </TableRow>
@@ -86,22 +92,26 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:text="Courtyard"
                 />
             <TextView
-                android:layout_width="50dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
+                android:gravity="center"
+                android:id="@+id/match_teleop_court_goals"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:id="@+id/match_teleop_court_attempts"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
+                android:gravity="center"
+                android:id="@+id/match_teleop_court_percent"
                 />
         </TableRow>
 
@@ -120,6 +130,7 @@
             <ImageView
                 android:layout_height="@dimen/teleop_circle_width"
                 android:layout_width="@dimen/teleop_circle_width"
+                android:paddingLeft="10dp"
                 android:src="@drawable/yellow_circle"
                 android:id="@+id/teleop_yellow_circle"
                 />

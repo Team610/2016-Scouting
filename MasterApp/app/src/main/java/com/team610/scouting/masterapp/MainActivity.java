@@ -71,10 +71,8 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        Log.d("S","sda");
         //TODO
         if(mFrag instanceof MatchFragment) {
-            System.out.println("SDASDSA");
             ((MatchFragment)mFrag).onMenuTap(id);
         }
         return super.onOptionsItemSelected(item);

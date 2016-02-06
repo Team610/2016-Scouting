@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TableLayout;
+import android.widget.TextView;
 
 import com.team610.scouting.masterapp.R;
 import com.team610.scouting.masterapp.team.TeamDialog;
@@ -39,7 +41,7 @@ public class MatchFragment extends Fragment {
 
 
     private int matchNum;
-   // public static String teamNum;
+    // public static String teamNum;
 
     public MatchFragment() {
         // Required empty public constructor
@@ -79,7 +81,7 @@ public class MatchFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_match, container, false);
         View auton = root.findViewById(R.id.match_auton_layout),
                 teleop = root.findViewById(R.id.match_teleop_layout);
-        auton.setVisibility(View.VISIBLE);
+        auton.setVisibility(View.GONE);
         teleop.setVisibility(View.GONE);
         return root;
     }
@@ -115,7 +117,7 @@ public class MatchFragment extends Fragment {
             createMatchDialog();
 
             //TODO LOAD DATA FROM MATCH
-        }else if(id == R.id.action_team){
+        } else if (id == R.id.action_team) {
             createTeamChoiceDialog();
 
         } else {
@@ -126,13 +128,10 @@ public class MatchFragment extends Fragment {
             teleop.setVisibility(View.GONE);
             auton.setVisibility(View.GONE);
             if (id == R.id.action_auton) {
-
                 auton.setVisibility(View.VISIBLE);
             } else if (id == R.id.action_teleop) {
                 teleop.setVisibility(View.VISIBLE);
-
             } else if (id == R.id.action_postMatch) {
-
                 post.setVisibility(View.VISIBLE);
             }
             //possible WIP fix to the hack invisble views
@@ -150,7 +149,7 @@ public class MatchFragment extends Fragment {
 
     private void createTeamDialog(String num) {
         TeamDialog dialog = TeamDialog.newInstance(Integer.valueOf(num));
-        dialog.show(getFragmentManager(),"Team Data");
+        dialog.show(getFragmentManager(), "Team Data");
     }
 
 
@@ -180,7 +179,13 @@ public class MatchFragment extends Fragment {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 matchNum = Integer.valueOf(input.getText().toString());
-                loadMatchData();
+                try {
+                    loadMatchData();
+                } catch (NoSuchFieldException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -193,16 +198,16 @@ public class MatchFragment extends Fragment {
         builder.show();
     }
 
-    public void createTeamChoiceDialog(){
+    public void createTeamChoiceDialog() {
         //TODO MAKE DYNAMIC
-       final String[] teams = {"1","2","3","4","5","6"};
-      //  ListAdapter adapter =  new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,teams);
+        final String[] teams = {"1", "2", "3", "4", "5", "6"};
+        //  ListAdapter adapter =  new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,teams);
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Choose Team")
                 .setItems(teams, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                      //  teamNum = teams[which];
+                        //  teamNum = teams[which];
                         createTeamDialog(teams[which]);
                     }
                 });
@@ -217,11 +222,48 @@ public class MatchFragment extends Fragment {
         builder.show();
     }
 
-
-
-    public void loadMatchData(){
+    public void loadMatchData() throws NoSuchFieldException, IllegalAccessException {
         ActionMenuItemView item = (ActionMenuItemView) getActivity().findViewById(R.id.action_matchNumber);
         item.setTitle("Match # " + matchNum);
+        MatchData data = new MatchData(matchNum);
+
+        for (int i = 0; i < 6; i++) {
+            Team t = data.teams[i];
+
+            //Auton
+            ViewGroup autonView = (ViewGroup) getView().findViewById(R.id.class.getField("match_auton_team" + (i + 1)).getInt(R.id.class));
+            TableLayout autonTable = (TableLayout) ((ViewGroup) autonView.getChildAt(0)).getChildAt(0);
+            ((TextView) autonTable.findViewById(R.id.match_auton_team_num)).setText(t.id + "");
+            ((TextView) autonTable.findViewById(R.id.reaches_defense)).setText(t.reachDefence + "");
+            ((TextView) autonTable.findViewById(R.id.spybot)).setText(t.spybot + "");
+            ((TextView) autonTable.findViewById(R.id.robotLocation)).setText(t.endedCourtyard + "");
+            String s = t.scoredHighGoal ? "High Goal" : t.scoredLowGoal ? "Low Goal" : t.placedCourtyard ? "Courtyard" : "Neutral Zone";
+            ((TextView) autonTable.findViewById(R.id.ballLocation)).setText(s);
+
+            //Tele-OP
+            ViewGroup teleView = (ViewGroup) getView().findViewById(R.id.class.getField("match_teleop_team" + (i + 1)).getInt(R.id.class));
+            TableLayout teleTable = (TableLayout) ((ViewGroup) teleView.getChildAt(0)).getChildAt(0);
+            ((TextView) teleTable.findViewById(R.id.match_teleop_team_num)).setText(t.id + "");
+            ((TextView) teleTable.findViewById(R.id.match_teleop_court_goals)).setText(t.courtyardScores + "");
+            ((TextView) teleTable.findViewById(R.id.match_teleop_court_attempts)).setText(t.courtyardScores + t.courtyardMisses + "");
+            ((TextView) teleTable.findViewById(R.id.match_teleop_court_percent)).setText(t.courtyardPercent + "%");
+            ((TextView) teleTable.findViewById(R.id.match_teleop_high_goals)).setText(t.highGoalScores + "");
+            ((TextView) teleTable.findViewById(R.id.match_teleop_high_attempts)).setText(t.highGoalScores + t.highGoalMisses + "");
+            ((TextView) teleTable.findViewById(R.id.match_teleop_high_percent)).setText(t.highGoalPercent + "%");
+            ((TextView) teleTable.findViewById(R.id.match_teleop_low_goals)).setText(t.lowGoalScores + "");
+            ((TextView) teleTable.findViewById(R.id.match_teleop_low_attempts)).setText(t.lowGoalScores + t.lowGoalMisses + "");
+            ((TextView) teleTable.findViewById(R.id.match_teleop_low_percent)).setText(t.lowGoalPercent + "%");
+
+
+            //Post Match
+            ViewGroup postView = (ViewGroup) getView().findViewById(R.id.class.getField("match_post_team" + (i + 1)).getInt(R.id.class));
+            TableLayout postTable = (TableLayout) ((ViewGroup) postView.getChildAt(0)).getChildAt(0);
+            ((TextView) postTable.findViewById(R.id.match_post_team_num)).setText(t.id + "");
+            ((TextView) postTable.findViewById(R.id.team_total_points)).setText(t.points + "");
+            ((TextView) postTable.findViewById(R.id.team_total_crosses)).setText(t.totalCrosses + "");
+            ((TextView) postTable.findViewById(R.id.tower_capture)).setText(t.capture);
+
+        }
     }
 
     public interface OnFragmentInteractionListener {
