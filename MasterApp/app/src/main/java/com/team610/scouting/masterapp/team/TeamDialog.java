@@ -1,20 +1,13 @@
-package com.team610.scouting.masterapp;
+package com.team610.scouting.masterapp.team;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.DialogFragment;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.TextView;
 
-import java.util.Calendar;
+import com.team610.scouting.masterapp.R;
 
 
 public class TeamDialog extends DialogFragment {
@@ -40,7 +33,7 @@ int teamNum;
 //        return d;
 //    }
 
-    static TeamDialog newInstance(int num) {
+    public static TeamDialog newInstance(int num) {
         TeamDialog f = new TeamDialog();
         // Supply num input as an argument.
         Bundle args = new Bundle();

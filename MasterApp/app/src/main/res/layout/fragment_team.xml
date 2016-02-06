@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/fragment_team"
-    tools:context="com.team610.scouting.masterapp.TeamFragment">
+    tools:context=".team.TeamFragment">
 
     <!-- TODO: Update blank fragment layout -->
 

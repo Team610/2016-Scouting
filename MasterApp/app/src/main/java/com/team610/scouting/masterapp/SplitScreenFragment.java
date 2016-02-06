@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.team610.scouting.masterapp.team.TeamFragment;
+
 
 /**
  * A simple {@link Fragment} subclass.
