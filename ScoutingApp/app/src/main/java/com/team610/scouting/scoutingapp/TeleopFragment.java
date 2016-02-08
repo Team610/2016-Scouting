@@ -37,11 +37,31 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
     MatchData thisMatch = MatchData.getInstance();
 
     ImageButton defence1;
-    ImageButton defence2;
-    ImageButton defence3;
-    ImageButton defence4;
-    ImageButton lowBarDefence5;
+    ImageButton defence1inc;
+    ImageButton defence1dec;
 
+    ImageButton defence2;
+    ImageButton defence2inc;
+    ImageButton defence2dec;
+
+    ImageButton defence3;
+    ImageButton defence3inc;
+    ImageButton defence3dec;
+
+    ImageButton defence4;
+    ImageButton defence4inc;
+    ImageButton defence4dec;
+
+    ImageButton lowBarDefence5;
+    ImageButton defence5inc;
+    ImageButton defence5dec;
+
+
+    int defence1counter = 0;
+    int defence2counter = 0;
+    int defence3counter = 0;
+    int defence4counter = 0;
+    int defence5counter = 0;
 
     String[] defences = new String[4];
 
@@ -205,6 +225,31 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
         defence3 = (ImageButton) rootView.findViewById(R.id.defence3_ImageButton);
         defence4 = (ImageButton) rootView.findViewById(R.id.defence4_ImageButton);
         lowBarDefence5 = (ImageButton) rootView.findViewById(R.id.defence5_lowbar_ImageButton);
+
+        defence1inc = (ImageButton) rootView.findViewById(R.id.plus_defence1_ImageButton);
+        defence2inc = (ImageButton) rootView.findViewById(R.id.plus_defence2_ImageButton);
+        defence3inc = (ImageButton) rootView.findViewById(R.id.plus_defence3_ImageButton);
+        defence4inc = (ImageButton) rootView.findViewById(R.id.plus_defence4_ImageButton);
+        defence5inc = (ImageButton) rootView.findViewById(R.id.plus_defence5_ImageButton);
+
+        defence1dec = (ImageButton) rootView.findViewById(R.id.minus_defence1_ImageButton);
+        defence2dec = (ImageButton) rootView.findViewById(R.id.minus_defence2_ImageButton);
+        defence3dec = (ImageButton) rootView.findViewById(R.id.minus_defence3_ImageButton);
+        defence4dec = (ImageButton) rootView.findViewById(R.id.minus_defence4_ImageButton);
+        defence5dec = (ImageButton) rootView.findViewById(R.id.minus_defence5_ImageButton);
+
+        defence1inc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                defence1counter++;
+
+                MainActivity.vib.vibrate(100);
+                //remove
+
+
+            }
+        });
 
 
         highGoalScoresTextView = (TextView) rootView.findViewById(R.id.highGoal_scores_TextView);
