@@ -34,7 +34,16 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
     private String mParam2;
 
 
+    MatchData thisMatch = MatchData.getInstance();
 
+    ImageButton defence1;
+    ImageButton defence2;
+    ImageButton defence3;
+    ImageButton defence4;
+    ImageButton lowBarDefence5;
+
+
+    String[] defences = new String[4];
 
     SeekBar sb1;
 
@@ -139,6 +148,48 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
     }
 
 
+    public void setDefenceButtonPics(ImageButton defence , int i){
+
+            if (defences[i] != null) {
+                if (defences[i].equals("porticullis")) {
+                    defence.setImageResource(R.drawable.portcullis);
+                } else if (defences[i].equals("moat")) {
+                    defence.setImageResource(R.drawable.moat);
+                } else if (defences[i].equals("ramparts")) {
+                    defence.setImageResource(R.drawable.ramparts);
+                } else if (defences[i].equals("rockwall")) {
+                    defence.setImageResource(R.drawable.rockwall);
+                } else if (defences[i].equals("roughterrain")) {
+                    defence.setImageResource(R.drawable.roughterrain);
+                } else if (defences[i].equals("sallyport")) {
+                    defence.setImageResource(R.drawable.sallyport);
+                } else if (defences[i].equals("drawbridge")) {
+                    defence.setImageResource(R.drawable.drawbridge);
+                } else if (defences[i].equals("chevaldefrise")) {
+                    defence.setImageResource(R.drawable.chevaldefrise);
+                }
+            }
+
+    }
+
+
+    public void openTeleopFragment(){
+
+        for(int i = 0; i<4; i++){
+            defences[i] = thisMatch.defenceTypes[i];
+        }
+
+
+        setDefenceButtonPics(defence1, 0);
+        setDefenceButtonPics(defence2,1);
+        setDefenceButtonPics(defence3,2);
+        setDefenceButtonPics(defence4, 3);
+
+
+        lowBarDefence5.setImageResource(R.drawable.lowbar);
+
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -148,6 +199,13 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
         // need this line to link xml!!!!
         View rootView = inflater.inflate(R.layout.fragment_teleop,
                 container, false);
+
+        defence1 = (ImageButton) rootView.findViewById(R.id.defence1_ImageButton);
+        defence2 = (ImageButton) rootView.findViewById(R.id.defence2_ImageButton);
+        defence3 = (ImageButton) rootView.findViewById(R.id.defence3_ImageButton);
+        defence4 = (ImageButton) rootView.findViewById(R.id.defence4_ImageButton);
+        lowBarDefence5 = (ImageButton) rootView.findViewById(R.id.defence5_lowbar_ImageButton);
+
 
         highGoalScoresTextView = (TextView) rootView.findViewById(R.id.highGoal_scores_TextView);
         lowGoalScoresTextView = (TextView) rootView.findViewById(R.id.lowGoal_scores_TextView);
@@ -214,6 +272,8 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
                 MatchData.updateTeleop();
             }
         });
+
+        openTeleopFragment();
 
         highGoalMissesTextView = (TextView) rootView.findViewById(R.id.highgoal_misses_TextView);
         lowGoalMissesTextView = (TextView) rootView.findViewById(R.id.lowgoal_misses_TextView);

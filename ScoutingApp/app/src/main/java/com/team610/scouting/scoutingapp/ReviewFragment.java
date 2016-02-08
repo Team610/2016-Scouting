@@ -29,6 +29,7 @@ public class ReviewFragment extends Fragment {
     private String mParam2;
 
     TextView matchNum;
+    TextView autonCrossedDefence;
     MatchData match;
 
     private OnFragmentInteractionListener mListener;
@@ -75,7 +76,8 @@ public class ReviewFragment extends Fragment {
         matchNum = (TextView) v.findViewById(R.id.matchNum_review_TextView);
         matchNum.setText(""+match.match);
 
-
+        autonCrossedDefence = (TextView) v.findViewById(R.id.auton_crossed_defence_TextView);
+        autonCrossedDefence.setText("" +match.crossedDefence);
 
         return v;
     }
