@@ -63,6 +63,12 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
     int defence4counter = 0;
     int defence5counter = 0;
 
+    TextView defence1DisplayCount;
+    TextView defence2DisplayCount;
+    TextView defence3DisplayCount;
+    TextView defence4DisplayCount;
+    TextView defence5DisplayCount;
+
     String[] defences = new String[4];
 
     SeekBar sb1;
@@ -198,7 +204,7 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
         for(int i = 0; i<4; i++){
             defences[i] = thisMatch.defenceTypes[i];
         }
-
+        
 
         setDefenceButtonPics(defence1, 0);
         setDefenceButtonPics(defence2,1);
@@ -238,6 +244,15 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
         defence4dec = (ImageButton) rootView.findViewById(R.id.minus_defence4_ImageButton);
         defence5dec = (ImageButton) rootView.findViewById(R.id.minus_defence5_ImageButton);
 
+
+        defence1DisplayCount = (TextView) rootView.findViewById(R.id.defence1_count_TextView);
+        defence2DisplayCount = (TextView) rootView.findViewById(R.id.defence2_count_TextView);
+        defence3DisplayCount = (TextView) rootView.findViewById(R.id.defence3_count_TextView);
+        defence4DisplayCount = (TextView) rootView.findViewById(R.id.defence4_count_TextView);
+        defence5DisplayCount = (TextView) rootView.findViewById(R.id.defence5_count_TextView);
+
+
+
         defence1inc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -248,6 +263,130 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
                 //remove
 
 
+                defence1DisplayCount.setText("" + defence1counter);
+
+            }
+        });
+        defence1dec.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+
+                if(defence1counter > 0){
+                    defence1counter--;
+                }
+
+                MainActivity.vib.vibrate(100);
+
+                defence1DisplayCount.setText("" + defence1counter);
+            }
+        });
+
+        defence2inc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                defence2counter++;
+
+                MainActivity.vib.vibrate(100);
+                //remove
+
+
+                defence2DisplayCount.setText("" + defence2counter);
+
+            }
+        });
+        defence2dec.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+
+                if(defence2counter > 0){
+                    defence2counter--;
+                }
+
+                MainActivity.vib.vibrate(100);
+
+                defence2DisplayCount.setText("" + defence2counter);
+            }
+        });
+        defence3inc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                defence3counter++;
+
+                MainActivity.vib.vibrate(100);
+                //remove
+
+
+                defence3DisplayCount.setText("" + defence3counter);
+
+            }
+        });
+        defence3dec.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+
+                if(defence3counter > 0){
+                    defence3counter--;
+                }
+
+                MainActivity.vib.vibrate(100);
+
+                defence3DisplayCount.setText("" + defence3counter);
+            }
+        });
+        defence4inc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                defence4counter++;
+
+                MainActivity.vib.vibrate(100);
+                //remove
+
+
+                defence4DisplayCount.setText("" + defence4counter);
+
+            }
+        });
+        defence4dec.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+
+                if(defence4counter > 0){
+                    defence4counter--;
+                }
+
+                MainActivity.vib.vibrate(100);
+
+                defence4DisplayCount.setText("" + defence4counter);
+            }
+        });
+        defence5inc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                defence5counter++;
+
+                MainActivity.vib.vibrate(100);
+                //remove
+
+
+                defence5DisplayCount.setText("" + defence5counter);
+
+            }
+        });
+        defence5dec.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+
+                if(defence5counter > 0){
+                    defence5counter--;
+                }
+
+                MainActivity.vib.vibrate(100);
+
+                defence5DisplayCount.setText("" + defence5counter);
             }
         });
 
