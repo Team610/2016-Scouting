@@ -63,6 +63,12 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
     int defence4counter = 0;
     int defence5counter = 0;
 
+    int defence1rating = 0;
+    int defence2rating = 0;
+    int defence3rating = 0;
+    int defence4rating = 0;
+    int defence5rating = 0;
+
     TextView defence1DisplayCount;
     TextView defence2DisplayCount;
     TextView defence3DisplayCount;
@@ -204,7 +210,7 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
         for(int i = 0; i<4; i++){
             defences[i] = thisMatch.defenceTypes[i];
         }
-        
+
 
         setDefenceButtonPics(defence1, 0);
         setDefenceButtonPics(defence2,1);
@@ -395,9 +401,9 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
         lowGoalScoresTextView = (TextView) rootView.findViewById(R.id.lowGoal_scores_TextView);
         courtyardScoresTextView = (TextView) rootView.findViewById(R.id.courtyard_scores_TextView);
 
-        highGoalScoresTextView.setText("" + MatchData.highGoalScores);
-        lowGoalScoresTextView.setText("" + MatchData.lowGoalScores);
-        courtyardScoresTextView.setText("" + MatchData.courtyardScores);
+        highGoalScoresTextView.setText("" + thisMatch.highGoalScores);
+        lowGoalScoresTextView.setText("" + thisMatch.lowGoalScores);
+        courtyardScoresTextView.setText("" + thisMatch.courtyardScores);
 
 
         //plus button
@@ -407,14 +413,14 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
             @Override
             public void onClick(View v) {
                 if (state == 0) {
-                    MatchData.highGoalScores++;
-                    highGoalScoresTextView.setText("" + MatchData.highGoalScores);
+                    thisMatch.highGoalScores++;
+                    highGoalScoresTextView.setText("" + thisMatch.highGoalScores);
                 } else if (state == 1) {
-                    MatchData.lowGoalScores++;
-                    lowGoalScoresTextView.setText("" + MatchData.lowGoalScores);
+                    thisMatch.lowGoalScores++;
+                    lowGoalScoresTextView.setText("" + thisMatch.lowGoalScores);
                 } else {
-                    MatchData.courtyardScores++;
-                    courtyardScoresTextView.setText("" + MatchData.courtyardScores);
+                    thisMatch.courtyardScores++;
+                    courtyardScoresTextView.setText("" + thisMatch.courtyardScores);
                 }
 
                 MainActivity.vib.vibrate(100);
@@ -430,25 +436,25 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
             @Override
             public void onClick(View v) {
                 if(state == 0) {
-                    MatchData.highGoalScores--;
-                    if(MatchData.highGoalScores < 0){
-                        MatchData.highGoalScores = 0;
+                    thisMatch.highGoalScores--;
+                    if(thisMatch.highGoalScores < 0){
+                        thisMatch.highGoalScores = 0;
                     }
-                    highGoalScoresTextView.setText("" + MatchData.highGoalScores);
+                    highGoalScoresTextView.setText("" + thisMatch.highGoalScores);
                 }
                 else if(state == 1){
-                    MatchData.lowGoalScores--;
-                    if(MatchData.lowGoalScores < 0){
-                        MatchData.lowGoalScores = 0;
+                    thisMatch.lowGoalScores--;
+                    if(thisMatch.lowGoalScores < 0){
+                        thisMatch.lowGoalScores = 0;
                     }
-                    lowGoalScoresTextView.setText("" + MatchData.lowGoalScores);
+                    lowGoalScoresTextView.setText("" + thisMatch.lowGoalScores);
                 }
                 else{
-                    MatchData.courtyardScores--;
-                    if(MatchData.courtyardScores < 0){
-                        MatchData.courtyardScores = 0;
+                    thisMatch.courtyardScores--;
+                    if(thisMatch.courtyardScores < 0){
+                        thisMatch.courtyardScores = 0;
                     }
-                    courtyardScoresTextView.setText("" + MatchData.courtyardScores);
+                    courtyardScoresTextView.setText("" + thisMatch.courtyardScores);
                 }
 
                 MainActivity.vib.vibrate(100);
@@ -466,25 +472,25 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
         plusMisses = (ImageButton) rootView.findViewById(R.id.plus_misses_ImageButton);
         minusMisses = (ImageButton) rootView.findViewById(R.id.minus_misses_ImageButton);
 
-        highGoalMissesTextView.setText("" + MatchData.highGoalMisses);
-        lowGoalMissesTextView.setText("" + MatchData.lowGoalMisses);
-        courtyardMissesTextView.setText("" + MatchData.courtyardMisses);
+        highGoalMissesTextView.setText("" + thisMatch.highGoalMisses);
+        lowGoalMissesTextView.setText("" + thisMatch.lowGoalMisses);
+        courtyardMissesTextView.setText("" + thisMatch.courtyardMisses);
 
 
         plusMisses.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(state == 0) {
-                    MatchData.highGoalMisses++;
-                    highGoalMissesTextView.setText("" + MatchData.highGoalMisses);
+                    thisMatch.highGoalMisses++;
+                    highGoalMissesTextView.setText("" + thisMatch.highGoalMisses);
                 }
                 else if(state == 1){
-                    MatchData.lowGoalMisses++;
-                    lowGoalMissesTextView.setText("" + MatchData.lowGoalMisses);
+                    thisMatch.lowGoalMisses++;
+                    lowGoalMissesTextView.setText("" + thisMatch.lowGoalMisses);
                 }
                 else{
-                    MatchData.courtyardMisses++;
-                    courtyardMissesTextView.setText("" + MatchData.courtyardMisses);
+                    thisMatch.courtyardMisses++;
+                    courtyardMissesTextView.setText("" + thisMatch.courtyardMisses);
                 }
 
                 MainActivity.vib.vibrate(100);
@@ -499,25 +505,25 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
             @Override
             public void onClick(View v) {
                 if(state == 0) {
-                    MatchData.highGoalMisses--;
-                    if(MatchData.highGoalMisses < 0){
-                        MatchData.highGoalMisses = 0;
+                    thisMatch.highGoalMisses--;
+                    if(thisMatch.highGoalMisses < 0){
+                        thisMatch.highGoalMisses = 0;
                     }
-                    highGoalMissesTextView.setText("" + MatchData.highGoalMisses);
+                    highGoalMissesTextView.setText("" + thisMatch.highGoalMisses);
                 }
                 else if(state == 1){
-                    MatchData.lowGoalMisses--;
-                    if(MatchData.lowGoalMisses < 0){
-                        MatchData.lowGoalMisses = 0;
+                    thisMatch.lowGoalMisses--;
+                    if(thisMatch.lowGoalMisses < 0){
+                        thisMatch.lowGoalMisses = 0;
                     }
-                    lowGoalMissesTextView.setText("" + MatchData.lowGoalMisses);
+                    lowGoalMissesTextView.setText("" + thisMatch.lowGoalMisses);
                 }
                 else{
-                    MatchData.courtyardMisses--;
-                    if(MatchData.courtyardMisses < 0){
-                        MatchData.courtyardMisses = 0;
+                    thisMatch.courtyardMisses--;
+                    if(thisMatch.courtyardMisses < 0){
+                        thisMatch.courtyardMisses = 0;
                     }
-                    courtyardMissesTextView.setText("" + MatchData.courtyardMisses);
+                    courtyardMissesTextView.setText("" + thisMatch.courtyardMisses);
                 }
 
                 MainActivity.vib.vibrate(100);
@@ -554,6 +560,30 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
         }
+    }
+
+    @Override
+    public void onPause() {
+        saveData();
+        super.onPause();
+    }
+
+    public void saveData(){
+
+        thisMatch.defence1Cross = defence1counter;
+        thisMatch.defence2Cross = defence2counter;
+        thisMatch.defence3Cross = defence3counter;
+        thisMatch.defence4Cross = defence4counter;
+        thisMatch.defence5Cross = defence5counter;
+
+        thisMatch.defence1Rating = defence1rating;
+        thisMatch.defence2Rating = defence2rating;
+        thisMatch.defence3Rating = defence3rating;
+        thisMatch.defence4Rating = defence4rating;
+        thisMatch.defence5Rating = defence5rating;
+
+
+
     }
 
     @Override

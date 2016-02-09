@@ -28,7 +28,8 @@ public class MainActivity extends AppCompatActivity
             InitialFragment.OnFragmentInteractionListener,
             AutoFragment.OnFragmentInteractionListener,
             SelectDefences.OnFragmentInteractionListener,
-        ReviewFragment.OnFragmentInteractionListener{
+            ReviewFragment.OnFragmentInteractionListener,
+            ExtraData.OnFragmentInteractionListener{
 
     public static Vibrator vib;
     public static Firebase rootRef;
@@ -170,12 +171,17 @@ public class MainActivity extends AppCompatActivity
             TeleopFragment mFrag = TeleopFragment.getInstance();
             transaction.replace(R.id.main_container,mFrag).commit();
         }
-        else if(id == R.id.frament_review){
+        else if(id == R.id.fragment_review){
 
             //saveAllFragmentData();
 
             ReviewFragment mFrag = new ReviewFragment();
             transaction.replace(R.id.main_container,mFrag).commit();
+        }
+        else if(id == R.id.fragment_extra_data){
+
+            ExtraData mFrag = new ExtraData();
+            transaction.replace(R.id.main_container, mFrag).commit();
         }
 
 
@@ -223,5 +229,8 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+    @Override
+    public void onExtraDataFragmentInteraction(Uri uri) {
 
+    }
 }
