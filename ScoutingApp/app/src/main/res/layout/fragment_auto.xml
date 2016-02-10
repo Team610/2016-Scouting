@@ -171,5 +171,15 @@
         android:src="@drawable/lowbar"
         android:scaleType="fitXY"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Defence Crossed: "
+        android:id="@+id/defence_crossed_title_TextView"
+        android:layout_below="@+id/reachTheDefence_checkBox"
+        android:layout_alignLeft="@+id/defence1_ImageButton"
+        android:layout_alignStart="@+id/defence1_ImageButton" />
+
 
 </RelativeLayout>
