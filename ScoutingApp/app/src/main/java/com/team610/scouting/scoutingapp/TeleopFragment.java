@@ -220,6 +220,12 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
 
         lowBarDefence5.setImageResource(R.drawable.lowbar);
 
+        defence1DisplayCount.setText(""+defence1counter);
+        defence2DisplayCount.setText(""+defence2counter);
+        defence3DisplayCount.setText(""+defence3counter);
+        defence4DisplayCount.setText(""+defence4counter);
+        defence5DisplayCount.setText(""+defence5counter);
+
 
     }
 
@@ -435,23 +441,21 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
         minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(state == 0) {
+                if (state == 0) {
                     thisMatch.highGoalScores--;
-                    if(thisMatch.highGoalScores < 0){
+                    if (thisMatch.highGoalScores < 0) {
                         thisMatch.highGoalScores = 0;
                     }
                     highGoalScoresTextView.setText("" + thisMatch.highGoalScores);
-                }
-                else if(state == 1){
+                } else if (state == 1) {
                     thisMatch.lowGoalScores--;
-                    if(thisMatch.lowGoalScores < 0){
+                    if (thisMatch.lowGoalScores < 0) {
                         thisMatch.lowGoalScores = 0;
                     }
                     lowGoalScoresTextView.setText("" + thisMatch.lowGoalScores);
-                }
-                else{
+                } else {
                     thisMatch.courtyardScores--;
-                    if(thisMatch.courtyardScores < 0){
+                    if (thisMatch.courtyardScores < 0) {
                         thisMatch.courtyardScores = 0;
                     }
                     courtyardScoresTextView.setText("" + thisMatch.courtyardScores);
@@ -463,7 +467,7 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
             }
         });
 
-        openTeleopFragment();
+
 
         highGoalMissesTextView = (TextView) rootView.findViewById(R.id.highgoal_misses_TextView);
         lowGoalMissesTextView = (TextView) rootView.findViewById(R.id.lowgoal_misses_TextView);
@@ -538,6 +542,8 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
         sb1.setOnSeekBarChangeListener(this);
 
         sb1.setProgress(50);
+
+        openTeleopFragment();
 
         return rootView;
         //return inflater.inflate(R.layout.fragment_teleop, container, false);
