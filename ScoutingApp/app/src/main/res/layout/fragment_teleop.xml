@@ -577,5 +577,35 @@
         android:layout_toRightOf="@+id/minus_defence5_ImageButton"
         android:layout_toEndOf="@+id/minus_defence5_ImageButton" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Fouls: 0"
+        android:id="@+id/foul_title_TextView"
+        android:layout_below="@+id/minus_defence5_ImageButton"
+        android:layout_alignLeft="@+id/tableLayout2"
+        android:layout_alignStart="@+id/tableLayout2" />
+
+    <ImageButton
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="fitCenter"
+        android:id="@+id/foul_plus_ImageButton"
+        android:layout_alignTop="@+id/goalSlider_TableLayout"
+        android:layout_alignLeft="@+id/foul_title_TextView"
+        android:layout_alignStart="@+id/foul_title_TextView"
+        android:src="@drawable/plus"/>
+
+    <ImageButton
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="fitCenter"
+        android:id="@+id/foul_minus_ImageButton"
+        android:layout_alignTop="@+id/foul_plus_ImageButton"
+        android:layout_toRightOf="@+id/foul_plus_ImageButton"
+        android:layout_toEndOf="@+id/foul_plus_ImageButton"
+        android:src="@drawable/minus"/>
+
 
 </RelativeLayout>

@@ -50,6 +50,8 @@ public class MatchData {
     public int defence4Cross = 0;
     public int defence5Cross = 0;
 
+    public int fouls = 0;
+
 
     //Ratings of defenses
     //0 didn't cross

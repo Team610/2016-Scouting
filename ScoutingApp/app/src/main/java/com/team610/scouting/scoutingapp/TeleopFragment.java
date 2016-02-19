@@ -56,6 +56,10 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
     ImageButton defence5inc;
     ImageButton defence5dec;
 
+    ImageButton foulinc;
+    ImageButton fouldec;
+    TextView foulTitle;
+
 
     int defence1counter = 0;
     int defence2counter = 0;
@@ -76,6 +80,15 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
     TextView defence5DisplayCount;
 
     String[] defences = new String[4];
+
+    int foulCounter = 0;
+
+    int highGoalScoreCounter = 0;
+    int highGoalMissesCounter = 0;
+    int lowGoalScoreCounter = 0;
+    int lowGoalMissesCounter = 0;
+    int courtyardDropsScoreCounter = 0;
+    int courtyardDropsMissesCounter = 0;
 
     SeekBar sb1;
 
@@ -211,6 +224,16 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
             defences[i] = thisMatch.defenceTypes[i];
         }
 
+        highGoalScoreCounter = thisMatch.highGoalScores;
+        highGoalMissesCounter = thisMatch.highGoalMisses;
+        lowGoalScoreCounter = thisMatch.lowGoalScores;
+        lowGoalMissesCounter = thisMatch.lowGoalMisses;
+        courtyardDropsScoreCounter = thisMatch.courtyardScores;
+        courtyardDropsMissesCounter = thisMatch.courtyardMisses;
+
+        foulCounter = thisMatch.fouls;
+        foulTitle.setText("Fouls: " + foulCounter);
+
 
         setDefenceButtonPics(defence1, 0);
         setDefenceButtonPics(defence2,1);
@@ -262,6 +285,11 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
         defence3DisplayCount = (TextView) rootView.findViewById(R.id.defence3_count_TextView);
         defence4DisplayCount = (TextView) rootView.findViewById(R.id.defence4_count_TextView);
         defence5DisplayCount = (TextView) rootView.findViewById(R.id.defence5_count_TextView);
+
+
+        foulinc = (ImageButton) rootView.findViewById(R.id.foul_plus_ImageButton);
+        fouldec = (ImageButton) rootView.findViewById(R.id.foul_minus_ImageButton);
+        foulTitle = (TextView) rootView.findViewById(R.id.foul_title_TextView);
 
 
 
@@ -402,6 +430,29 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
             }
         });
 
+        foulinc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                foulCounter++;
+
+                MainActivity.vib.vibrate(100);
+
+                foulTitle.setText("Fouls: " + foulCounter);
+            }
+        });
+
+        fouldec.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(foulCounter > 0){
+                    foulCounter--;
+                }
+
+                MainActivity.vib.vibrate(100);
+
+                foulTitle.setText("Fouls: " + foulCounter);
+            }
+        });
 
         highGoalScoresTextView = (TextView) rootView.findViewById(R.id.highGoal_scores_TextView);
         lowGoalScoresTextView = (TextView) rootView.findViewById(R.id.lowGoal_scores_TextView);
@@ -587,7 +638,7 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
         thisMatch.defence3Rating = defence3rating;
         thisMatch.defence4Rating = defence4rating;
         thisMatch.defence5Rating = defence5rating;
-
+        thisMatch.fouls = foulCounter;
 
 
     }
