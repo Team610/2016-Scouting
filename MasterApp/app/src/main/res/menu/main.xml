@@ -31,4 +31,11 @@
         app:showAsAction="ifRoom"
         />
    </group>
+    <item
+        android:id="@+id/action_tournament"
+        app:showAsAction="ifRoom"
+        android:orderInCategory="10"
+        android:title="Tournament"
+        android:onClick="createTournamentDialog"
+        />
 </menu>

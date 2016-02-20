@@ -6,12 +6,20 @@
     >
 
     <TextView
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/team_dialog_team"/>
+        android:id="@+id/team_dialog_team"
+        android:text="Placeholder"
+        />
 
-
-
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_below="@+id/team_dialog_team"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>

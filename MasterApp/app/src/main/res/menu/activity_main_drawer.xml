@@ -5,7 +5,7 @@
         <item
             android:id="@+id/nav_teams"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Teams" />
+            android:title="Team" />
         <item
             android:id="@+id/nav_matches"
             android:icon="@drawable/ic_menu_gallery"
@@ -14,6 +14,14 @@
             android:id="@+id/nav_field"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Field" />
+        <item
+            android:id="@+id/nav_list"
+            android:title="Team List"
+            />
+        <item
+            android:id="@+id/nav_alliance"
+            android:title="Alliances"
+            />
     </group>
 
 

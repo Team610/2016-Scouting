@@ -32,7 +32,7 @@ public class MatchFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    private MatchData data;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -121,6 +121,7 @@ public class MatchFragment extends Fragment {
             createTeamChoiceDialog();
 
         } else {
+
             View auton = getActivity().findViewById(R.id.match_auton_layout),
                     teleop = getActivity().findViewById(R.id.match_teleop_layout),
                     post = getActivity().findViewById(R.id.match_post_layout);
@@ -134,21 +135,11 @@ public class MatchFragment extends Fragment {
             } else if (id == R.id.action_postMatch) {
                 post.setVisibility(View.VISIBLE);
             }
-            //possible WIP fix to the hack invisble views
-//            LayoutInflater inflater = LayoutInflater.from(getActivity());
-//            View inflatedLayout;
-//            if (id == R.id.action_auton) {
-//                inflatedLayout= inflater.inflate(R.layout.match_auton, null, false);
-//            } else if (id == R.id.action_teleop) {
-//                inflatedLayout= inflater.inflate(R.layout.match_teleop, null, false);
-//            } else if (id == R.id.action_postMatch) {
-//                inflatedLayout= inflater.inflate(R.layout.match_post, null, false);
-//            }
         }
     }
 
-    private void createTeamDialog(String num) {
-        TeamDialog dialog = TeamDialog.newInstance(Integer.valueOf(num));
+    private void createTeamDialog(Team team) {
+        TeamDialog dialog = TeamDialog.newInstance(team.id);
         dialog.show(getFragmentManager(), "Team Data");
     }
 
@@ -180,6 +171,7 @@ public class MatchFragment extends Fragment {
             public void onClick(DialogInterface dialog, int which) {
                 matchNum = Integer.valueOf(input.getText().toString());
                 try {
+
                     loadMatchData();
                 } catch (NoSuchFieldException e) {
                     e.printStackTrace();
@@ -199,16 +191,15 @@ public class MatchFragment extends Fragment {
     }
 
     public void createTeamChoiceDialog() {
-        //TODO MAKE DYNAMIC
-        final String[] teams = {"1", "2", "3", "4", "5", "6"};
         //  ListAdapter adapter =  new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,teams);
+        if(data == null) return;
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Choose Team")
-                .setItems(teams, new DialogInterface.OnClickListener() {
+                .setItems(getStringArray(data.teams), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //  teamNum = teams[which];
-                        createTeamDialog(teams[which]);
+                        createTeamDialog(data.teams[which]);
                     }
                 });
         //Set up negative button
@@ -222,10 +213,18 @@ public class MatchFragment extends Fragment {
         builder.show();
     }
 
+    private String[] getStringArray(Team[] teams) {
+        String[] toReturn = new String[6];
+        for(int i = 0; i < 6; i++){
+            toReturn[i] = teams[i].id + "";
+        }
+        return toReturn;
+    }
+
     public void loadMatchData() throws NoSuchFieldException, IllegalAccessException {
         ActionMenuItemView item = (ActionMenuItemView) getActivity().findViewById(R.id.action_matchNumber);
         item.setTitle("Match # " + matchNum);
-        MatchData data = new MatchData(matchNum);
+        data = new MatchData(matchNum);
 
         for (int i = 0; i < 6; i++) {
             Team t = data.teams[i];
