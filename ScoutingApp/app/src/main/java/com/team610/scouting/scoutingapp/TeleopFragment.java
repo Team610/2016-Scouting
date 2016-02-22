@@ -60,6 +60,18 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
     ImageButton fouldec;
     TextView foulTitle;
 
+    //Ratings of defenses
+    //0 didn't cross
+    //1 green - really good
+    //2 yellow - ok
+    //3 red - really bad
+
+    int defence1State = 0;
+    int defence2State = 0;
+    int defence3State = 0;
+    int defence4State = 0;
+    int defence5State = 0;
+
 
     int defence1counter = 0;
     int defence2counter = 0;
@@ -67,11 +79,11 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
     int defence4counter = 0;
     int defence5counter = 0;
 
-    int defence1rating = 0;
-    int defence2rating = 0;
-    int defence3rating = 0;
-    int defence4rating = 0;
-    int defence5rating = 0;
+//    int defence1rating = 0;
+//    int defence2rating = 0;
+//    int defence3rating = 0;
+//    int defence4rating = 0;
+//    int defence5rating = 0;
 
     TextView defence1DisplayCount;
     TextView defence2DisplayCount;
@@ -193,25 +205,162 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
     }
 
 
-    public void setDefenceButtonPics(ImageButton defence , int i){
+    public void setDefenceButtonPics(ImageButton defence , int i, int state){
 
             if (defences[i] != null) {
                 if (defences[i].equals("porticullis")) {
-                    defence.setImageResource(R.drawable.portcullis);
+                    switch (state){
+                        case 0:
+                            defence.setImageResource(R.drawable.portcullis);
+                            break;
+                        case 1:
+                            //defence.setImageResource(R.drawable.portcullisgreen);
+                            break;
+                        case 2:
+                            //defence.setImageResource(R.drawable.portcullisyellow);
+                            break;
+                        case 3:
+                            //defence.setImageResource(R.drawable.portcullisred);
+                            break;
+                        default:
+                            defence.setImageResource(R.drawable.portcullis);
+                            break;
+                    }
+
+
                 } else if (defences[i].equals("moat")) {
-                    defence.setImageResource(R.drawable.moat);
+                    switch (state){
+                        case 0:
+                            defence.setImageResource(R.drawable.moat);
+                            break;
+                        case 1:
+                            //defence.setImageResource(R.drawable.moatgreen);
+                            break;
+                        case 2:
+                            //defence.setImageResource(R.drawable.moatyellow);
+                            break;
+                        case 3:
+                            //defence.setImageResource(R.drawable.moatred);
+                            break;
+                        default:
+                            defence.setImageResource(R.drawable.moat);
+                            break;
+                    }
+
                 } else if (defences[i].equals("ramparts")) {
-                    defence.setImageResource(R.drawable.ramparts);
+                    switch (state){
+                        case 0:
+                            defence.setImageResource(R.drawable.ramparts);
+                            break;
+                        case 1:
+                            //defence.setImageResource(R.drawable.rampartsgreen);
+                            break;
+                        case 2:
+                            //defence.setImageResource(R.drawable.rampartsyellow);
+                            break;
+                        case 3:
+                            //defence.setImageResource(R.drawable.rampartsred);
+                            break;
+                        default:
+                            defence.setImageResource(R.drawable.ramparts);
+                            break;
+                    }
+
                 } else if (defences[i].equals("rockwall")) {
-                    defence.setImageResource(R.drawable.rockwall);
+                    switch (state){
+                        case 0:
+                            defence.setImageResource(R.drawable.rockwall);
+                            break;
+                        case 1:
+                            //defence.setImageResource(R.drawable.rockwallgreen);
+                            break;
+                        case 2:
+                            //defence.setImageResource(R.drawable.rockwallyellow);
+                            break;
+                        case 3:
+                            //defence.setImageResource(R.drawable.rockwallred);
+                            break;
+                        default:
+                            defence.setImageResource(R.drawable.rockwall);
+                            break;
+                    }
+
                 } else if (defences[i].equals("roughterrain")) {
-                    defence.setImageResource(R.drawable.roughterrain);
+                    switch (state){
+                        case 0:
+                            defence.setImageResource(R.drawable.roughterrain);
+                            break;
+                        case 1:
+                            //defence.setImageResource(R.drawable.roughterraingreen);
+                            break;
+                        case 2:
+                            //defence.setImageResource(R.drawable.roughterrainyellow);
+                            break;
+                        case 3:
+                            //defence.setImageResource(R.drawable.roughterrainred);
+                            break;
+                        default:
+                            defence.setImageResource(R.drawable.roughterrain);
+                            break;
+                    }
+
                 } else if (defences[i].equals("sallyport")) {
-                    defence.setImageResource(R.drawable.sallyport);
+                    switch (state){
+                        case 0:
+                            defence.setImageResource(R.drawable.sallyport);
+                            break;
+                        case 1:
+                            //defence.setImageResource(R.drawable.sallyportgreen);
+                            break;
+                        case 2:
+                            //defence.setImageResource(R.drawable.sallyportyellow);
+                            break;
+                        case 3:
+                            //defence.setImageResource(R.drawable.sallyportred);
+                            break;
+                        default:
+                            defence.setImageResource(R.drawable.sallyport);
+                            break;
+                    }
+
                 } else if (defences[i].equals("drawbridge")) {
-                    defence.setImageResource(R.drawable.drawbridge);
+                    switch (state){
+                        case 0:
+                            defence.setImageResource(R.drawable.drawbridge);
+                            break;
+                        case 1:
+                            //defence.setImageResource(R.drawable.drawbridgegreen);
+                            break;
+                        case 2:
+                            //defence.setImageResource(R.drawable.drawbridgeyellow);
+                            break;
+                        case 3:
+                            //defence.setImageResource(R.drawable.drawbridgered);
+                            break;
+                        default:
+                            defence.setImageResource(R.drawable.drawbridge);
+                            break;
+                    }
+
                 } else if (defences[i].equals("chevaldefrise")) {
-                    defence.setImageResource(R.drawable.chevaldefrise);
+                    switch (state){
+                        case 0:
+                            defence.setImageResource(R.drawable.chevaldefrise);
+                            break;
+                        case 1:
+                            //defence.setImageResource(R.drawable.chevaldefrisegreen);
+                            break;
+                        case 2:
+                            //defence.setImageResource(R.drawable.chevaldefriseyellow);
+                            break;
+                        case 3:
+                            //defence.setImageResource(R.drawable.chevaldefrisered);
+                            break;
+                        default:
+                            defence.setImageResource(R.drawable.chevaldefrise);
+                            break;
+                    }
+
                 }
             }
 
@@ -231,14 +380,23 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
         courtyardDropsScoreCounter = thisMatch.courtyardScores;
         courtyardDropsMissesCounter = thisMatch.courtyardMisses;
 
+        defence1State = thisMatch.defence1Rating;
+        defence2State = thisMatch.defence2Rating;
+        defence3State = thisMatch.defence3Rating;
+        defence4State = thisMatch.defence4Rating;
+        defence5State = thisMatch.defence5Rating;
+
+
         foulCounter = thisMatch.fouls;
         foulTitle.setText("Fouls: " + foulCounter);
 
 
-        setDefenceButtonPics(defence1, 0);
-        setDefenceButtonPics(defence2,1);
-        setDefenceButtonPics(defence3,2);
-        setDefenceButtonPics(defence4, 3);
+        setDefenceButtonPics(defence1, 0, defence1State);
+        setDefenceButtonPics(defence2,1, defence2State);
+        setDefenceButtonPics(defence3,2, defence3State);
+        setDefenceButtonPics(defence4, 3, defence4State);
+        setDefenceButtonPics(lowBarDefence5, 4, defence5State);
+
 
 
         lowBarDefence5.setImageResource(R.drawable.lowbar);
@@ -291,6 +449,93 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
         fouldec = (ImageButton) rootView.findViewById(R.id.foul_minus_ImageButton);
         foulTitle = (TextView) rootView.findViewById(R.id.foul_title_TextView);
 
+
+        defence1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                defence1State++;
+
+                if(defence1State > 3){
+                    defence1State = 0;
+                }
+
+                MainActivity.vib.vibrate(100);
+                //remove
+
+
+
+            }
+        });
+
+        defence2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                defence2State++;
+
+                if(defence2State > 3){
+                    defence2State = 0;
+                }
+
+                MainActivity.vib.vibrate(100);
+                //remove
+
+
+            }
+        });
+
+        defence3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                defence3State++;
+
+                if(defence3State > 3){
+                    defence3State = 0;
+                }
+
+                MainActivity.vib.vibrate(100);
+                //remove
+
+
+
+            }
+        });
+
+        defence4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                defence4State++;
+
+                if(defence4State > 3){
+                    defence4State = 0;
+                }
+
+                MainActivity.vib.vibrate(100);
+                //remove
+
+
+            }
+        });
+
+        lowBarDefence5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                defence5State++;
+
+                if(defence5State > 3){
+                    defence5State = 0;
+                }
+
+                MainActivity.vib.vibrate(100);
+                //remove
+
+            }
+        });
 
 
         defence1inc.setOnClickListener(new View.OnClickListener() {
@@ -633,12 +878,13 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
         thisMatch.defence4Cross = defence4counter;
         thisMatch.defence5Cross = defence5counter;
 
-        thisMatch.defence1Rating = defence1rating;
-        thisMatch.defence2Rating = defence2rating;
-        thisMatch.defence3Rating = defence3rating;
-        thisMatch.defence4Rating = defence4rating;
-        thisMatch.defence5Rating = defence5rating;
+        thisMatch.defence1Rating = defence1State;
+        thisMatch.defence2Rating = defence2State;
+        thisMatch.defence3Rating = defence3State;
+        thisMatch.defence4Rating = defence4State;
+        thisMatch.defence5Rating = defence5State;
         thisMatch.fouls = foulCounter;
+
 
 
     }
