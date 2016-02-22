@@ -12,26 +12,6 @@ import com.team610.scouting.masterapp.R;
 
 public class TeamDialog extends DialogFragment {
 int teamNum;
-//    Dialog d;
-//    @Override
-//    public Dialog onCreateDialog(Bundle savedInstanceState) {
-//        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-//        // Get the layout inflater
-//        LayoutInflater inflater = getActivity().getLayoutInflater();
-//
-//        // Inflate and set the layout for the dialog
-//        // Pass null as the parent view because its going in the dialog layout
-//        builder.setView(inflater.inflate(R.layout.team_dialog, null))
-//                // Add action buttons
-//                .setNegativeButton("Close", new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int id) {
-//                        TeamDialog.this.getDialog().cancel();
-//                    }
-//                });
-//        d = builder.create();
-//      //  ((TextView) d.findViewById( R.id.team_dialog_team)) .setText(MatchFragment.teamNum);
-//        return d;
-//    }
 
     public static TeamDialog newInstance(int num) {
         TeamDialog f = new TeamDialog();

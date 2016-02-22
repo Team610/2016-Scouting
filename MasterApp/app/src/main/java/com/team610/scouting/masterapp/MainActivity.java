@@ -84,7 +84,6 @@ public class MainActivity extends AppCompatActivity
         SpannableString string = new SpannableString(item.getTitle().toString());
         string.setSpan(new ForegroundColorSpan(Color.BLACK), 0, string.length(), 0);
         item.setTitle(string);
-        //TODO
         if (mFrag instanceof MatchFragment) {
             ((MatchFragment) mFrag).onMenuTap(id);
         }

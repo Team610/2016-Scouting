@@ -50,8 +50,13 @@ class Team {
     public String capture = "Scale";
     public Team(int i, int match) {
         //TODO load team from firebase
+        loadData();
         this.match = match;
         calcTotalPoints();
+    }
+
+    private void loadData() {
+
     }
 
     private void calcTotalPoints() {

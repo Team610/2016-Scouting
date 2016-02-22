@@ -15,9 +15,6 @@ import android.widget.RelativeLayout;
 
 import com.team610.scouting.masterapp.R;
 
-/**
- * TODO: document your custom view class.
- */
     public class AutonMatchView extends LinearLayout {
 
     public AutonMatchView(Context context, AttributeSet attrs) {
