@@ -25,12 +25,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 
+import com.firebase.client.Firebase;
 import com.team610.scouting.masterapp.match.MatchFragment;
 import com.team610.scouting.masterapp.team.TeamFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, MatchFragment.OnFragmentInteractionListener, SplitScreenFragment.OnFragmentInteractionListener, TeamFragment.OnFragmentInteractionListener, FieldFragment.OnFragmentInteractionListener {
 
+
+    public static Firebase rootRef;
 
     Menu actionbar;
     Fragment mFrag;
@@ -55,6 +58,8 @@ public class MainActivity extends AppCompatActivity
         getFragmentManager().beginTransaction().add(R.id.main_container, new SplitScreenFragment()).commit();
 
 
+        Firebase.setAndroidContext(this);
+        rootRef = new Firebase("https://scouting-app.firebaseio.com/");
     }
 
 

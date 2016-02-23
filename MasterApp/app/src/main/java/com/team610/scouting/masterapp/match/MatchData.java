@@ -1,5 +1,12 @@
 package com.team610.scouting.masterapp.match;
 
+import android.widget.Toast;
+
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+import com.team610.scouting.masterapp.MainActivity;
+
 import java.util.Random;
 
 /**
@@ -36,7 +43,7 @@ class Team {
     public boolean reachDefence = rand.nextBoolean();
     public String defenseCrossed = "Lowbar";
     //Teleop
-    public int highGoalScores = rand.nextInt(100);
+    public int highGoalScores = 3;
     public int lowGoalScores = rand.nextInt(100);
     public int courtyardScores = rand.nextInt(100);
     public int highGoalMisses = rand.nextInt(100);
@@ -56,6 +63,7 @@ class Team {
     }
 
     private void loadData() {
+        //updateData();
 
     }
 
@@ -70,4 +78,30 @@ class Team {
         //Post Match
       //  points +=
     }
+
+
+   //start
+   public void updateData() {
+       MainActivity.rootRef.child("GTC").child("Match 16").child("Teleop").child("high goal scores").addValueEventListener(new ValueEventListener() {
+           @Override
+           public void onDataChange(DataSnapshot snapshot) {
+
+               if (snapshot.getValue() == null) {
+
+
+               } else {
+                   highGoalScores = (Integer) snapshot.getValue();
+               }
+           }
+
+           @Override
+           public void onCancelled(FirebaseError error) {
+
+           }
+       });
+   }
+
+    //end
+
+
 }
