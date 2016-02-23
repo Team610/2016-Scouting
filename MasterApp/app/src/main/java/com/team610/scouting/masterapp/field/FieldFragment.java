@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.team610.scouting.masterapp.R;
+import com.team610.scouting.masterapp.views.DrawView;
 
 
 /**
@@ -29,11 +30,9 @@ public class FieldFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+
     private OnFragmentInteractionListener mListener;
 
-    public FieldFragment() {
-        // Required empty public constructor
-    }
 
     /**
      * Use this factory method to create a new instance of
@@ -53,21 +52,30 @@ public class FieldFragment extends Fragment {
         return fragment;
     }
 
+    public FieldFragment() {
+        // Required empty public constructor
+    }
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_field, container, false);
+        View root = inflater.inflate(R.layout.fragment_field, container, false);
+        return root;
     }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -75,6 +83,7 @@ public class FieldFragment extends Fragment {
             mListener.onFragmentInteraction(uri);
         }
     }
+
 
     @Override
     public void onAttach(Context context) {
@@ -93,6 +102,25 @@ public class FieldFragment extends Fragment {
         mListener = null;
     }
 
+    public void onMenuTap(int id) {
+        switch (id) {
+            case R.id.erase_bar:
+                DrawView.clear();
+                break;
+            case R.id.blue_bar:
+                DrawView.setBlue();
+                break;
+            case R.id.green_bar:
+                DrawView.setGreen();
+                break;
+            case R.id.black_bar:
+                DrawView.setBlack();
+                break;
+            case R.id.red_bar:
+                DrawView.setRed();
+        }
+    }
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -105,6 +133,7 @@ public class FieldFragment extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        public void onFragmentInteraction(Uri uri);
     }
+
 }

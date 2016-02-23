@@ -1,13 +1,79 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".field.FieldFragment">
+    android:id="@+id/fragment_paint"
+    tools:context="com.team610.scouting.masterapp.field.FieldFragment"
+    android:background="@drawable/field">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.team610.scouting.masterapp.views.DrawView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Field" />
+        android:id="@+id/view"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+    </com.team610.scouting.masterapp.views.DrawView>
 
-</FrameLayout>
+    <EditText
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/team1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="42dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginTop="78dp" />
+    <EditText
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/team2"
+        android:layout_alignTop="@+id/team4"
+        android:layout_alignLeft="@+id/team3"
+        android:layout_alignStart="@+id/team1" />
+    <EditText
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/team3"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/team1"
+        android:layout_alignStart="@+id/team1" />
+    <EditText
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/team4"
+        android:layout_marginTop="24dp"
+        android:layout_below="@+id/team3"
+        android:layout_alignLeft="@+id/team5"
+        android:layout_alignStart="@+id/team5" />
+    <EditText
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/team5"
+        android:layout_above="@+id/team4"
+        android:layout_alignLeft="@+id/team6"
+        android:layout_alignStart="@+id/team6" />
+    <EditText
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/team6"
+        android:layout_marginLeft="28dp"
+        android:layout_marginStart="28dp"
+        android:layout_below="@+id/team1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+</RelativeLayout>
