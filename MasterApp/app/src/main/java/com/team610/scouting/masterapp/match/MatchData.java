@@ -63,7 +63,7 @@ class Team {
     }
 
     private void loadData() {
-        //updateData();
+        updateData();
 
     }
 
@@ -82,16 +82,11 @@ class Team {
 
    //start
    public void updateData() {
-       MainActivity.rootRef.child("GTC").child("Match 16").child("Teleop").child("high goal scores").addValueEventListener(new ValueEventListener() {
+       MainActivity.rootRef.child("GTC").child("Match 16").child(" 610").child("Teleop").child("high goal scores").addValueEventListener(new ValueEventListener() {
            @Override
            public void onDataChange(DataSnapshot snapshot) {
 
-               if (snapshot.getValue() == null) {
-
-
-               } else {
-                   highGoalScores = (Integer) snapshot.getValue();
-               }
+               System.out.println(snapshot.getValue());
            }
 
            @Override
@@ -99,7 +94,7 @@ class Team {
 
            }
        });
-   }
+        }
 
     //end
 
