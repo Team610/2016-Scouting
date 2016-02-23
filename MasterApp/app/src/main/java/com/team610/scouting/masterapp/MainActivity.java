@@ -10,14 +10,14 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -34,8 +34,9 @@ public class MainActivity extends AppCompatActivity
 
     Menu actionbar;
     Fragment mFrag;
-    static final String[] tournaments = {"Greater Toronto Central", "Greater Toronto East", "Waterloo", "Worlds"};
-    String currentTournament = "Greater Toronto Central";//TODO default when on that date
+    static final String[] tournaments = {"GTC", "GTE", "WATERLOO", "WORLDS"};
+    String currentTournament = "GTC";//TODO default when on that date
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,6 +89,8 @@ public class MainActivity extends AppCompatActivity
         item.setTitle(string);
         if (mFrag instanceof MatchFragment) {
             ((MatchFragment) mFrag).onMenuTap(id);
+        }else if(mFrag instanceof FieldFragment){
+            ((FieldFragment) mFrag).onMenuTap(id);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -100,6 +103,7 @@ public class MainActivity extends AppCompatActivity
                 .beginTransaction();
         //Set Match menu items visible based on fragment choice
         actionbar.setGroupVisible(R.id.matchMenuItems, id == R.id.nav_matches);
+        actionbar.setGroupVisible(R.id.fieldMenuItems, id == R.id.nav_field);
         //Switch fragments based on id
         //TODO should probably use a switch statment
         if (id == R.id.nav_matches) {
@@ -110,7 +114,7 @@ public class MainActivity extends AppCompatActivity
             mFrag = new FieldFragment();
         } else if (id == R.id.nav_list) {
             mFrag = new TeamListFragment();
-        }else if(id == R.id.nav_alliance){
+        } else if (id == R.id.nav_alliance) {
             mFrag = new AllianceFragment();
         }
         transaction.replace(R.id.main_container, mFrag).commit();
@@ -140,7 +144,7 @@ public class MainActivity extends AppCompatActivity
                 .setItems(tournaments, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                       currentTournament = tournaments[which];
+                        currentTournament = tournaments[which];
                     }
                 });
         //Set up negative button
