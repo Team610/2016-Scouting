@@ -5,15 +5,79 @@
     tools:context=".InitialFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <Button
+
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Help Page"
+        android:id="@+id/help_title_TextView"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="33dp"
-        android:layout_marginLeft="33dp"
-        android:text="Transition"
-        android:id="@+id/transition_Button"></Button>
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="If a robot crosses a defence only because they have help (like the drawbridge), increases the counter but leave the rating as blank"
+        android:id="@+id/getting_aid_on_defences_TextView"
+        android:layout_marginTop="121dp"
+        android:layout_below="@+id/help_title_TextView"
+        android:layout_alignLeft="@+id/help_title_TextView"
+        android:layout_alignStart="@+id/help_title_TextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Defence Rating in Teleop"
+        android:id="@+id/ratings_title_TextView"
+        android:layout_below="@+id/help_title_TextView"
+        android:layout_alignLeft="@+id/help_title_TextView"
+        android:layout_alignStart="@+id/help_title_TextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="White - Doesn't Cross the Defence"
+        android:id="@+id/blank_defence_TextView"
+        android:layout_below="@+id/ratings_title_TextView"
+        android:layout_alignLeft="@+id/getting_aid_on_defences_TextView"
+        android:layout_alignStart="@+id/getting_aid_on_defences_TextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Green - No issues getting over the defence, fast"
+        android:id="@+id/green_TextView"
+        android:layout_below="@+id/blank_defence_TextView"
+        android:layout_alignLeft="@+id/getting_aid_on_defences_TextView"
+        android:layout_alignStart="@+id/getting_aid_on_defences_TextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Yellow - Gets over the defence well, but not perfectly"
+        android:id="@+id/yellow_defence_TextView"
+        android:layout_below="@+id/green_TextView"
+        android:layout_alignLeft="@+id/getting_aid_on_defences_TextView"
+        android:layout_alignStart="@+id/getting_aid_on_defences_TextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Red - Really struggles and takes a long time, but does get over the defence"
+        android:id="@+id/red_defence_TextView"
+        android:layout_below="@+id/yellow_defence_TextView"
+        android:layout_alignLeft="@+id/getting_aid_on_defences_TextView"
+        android:layout_alignStart="@+id/getting_aid_on_defences_TextView" />
 </RelativeLayout>
