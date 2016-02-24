@@ -748,7 +748,7 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
 
                 MainActivity.vib.vibrate(100);
                 //remove
-                MatchData.updateTeleop();
+                //MatchData.updateTeleop();
 
             }
         });
@@ -780,7 +780,7 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
 
                 MainActivity.vib.vibrate(100);
                 //remove
-                MatchData.updateTeleop();
+                //MatchData.updateTeleop();
             }
         });
 
@@ -817,7 +817,7 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
                 MainActivity.vib.vibrate(100);
 
                 //remove
-                MatchData.updateTeleop();
+                //MatchData.updateTeleop();
             }
         });
 
@@ -850,7 +850,7 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
                 MainActivity.vib.vibrate(100);
 
                 //remove
-                MatchData.updateTeleop();
+                //MatchData.updateTeleop();
             }
         });
 

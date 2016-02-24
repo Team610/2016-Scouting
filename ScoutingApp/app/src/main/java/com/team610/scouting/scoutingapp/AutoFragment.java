@@ -334,7 +334,7 @@ public class AutoFragment extends Fragment {
         endedInNeutralCheckBox = (CheckBox) rootView.findViewById(R.id.neutralZone_CheckBox);
 
         //delete this
-        MatchData.updateAuto();
+        //MatchData.updateAuto();
 
 
 

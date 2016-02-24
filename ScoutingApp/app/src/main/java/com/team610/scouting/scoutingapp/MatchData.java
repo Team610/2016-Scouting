@@ -163,6 +163,7 @@ public class MatchData {
         score.put("Defence 4 rating", instance.defence4Rating);
         score.put("Defence 5 rating", instance.defence5Rating);
 
+        score.put("Fouls", instance.fouls);
 
 
         teleRef.updateChildren(score);
@@ -188,7 +189,16 @@ public class MatchData {
 
 
 
+
+
+
+
     public static void newMatch(){
+        updateMatchSetup();
+        updateTeleop();
+        updateAuto();
+
+
 
         instance = new MatchData();
 

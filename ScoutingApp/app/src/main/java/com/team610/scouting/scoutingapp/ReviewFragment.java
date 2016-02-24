@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.shaded.fasterxml.jackson.databind.deser.DataFormatReaders;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -104,6 +106,12 @@ public class ReviewFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    public void sendData(){
+
+        MatchData.newMatch();
+
     }
 
     /**
