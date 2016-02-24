@@ -219,7 +219,6 @@ public class MatchFragment extends Fragment {
         item.setTitle("Match # " + matchNum);
         data = new MatchData(matchNum);
 
-
     }
 
     public void updateViewsFromThe6ix() throws NoSuchFieldException, IllegalAccessException {

@@ -1,6 +1,7 @@
 package com.team610.scouting.masterapp.match;
 
-import android.widget.Toast;
+import android.app.AlertDialog;
+import android.os.Handler;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.FirebaseError;
@@ -21,25 +22,37 @@ public class MatchData {
         this.matchNumber = match;
         teams = new Team[6];
         for (int i = 0; i < 6; i++) {
-            teams[i] = new Team(i, match);
+            teams[i] = new Team(i, this);
         }
-        if(MainActivity.mFrag instanceof MatchFragment)
-            try {
-                ((MatchFragment)MainActivity.mFrag).updateViewsFromThe6ix();
-            } catch (NoSuchFieldException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
+
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if(MainActivity.mFrag instanceof MatchFragment)
+                    try {
+                        ((MatchFragment)MainActivity.mFrag).updateViewsFromThe6ix();
+                    } catch (NoSuchFieldException e) {
+                        e.printStackTrace();
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    }catch (NullPointerException e){
+                        AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.mFrag.getActivity());
+                        dialog.setTitle("Error");
+                        dialog.setMessage("Data took too long to get");
+                    }
             }
+        }, 2000);//7.5 second timeout
+
+
     }
 
 }
 
 class Team {
-    public int match;
     Random rand = new Random();
     public int id = rand.nextInt(1000);
-
+    MatchData match;
 
     //Auton
     public boolean spybot = rand.nextBoolean();
@@ -64,10 +77,10 @@ class Team {
     public int totalCrosses = 120;
     public String capture = "Scale";
 
-    public Team(int i, int match) {
+    public Team(int i, MatchData data) {
         //TODO load team from firebase
+        this.match = data;
         loadData();
-        this.match = match;
         calcTotalPoints();
     }
 
