@@ -23,6 +23,14 @@ public class MatchData {
         for (int i = 0; i < 6; i++) {
             teams[i] = new Team(i, match);
         }
+        if(MainActivity.mFrag instanceof MatchFragment)
+            try {
+                ((MatchFragment)MainActivity.mFrag).updateViewsFromThe6ix();
+            } catch (NoSuchFieldException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
     }
 
 }
@@ -83,6 +91,27 @@ class Team {
 
     //start
     public void updateData() {
+        MainActivity.rootRef.child("GTC").child("Match 16").child(" 610").child("Teleop").child("high goal scores").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+
+                Long d  = (Long) snapshot.getValue();
+
+                Integer i = d != null ? d.intValue() : null;
+
+                highGoalScores = i;
+            }
+
+            @Override
+            public void onCancelled(FirebaseError error) {
+
+            }
+        });
+
+
+    }
+
+    public void updateDatagen() {
         MainActivity.rootRef.child("GTC").child("Match 16").child(" 610").child("Teleop").child("high goal scores").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
