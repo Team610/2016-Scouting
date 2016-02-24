@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity
     public static Firebase rootRef;
 
     Menu actionbar;
-    Fragment mFrag;
+    public Fragment mFrag;
     static final String[] tournaments = {"GTC", "GTE", "WATERLOO", "WORLDS"};
     String currentTournament = "GTC";//TODO default when on that date
 
