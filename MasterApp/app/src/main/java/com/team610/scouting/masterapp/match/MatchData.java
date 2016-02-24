@@ -49,12 +49,13 @@ class Team {
     public int highGoalMisses = rand.nextInt(100);
     public int lowGoalMisses = rand.nextInt(100);
     public int courtyardMisses = rand.nextInt(100);
-    public double courtyardPercent = ((10000*courtyardScores)) / (courtyardMisses + courtyardScores) / 100D;
-    public double highGoalPercent =((10000*highGoalScores)) / (highGoalMisses + highGoalScores) / 100D;
-    public double lowGoalPercent = ((10000*lowGoalScores)) / (lowGoalMisses + lowGoalScores) / 100D;
+    public double courtyardPercent = ((10000 * courtyardScores)) / (courtyardMisses + courtyardScores) / 100D;
+    public double highGoalPercent = ((10000 * highGoalScores)) / (highGoalMisses + highGoalScores) / 100D;
+    public double lowGoalPercent = ((10000 * lowGoalScores)) / (lowGoalMisses + lowGoalScores) / 100D;
     public int points = 20;
     public int totalCrosses = 120;
     public String capture = "Scale";
+
     public Team(int i, int match) {
         //TODO load team from firebase
         loadData();
@@ -76,25 +77,25 @@ class Team {
         points += highGoalScores * 5 + lowGoalScores * 2;//TODO ADD DEFENSES
 
         //Post Match
-      //  points +=
+        //  points +=
     }
 
 
-   //start
-   public void updateData() {
-       MainActivity.rootRef.child("GTC").child("Match 16").child(" 610").child("Teleop").child("high goal scores").addValueEventListener(new ValueEventListener() {
-           @Override
-           public void onDataChange(DataSnapshot snapshot) {
+    //start
+    public void updateData() {
+        MainActivity.rootRef.child("GTC").child("Match 16").child(" 610").child("Teleop").child("high goal scores").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
 
-               System.out.println(snapshot.getValue());
-           }
+                System.out.println(snapshot.getValue());
+            }
 
-           @Override
-           public void onCancelled(FirebaseError error) {
+            @Override
+            public void onCancelled(FirebaseError error) {
 
-           }
-       });
-        }
+            }
+        });
+    }
 
     //end
 

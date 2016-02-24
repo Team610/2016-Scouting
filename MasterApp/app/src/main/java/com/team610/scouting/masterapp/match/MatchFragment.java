@@ -37,7 +37,7 @@ public class MatchFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
+    private MatchFragment.OnFragmentInteractionListener mListener;
 
 
     private int matchNum;
@@ -170,14 +170,7 @@ public class MatchFragment extends Fragment {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 matchNum = Integer.valueOf(input.getText().toString());
-                try {
-
-                    loadMatchData();
-                } catch (NoSuchFieldException e) {
-                    e.printStackTrace();
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                }
+                loadMatchData();
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -221,14 +214,18 @@ public class MatchFragment extends Fragment {
         return toReturn;
     }
 
-    public void loadMatchData() throws NoSuchFieldException, IllegalAccessException {
+    public void loadMatchData(){
         ActionMenuItemView item = (ActionMenuItemView) getActivity().findViewById(R.id.action_matchNumber);
         item.setTitle("Match # " + matchNum);
         data = new MatchData(matchNum);
 
+
+    }
+
+    public void updateViewsFromThe6ix() throws NoSuchFieldException, IllegalAccessException {
+
         for (int i = 0; i < 6; i++) {
             Team t = data.teams[i];
-
             //Auton
             ViewGroup autonView = (ViewGroup) getView().findViewById(R.id.class.getField("match_auton_team" + (i + 1)).getInt(R.id.class));
             TableLayout autonTable = (TableLayout) ((ViewGroup) autonView.getChildAt(0)).getChildAt(0);
@@ -264,7 +261,6 @@ public class MatchFragment extends Fragment {
 
         }
     }
-
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
