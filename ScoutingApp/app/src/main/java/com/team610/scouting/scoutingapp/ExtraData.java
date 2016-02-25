@@ -26,6 +26,15 @@ public class ExtraData extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    static ExtraData instance;
+
+    public static ExtraData getInstance(){
+        if(instance == null){
+            instance = new ExtraData();
+        }
+        return instance;
+    }
+
 
     private OnFragmentInteractionListener mListener;
 

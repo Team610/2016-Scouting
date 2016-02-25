@@ -580,6 +580,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Fouls: 0"
         android:id="@+id/foul_title_TextView"
@@ -593,8 +594,8 @@
         android:scaleType="fitCenter"
         android:id="@+id/foul_plus_ImageButton"
         android:layout_alignTop="@+id/goalSlider_TableLayout"
-        android:layout_alignLeft="@+id/foul_title_TextView"
-        android:layout_alignStart="@+id/foul_title_TextView"
+        android:layout_alignLeft="@+id/tableLayout2"
+        android:layout_alignStart="@+id/tableLayout2"
         android:src="@drawable/plus"/>
 
     <ImageButton
@@ -607,5 +608,14 @@
         android:layout_toEndOf="@+id/foul_plus_ImageButton"
         android:src="@drawable/minus"/>
 
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next Page"
+        android:id="@+id/next_Button"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

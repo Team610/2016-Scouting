@@ -131,6 +131,8 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
     TextView courtyardMissesTextView;
     //int courtyardMisses = 0;
 
+    Button nextPage;
+
 
     private static TeleopFragment instance;
 
@@ -207,7 +209,7 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
 
     public void setDefenceButtonPics(ImageButton defence , int i, int state){
 
-            if (defences[i] != null) {
+
                 if(i == 4){
                     switch (state) {
                         case 0:
@@ -228,162 +230,164 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
                     }
                 }
                 else {
-                    if (defences[i].equals("porticullis")) {
-                        switch (state) {
-                            case 0:
-                                defence.setImageResource(R.drawable.portcullis);
-                                break;
-                            case 1:
-                                defence.setImageResource(R.drawable.portcullisgreen);
-                                break;
-                            case 2:
-                                defence.setImageResource(R.drawable.portcullisyellow);
-                                break;
-                            case 3:
-                                defence.setImageResource(R.drawable.portcullisred);
-                                break;
-                            default:
-                                defence.setImageResource(R.drawable.portcullis);
-                                break;
-                        }
+                    if (defences[i] != null) {
+                        if (defences[i].equals("porticullis")) {
+                            switch (state) {
+                                case 0:
+                                    defence.setImageResource(R.drawable.portcullis);
+                                    break;
+                                case 1:
+                                    defence.setImageResource(R.drawable.portcullisgreen);
+                                    break;
+                                case 2:
+                                    defence.setImageResource(R.drawable.portcullisyellow);
+                                    break;
+                                case 3:
+                                    defence.setImageResource(R.drawable.portcullisred);
+                                    break;
+                                default:
+                                    defence.setImageResource(R.drawable.portcullis);
+                                    break;
+                            }
 
 
-                    } else if (defences[i].equals("moat")) {
-                        switch (state) {
-                            case 0:
-                                defence.setImageResource(R.drawable.moat);
-                                break;
-                            case 1:
-                                defence.setImageResource(R.drawable.moatgreen);
-                                break;
-                            case 2:
-                                defence.setImageResource(R.drawable.moatyellow);
-                                break;
-                            case 3:
-                                defence.setImageResource(R.drawable.moatred);
-                                break;
-                            default:
-                                defence.setImageResource(R.drawable.moat);
-                                break;
-                        }
+                        } else if (defences[i].equals("moat")) {
+                            switch (state) {
+                                case 0:
+                                    defence.setImageResource(R.drawable.moat);
+                                    break;
+                                case 1:
+                                    defence.setImageResource(R.drawable.moatgreen);
+                                    break;
+                                case 2:
+                                    defence.setImageResource(R.drawable.moatyellow);
+                                    break;
+                                case 3:
+                                    defence.setImageResource(R.drawable.moatred);
+                                    break;
+                                default:
+                                    defence.setImageResource(R.drawable.moat);
+                                    break;
+                            }
 
-                    } else if (defences[i].equals("ramparts")) {
-                        switch (state) {
-                            case 0:
-                                defence.setImageResource(R.drawable.ramparts);
-                                break;
-                            case 1:
-                                defence.setImageResource(R.drawable.rampartsgreen);
-                                break;
-                            case 2:
-                                defence.setImageResource(R.drawable.rampartsyellow);
-                                break;
-                            case 3:
-                                defence.setImageResource(R.drawable.rampartsred);
-                                break;
-                            default:
-                                defence.setImageResource(R.drawable.ramparts);
-                                break;
-                        }
+                        } else if (defences[i].equals("ramparts")) {
+                            switch (state) {
+                                case 0:
+                                    defence.setImageResource(R.drawable.ramparts);
+                                    break;
+                                case 1:
+                                    defence.setImageResource(R.drawable.rampartsgreen);
+                                    break;
+                                case 2:
+                                    defence.setImageResource(R.drawable.rampartsyellow);
+                                    break;
+                                case 3:
+                                    defence.setImageResource(R.drawable.rampartsred);
+                                    break;
+                                default:
+                                    defence.setImageResource(R.drawable.ramparts);
+                                    break;
+                            }
 
-                    } else if (defences[i].equals("rockwall")) {
-                        switch (state) {
-                            case 0:
-                                defence.setImageResource(R.drawable.rockwall);
-                                break;
-                            case 1:
-                                defence.setImageResource(R.drawable.rockwallgreen);
-                                break;
-                            case 2:
-                                //defence.setImageResource(R.drawable.rockwallyellow);
-                                break;
-                            case 3:
-                                //defence.setImageResource(R.drawable.rockwallred);
-                                break;
-                            default:
-                                defence.setImageResource(R.drawable.rockwall);
-                                break;
-                        }
+                        } else if (defences[i].equals("rockwall")) {
+                            switch (state) {
+                                case 0:
+                                    defence.setImageResource(R.drawable.rockwall);
+                                    break;
+                                case 1:
+                                    defence.setImageResource(R.drawable.rockwallgreen);
+                                    break;
+                                case 2:
+                                    defence.setImageResource(R.drawable.rockwallyellow);
+                                    break;
+                                case 3:
+                                    defence.setImageResource(R.drawable.rockwallred);
+                                    break;
+                                default:
+                                    defence.setImageResource(R.drawable.rockwall);
+                                    break;
+                            }
 
-                    } else if (defences[i].equals("roughterrain")) {
-                        switch (state) {
-                            case 0:
-                                defence.setImageResource(R.drawable.roughterrain);
-                                break;
-                            case 1:
-                                //defence.setImageResource(R.drawable.roughterraingreen);
-                                break;
-                            case 2:
-                                //defence.setImageResource(R.drawable.roughterrainyellow);
-                                break;
-                            case 3:
-                                //defence.setImageResource(R.drawable.roughterrainred);
-                                break;
-                            default:
-                                defence.setImageResource(R.drawable.roughterrain);
-                                break;
-                        }
+                        } else if (defences[i].equals("roughterrain")) {
+                            switch (state) {
+                                case 0:
+                                    defence.setImageResource(R.drawable.roughterrain);
+                                    break;
+                                case 1:
+                                    defence.setImageResource(R.drawable.roughterraingreen);
+                                    break;
+                                case 2:
+                                    defence.setImageResource(R.drawable.roughterrainyellow);
+                                    break;
+                                case 3:
+                                    defence.setImageResource(R.drawable.roughterrainred);
+                                    break;
+                                default:
+                                    defence.setImageResource(R.drawable.roughterrain);
+                                    break;
+                            }
 
-                    } else if (defences[i].equals("sallyport")) {
-                        switch (state) {
-                            case 0:
-                                defence.setImageResource(R.drawable.sallyport);
-                                break;
-                            case 1:
-                                //defence.setImageResource(R.drawable.sallyportgreen);
-                                break;
-                            case 2:
-                                //defence.setImageResource(R.drawable.sallyportyellow);
-                                break;
-                            case 3:
-                                //defence.setImageResource(R.drawable.sallyportred);
-                                break;
-                            default:
-                                defence.setImageResource(R.drawable.sallyport);
-                                break;
-                        }
+                        } else if (defences[i].equals("sallyport")) {
+                            switch (state) {
+                                case 0:
+                                    defence.setImageResource(R.drawable.sallyport);
+                                    break;
+                                case 1:
+                                    defence.setImageResource(R.drawable.sallyportgreen);
+                                    break;
+                                case 2:
+                                    defence.setImageResource(R.drawable.sallyportyellow);
+                                    break;
+                                case 3:
+                                    defence.setImageResource(R.drawable.sallyportred);
+                                    break;
+                                default:
+                                    defence.setImageResource(R.drawable.sallyport);
+                                    break;
+                            }
 
-                    } else if (defences[i].equals("drawbridge")) {
-                        switch (state) {
-                            case 0:
-                                defence.setImageResource(R.drawable.drawbridge);
-                                break;
-                            case 1:
-                                defence.setImageResource(R.drawable.drawbridgegreen);
-                                break;
-                            case 2:
-                                defence.setImageResource(R.drawable.drawbridgeyellow);
-                                break;
-                            case 3:
-                                defence.setImageResource(R.drawable.drawbridgered);
-                                break;
-                            default:
-                                defence.setImageResource(R.drawable.drawbridge);
-                                break;
-                        }
+                        } else if (defences[i].equals("drawbridge")) {
+                            switch (state) {
+                                case 0:
+                                    defence.setImageResource(R.drawable.drawbridge);
+                                    break;
+                                case 1:
+                                    defence.setImageResource(R.drawable.drawbridgegreen);
+                                    break;
+                                case 2:
+                                    defence.setImageResource(R.drawable.drawbridgeyellow);
+                                    break;
+                                case 3:
+                                    defence.setImageResource(R.drawable.drawbridgered);
+                                    break;
+                                default:
+                                    defence.setImageResource(R.drawable.drawbridge);
+                                    break;
+                            }
 
-                    } else if (defences[i].equals("chevaldefrise")) {
-                        switch (state) {
-                            case 0:
-                                defence.setImageResource(R.drawable.chevaldefrise);
-                                break;
-                            case 1:
-                                defence.setImageResource(R.drawable.chevaldefrisegreen);
-                                break;
-                            case 2:
-                                defence.setImageResource(R.drawable.chevaldefriseyellow);
-                                break;
-                            case 3:
-                                defence.setImageResource(R.drawable.chevaldefrisered);
-                                break;
-                            default:
-                                defence.setImageResource(R.drawable.chevaldefrise);
-                                break;
+                        } else if (defences[i].equals("chevaldefrise")) {
+                            switch (state) {
+                                case 0:
+                                    defence.setImageResource(R.drawable.chevaldefrise);
+                                    break;
+                                case 1:
+                                    defence.setImageResource(R.drawable.chevaldefrisegreen);
+                                    break;
+                                case 2:
+                                    defence.setImageResource(R.drawable.chevaldefriseyellow);
+                                    break;
+                                case 3:
+                                    defence.setImageResource(R.drawable.chevaldefrisered);
+                                    break;
+                                default:
+                                    defence.setImageResource(R.drawable.chevaldefrise);
+                                    break;
+                            }
+
                         }
 
                     }
                 }
-            }
 
     }
 
@@ -420,7 +424,7 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
 
 
 
-        lowBarDefence5.setImageResource(R.drawable.lowbar);
+        //lowBarDefence5.setImageResource(R.drawable.lowbar);
 
         defence1DisplayCount.setText(""+defence1counter);
         defence2DisplayCount.setText(""+defence2counter);
@@ -470,6 +474,9 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
         fouldec = (ImageButton) rootView.findViewById(R.id.foul_minus_ImageButton);
         foulTitle = (TextView) rootView.findViewById(R.id.foul_title_TextView);
 
+        nextPage = (Button) rootView.findViewById(R.id.next_Button);
+
+
 
         defence1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -481,6 +488,8 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
                 if(defence1State > 3){
                     defence1State = 0;
                 }
+
+                setDefenceButtonPics(defence1,0,defence1State);
 
                 MainActivity.vib.vibrate(100);
                 //remove
@@ -500,6 +509,8 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
                     defence2State = 0;
                 }
 
+                setDefenceButtonPics(defence2,1,defence2State);
+
                 MainActivity.vib.vibrate(100);
                 //remove
 
@@ -516,6 +527,8 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
                 if(defence3State > 3){
                     defence3State = 0;
                 }
+
+                setDefenceButtonPics(defence3,2,defence3State);
 
                 MainActivity.vib.vibrate(100);
                 //remove
@@ -535,6 +548,8 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
                     defence4State = 0;
                 }
 
+                setDefenceButtonPics(defence4,3,defence4State);
+
                 MainActivity.vib.vibrate(100);
                 //remove
 
@@ -551,6 +566,8 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
                 if(defence5State > 3){
                     defence5State = 0;
                 }
+
+                setDefenceButtonPics(lowBarDefence5,4,defence5State);
 
                 MainActivity.vib.vibrate(100);
                 //remove
@@ -718,6 +735,18 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
 
                 foulTitle.setText("Fouls: " + foulCounter);
             }
+        });
+
+        nextPage.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                ExtraData mFrag = ExtraData.getInstance();
+                transaction.replace(R.id.main_container,mFrag).commit();
+
+            }
+
         });
 
         highGoalScoresTextView = (TextView) rootView.findViewById(R.id.highGoal_scores_TextView);

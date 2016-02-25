@@ -12,6 +12,7 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 
 import android.widget.TextView;
@@ -66,6 +67,8 @@ public class AutoFragment extends Fragment {
     ImageButton defence3;
     ImageButton defence4;
     ImageButton lowBarDefence5;
+
+    Button nextPage;
 
 
 
@@ -170,21 +173,21 @@ public class AutoFragment extends Fragment {
         if(selected){
             if (defences[i] != null) {
                 if (defences[i].equals("porticullis")) {
-                    defence.setImageResource(R.drawable.portcullisselected);
+                    defence.setImageResource(R.drawable.portcullisgreen);
                 } else if (defences[i].equals("moat")) {
-                    defence.setImageResource(R.drawable.moatselected);
+                    defence.setImageResource(R.drawable.moatgreen);
                 } else if (defences[i].equals("ramparts")) {
-                    defence.setImageResource(R.drawable.rampartsselected);
+                    defence.setImageResource(R.drawable.rampartsgreen);
                 } else if (defences[i].equals("rockwall")) {
-                    defence.setImageResource(R.drawable.rockwallselected);
+                    defence.setImageResource(R.drawable.rockwallgreen);
                 } else if (defences[i].equals("roughterrain")) {
-                    defence.setImageResource(R.drawable.roughterrainselected); //two of roughterrainselected for some reason, check this out
+                    defence.setImageResource(R.drawable.roughterraingreen); //two of roughterrainselected for some reason, check this out
                 } else if (defences[i].equals("sallyport")) {
-                    defence.setImageResource(R.drawable.sallyportselected);
+                    defence.setImageResource(R.drawable.sallyportgreen);
                 } else if (defences[i].equals("drawbridge")) {
-                    defence.setImageResource(R.drawable.drawbridgeselected);
+                    defence.setImageResource(R.drawable.drawbridgegreen);
                 } else if (defences[i].equals("chevaldefrise")) {
-                    defence.setImageResource(R.drawable.chevaldefriseselected);
+                    defence.setImageResource(R.drawable.chevaldefrisegreen);
                 }
             }
         }else {
@@ -221,6 +224,8 @@ public class AutoFragment extends Fragment {
         defence3 = (ImageButton) rootView.findViewById(R.id.defence3_ImageButton);
         defence4 = (ImageButton) rootView.findViewById(R.id.defence4_ImageButton);
         lowBarDefence5 = (ImageButton) rootView.findViewById(R.id.lowBar_defence_ImageButton);
+
+        nextPage = (Button) rootView.findViewById(R.id.next_Button);
 
         defence1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -309,6 +314,19 @@ public class AutoFragment extends Fragment {
             }
 
         });
+
+        nextPage.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                TeleopFragment mFrag = TeleopFragment.getInstance();
+                transaction.replace(R.id.main_container,mFrag).commit();
+
+            }
+
+        });
+
 
 
 

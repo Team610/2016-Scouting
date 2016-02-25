@@ -33,7 +33,7 @@ public class InitialFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    Button transitionButton;
+    //Button transitionButton;
 
     int updateTest =  0;
 
@@ -78,17 +78,17 @@ public class InitialFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_initial,
                 container, false);
 
-        transitionButton = (Button) rootView.findViewById(R.id.transition_Button);
+        //transitionButton = (Button) rootView.findViewById(R.id.transition_Button);
 
         //example of updating info on Firebase
-        transitionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                MainActivity.rootRef.child("init").setValue(updateTest);
-                updateTest++;
-            }
-        });
+//        transitionButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                MainActivity.rootRef.child("init").setValue(updateTest);
+//                updateTest++;
+//            }
+//        });
 
 
         return rootView;
