@@ -98,13 +98,13 @@ public class MatchData {
 
     public static void createBranches(){
         competitionRef = MainActivity.rootRef.child(competition);
-        matchRef = competitionRef.child("Match " + instance.match);
+        matchRef = competitionRef.child("match" + instance.match);
 
         teamRef = matchRef.child(" " + instance.team);
 
-        matchSetupRef = teamRef.child("Match Setup");
-        autoRef = teamRef.child("Auto");
-        teleRef = teamRef.child("Teleop");
+        matchSetupRef = teamRef.child("matchSetup");
+        autoRef = teamRef.child("auto");
+        teleRef = teamRef.child("teleop");
 
 
     }
@@ -112,10 +112,10 @@ public class MatchData {
 
         createBranches();
         Map<String, Object> defences = new HashMap<String, Object>();
-        defences.put("Defence 1", instance.defenceTypes[0]);
-        defences.put("Defence 2", instance.defenceTypes[1]);
-        defences.put("Defence 3", instance.defenceTypes[2]);
-        defences.put("Defence 4", instance.defenceTypes[3]);
+        defences.put("defence1", instance.defenceTypes[0]);
+        defences.put("defence2", instance.defenceTypes[1]);
+        defences.put("defence3", instance.defenceTypes[2]);
+        defences.put("defence4", instance.defenceTypes[3]);
 
         matchSetupRef.updateChildren(defences);
 
@@ -135,12 +135,12 @@ public class MatchData {
 //        MainActivity.rootRef.child("init").setValue(courtyardMisses);
 
         Map<String, Object> score = new HashMap<String, Object>();
-        score.put("high goal scores", instance.highGoalScores);
-        score.put("low goal scores", instance.lowGoalScores);
-        score.put("courtyard scores", instance.courtyardScores);
-        score.put("high goal misses", instance.highGoalMisses);
-        score.put("low goal misses", instance.lowGoalMisses);
-        score.put("courtyard misses", instance.courtyardMisses);
+        score.put("highGoalScores", instance.highGoalScores);
+        score.put("lowGoalScores", instance.lowGoalScores);
+        score.put("courtyardScores", instance.courtyardScores);
+        score.put("highGoalMisses", instance.highGoalMisses);
+        score.put("lowGoalMisses", instance.lowGoalMisses);
+        score.put("courtyardMisses", instance.courtyardMisses);
 
         /*public static int porticullisCross = 0;
         public static int moatCross = 0;
@@ -151,19 +151,19 @@ public class MatchData {
         public static int drawbridgeCross = 0;
         public static int chevaldefriseCross  = 0; */
 
-        score.put("Defence 1 crosses", instance.defence1Cross);
-        score.put("Defence 2 crosses", instance.defence2Cross);
-        score.put("Defence 3 crosses", instance.defence3Cross);
-        score.put("Defence 4 crosses", instance.defence4Cross);
-        score.put("Defence 5 crosses", instance.defence5Cross);
+        score.put("defence1crosses", instance.defence1Cross);
+        score.put("defence2crosses", instance.defence2Cross);
+        score.put("defence3crosses", instance.defence3Cross);
+        score.put("defence4crosses", instance.defence4Cross);
+        score.put("defence5crosses", instance.defence5Cross);
 
-        score.put("Defence 1 rating", instance.defence1Rating);
-        score.put("Defence 2 rating", instance.defence2Rating);
-        score.put("Defence 3 rating", instance.defence3Rating);
-        score.put("Defence 4 rating", instance.defence4Rating);
-        score.put("Defence 5 rating", instance.defence5Rating);
+        score.put("defence1rating", instance.defence1Rating);
+        score.put("defence2rating", instance.defence2Rating);
+        score.put("defence3rating", instance.defence3Rating);
+        score.put("defence4rating", instance.defence4Rating);
+        score.put("defence5rating", instance.defence5Rating);
 
-        score.put("Fouls", instance.fouls);
+        score.put("fouls", instance.fouls);
 
 
         teleRef.updateChildren(score);
@@ -174,12 +174,12 @@ public class MatchData {
         Map<String, Object> auto = new HashMap<String, Object>();
 
         auto.put("spybot", instance.spybot);
-        auto.put("Scored High Goal",instance.scoredHighGoal);
-        auto.put("Scored Low Goal", instance.scoredLowGoal);
-        auto.put("Placed Courtyard", instance.placedCourtyard);
-        auto.put("Ended Courtyard", instance.endedCourtyard);
-        auto.put("Ended Neutral Zone", instance.endedNeutralZone);
-        auto.put("Reach Defence", instance.reachDefence);
+        auto.put("scoredHighGoal",instance.scoredHighGoal);
+        auto.put("scoredLowGoal", instance.scoredLowGoal);
+        auto.put("placedCourtyard", instance.placedCourtyard);
+        auto.put("endedCourtyard", instance.endedCourtyard);
+        auto.put("endedNeutralZone", instance.endedNeutralZone);
+        auto.put("reachDefence", instance.reachDefence);
         autoRef.updateChildren(auto);
 
 

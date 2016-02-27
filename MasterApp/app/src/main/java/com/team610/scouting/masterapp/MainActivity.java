@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity
 
     public static Fragment mFrag;
     static final String[] tournaments = {"GTC", "GTE", "WATERLOO", "WORLDS"};
-    String currentTournament = "GTC";//TODO default when on that date
+    public static String currentTournament = "GTC";//TODO default when on that date
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

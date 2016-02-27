@@ -18,6 +18,8 @@ public class MatchData {
     Team[] teams;
     int matchNumber;
 
+
+
     public MatchData(int match) {
         this.matchNumber = match;
         teams = new Team[6];
@@ -42,8 +44,37 @@ public class MatchData {
                         dialog.setMessage("Data took too long to get");
                     }
             }
-        }, 2000);//7.5 second timeout
 
+}, 2000);//7.5 second timeout
+
+
+        }
+    public void updateDatagen(){
+        MainActivity.rootRef.child("GTC").child("match" + matchNumber).addValueEventListener(new ValueEventListener() {
+
+            public void onDataChange(DataSnapshot snapshot) {
+                int i = -1;
+                for (DataSnapshot team : snapshot.getChildren()) {
+                    i++;
+                    for (DataSnapshot mode : team.getChildren()) {
+                        for(DataSnapshot data : mode.getChildren()){
+                            try {
+                                Team.class.getField(data.getKey()).set(teams[i],data.getValue());
+                            } catch (IllegalAccessException e) {
+                                e.printStackTrace();
+                            } catch (NoSuchFieldException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(FirebaseError error) {
+
+            }
+        });
 
     }
 
@@ -51,7 +82,7 @@ public class MatchData {
 
 class Team {
     Random rand = new Random();
-    public int id = rand.nextInt(1000);
+    public int id = 610;
     MatchData match;
 
     //Auton
@@ -77,6 +108,21 @@ class Team {
     public int totalCrosses = 120;
     public String capture = "Scale";
 
+    //unimplemented
+    public int defence1crosses;
+    public int defence2crosses;
+    public int defence3crosses;
+    public int defence4crosses;
+    public int defense5crosses;
+
+    public int defense1rating;
+    public int defense2rating;
+    public int defense3rating;
+    public int defense4rating;
+    public int defense5rating;
+
+    public int fouls;
+
     public Team(int i, MatchData data) {
         //TODO load team from firebase
         this.match = data;
@@ -85,7 +131,7 @@ class Team {
     }
 
     private void loadData() {
-        updateData();
+      //  updateAllData();
 
     }
 
@@ -124,20 +170,9 @@ class Team {
 
     }
 
-    public void updateDatagen() {
-        MainActivity.rootRef.child("GTC").child("Match 16").child(" 610").child("Teleop").child("high goal scores").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
 
-                System.out.println(snapshot.getValue());
-            }
+//.child(""+id).child(mode).child(nameInFirebase)
 
-            @Override
-            public void onCancelled(FirebaseError error) {
-
-            }
-        });
-    }
 
     //end
 
