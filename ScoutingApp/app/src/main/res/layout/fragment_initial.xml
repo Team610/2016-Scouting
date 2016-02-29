@@ -80,4 +80,14 @@
         android:layout_below="@+id/yellow_defence_TextView"
         android:layout_alignLeft="@+id/getting_aid_on_defences_TextView"
         android:layout_alignStart="@+id/getting_aid_on_defences_TextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Comments are required"
+        android:id="@+id/comment_TextView"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/getting_aid_on_defences_TextView"
+        android:layout_alignStart="@+id/getting_aid_on_defences_TextView" />
 </RelativeLayout>

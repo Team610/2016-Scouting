@@ -25,4 +25,101 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Alliance:"
+        android:id="@+id/alliance_title_TextView"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/next_Button"
+        android:layout_toStartOf="@+id/next_Button"
+        android:layout_marginRight="188dp"
+        android:layout_marginEnd="188dp" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Breach"
+        android:id="@+id/breach_CheckBox"
+        android:layout_below="@+id/alliance_title_TextView"
+        android:layout_alignLeft="@+id/alliance_title_TextView"
+        android:layout_alignStart="@+id/alliance_title_TextView" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Capture"
+        android:id="@+id/capture_CheckBox"
+        android:layout_below="@+id/breach_CheckBox"
+        android:layout_alignLeft="@+id/breach_CheckBox"
+        android:layout_alignStart="@+id/breach_CheckBox" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hang"
+        android:id="@+id/hang_CheckBox"
+        android:layout_below="@+id/next_Button"
+        android:layout_alignLeft="@+id/alliance_title_TextView"
+        android:layout_alignStart="@+id/alliance_title_TextView" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Challenge"
+        android:id="@+id/checkBox"
+        android:layout_below="@+id/or_TextView"
+        android:layout_alignLeft="@+id/hang_CheckBox"
+        android:layout_alignStart="@+id/hang_CheckBox" />
+
+    <EditText
+        android:layout_width="400dp"
+        android:layout_height="300dp"
+        android:id="@+id/comment_EditText"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Comments"
+        android:id="@+id/comment_TextView"
+        android:layout_above="@+id/comment_EditText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Scout Name: "
+        android:id="@+id/scout_name_title_TextView"
+        android:layout_below="@+id/comment_EditText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:id="@+id/scout_name_EditText"
+        android:layout_alignBottom="@+id/scout_name_title_TextView"
+        android:layout_toRightOf="@+id/scout_name_title_TextView"
+        android:layout_toEndOf="@+id/scout_name_title_TextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Or"
+        android:id="@+id/or_TextView"
+        android:layout_below="@+id/hang_CheckBox"
+        android:layout_alignLeft="@+id/hang_CheckBox"
+        android:layout_alignStart="@+id/hang_CheckBox" />
 </RelativeLayout>

@@ -7,6 +7,8 @@ import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -408,6 +410,8 @@ public class MatchSetup extends Fragment implements View.OnClickListener {
     public static void clearFragment(){
         instance = new MatchSetup();
     }
+
+
 
 
 
