@@ -176,6 +176,16 @@
         android:layout_alignStart="@+id/matchNum_EditText" />
 
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next Page"
+        android:id="@+id/next_Button"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+
 
 
 </RelativeLayout>

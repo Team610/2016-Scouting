@@ -10,6 +10,7 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -46,6 +47,8 @@ public class MatchSetup extends Fragment implements View.OnClickListener {
     ImageButton[] defenceButtons;
     EditText matchNum;
     EditText teamNum;
+
+    Button nextPage;
 
 
 
@@ -179,6 +182,7 @@ public class MatchSetup extends Fragment implements View.OnClickListener {
         teamNum = (EditText) v.findViewById(R.id.teamNum_EditText);
         //teamNum.setText(""+thisMatch.team);
 
+        nextPage = (Button) v.findViewById(R.id.next_Button);
 
 
 //        if( matchNum.getText().toString().length() > 0) {
@@ -270,6 +274,18 @@ public class MatchSetup extends Fragment implements View.OnClickListener {
 
                     transaction.commit();
 
+
+                }
+
+            });
+
+            nextPage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    AutoFragment mFrag = AutoFragment.getInstance();
+                    transaction.replace(R.id.main_container, mFrag).commit();
 
                 }
 
@@ -387,6 +403,10 @@ public class MatchSetup extends Fragment implements View.OnClickListener {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    public static void clearFragment(){
+        instance = new MatchSetup();
     }
 
 

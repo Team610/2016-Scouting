@@ -24,4 +24,13 @@
         android:layout_marginStart="211dp"
         android:layout_marginTop="60dp" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit Data"
+        android:id="@+id/send_Button"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>

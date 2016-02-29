@@ -202,6 +202,14 @@ public class MatchData {
 
         instance = new MatchData();
 
+        AutoFragment.clearFragment();
+        ExtraData.clearFragment();
+        //InitialFragment;
+        MatchSetup.clearFragment();
+        ReviewFragment.clearFragment();
+        TeleopFragment.clearFragment();
+
+
         //reset values
 //        instance.spybot = false;
 //        instance.scoredHighGoal = false;

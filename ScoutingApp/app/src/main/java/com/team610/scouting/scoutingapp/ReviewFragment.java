@@ -1,5 +1,6 @@
 package com.team610.scouting.scoutingapp;
 
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.shaded.fasterxml.jackson.databind.deser.DataFormatReaders;
@@ -34,10 +36,23 @@ public class ReviewFragment extends Fragment {
     TextView autonCrossedDefence;
     MatchData match;
 
+    Button submitButton;
+
+    static ReviewFragment instance;
+
     private OnFragmentInteractionListener mListener;
 
     public ReviewFragment() {
         // Required empty public constructor
+    }
+
+    public static ReviewFragment getInstance(){
+
+        if(instance == null){
+            instance = new ReviewFragment();
+        }
+
+        return instance;
     }
 
     /**
@@ -75,11 +90,29 @@ public class ReviewFragment extends Fragment {
 
         match = MatchData.getInstance();
 
+
+        submitButton = (Button) v.findViewById(R.id.send_Button);
         matchNum = (TextView) v.findViewById(R.id.matchNum_review_TextView);
         matchNum.setText(""+match.match);
 
         autonCrossedDefence = (TextView) v.findViewById(R.id.auton_crossed_defence_TextView);
-        autonCrossedDefence.setText("" +match.crossedDefence);
+        autonCrossedDefence.setText("" + match.crossedDefence);
+
+        submitButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                MatchData.newMatch();
+
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                MatchSetup mFrag = MatchSetup.getInstance();
+                transaction.replace(R.id.main_container, mFrag).commit();
+
+            }
+
+
+        });
 
         return v;
     }
@@ -112,6 +145,10 @@ public class ReviewFragment extends Fragment {
 
         MatchData.newMatch();
 
+    }
+
+    public static void clearFragment(){
+        instance = new ReviewFragment();
     }
 
     /**

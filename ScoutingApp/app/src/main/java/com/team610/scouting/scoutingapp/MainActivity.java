@@ -175,12 +175,12 @@ public class MainActivity extends AppCompatActivity
 
             //saveAllFragmentData();
 
-            ReviewFragment mFrag = new ReviewFragment();
+            ReviewFragment mFrag = ReviewFragment.getInstance();
             transaction.replace(R.id.main_container,mFrag).commit();
         }
         else if(id == R.id.fragment_extra_data){
 
-            ExtraData mFrag = new ExtraData();
+            ExtraData mFrag = ExtraData.getInstance();
             transaction.replace(R.id.main_container, mFrag).commit();
         }
 

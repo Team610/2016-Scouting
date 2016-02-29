@@ -1,5 +1,6 @@
 package com.team610.scouting.scoutingapp;
 
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 
 /**
@@ -27,6 +29,8 @@ public class ExtraData extends Fragment {
     private String mParam1;
     private String mParam2;
     static ExtraData instance;
+
+    Button nextPage;
 
     public static ExtraData getInstance(){
         if(instance == null){
@@ -73,7 +77,25 @@ public class ExtraData extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_extra_data, container, false);
+
+        View v = inflater.inflate(R.layout.fragment_extra_data, container, false);
+
+
+
+        nextPage = (Button) v.findViewById(R.id.next_Button);
+
+        nextPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                ReviewFragment mFrag = ReviewFragment.getInstance();
+                transaction.replace(R.id.main_container, mFrag).commit();
+
+            }
+        });
+
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -98,6 +120,10 @@ public class ExtraData extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    public static void clearFragment(){
+        instance = new ExtraData();
     }
 
     /**

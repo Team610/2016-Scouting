@@ -944,7 +944,9 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
         super.onDetach();
         mListener = null;
     }
-
+    public static void clearFragment(){
+        instance = new TeleopFragment();
+    }
 
 
     /**
