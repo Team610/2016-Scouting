@@ -30,6 +30,19 @@ public class ExtraData extends Fragment {
     private String mParam2;
     static ExtraData instance;
 
+    String comment;
+    String scoutName;
+
+    boolean capture;
+    boolean breach;
+    boolean challenge;
+    boolean hang;
+
+    //0 is no defence
+    int defenceRating;
+
+    MatchData thisMatch = MatchData.getInstance();
+
     Button nextPage;
 
     public static ExtraData getInstance(){
@@ -44,6 +57,10 @@ public class ExtraData extends Fragment {
 
     public ExtraData() {
         // Required empty public constructor
+    }
+
+    public void saveData(){
+
     }
 
     /**
@@ -120,6 +137,12 @@ public class ExtraData extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onPause() {
+        saveData();
+        super.onPause();
     }
 
     public static void clearFragment(){
