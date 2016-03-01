@@ -108,10 +108,10 @@ public class TeamListFragment extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 
-    private static class TeamPointsDataComparator implements Comparator<TeamData>{
+ /*   private static class TeamPointsDataComparator implements Comparator<TeamData>{
         @Override
         public int compare(TeamData one, TeamData two){
             return one.points - two.points;
         }
-    }
+    }*/
 }

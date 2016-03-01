@@ -15,16 +15,23 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.menu.ActionMenuItemView;
 import android.support.v7.widget.Toolbar;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 import com.team610.scouting.masterapp.field.FieldFragment;
 import com.team610.scouting.masterapp.match.MatchFragment;
+import com.team610.scouting.masterapp.team.TeamData;
 import com.team610.scouting.masterapp.team.TeamFragment;
+
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, MatchFragment.OnFragmentInteractionListener, SplitScreenFragment.OnFragmentInteractionListener, TeamFragment.OnFragmentInteractionListener, FieldFragment.OnFragmentInteractionListener {
@@ -37,6 +44,9 @@ public class MainActivity extends AppCompatActivity
     public static Fragment mFrag;
     static final String[] tournaments = {"GTC", "GTE", "WATERLOO", "WORLDS"};
     public static String currentTournament = "GTC";//TODO default when on that date
+
+
+    HashMap<String, TeamData> teams;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +89,7 @@ public class MainActivity extends AppCompatActivity
         menu.setGroupVisible(R.id.matchMenuItems, false);
         menu.setGroupVisible(R.id.fieldMenuItems, false);
         actionbar = menu;
+        actionbar.findItem(R.id.action_tournament).setTitle(currentTournament);
         return true;
     }
 
@@ -91,7 +102,7 @@ public class MainActivity extends AppCompatActivity
         item.setTitle(string);
         if (mFrag instanceof MatchFragment) {
             ((MatchFragment) mFrag).onMenuTap(id);
-        }else if(mFrag instanceof FieldFragment){
+        } else if (mFrag instanceof FieldFragment) {
             ((FieldFragment) mFrag).onMenuTap(id);
         }
         return super.onOptionsItemSelected(item);
@@ -139,7 +150,39 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    public void createTournamentDialog(MenuItem ignore) {
+    public void refresh(MenuItem ignore) {
+        //TODO update all text Views
+
+        loadAllTeamData();
+    }
+
+    public void loadAllTeamData() {
+        rootRef.child(currentTournament).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot match : dataSnapshot.getChildren()) {
+                    for (DataSnapshot teamData : match.getChildren()) {
+                        TeamData team;
+                        if (!teams.containsKey(teamData.getKey())) {
+                            team = new TeamData(teamData.getKey());
+                        }else{
+                            team = teams.get(teamData.getKey());
+                        }
+                        team.matches.add(match.getKey().substring(5));
+                        int numMatches = team.matches.size();
+
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+    }
+
+    public void createTournamentDialog(final MenuItem ignore) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Choose Tournament")
@@ -147,6 +190,7 @@ public class MainActivity extends AppCompatActivity
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         currentTournament = tournaments[which];
+                        ignore.setTitle(currentTournament);
                     }
                 });
         //Set up negative button
