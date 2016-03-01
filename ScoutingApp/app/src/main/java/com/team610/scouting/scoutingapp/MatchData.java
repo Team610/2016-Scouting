@@ -100,7 +100,7 @@ public class MatchData {
         competitionRef = MainActivity.rootRef.child(competition);
         matchRef = competitionRef.child("match" + instance.match);
 
-        teamRef = matchRef.child(" " + instance.team);
+        teamRef = matchRef.child("" + instance.team);
 
         matchSetupRef = teamRef.child("matchSetup");
         autoRef = teamRef.child("auto");
