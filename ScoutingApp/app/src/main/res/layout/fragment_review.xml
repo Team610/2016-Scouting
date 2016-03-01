@@ -6,23 +6,23 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"
-        android:id="@+id/matchNum_review_TextView"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Match: "
+        android:id="@+id/matchNum_review_TextView"
+        android:layout_below="@+id/review_title_TextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="gone over:"
+        android:text="Defence Crossed: "
         android:id="@+id/auton_crossed_defence_TextView"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/reached_defence_TextView"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="211dp"
-        android:layout_marginStart="211dp"
-        android:layout_marginTop="60dp" />
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -32,5 +32,138 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Review Data"
+        android:id="@+id/review_title_TextView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Team: "
+        android:id="@+id/team_num_review_TextView"
+        android:layout_below="@+id/matchNum_review_TextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Defences: "
+        android:id="@+id/defence_select_title_TextView"
+        android:layout_below="@+id/team_num_review_TextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="1. "
+        android:id="@+id/defence1_selection_TextView"
+        android:layout_below="@+id/defence_select_title_TextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="2. "
+        android:id="@+id/defence2_selection_TextView"
+        android:layout_below="@+id/defence1_selection_TextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="3. "
+        android:id="@+id/defence3_selection_TextView"
+        android:layout_below="@+id/defence2_selection_TextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="4. "
+        android:id="@+id/defence4_selection_TextView"
+        android:layout_below="@+id/defence3_selection_TextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Auton:"
+        android:id="@+id/auton_title_TextView"
+        android:layout_below="@+id/defence4_selection_TextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Reached Defence: "
+        android:id="@+id/reached_defence_TextView"
+        android:layout_below="@+id/auton_title_TextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Spybot: "
+        android:id="@+id/spybot_TextView"
+        android:layout_below="@+id/auton_crossed_defence_TextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Ball: "
+        android:id="@+id/auton_ball_TextView"
+        android:layout_below="@+id/spybot_TextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Robot Ended: "
+        android:id="@+id/auton_robot_location_TextView"
+        android:layout_below="@+id/auton_ball_TextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/textView"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/review_title_TextView"
+        android:layout_toEndOf="@+id/review_title_TextView"
+        android:layout_marginLeft="72dp"
+        android:layout_marginStart="72dp" />
+
 
 </RelativeLayout>

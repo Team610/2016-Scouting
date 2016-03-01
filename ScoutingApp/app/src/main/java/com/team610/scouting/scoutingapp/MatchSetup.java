@@ -306,7 +306,7 @@ public class MatchSetup extends Fragment implements View.OnClickListener {
         saveData();
         super.onPause();
         //delete
-        MatchData.updateMatchSetup();
+        //MatchData.updateMatchSetup();
     }
 
 

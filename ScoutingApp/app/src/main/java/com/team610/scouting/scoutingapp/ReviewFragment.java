@@ -33,6 +33,8 @@ public class ReviewFragment extends Fragment {
     private String mParam2;
 
     TextView matchNum;
+    TextView teamNum;
+    TextView[] defences = new TextView[4];
     TextView autonCrossedDefence;
     MatchData match;
 
@@ -93,10 +95,13 @@ public class ReviewFragment extends Fragment {
 
         submitButton = (Button) v.findViewById(R.id.send_Button);
         matchNum = (TextView) v.findViewById(R.id.matchNum_review_TextView);
-        matchNum.setText(""+match.match);
+        matchNum.setText("Match: "+match.match);
+
+        teamNum = (TextView) v.findViewById(R.id.team_num_review_TextView);
+        teamNum.setText("Team: " + match.team);
 
         autonCrossedDefence = (TextView) v.findViewById(R.id.auton_crossed_defence_TextView);
-        autonCrossedDefence.setText("" + match.crossedDefence);
+        autonCrossedDefence.setText("Defence Crossed: " + match.crossedDefence);
 
         submitButton.setOnClickListener(new View.OnClickListener() {
 

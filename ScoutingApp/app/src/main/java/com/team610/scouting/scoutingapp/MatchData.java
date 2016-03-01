@@ -74,6 +74,9 @@ public class MatchData {
     public String scoutName = "";
     public String comment = "";
     public int defensiveRating = 0; //0 means no defence
+    public boolean shotFromDefences = false;
+    public boolean shotFromCheckMate = false;
+    public boolean shotFromPopShot = false;
 
 
     //FireBase Refs
