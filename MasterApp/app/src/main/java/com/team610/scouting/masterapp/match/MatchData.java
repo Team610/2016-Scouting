@@ -138,14 +138,10 @@ class Team {
     public Team(int i, MatchData data) {
         //TODO load team from firebase
         this.match = data;
-        loadData();
+
         calcTotalPoints();
     }
 
-    private void loadData() {
-      //  updateAllData();
-
-    }
 
     private void calcTotalPoints() {
         //Auton
@@ -158,35 +154,6 @@ class Team {
         //Post Match
         //  points +=
     }
-
-
-    //start
-    public void updateData() {
-        MainActivity.rootRef.child("GTC").child("Match 16").child(" 610").child("Teleop").child("high goal scores").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-
-                Long d  = (Long) snapshot.getValue();
-
-                Integer i = d != null ? d.intValue() : null;
-
-                highGoalScores = i;
-            }
-
-            @Override
-            public void onCancelled(FirebaseError error) {
-
-            }
-        });
-
-
-    }
-
-
-//.child(""+id).child(mode).child(nameInFirebase)
-
-
-    //end
 
 
 }
