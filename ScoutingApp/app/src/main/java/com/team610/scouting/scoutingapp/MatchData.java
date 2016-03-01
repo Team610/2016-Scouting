@@ -66,6 +66,15 @@ public class MatchData {
     public int defence5Rating = 0;
 
 
+    //Extra Data
+    public boolean capture = false;
+    public boolean breach = false;
+    public boolean challenge = false;
+    public boolean hang = false;
+    public String scoutName = "";
+    public String comment = "";
+    public int defensiveRating = 0; //0 means no defence
+
 
     //FireBase Refs
     static Firebase competitionRef;
