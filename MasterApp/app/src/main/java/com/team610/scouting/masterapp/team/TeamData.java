@@ -1,5 +1,7 @@
 package com.team610.scouting.masterapp.team;
 
+import java.util.ArrayList;
+
 /**
  * Created by Tate on 2016-01-30.
  */
@@ -9,6 +11,12 @@ public class TeamData {
         //TODO load teamData
         return null;
     }
-//TODO declare variables in data class
-   public int points;
+    public double avgPoints;
+    public double avgAutonScore;
+    public double avgDefenseScore;
+    public double avgShootingScore;
+    public double shootingPercentage;
+
+    ArrayList<String> matches;
+
 }
