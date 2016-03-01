@@ -9,6 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.SeekBar;
 
 
 /**
@@ -19,7 +22,7 @@ import android.widget.Button;
  * Use the {@link ExtraData#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ExtraData extends Fragment {
+public class ExtraData extends Fragment implements SeekBar.OnSeekBarChangeListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -33,13 +36,21 @@ public class ExtraData extends Fragment {
     String comment;
     String scoutName;
 
-    boolean capture;
-    boolean breach;
-    boolean challenge;
-    boolean hang;
+
+
+    SeekBar sb1;
+
 
     //0 is no defence
     int defenceRating;
+
+
+    CheckBox captureCheck;
+    CheckBox breachCheck;
+    CheckBox challengeCheck;
+    CheckBox hangCheck;
+    EditText commentText;
+    EditText scoutNameText;
 
     MatchData thisMatch = MatchData.getInstance();
 
@@ -61,6 +72,67 @@ public class ExtraData extends Fragment {
 
     public void saveData(){
 
+        thisMatch.breach = breachCheck.isChecked();
+        thisMatch.capture = captureCheck.isChecked();
+        thisMatch.challenge = challengeCheck.isChecked();
+        thisMatch.hang = hangCheck.isChecked();
+        thisMatch.comment = commentText.getText().toString();
+        thisMatch.scoutName = scoutNameText.getText().toString();
+        thisMatch.defensiveRating = defenceRating;
+    }
+
+
+    public void onStopTrackingTouch(SeekBar seekBar) {
+        int mProgress = seekBar.getProgress();
+
+        //at 0
+        if(mProgress >= 0 & mProgress < 10) {
+            seekBar.setProgress(0);
+            defenceRating = 0;
+            MainActivity.vib.vibrate(100);
+        }
+        //at 20
+        else if(mProgress >= 10 & mProgress < 30) {
+            seekBar.setProgress(20);
+            defenceRating = 1;
+            MainActivity.vib.vibrate(100);
+        }
+        //at 40
+        else if(mProgress >= 30 & mProgress < 50) {
+            seekBar.setProgress(40);
+            defenceRating = 2;
+            MainActivity.vib.vibrate(100);
+        }
+        //at 60
+        else if(mProgress >= 50 & mProgress < 70) {
+            seekBar.setProgress(60);
+            defenceRating = 3;
+            MainActivity.vib.vibrate(100);
+        }
+        //at 80
+        else if(mProgress >= 70 & mProgress < 90) {
+            seekBar.setProgress(80);
+            defenceRating = 4;
+            MainActivity.vib.vibrate(100);
+        }
+        //at 100
+        else{
+            seekBar.setProgress(100);
+            defenceRating = 5;
+            MainActivity.vib.vibrate(100);
+        }
+
+        //CONTINUE
+    }
+
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progress,
+                                  boolean fromUser) {
+        // we don't need it
+    }
+
+    public void onStartTrackingTouch(SeekBar seekBar) {
+        // we don't need it
     }
 
     /**
@@ -99,7 +171,13 @@ public class ExtraData extends Fragment {
 
 
 
+        captureCheck = (CheckBox) v.findViewById(R.id.capture_CheckBox);
+        challengeCheck = (CheckBox) v.findViewById(R.id.challenge_CheckBox);
+        hangCheck = (CheckBox) v.findViewById(R.id.hang_CheckBox);
+        breachCheck = (CheckBox) v.findViewById(R.id.breach_CheckBox);
         nextPage = (Button) v.findViewById(R.id.next_Button);
+        commentText = (EditText) v.findViewById(R.id.comment_EditText);
+        scoutNameText = (EditText) v.findViewById(R.id.scout_name_EditText);
 
         nextPage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,6 +189,12 @@ public class ExtraData extends Fragment {
 
             }
         });
+
+        sb1 = (SeekBar) v.findViewById(R.id.set_defence_SeekBar);
+        sb1.setOnSeekBarChangeListener(this);
+
+        //change this
+        sb1.setProgress(defenceRating*20);
 
         return v;
     }
