@@ -183,7 +183,7 @@
         android:layout_height="wrap_content"
         android:text="Pop Shot"
         android:id="@+id/pop_shot_CheckBox"
-        android:layout_alignTop="@+id/comment_EditText"
+        android:layout_below="@+id/defences_CheckBox"
         android:layout_alignLeft="@+id/defences_CheckBox"
         android:layout_alignStart="@+id/defences_CheckBox" />
 </RelativeLayout>

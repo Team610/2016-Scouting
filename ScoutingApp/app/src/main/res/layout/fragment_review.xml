@@ -157,13 +157,235 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
-        android:id="@+id/textView"
+        android:text="TeleOp"
+        android:id="@+id/teleop_title_TextView"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/review_title_TextView"
         android:layout_toEndOf="@+id/review_title_TextView"
         android:layout_marginLeft="72dp"
         android:layout_marginStart="72dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Defences: "
+        android:id="@+id/teleop_defence_TextView"
+        android:layout_below="@+id/teleop_title_TextView"
+        android:layout_alignLeft="@+id/teleop_title_TextView"
+        android:layout_alignStart="@+id/teleop_title_TextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="1. 0 crosses, white"
+        android:id="@+id/teleop_defence1_TextView"
+        android:layout_below="@+id/teleop_defence_TextView"
+        android:layout_alignLeft="@+id/teleop_defence_TextView"
+        android:layout_alignStart="@+id/teleop_defence_TextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="2. 0 crosses, white"
+        android:id="@+id/teleop_defence2_TextView"
+        android:layout_below="@+id/teleop_defence1_TextView"
+        android:layout_alignLeft="@+id/teleop_defence1_TextView"
+        android:layout_alignStart="@+id/teleop_defence1_TextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="3. 0 crosses, white"
+        android:id="@+id/teleop_defence3_TextView"
+        android:layout_below="@+id/teleop_defence2_TextView"
+        android:layout_alignLeft="@+id/teleop_defence2_TextView"
+        android:layout_alignStart="@+id/teleop_defence2_TextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="4. 0 crosses, white"
+        android:id="@+id/teleop_defence4_TextView"
+        android:layout_below="@+id/teleop_defence3_TextView"
+        android:layout_alignLeft="@+id/teleop_defence3_TextView"
+        android:layout_alignStart="@+id/teleop_defence3_TextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="5. 0 crosses, white"
+        android:id="@+id/teleop_defence5_TextView"
+        android:layout_below="@+id/teleop_defence4_TextView"
+        android:layout_alignLeft="@+id/teleop_defence4_TextView"
+        android:layout_alignStart="@+id/teleop_defence4_TextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="HighGoal - Scores: 0, Misses: 0"
+        android:id="@+id/high_goal_teleop_TextView"
+        android:layout_below="@+id/teleop_defence5_TextView"
+        android:layout_alignLeft="@+id/teleop_defence5_TextView"
+        android:layout_alignStart="@+id/teleop_defence5_TextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="LowGoal - Scores: 0, Misses: 0"
+        android:id="@+id/low_goal_teleop_TextView"
+        android:layout_below="@+id/high_goal_teleop_TextView"
+        android:layout_alignLeft="@+id/high_goal_teleop_TextView"
+        android:layout_alignStart="@+id/high_goal_teleop_TextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Courtyard - Scores: 0, Misses: 0"
+        android:id="@+id/courtyard_drop_teleop_TextView"
+        android:layout_below="@+id/low_goal_teleop_TextView"
+        android:layout_alignLeft="@+id/low_goal_teleop_TextView"
+        android:layout_alignStart="@+id/low_goal_teleop_TextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Fouls: "
+        android:id="@+id/foul_TextView"
+        android:layout_below="@+id/courtyard_drop_teleop_TextView"
+        android:layout_alignLeft="@+id/courtyard_drop_teleop_TextView"
+        android:layout_alignStart="@+id/courtyard_drop_teleop_TextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginLeft="20dp"
+        android:text="Miscellaneous"
+        android:id="@+id/miscellaneous_title_TextView"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/courtyard_drop_teleop_TextView"
+        android:layout_toEndOf="@+id/courtyard_drop_teleop_TextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Hang: "
+        android:id="@+id/hang_TextView"
+        android:layout_below="@+id/miscellaneous_title_TextView"
+        android:layout_alignLeft="@+id/miscellaneous_title_TextView"
+        android:layout_alignStart="@+id/miscellaneous_title_TextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Challenge: "
+        android:id="@+id/challenge_TextView"
+        android:layout_below="@+id/hang_TextView"
+        android:layout_alignLeft="@+id/hang_TextView"
+        android:layout_alignStart="@+id/hang_TextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Breach: "
+        android:id="@+id/breach_TextView"
+        android:layout_below="@+id/challenge_TextView"
+        android:layout_alignLeft="@+id/challenge_TextView"
+        android:layout_alignStart="@+id/challenge_TextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Capture: "
+        android:id="@+id/capture_TextView"
+        android:layout_below="@+id/breach_TextView"
+        android:layout_alignLeft="@+id/breach_TextView"
+        android:layout_alignStart="@+id/breach_TextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Checkmate Shots: "
+        android:id="@+id/checkmate_TextView"
+        android:layout_below="@+id/capture_TextView"
+        android:layout_alignLeft="@+id/capture_TextView"
+        android:layout_alignStart="@+id/capture_TextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Defence Shots: "
+        android:id="@+id/defence_shots_TextView"
+        android:layout_below="@+id/checkmate_TextView"
+        android:layout_alignLeft="@+id/checkmate_TextView"
+        android:layout_alignStart="@+id/checkmate_TextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Pop Shots: "
+        android:id="@+id/pop_shots_TextView"
+        android:layout_below="@+id/defence_shots_TextView"
+        android:layout_alignLeft="@+id/defence_shots_TextView"
+        android:layout_alignStart="@+id/defence_shots_TextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Defensive Rating: "
+        android:id="@+id/defence_rating_TextView"
+        android:layout_below="@+id/pop_shots_TextView"
+        android:layout_alignLeft="@+id/pop_shots_TextView"
+        android:layout_alignStart="@+id/pop_shots_TextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Scout Name: "
+        android:id="@+id/scout_name_TextView"
+        android:layout_below="@+id/defence_rating_TextView"
+        android:layout_alignLeft="@+id/defence_rating_TextView"
+        android:layout_alignStart="@+id/defence_rating_TextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_marginLeft="30dp"
+        android:text="Comment:"
+        android:id="@+id/comment_title_TextView"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/miscellaneous_title_TextView"
+        android:layout_toEndOf="@+id/miscellaneous_title_TextView" />
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Comments"
+        android:id="@+id/comment_TextView"
+        android:layout_below="@+id/comment_title_TextView"
+        android:layout_alignLeft="@+id/comment_title_TextView"
+        android:layout_alignStart="@+id/comment_title_TextView" />
 
 
 </RelativeLayout>
