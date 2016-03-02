@@ -149,4 +149,41 @@
 
 
     </TableLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Shot from:"
+        android:id="@+id/shot_location_title_TextView"
+        android:layout_alignTop="@+id/hang_CheckBox"
+        android:layout_toLeftOf="@+id/next_Button"
+        android:layout_toStartOf="@+id/next_Button" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Checkmate"
+        android:id="@+id/checkmate_CheckBox"
+        android:layout_below="@+id/shot_location_title_TextView"
+        android:layout_alignLeft="@+id/shot_location_title_TextView"
+        android:layout_alignStart="@+id/shot_location_title_TextView" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Defences"
+        android:id="@+id/defences_CheckBox"
+        android:layout_below="@+id/checkmate_CheckBox"
+        android:layout_alignLeft="@+id/checkmate_CheckBox"
+        android:layout_alignStart="@+id/checkmate_CheckBox" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pop Shot"
+        android:id="@+id/pop_shot_CheckBox"
+        android:layout_below="@+id/defences_CheckBox"
+        android:layout_alignLeft="@+id/defences_CheckBox"
+        android:layout_alignStart="@+id/defences_CheckBox" />
 </RelativeLayout>

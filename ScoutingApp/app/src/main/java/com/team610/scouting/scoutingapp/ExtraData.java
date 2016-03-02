@@ -51,6 +51,9 @@ public class ExtraData extends Fragment implements SeekBar.OnSeekBarChangeListen
     CheckBox hangCheck;
     EditText commentText;
     EditText scoutNameText;
+    CheckBox shotDefencesCheck;
+    CheckBox shotCheckMateCheck;
+    CheckBox shotPopShotCheck;
 
     MatchData thisMatch = MatchData.getInstance();
 
@@ -79,6 +82,9 @@ public class ExtraData extends Fragment implements SeekBar.OnSeekBarChangeListen
         thisMatch.comment = commentText.getText().toString();
         thisMatch.scoutName = scoutNameText.getText().toString();
         thisMatch.defensiveRating = defenceRating;
+        thisMatch.shotFromCheckMate = shotCheckMateCheck.isChecked();
+        thisMatch.shotFromDefences = shotDefencesCheck.isChecked();
+        thisMatch.shotFromPopShot = shotPopShotCheck.isChecked();
     }
 
 
@@ -178,6 +184,10 @@ public class ExtraData extends Fragment implements SeekBar.OnSeekBarChangeListen
         nextPage = (Button) v.findViewById(R.id.next_Button);
         commentText = (EditText) v.findViewById(R.id.comment_EditText);
         scoutNameText = (EditText) v.findViewById(R.id.scout_name_EditText);
+
+        shotDefencesCheck = (CheckBox) v.findViewById(R.id.defences_CheckBox);
+        shotCheckMateCheck = (CheckBox) v.findViewById(R.id.checkmate_CheckBox);
+        shotPopShotCheck = (CheckBox) v.findViewById(R.id.pop_shot_CheckBox);
 
         nextPage.setOnClickListener(new View.OnClickListener() {
             @Override
