@@ -31,7 +31,7 @@ public class MatchData {
     public boolean endedCourtyard;
     public boolean endedNeutralZone;
     public boolean reachDefence;
-    public String crossedDefence;
+    public int crossedDefence;
 
     //Teleop
 
@@ -189,9 +189,8 @@ public class MatchData {
         auto.put("endedCourtyard", instance.endedCourtyard);
         auto.put("endedNeutralZone", instance.endedNeutralZone);
         auto.put("reachDefence", instance.reachDefence);
+        auto.put("defenseCrossed", instance.crossedDefence);
         autoRef.updateChildren(auto);
-
-
     }
 
 

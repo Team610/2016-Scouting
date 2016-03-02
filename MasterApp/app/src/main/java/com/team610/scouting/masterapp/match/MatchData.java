@@ -99,7 +99,8 @@ class Team {
     public boolean endedCourtyard = rand.nextBoolean();
     public boolean endedNeutralZone = rand.nextBoolean();
     public boolean reachDefence = rand.nextBoolean();
-    public String defenseCrossed = "Lowbar";
+    public int defenseCrossed;
+    //public String defenseCrossed = "Lowbar";
     //Teleop
     public long highGoalScores = 3;
     public long lowGoalScores = rand.nextInt(100);
@@ -110,7 +111,7 @@ class Team {
     public double courtyardPercent = ((10000 * courtyardScores)) / (courtyardMisses + courtyardScores) / 100D;
     public double highGoalPercent = ((10000 * highGoalScores)) / (highGoalMisses + highGoalScores) / 100D;
     public double lowGoalPercent = ((10000 * lowGoalScores)) / (lowGoalMisses + lowGoalScores) / 100D;
-    public int points = 20;
+    public int points = 0;
     public int totalCrosses = 120;
     public String capture = "Scale";
 
@@ -132,8 +133,12 @@ class Team {
     public String defence3;
     public String defence4;
 
+    boolean[] defenceCrosses;
+
 
     public long fouls;
+
+
 
     public Team(int i, MatchData data) {
         //TODO load team from firebase
@@ -151,8 +156,64 @@ class Team {
         //Teleop
         points += highGoalScores * 5 + lowGoalScores * 2;//TODO ADD DEFENSES
 
+
+
+
         //Post Match
         //  points +=
+    }
+
+
+    private int getScore(int a){
+        int score;
+        if(a == 0){
+            score = 0;
+        }
+        else if(a == 1){
+            score = 5;
+        }
+        else{
+            score = 10;
+        }
+
+        return score;
+
+    }
+
+    private int teleOp(){
+        int teleOpScore = 0;
+        if()
+    }
+
+    private int autoScore(){
+        int autoPoints = 0;
+        if(defenseCrossed != 0){
+            autoPoints+=10;
+        }
+        if(scoredHighGoal){
+            autoPoints += 10;
+        }
+        if(scoredLowGoal){
+            autoPoints += 5;
+        }
+        if(reachDefence){
+            autoPoints += 2;
+        }
+        return autoPoints;
+    }
+
+
+
+
+    int cheeky(){
+        return numberOfTatesFriends();
+    }
+
+    int numberOfTatesFriends(){
+        return 0;
+    }
+    String qualityOfEgg(){
+        return "nice";
     }
 
 
