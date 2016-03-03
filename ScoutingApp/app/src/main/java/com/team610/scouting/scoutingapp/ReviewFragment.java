@@ -184,19 +184,19 @@ public class ReviewFragment extends Fragment {
 
 
         teleopDefences[0] = (TextView) v.findViewById(R.id.teleop_defence1_TextView);
-        teleopDefences[0].setText("1. " + match.defence1Cross + "crosses, " + chooseDefenceRating(match.defence1Rating));
+        teleopDefences[0].setText("1. " + match.defence1Cross + " crosses, " + chooseDefenceRating(match.defence1Rating));
 
         teleopDefences[1] = (TextView) v.findViewById(R.id.teleop_defence2_TextView);
-        teleopDefences[1].setText("2. " + match.defence2Cross+"crosses, " + chooseDefenceRating(match.defence2Rating));
+        teleopDefences[1].setText("2. " + match.defence2Cross+" crosses, " + chooseDefenceRating(match.defence2Rating));
 
         teleopDefences[2] = (TextView) v.findViewById(R.id.teleop_defence3_TextView);
-        teleopDefences[2].setText("3. " + match.defence3Cross+"crosses, " + chooseDefenceRating(match.defence3Rating));
+        teleopDefences[2].setText("3. " + match.defence3Cross+" crosses, " + chooseDefenceRating(match.defence3Rating));
 
         teleopDefences[3] = (TextView) v.findViewById(R.id.teleop_defence4_TextView);
-        teleopDefences[3].setText("4. " + match.defence4Cross+"crosses, " + chooseDefenceRating(match.defence4Rating));
+        teleopDefences[3].setText("4. " + match.defence4Cross+" crosses, " + chooseDefenceRating(match.defence4Rating));
 
         teleopDefences[4] = (TextView) v.findViewById(R.id.teleop_defence5_TextView);
-        teleopDefences[4].setText("5. " + match.defence5Cross+"crosses, " + chooseDefenceRating(match.defence5Rating));
+        teleopDefences[4].setText("5. " + match.defence5Cross+" crosses, " + chooseDefenceRating(match.defence5Rating));
 
         highGoal = (TextView) v.findViewById(R.id.high_goal_teleop_TextView);
         highGoal.setText("HighGoal - Scores: " + match.highGoalScores+", Misses: " + match.highGoalMisses);
