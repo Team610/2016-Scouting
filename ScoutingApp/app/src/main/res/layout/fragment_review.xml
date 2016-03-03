@@ -296,6 +296,7 @@
         android:layout_alignLeft="@+id/hang_TextView"
         android:layout_alignStart="@+id/hang_TextView" />
 
+    <!--
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -316,15 +317,17 @@
         android:layout_alignLeft="@+id/breach_TextView"
         android:layout_alignStart="@+id/breach_TextView" />
 
+        -->
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Checkmate Shots: "
         android:id="@+id/checkmate_TextView"
-        android:layout_below="@+id/capture_TextView"
-        android:layout_alignLeft="@+id/capture_TextView"
-        android:layout_alignStart="@+id/capture_TextView" />
+        android:layout_below="@+id/challenge_TextView"
+        android:layout_alignLeft="@+id/challenge_TextView"
+        android:layout_alignStart="@+id/challenge_TextView" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -340,7 +343,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Pop Shots: "
+        android:text="Courtyard Shots: "
         android:id="@+id/pop_shots_TextView"
         android:layout_below="@+id/defence_shots_TextView"
         android:layout_alignLeft="@+id/defence_shots_TextView"

@@ -216,11 +216,11 @@ public class ReviewFragment extends Fragment {
         challenge = (TextView) v.findViewById(R.id.challenge_TextView);
         challenge.setText("Challenge: " + match.challenge);
 
-        breach = (TextView) v.findViewById(R.id.breach_TextView);
-        breach.setText("Breach: " + match.breach);
-
-        capture = (TextView) v.findViewById(R.id.capture_TextView);
-        capture.setText("Capture: " + match.capture);
+//        breach = (TextView) v.findViewById(R.id.breach_TextView);
+//        breach.setText("Breach: " + match.breach);
+//
+//        capture = (TextView) v.findViewById(R.id.capture_TextView);
+//        capture.setText("Capture: " + match.capture);
 
         checkmate = (TextView) v.findViewById(R.id.checkmate_TextView);
         checkmate.setText("Checkmate Shots: " + match.shotFromCheckMate);
@@ -229,7 +229,7 @@ public class ReviewFragment extends Fragment {
         defenceShots.setText("Defence Shots: " +  match.shotFromDefences);
 
         popShots = (TextView) v.findViewById(R.id.pop_shots_TextView);
-        popShots.setText("Pop Shots: " + match.shotFromPopShot);
+        popShots.setText("Courtyard Shots: " + match.shotFromPopShot);
 
         defensiveRating = (TextView) v.findViewById(R.id.defence_rating_TextView);
         defensiveRating.setText("Defensive Rating: " + match.defensiveRating);
