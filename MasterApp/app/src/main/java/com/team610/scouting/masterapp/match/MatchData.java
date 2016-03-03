@@ -90,6 +90,7 @@ class Team {
     Random rand = new Random();
     public int id;
     MatchData match;
+    public String defences[] = new String[4];
 
     //Auton
     public boolean spybot = rand.nextBoolean();
@@ -99,7 +100,7 @@ class Team {
     public boolean endedCourtyard = rand.nextBoolean();
     public boolean endedNeutralZone = rand.nextBoolean();
     public boolean reachDefence = rand.nextBoolean();
-    public int defenseCrossed;
+    public String defenceCrossed;
     //public String defenseCrossed = "Lowbar";
     //Teleop
     public long highGoalScores = 3;
@@ -115,12 +116,12 @@ class Team {
     public int totalCrosses = 120;
     public String capture = "Scale";
 
+    public boolean challenge = false;
+    public boolean hang = false;
+
     //unimplemented
-    public long defence1crosses;
-    public long defence2crosses;
-    public long defence3crosses;
-    public long defence4crosses;
-    public long defense5crosses;
+    public long defencecrosses[] = new long[5];
+
 
     public long defense1rating;
     public long defense2rating;
@@ -153,8 +154,26 @@ class Team {
         //TODO add crossin defense
         //points +=
 
+        points = 0;
+
+        //Auton
+        points += autoScore();
+
         //Teleop
+        points += getDefenceCrossScore(1);
+        points += getDefenceCrossScore(2);
+        points += getDefenceCrossScore(3);
+        points += getDefenceCrossScore(4);
+        points += getDefenceCrossScore(5);
+
         points += highGoalScores * 5 + lowGoalScores * 2;//TODO ADD DEFENSES
+
+        if(challenge){
+            points += 5;
+        }
+        else if (hang) {
+            points += 15;
+        }
 
 
 
@@ -164,17 +183,26 @@ class Team {
     }
 
 
-    private int getScore(int a){
-        int score;
-        if(a == 0){
-            score = 0;
+    private int getDefenceCrossScore(int num){
+        long a = getDefenceCrossScore(num-1);
+        int score = 10;
+        if(defences[num-1].equals(defenceCrossed)){
+            if (a == 0) {
+                score = 0;
+            } else if (a == 1) {
+                score = 5;
+            }
         }
-        else if(a == 1){
-            score = 5;
+        else {
+            if (a == 0) {
+                score = 0;
+            } else if (a == 1) {
+                score = 5;
+            } else {
+                score = 10;
+            }
         }
-        else{
-            score = 10;
-        }
+
 
         return score;
 
@@ -188,7 +216,7 @@ class Team {
 
     private int autoScore(){
         int autoPoints = 0;
-        if(defenseCrossed != 0){
+        if(defenceCrossed == null || defenceCrossed.equals("")){
             autoPoints+=10;
         }
         if(scoredHighGoal){

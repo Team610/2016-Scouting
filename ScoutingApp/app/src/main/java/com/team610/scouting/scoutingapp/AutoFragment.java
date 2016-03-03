@@ -225,6 +225,15 @@ public class AutoFragment extends Fragment {
         defence4 = (ImageButton) rootView.findViewById(R.id.defence4_ImageButton);
         lowBarDefence5 = (ImageButton) rootView.findViewById(R.id.lowBar_defence_ImageButton);
 
+
+        reachedDefenceCheckBox = (CheckBox) rootView.findViewById(R.id.reachTheDefence_checkBox);
+        spybotCheckBox = (CheckBox) rootView.findViewById(R.id.spybot_checkBox);
+        scoreHighGoalCheckBox= (CheckBox) rootView.findViewById(R.id.highGoal_checkBox);
+        scoreLowGoalCheckBox = (CheckBox) rootView.findViewById(R.id.lowGoal_checkBox);
+        droppedInCourtyardCheckBox = (CheckBox) rootView.findViewById(R.id.courtyard_checkBox);
+        endedInCourtyardCheckBox = (CheckBox) rootView.findViewById(R.id.ended_courtyard_checkBox);
+        endedInNeutralCheckBox = (CheckBox) rootView.findViewById(R.id.neutralZone_CheckBox);
+
         nextPage = (Button) rootView.findViewById(R.id.next_Button);
 
         defence1.setOnClickListener(new View.OnClickListener() {
@@ -236,6 +245,7 @@ public class AutoFragment extends Fragment {
                     drivenToDefence = defences[0];
                     colourPickedDefence(1);
                     defenceNumDrivenTo = 1;
+                    reachedDefenceCheckBox.setChecked(false);
                 }else{
                     drivenToDefence = null;
                     colourPickedDefence(0);
@@ -252,6 +262,7 @@ public class AutoFragment extends Fragment {
                     drivenToDefence = defences[1];
                     colourPickedDefence(2);
                     defenceNumDrivenTo = 2;
+                    reachedDefenceCheckBox.setChecked(false);
                 }else{
                     drivenToDefence = null;
                     colourPickedDefence(0);
@@ -269,6 +280,7 @@ public class AutoFragment extends Fragment {
                     drivenToDefence = defences[2];
                     colourPickedDefence(3);
                     defenceNumDrivenTo = 3;
+                    reachedDefenceCheckBox.setChecked(false);
                 }else{
                     drivenToDefence = null;
                     colourPickedDefence(0);
@@ -289,6 +301,7 @@ public class AutoFragment extends Fragment {
                     drivenToDefence = defences[3];
                     colourPickedDefence(4);
                     defenceNumDrivenTo = 4;
+                    reachedDefenceCheckBox.setChecked(false);
                 } else {
                     drivenToDefence = null;
                     colourPickedDefence(0);
@@ -306,6 +319,7 @@ public class AutoFragment extends Fragment {
                     drivenToDefence = "lowbar";
                     colourPickedDefence(5);
                     defenceNumDrivenTo = 5;
+                    reachedDefenceCheckBox.setChecked(false);
                 } else {
                     drivenToDefence = null;
                     colourPickedDefence(0);
@@ -343,14 +357,20 @@ public class AutoFragment extends Fragment {
 
 
 
-        reachedDefenceCheckBox = (CheckBox) rootView.findViewById(R.id.reachTheDefence_checkBox);
-        spybotCheckBox = (CheckBox) rootView.findViewById(R.id.spybot_checkBox);
-        scoreHighGoalCheckBox= (CheckBox) rootView.findViewById(R.id.highGoal_checkBox);
-        scoreLowGoalCheckBox = (CheckBox) rootView.findViewById(R.id.lowGoal_checkBox);
-        droppedInCourtyardCheckBox = (CheckBox) rootView.findViewById(R.id.courtyard_checkBox);
-        endedInCourtyardCheckBox = (CheckBox) rootView.findViewById(R.id.ended_courtyard_checkBox);
-        endedInNeutralCheckBox = (CheckBox) rootView.findViewById(R.id.neutralZone_CheckBox);
 
+        reachedDefenceCheckBox.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+
+                if (reachedDefenceCheckBox.isChecked()){
+                    drivenToDefence = null;
+                    defenceNumDrivenTo = 0;
+                    colourPickedDefence(0);
+                }
+
+            }
+
+        });
         //delete this
         //MatchData.updateAuto();
 
