@@ -88,6 +88,7 @@ public class MatchData {
     static Firebase matchSetupRef;
     static Firebase autoRef;
     static Firebase teleRef;
+    static Firebase miscRef;
 
 
 
@@ -117,6 +118,8 @@ public class MatchData {
         matchSetupRef = teamRef.child("matchSetup");
         autoRef = teamRef.child("auto");
         teleRef = teamRef.child("teleop");
+        miscRef = teamRef.child("misc");
+
 
 
     }
@@ -196,7 +199,33 @@ public class MatchData {
         autoRef.updateChildren(auto);
     }
 
+    public static void updateMisc(){
 
+        Map<String, Object> misc = new HashMap<String, Object>();
+
+//        public boolean capture = false;
+//        public boolean breach = false;
+//        public boolean challenge = false;
+//        public boolean hang = false;
+//        public String scoutName = "";
+//        public String comment = "";
+//        public int defensiveRating = 0; //0 means no defence
+//        public boolean shotFromDefences = false;
+//        public boolean shotFromCheckMate = false;
+//        public boolean shotFromPopShot = false;
+
+        misc.put("capture", instance.capture);
+        misc.put("breach", instance.breach);
+        misc.put("challange", instance.challenge);
+        misc.put("hang", instance.hang);
+        misc.put("scoutName", instance.scoutName);
+        misc.put("comment", instance.comment);
+        misc.put("defensiveRating", instance.defensiveRating);
+        misc.put("shotFromDefences", instance.shotFromDefences);
+        misc.put("shotFromCheckMate", instance.shotFromCheckMate);
+        misc.put("shotFromPopShot",instance.shotFromPopShot);
+        miscRef.updateChildren(misc);
+    }
 
 
 
@@ -208,6 +237,7 @@ public class MatchData {
         updateMatchSetup();
         updateTeleop();
         updateAuto();
+        updateMisc();
 
 
 
