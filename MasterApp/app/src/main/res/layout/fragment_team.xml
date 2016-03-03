@@ -21,17 +21,15 @@
         android:id="@+id/scoreTable"
         android:layout_below="@+id/teamNumber"
         android:padding="10dip"
+
         >
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
-                android:text="@string/avgScore"
-                android:padding="@dimen/tablePadding" />
-            <TextView
-                android:id="@+id/avgScoreBox"
-                android:gravity="right"
+                android:text="Average"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:padding="@dimen/tablePadding" />
         </TableRow>
 
@@ -44,7 +42,7 @@
                 android:padding="@dimen/tablePadding" />
             <TextView
                 android:id="@+id/autonScoreBox"
-                android:gravity="right"
+                android:gravity="end"
                 android:padding="@dimen/tablePadding" />
         </TableRow>
 
@@ -56,7 +54,7 @@
                 android:padding="@dimen/tablePadding" />
             <TextView
                 android:id="@+id/defenseScoreBox"
-                android:gravity="right"
+                android:gravity="end"
                 android:padding="@dimen/tablePadding" />
 
         </TableRow>
@@ -65,25 +63,80 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:text="@string/shootingScore"
+                android:text="High Goal Shots "
                 android:padding="@dimen/tablePadding" />
 
             <TextView
-                android:id="@+id/shootingScoreBox"
-                android:gravity="right"
+                android:id="@+id/highGoalScoreBox"
+                android:gravity="end"
                 android:padding="@dimen/tablePadding" />
         </TableRow>
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
-                android:text="@string/accuracyScore"
+                android:text="High Goal %"
                 android:padding="@dimen/tablePadding" />
             <TextView
-                android:id="@+id/accuracyScoreBox"
-                android:gravity="right"
+                android:id="@+id/highGoalAccuracyScoreBox"
+                android:gravity="end"
                 android:padding="@dimen/tablePadding" />
 
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="Low Goal Shots"
+                android:padding="@dimen/tablePadding" />
+            <TextView
+                android:id="@+id/lowGoalScoreBox"
+                android:gravity="end"
+                android:padding="@dimen/tablePadding" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="Low Goal %"
+                android:padding="@dimen/tablePadding" />
+            <TextView
+                android:id="@+id/lowGoalAccuracyScoreBox"
+                android:gravity="end"
+                android:padding="@dimen/tablePadding" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="Courtyard Drops"
+                android:padding="@dimen/tablePadding" />
+            <TextView
+                android:id="@+id/courtyardScoreBox"
+                android:gravity="end"
+                android:padding="@dimen/tablePadding" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="Hanging"
+                android:padding="@dimen/tablePadding" />
+            <TextView
+                android:id="@+id/hangingScoreBox"
+                android:gravity="end"
+                android:padding="@dimen/tablePadding" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="Challenge"
+                android:padding="@dimen/tablePadding" />
+            <TextView
+                android:id="@+id/challengeScoreBox"
+                android:gravity="end"
+                android:padding="@dimen/tablePadding" />
         </TableRow>
     </TableLayout>
     <TextView
@@ -92,8 +145,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/matches"
         android:id="@+id/matchText"
+        android:paddingLeft="10dp"
         android:layout_below="@+id/scoreTable"
-
         />
     <ListView
 
@@ -121,7 +174,7 @@
         android:layout_height="match_parent">
         <TextView
             android:text="Defense Stats"
-            android:textSize="25sp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:padding="@dimen/tablePadding" />
          </TableRow>
         <TableRow
@@ -138,7 +191,8 @@
         </TableRow>
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            >
             <TextView
                 android:text="Cheval De Frise"
                 android:textSize="@dimen/defenseTextSize"

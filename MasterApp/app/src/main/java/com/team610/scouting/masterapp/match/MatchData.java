@@ -179,10 +179,11 @@ class Team {
         return score;
 
     }
-
+    //TODO
     private int teleOp(){
         int teleOpScore = 0;
         //if()
+        return 0;
     }
 
     private int autoScore(){
@@ -202,19 +203,6 @@ class Team {
         return autoPoints;
     }
 
-
-
-
-    int cheeky(){
-        return numberOfTatesFriends();
-    }
-
-    int numberOfTatesFriends(){
-        return 0;
-    }
-    String qualityOfEgg(){
-        return "nice";
-    }
 
 
 }

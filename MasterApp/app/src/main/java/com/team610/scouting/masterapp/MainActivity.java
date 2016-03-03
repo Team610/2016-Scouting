@@ -15,7 +15,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.view.menu.ActionMenuItemView;
 import android.support.v7.widget.Toolbar;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
@@ -151,7 +150,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void refresh(MenuItem ignore) {
-        //TODO update all text Views
+        //TODO update all text Views of current fragment
 
         loadAllTeamData();
     }
@@ -165,12 +164,55 @@ public class MainActivity extends AppCompatActivity
                         TeamData team;
                         if (!teams.containsKey(teamData.getKey())) {
                             team = new TeamData(teamData.getKey());
-                        }else{
+                        } else {
                             team = teams.get(teamData.getKey());
                         }
                         team.matches.add(match.getKey().substring(5));
                         int numMatches = team.matches.size();
+                        //AUTON
+                        DataSnapshot data = teamData.child("auto");
+                        team.avgAutonScore *= (numMatches - 1);
+                        //TODO this probably wont work
+                        team.avgAutonScore += (data.child("defenseCrossed").getValue() == null) ? 10 : ((boolean) data.child("reachDefence").getValue()) ? 2 : 0;
+                        team.avgAutonScore += ((boolean) data.child("scoreHighGoal").getValue()) ? 10 : ((boolean) data.child("scoredLowGoal").getValue()) ? 5 : 0;
+                        team.avgAutonScore /= numMatches;
 
+                        //Defence Scores
+                        data = teamData.child("teleop");
+                        team.avgDefenseScore *= numMatches - 1;
+                        team.avgDefenseScore += Math.min(((long) data.child("defence1crosses").getValue()) * 5, 10);
+                        team.avgDefenseScore += Math.min(((long) data.child("defence2crosses").getValue()) * 5, 10);
+                        team.avgDefenseScore += Math.min(((long) data.child("defence3crosses").getValue()) * 5, 10);
+                        team.avgDefenseScore += Math.min(((long) data.child("defence4crosses").getValue()) * 5, 10);
+                        team.avgDefenseScore += Math.min(((long) data.child("defence5crosses").getValue()) * 5, 10);
+                        team.avgDefenseScore /= numMatches;
+
+                        //Shooting
+                        team.highGoalMisses += ((long) data.child("highGoalMisses").getValue());
+                        team.highGoalShots += ((long) data.child("highGoalShots").getValue());
+                        team.lowGoalMisses += ((long) data.child("lowGoalMisses").getValue());
+                        team.lowGoalShots += ((long) data.child("lowGoalShots").getValue());
+
+                        //Fouls
+                        team.fouls += ((long) data.child("fouls").getValue());
+
+                        //Defence rating
+                        for (int i = 0; i < 5; i++) {
+                            data = teamData.child("matchSetup");
+                            Defence d = Defence.getDefence((String) data.child("defence" + i).getValue());
+                            if (!team.defences.containsKey(d)) {
+                                team.defences.put(d, new Double[]{0D, 0D});
+                            }
+                            data = teamData.child("teleop");
+                            long val = (long) data.child("defence" + i + "rating").getValue();
+                            if (val != 0) {
+                                team.defences.get(d)[0] *= numMatches - 1;
+                                team.defences.get(d)[0] += val;
+                                team.defences.get(d)[0] /= numMatches;
+                            }
+                            team.defences.get(d)[1] += (long) data.child("defence"+i+"crosses").getValue();
+
+                        }
                     }
                 }
             }
