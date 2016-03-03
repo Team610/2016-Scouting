@@ -10,15 +10,14 @@ import java.util.HashMap;
  */
 public class TeamData {
 
+
+
+
     public TeamData(String id) {
         this.id = Integer.valueOf(id);
         defences = new HashMap<>();
-    }
-
-    //Returns a data for a team on id
-    public static TeamData getTeamData(int id) {
-        //TODO load teamData
-        return null;
+        comments = new ArrayList<>();
+        matches = new ArrayList<>();
     }
 
     public int id;
@@ -28,11 +27,14 @@ public class TeamData {
 
     public double avgAutonScore = 0;
     public double avgDefenseScore = 0;
-
+//TODO
     public double avgHighGoalScore = 0;
     public double highGoalPercentage = 0;
     public double avgLowGoalScore = 0;
     public double lowGoalPercentage = 0;
+//TODO
+    public double hangingPercentage;
+    public double challengePercentage;
 
 
     public long fouls;
@@ -41,10 +43,11 @@ public class TeamData {
     public long highGoalMisses;
     public long lowGoalShots;
     public long lowGoalMisses;
-
-
+    //TODO
+    public double avgCourtyardDrops;
+    //TODO
     public ArrayList<String> matches;
-
+    //TODO
     public ArrayList<String> comments;
 
 

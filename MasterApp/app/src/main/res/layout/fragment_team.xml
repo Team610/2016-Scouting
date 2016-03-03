@@ -1,24 +1,24 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_team"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/fragment_team"
     tools:context=".team.TeamFragment">
 
     <EditText
+        android:id="@+id/teamNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/teamNumber"
         android:layout_alignParentTop="true"
-        android:hint="@string/teamNum" />
+        android:ems="10"
+        android:hint="@string/teamNum"
+        android:inputType="number" />
 
 
     <TableLayout
+        android:id="@+id/scoreTable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/scoreTable"
         android:layout_below="@+id/teamNumber"
         android:padding="10dip"
 
@@ -27,10 +27,11 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <TextView
+                android:padding="@dimen/tablePadding"
                 android:text="Average"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:padding="@dimen/tablePadding" />
+                android:textAppearance="?android:attr/textAppearanceLarge" />
         </TableRow>
 
         <TableRow
@@ -38,8 +39,9 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:text="@string/autonScore"
-                android:padding="@dimen/tablePadding" />
+                android:padding="@dimen/tablePadding"
+                android:text="@string/autonScore" />
+
             <TextView
                 android:id="@+id/autonScoreBox"
                 android:gravity="end"
@@ -49,259 +51,308 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <TextView
-                android:text="@string/defenseScore"
-                android:padding="@dimen/tablePadding" />
+                android:padding="@dimen/tablePadding"
+                android:text="@string/defenseScore" />
+
             <TextView
                 android:id="@+id/defenseScoreBox"
                 android:gravity="end"
                 android:padding="@dimen/tablePadding" />
 
         </TableRow>
+
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <TextView
-                android:text="High Goal Shots "
-                android:padding="@dimen/tablePadding" />
+                android:padding="@dimen/tablePadding"
+                android:text="High Goal Shots " />
 
             <TextView
                 android:id="@+id/highGoalScoreBox"
                 android:gravity="end"
                 android:padding="@dimen/tablePadding" />
         </TableRow>
+
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <TextView
-                android:text="High Goal %"
-                android:padding="@dimen/tablePadding" />
+                android:padding="@dimen/tablePadding"
+                android:text="High Goal %" />
+
             <TextView
                 android:id="@+id/highGoalAccuracyScoreBox"
                 android:gravity="end"
                 android:padding="@dimen/tablePadding" />
 
         </TableRow>
+
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <TextView
-                android:text="Low Goal Shots"
-                android:padding="@dimen/tablePadding" />
+                android:padding="@dimen/tablePadding"
+                android:text="Low Goal Shots" />
+
             <TextView
                 android:id="@+id/lowGoalScoreBox"
                 android:gravity="end"
                 android:padding="@dimen/tablePadding" />
         </TableRow>
+
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <TextView
-                android:text="Low Goal %"
-                android:padding="@dimen/tablePadding" />
+                android:padding="@dimen/tablePadding"
+                android:text="Low Goal %" />
+
             <TextView
                 android:id="@+id/lowGoalAccuracyScoreBox"
                 android:gravity="end"
                 android:padding="@dimen/tablePadding" />
         </TableRow>
+
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <TextView
-                android:text="Courtyard Drops"
-                android:padding="@dimen/tablePadding" />
+                android:padding="@dimen/tablePadding"
+                android:text="Courtyard Drops" />
+
             <TextView
                 android:id="@+id/courtyardScoreBox"
                 android:gravity="end"
                 android:padding="@dimen/tablePadding" />
         </TableRow>
+
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <TextView
-                android:text="Hanging"
-                android:padding="@dimen/tablePadding" />
+                android:padding="@dimen/tablePadding"
+                android:text="Hanging" />
+
             <TextView
                 android:id="@+id/hangingScoreBox"
                 android:gravity="end"
                 android:padding="@dimen/tablePadding" />
         </TableRow>
+
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <TextView
-                android:text="Challenge"
-                android:padding="@dimen/tablePadding" />
+                android:padding="@dimen/tablePadding"
+                android:text="Challenge" />
+
             <TextView
                 android:id="@+id/challengeScoreBox"
                 android:gravity="end"
                 android:padding="@dimen/tablePadding" />
         </TableRow>
     </TableLayout>
+
     <TextView
+        android:id="@+id/matchText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/matches"
-        android:id="@+id/matchText"
-        android:paddingLeft="10dp"
         android:layout_below="@+id/scoreTable"
-        />
+        android:paddingLeft="10dp"
+        android:text="@string/matches"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
     <ListView
 
+        android:id="@+id/matchList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/matchList"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignRight="@id/teamNumber"
-        android:layout_below="@id/matchText"
-         />
+        android:layout_below="@id/matchText" />
 
     <TableLayout
+        android:id="@+id/defenseStatsTable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@id/teamNumber"
         android:layout_alignParentRight="true"
-        android:id="@+id/defenseStatsTable"
-        >
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@id/teamNumber">
 
 
         <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <TextView
-            android:text="Defense Stats"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:padding="@dimen/tablePadding" />
-         </TableRow>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            >
+
+            <TextView
+                android:padding="@dimen/tablePadding"
+                android:text="Defense Stats"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+        </TableRow>
+
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <TextView
+                android:padding="@dimen/tablePadding"
                 android:text="Portcullis"
-                android:textSize="@dimen/defenseTextSize"
-                android:padding="@dimen/tablePadding" />
+                android:textSize="@dimen/defenseTextSize" />
+
             <TextView
                 android:id="@+id/portcullisAvgTime"
                 android:gravity="right"
                 android:padding="@dimen/tablePadding" />
         </TableRow>
+
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
+
             <TextView
+                android:padding="@dimen/tablePadding"
                 android:text="Cheval De Frise"
-                android:textSize="@dimen/defenseTextSize"
-                android:padding="@dimen/tablePadding" />
+                android:textSize="@dimen/defenseTextSize" />
+
             <TextView
                 android:id="@+id/chevalDeFriseAvgTime"
                 android:gravity="right"
                 android:padding="@dimen/tablePadding" />
         </TableRow>
+
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <TextView
+                android:padding="@dimen/tablePadding"
                 android:text="Moat"
-                android:textSize="@dimen/defenseTextSize"
-                android:padding="@dimen/tablePadding" />
+                android:textSize="@dimen/defenseTextSize" />
+
             <TextView
                 android:id="@+id/moatAvgTime"
                 android:gravity="right"
                 android:padding="@dimen/tablePadding" />
         </TableRow>
+
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <TextView
+                android:padding="@dimen/tablePadding"
                 android:text="Ramparts"
-                android:textSize="@dimen/defenseTextSize"
-                android:padding="@dimen/tablePadding" />
+                android:textSize="@dimen/defenseTextSize" />
+
             <TextView
                 android:id="@+id/rampartsAvgTime"
                 android:gravity="right"
                 android:padding="@dimen/tablePadding" />
         </TableRow>
+
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <TextView
+                android:padding="@dimen/tablePadding"
                 android:text="Drawbridge"
-                android:textSize="@dimen/defenseTextSize"
-                android:padding="@dimen/tablePadding" />
+                android:textSize="@dimen/defenseTextSize" />
+
             <TextView
                 android:id="@+id/drawbridgeAvgTime"
                 android:gravity="right"
                 android:padding="@dimen/tablePadding" />
         </TableRow>
+
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <TextView
+                android:padding="@dimen/tablePadding"
                 android:text="Sally Port"
-                android:textSize="@dimen/defenseTextSize"
-                android:padding="@dimen/tablePadding" />
+                android:textSize="@dimen/defenseTextSize" />
+
             <TextView
                 android:id="@+id/sallyPortAvgTime"
                 android:gravity="right"
                 android:padding="@dimen/tablePadding" />
         </TableRow>
+
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <TextView
+                android:padding="@dimen/tablePadding"
                 android:text="Rock Wall"
-                android:textSize="@dimen/defenseTextSize"
-                android:padding="@dimen/tablePadding" />
+                android:textSize="@dimen/defenseTextSize" />
+
             <TextView
                 android:id="@+id/rockWallAvgTime"
                 android:gravity="right"
                 android:padding="@dimen/tablePadding" />
         </TableRow>
+
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <TextView
+                android:padding="@dimen/tablePadding"
                 android:text="Rough Terrain"
-                android:textSize="@dimen/defenseTextSize"
-                android:padding="@dimen/tablePadding" />
+                android:textSize="@dimen/defenseTextSize" />
+
             <TextView
                 android:id="@+id/roughTerrainAvgScore"
                 android:gravity="right"
                 android:padding="@dimen/tablePadding" />
         </TableRow>
+
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <TextView
+                android:padding="@dimen/tablePadding"
                 android:text="Low Bar"
-                android:textSize="@dimen/defenseTextSize"
-                android:padding="@dimen/tablePadding" />
+                android:textSize="@dimen/defenseTextSize" />
+
             <TextView
                 android:id="@+id/lowBarAvgTime"
                 android:gravity="right"
                 android:padding="@dimen/tablePadding" />
         </TableRow>
     </TableLayout>
+
     <TextView
+        android:id="@+id/commentText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Comments"
-        android:id="@+id/commentText"
         android:layout_below="@+id/defenseStatsTable"
         android:layout_toRightOf="@+id/matchList"
-        />
+        android:text="Comments"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
     <ExpandableListView
+        android:id="@+id/commentsList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/commentsList"
-        android:layout_toRightOf="@+id/matchList"
         android:layout_below="@id/commentText"
-        />
+        android:layout_toRightOf="@+id/matchList" />
 
 </RelativeLayout>

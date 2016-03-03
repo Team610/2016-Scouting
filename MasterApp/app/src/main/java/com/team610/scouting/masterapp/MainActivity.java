@@ -173,7 +173,7 @@ public class MainActivity extends AppCompatActivity
                         DataSnapshot data = teamData.child("auto");
                         team.avgAutonScore *= (numMatches - 1);
                         //TODO this probably wont work
-                        team.avgAutonScore += (data.child("defenseCrossed").getValue() == null) ? 10 : ((boolean) data.child("reachDefence").getValue()) ? 2 : 0;
+                        team.avgAutonScore += data.child("defenseCrossed").getValue() == null ? 10 : ((boolean) data.child("reachDefence").getValue()) ? 2 : 0;
                         team.avgAutonScore += ((boolean) data.child("scoreHighGoal").getValue()) ? 10 : ((boolean) data.child("scoredLowGoal").getValue()) ? 5 : 0;
                         team.avgAutonScore /= numMatches;
 
