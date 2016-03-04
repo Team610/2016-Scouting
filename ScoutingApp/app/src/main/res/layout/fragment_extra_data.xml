@@ -181,7 +181,7 @@
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pop Shot"
+        android:text="Courtyard Shot"
         android:id="@+id/pop_shot_CheckBox"
         android:layout_below="@+id/defences_CheckBox"
         android:layout_alignLeft="@+id/defences_CheckBox"
