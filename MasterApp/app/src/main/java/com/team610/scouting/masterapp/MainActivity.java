@@ -18,6 +18,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity
 
     Menu actionbar;
 
-    public static Fragment mFrag;
+    public static ScoutingFragment mFrag;
     static final String[] tournaments = {"GTC", "GTE", "WATERLOO", "WORLDS"};
     public static String currentTournament = "GTC";//TODO default when on that date
 
@@ -151,8 +152,8 @@ public class MainActivity extends AppCompatActivity
 
     public void refresh(MenuItem ignore) {
         //TODO update all text Views of current fragment
-
         loadAllTeamData();
+
     }
 
     public void loadAllTeamData() {
@@ -210,10 +211,15 @@ public class MainActivity extends AppCompatActivity
                                 team.defences.get(d)[0] += val;
                                 team.defences.get(d)[0] /= numMatches;
                             }
-                            team.defences.get(d)[1] += (long) data.child("defence"+i+"crosses").getValue();
-
+                            team.defences.get(d)[1] += (long) data.child("defence" + i + "crosses").getValue();
                         }
                     }
+                }
+
+                try {
+                    mFrag.updateViewsFromThe6ix();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
 
@@ -244,6 +250,14 @@ public class MainActivity extends AppCompatActivity
         });
 
         builder.show();
+    }
+
+    public TeamData getTeam(int id) {
+        if (teams == null || teams.isEmpty()) {
+            return null;
+        } else {
+            return teams.get(id + "");
+        }
     }
 }
 

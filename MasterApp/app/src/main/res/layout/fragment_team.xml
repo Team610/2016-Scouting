@@ -318,7 +318,7 @@
                 android:textSize="@dimen/defenseTextSize" />
 
             <TextView
-                android:id="@+id/roughTerrainAvgScore"
+                android:id="@+id/roughTerrainAvgTime"
                 android:gravity="right"
                 android:padding="@dimen/tablePadding" />
         </TableRow>
@@ -340,19 +340,156 @@
     </TableLayout>
 
     <TextView
-        android:id="@+id/commentText"
+        android:id="@+id/miscText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/defenseStatsTable"
         android:layout_toRightOf="@+id/matchList"
-        android:text="Comments"
+        android:text="Miscellaneous"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <ExpandableListView
-        android:id="@+id/commentsList"
-        android:layout_width="match_parent"
+    <TableLayout
+        android:id="@+id/miscDataTable"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/commentText"
-        android:layout_toRightOf="@+id/matchList" />
+        android:layout_below="@id/miscText"
+        android:layout_toRightOf="@id/matchList">
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:padding="@dimen/tablePadding"
+                android:text="Portcullis"
+                android:textSize="@dimen/defenseTextSize" />
+
+            <TextView
+                android:id="@+id/portcullisAvgTime"
+                android:gravity="right"
+                android:padding="@dimen/tablePadding" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:padding="@dimen/tablePadding"
+                android:text="Cheval De Frise"
+                android:textSize="@dimen/defenseTextSize" />
+
+            <TextView
+                android:id="@+id/chevalDeFriseAvgTime"
+                android:gravity="right"
+                android:padding="@dimen/tablePadding" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:padding="@dimen/tablePadding"
+                android:text="Moat"
+                android:textSize="@dimen/defenseTextSize" />
+
+            <TextView
+                android:id="@+id/moatAvgTime"
+                android:gravity="right"
+                android:padding="@dimen/tablePadding" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:padding="@dimen/tablePadding"
+                android:text="Ramparts"
+                android:textSize="@dimen/defenseTextSize" />
+
+            <TextView
+                android:id="@+id/rampartsAvgTime"
+                android:gravity="right"
+                android:padding="@dimen/tablePadding" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:padding="@dimen/tablePadding"
+                android:text="Drawbridge"
+                android:textSize="@dimen/defenseTextSize" />
+
+            <TextView
+                android:id="@+id/drawbridgeAvgTime"
+                android:gravity="right"
+                android:padding="@dimen/tablePadding" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:padding="@dimen/tablePadding"
+                android:text="Sally Port"
+                android:textSize="@dimen/defenseTextSize" />
+
+            <TextView
+                android:id="@+id/sallyPortAvgTime"
+                android:gravity="right"
+                android:padding="@dimen/tablePadding" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:padding="@dimen/tablePadding"
+                android:text="Rock Wall"
+                android:textSize="@dimen/defenseTextSize" />
+
+            <TextView
+                android:id="@+id/rockWallAvgTime"
+                android:gravity="right"
+                android:padding="@dimen/tablePadding" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:padding="@dimen/tablePadding"
+                android:text="Rough Terrain"
+                android:textSize="@dimen/defenseTextSize" />
+
+            <TextView
+                android:id="@+id/roughTerrainAvgTime"
+                android:gravity="right"
+                android:padding="@dimen/tablePadding" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:padding="@dimen/tablePadding"
+                android:text="Low Bar"
+                android:textSize="@dimen/defenseTextSize" />
+
+            <TextView
+                android:id="@+id/lowBarAvgTime"
+                android:gravity="right"
+                android:padding="@dimen/tablePadding" />
+        </TableRow>
+    </TableLayout>
+
 
 </RelativeLayout>

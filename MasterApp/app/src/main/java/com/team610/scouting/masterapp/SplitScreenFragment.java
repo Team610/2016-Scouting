@@ -20,7 +20,7 @@ import com.team610.scouting.masterapp.team.TeamFragment;
  * Use the {@link SplitScreenFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SplitScreenFragment extends Fragment {
+public class SplitScreenFragment extends ScoutingFragment {
 
     // TODO: Rename and change types of parameters
     private int team1;
@@ -55,8 +55,8 @@ public class SplitScreenFragment extends Fragment {
             team2 = getArguments().getInt("TEAM_2");
         }
         FragmentTransaction trans = getFragmentManager().beginTransaction();
-        trans.add(R.id.splitleft,TeamFragment.newInstance(team1));
-        trans.add(R.id.splitright,TeamFragment.newInstance(team2)).commit();
+        trans.add(R.id.splitleft,TeamFragment.newInstance(team1,true));
+        trans.add(R.id.splitright,TeamFragment.newInstance(team2,false)).commit();
     }
 
     @Override
@@ -95,6 +95,11 @@ public class SplitScreenFragment extends Fragment {
     public void onDestroyView() {
 
         super.onDestroyView();
+    }
+
+    @Override
+    public void updateViewsFromThe6ix() throws NoSuchFieldException, IllegalAccessException {
+        //Unused
     }
 
     /**

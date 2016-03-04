@@ -9,7 +9,7 @@ public enum Defence {
     MOAT('B',"moat"),
     RAMPARTS('B',"ramparts"),
     DRAWBRIDGE('C',"drawbridge"),
-    SALY_PORT('C',"sallyport"),
+    SALLY_PORT('C',"sallyport"),
     ROCK_WALL('D',"rockwall"),
     ROUGH_TERRAIN('D',"roughterrain"),
     LOW_BAR('E',"lowbar");

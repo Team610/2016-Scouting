@@ -16,6 +16,7 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.team610.scouting.masterapp.R;
+import com.team610.scouting.masterapp.ScoutingFragment;
 import com.team610.scouting.masterapp.team.TeamDialog;
 
 
@@ -27,7 +28,7 @@ import com.team610.scouting.masterapp.team.TeamDialog;
  * Use the {@link MatchFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MatchFragment extends Fragment {
+public class MatchFragment extends ScoutingFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";

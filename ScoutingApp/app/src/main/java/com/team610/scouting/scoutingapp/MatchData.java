@@ -216,7 +216,7 @@ public class MatchData {
 
         misc.put("capture", instance.capture);
         misc.put("breach", instance.breach);
-        misc.put("challange", instance.challenge);
+        misc.put("challenge", instance.challenge);
         misc.put("hang", instance.hang);
         misc.put("scoutName", instance.scoutName);
         misc.put("comment", instance.comment);
