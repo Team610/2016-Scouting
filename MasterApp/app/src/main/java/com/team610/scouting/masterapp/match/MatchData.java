@@ -184,12 +184,12 @@ class Team {
 
 
     private int getDefenceCrossScore(int num){
-        long a = getDefenceCrossScore(num-1);
+        long a = defencecrosses[num-1];
         int score = 10;
         if(defences[num-1].equals(defenceCrossed)){
             if (a == 0) {
                 score = 0;
-            } else if (a == 1) {
+            } else {
                 score = 5;
             }
         }
