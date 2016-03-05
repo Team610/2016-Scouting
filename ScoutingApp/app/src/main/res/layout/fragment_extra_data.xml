@@ -26,164 +26,168 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Alliance:"
-        android:id="@+id/alliance_title_TextView"
-        android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/defenceSlider_TableLayout"
-        android:layout_alignStart="@+id/defenceSlider_TableLayout" />
 
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Breach"
-        android:id="@+id/breach_CheckBox"
-        android:layout_below="@+id/alliance_title_TextView"
-        android:layout_alignLeft="@+id/alliance_title_TextView"
-        android:layout_alignStart="@+id/alliance_title_TextView" />
 
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Capture"
-        android:id="@+id/capture_CheckBox"
-        android:layout_below="@+id/breach_CheckBox"
-        android:layout_alignLeft="@+id/breach_CheckBox"
-        android:layout_alignStart="@+id/breach_CheckBox" />
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hang"
-        android:id="@+id/hang_CheckBox"
-        android:layout_below="@+id/next_Button"
-        android:layout_alignLeft="@+id/alliance_title_TextView"
-        android:layout_alignStart="@+id/alliance_title_TextView" />
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Challenge"
-        android:id="@+id/challenge_CheckBox"
-        android:layout_below="@+id/or_TextView"
-        android:layout_alignLeft="@+id/hang_CheckBox"
-        android:layout_alignStart="@+id/hang_CheckBox" />
-
-    <EditText
-        android:layout_width="350dp"
-        android:layout_height="250dp"
-        android:id="@+id/comment_EditText"
-        android:gravity="top"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Comments"
-        android:id="@+id/comment_TextView"
-        android:layout_above="@+id/comment_EditText"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Scout Name: "
-        android:id="@+id/scout_name_title_TextView"
-        android:layout_below="@+id/comment_EditText"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:ems="20"
-        android:id="@+id/scout_name_EditText"
-        android:layout_alignBottom="@+id/scout_name_title_TextView"
-        android:layout_toRightOf="@+id/scout_name_title_TextView"
-        android:layout_toEndOf="@+id/scout_name_title_TextView" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Or"
-        android:id="@+id/or_TextView"
-        android:layout_below="@+id/hang_CheckBox"
-        android:layout_alignLeft="@+id/hang_CheckBox"
-        android:layout_alignStart="@+id/hang_CheckBox" />
-
-    <TableLayout
-        android:layout_width="450dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/defenceSlider_TableLayout"
-        android:layout_below="@+id/capture_CheckBox"
-        android:layout_alignRight="@+id/next_Button"
-        android:layout_alignEnd="@+id/next_Button"
-        android:layout_marginRight="10dp">
-
-        <include
-            android:id="@+id/tableRow1_ref"
+    <!--
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            layout="@layout/defencesdescriptions" />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Alliance:"
+            android:id="@+id/alliance_title_TextView"
+            android:layout_centerVertical="true"
+            android:layout_alignLeft="@+id/defenceSlider_TableLayout"
+            android:layout_alignStart="@+id/defenceSlider_TableLayout" />
 
-        <SeekBar
-            android:id="@+id/set_defence_SeekBar"
-            android:layout_width="match_parent"
+        <CheckBox
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:thumb="@drawable/thumb_image"
-            android:max="100" />
+            android:text="Breach"
+            android:id="@+id/breach_CheckBox"
+            android:layout_below="@+id/alliance_title_TextView"
+            android:layout_alignLeft="@+id/alliance_title_TextView"
+            android:layout_alignStart="@+id/alliance_title_TextView" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Capture"
+            android:id="@+id/capture_CheckBox"
+            android:layout_below="@+id/breach_CheckBox"
+            android:layout_alignLeft="@+id/breach_CheckBox"
+            android:layout_alignStart="@+id/breach_CheckBox" />
+
+            -->
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hang"
+            android:id="@+id/hang_CheckBox"
+            android:layout_below="@+id/next_Button"
+            android:layout_alignLeft="@+id/defenceSlider_TableLayout"
+            android:layout_alignStart="@+id/defenceSlider_TableLayout" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Challenge"
+            android:id="@+id/challenge_CheckBox"
+            android:layout_below="@+id/or_TextView"
+            android:layout_alignLeft="@+id/hang_CheckBox"
+            android:layout_alignStart="@+id/hang_CheckBox" />
+
+        <EditText
+            android:layout_width="350dp"
+            android:layout_height="250dp"
+            android:id="@+id/comment_EditText"
+            android:gravity="top"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Comments"
+            android:id="@+id/comment_TextView"
+            android:layout_above="@+id/comment_EditText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Scout Name: "
+            android:id="@+id/scout_name_title_TextView"
+            android:layout_below="@+id/comment_EditText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:ems="20"
+            android:id="@+id/scout_name_EditText"
+            android:layout_alignBottom="@+id/scout_name_title_TextView"
+            android:layout_toRightOf="@+id/scout_name_title_TextView"
+            android:layout_toEndOf="@+id/scout_name_title_TextView" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Or"
+            android:id="@+id/or_TextView"
+            android:layout_below="@+id/hang_CheckBox"
+            android:layout_alignLeft="@+id/hang_CheckBox"
+            android:layout_alignStart="@+id/hang_CheckBox" />
+
+        <TableLayout
+            android:layout_width="450dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/defenceSlider_TableLayout"
+            android:layout_alignBottom="@+id/scout_name_EditText"
+            android:layout_alignRight="@+id/next_Button"
+            android:layout_alignEnd="@+id/next_Button">
+
+            <include
+                android:id="@+id/tableRow1_ref"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                layout="@layout/defencesdescriptions" />
+
+            <SeekBar
+                android:id="@+id/set_defence_SeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:thumb="@drawable/thumb_image"
+                android:max="100" />
 
 
-    </TableLayout>
+        </TableLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Shot from:"
-        android:id="@+id/shot_location_title_TextView"
-        android:layout_alignTop="@+id/hang_CheckBox"
-        android:layout_toLeftOf="@+id/next_Button"
-        android:layout_toStartOf="@+id/next_Button" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Shot from:"
+            android:id="@+id/shot_location_title_TextView"
+            android:layout_alignTop="@+id/hang_CheckBox"
+            android:layout_toLeftOf="@+id/next_Button"
+            android:layout_toStartOf="@+id/next_Button" />
 
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Checkmate"
-        android:id="@+id/checkmate_CheckBox"
-        android:layout_below="@+id/shot_location_title_TextView"
-        android:layout_alignLeft="@+id/shot_location_title_TextView"
-        android:layout_alignStart="@+id/shot_location_title_TextView" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Checkmate"
+            android:id="@+id/checkmate_CheckBox"
+            android:layout_below="@+id/shot_location_title_TextView"
+            android:layout_alignLeft="@+id/shot_location_title_TextView"
+            android:layout_alignStart="@+id/shot_location_title_TextView" />
 
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Defences"
-        android:id="@+id/defences_CheckBox"
-        android:layout_below="@+id/checkmate_CheckBox"
-        android:layout_alignLeft="@+id/checkmate_CheckBox"
-        android:layout_alignStart="@+id/checkmate_CheckBox" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Defences"
+            android:id="@+id/defences_CheckBox"
+            android:layout_below="@+id/checkmate_CheckBox"
+            android:layout_alignLeft="@+id/checkmate_CheckBox"
+            android:layout_alignStart="@+id/checkmate_CheckBox" />
 
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Courtyard Shot"
-        android:id="@+id/pop_shot_CheckBox"
-        android:layout_below="@+id/defences_CheckBox"
-        android:layout_alignLeft="@+id/defences_CheckBox"
-        android:layout_alignStart="@+id/defences_CheckBox" />
-</RelativeLayout>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Courtyard Shot"
+            android:id="@+id/pop_shot_CheckBox"
+            android:layout_below="@+id/defences_CheckBox"
+            android:layout_alignLeft="@+id/defences_CheckBox"
+            android:layout_alignStart="@+id/defences_CheckBox" />
+    </RelativeLayout>
