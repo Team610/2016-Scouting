@@ -128,7 +128,7 @@ public class TeamFragment extends ScoutingFragment {
         ((TextView) averages.findViewById(R.id.lowGoalScoreBox)).setText(team.avgLowGoalScore + "");
         ((TextView) averages.findViewById(R.id.lowGoalAccuracyScoreBox)).setText(team.lowGoalPercentage + "");
         ((TextView) averages.findViewById(R.id.courtyardScoreBox)).setText(team.avgCourtyardDrops + "");
-        ((TextView) averages.findViewById(R.id.hangingScoreBox)).setText(team.hangingPercentage + "");
+        ((TextView) averages.findViewById(R.id.hangingScoreBox)).setText(team.hangingPercentage() + "");
         ((TextView) averages.findViewById(R.id.challengeScoreBox)).setText(team.challengePercentage + "");
         ((TextView) averages.findViewById(R.id.hangingScoreBox)).setText(team.hangingPercentage + "");
 
@@ -141,7 +141,7 @@ public class TeamFragment extends ScoutingFragment {
         ((TextView) defences.findViewById(R.id.drawbridgeAvgTime)).setText(team.defences.get(Defence.DRAWBRIDGE)[1] + "");
         ((TextView) defences.findViewById(R.id.sallyPortAvgTime)).setText(team.defences.get(Defence.SALLY_PORT)[1] + "");
         ((TextView) defences.findViewById(R.id.rockWallAvgTime)).setText(team.defences.get(Defence.ROCK_WALL)[1] + "");
-        ((TextView) defences.findViewById(R.id.roughTerrainAvgScore)).setText(team.defences.get(Defence.ROUGH_TERRAIN)[1] + "");
+        ((TextView) defences.findViewById(R.id.roughTerrainAvgTime)).setText(team.defences.get(Defence.ROUGH_TERRAIN)[1] + "");
         ((TextView) defences.findViewById(R.id.lowBarAvgTime)).setText(team.defences.get(Defence.LOW_BAR)[1] + "");
 
         //Ratings

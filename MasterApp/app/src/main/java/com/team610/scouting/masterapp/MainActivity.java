@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_field) {
             mFrag = new FieldFragment();
         } else if (id == R.id.nav_list) {
-          //TODO FIX IT  mFrag = new TeamListFragment();
+            //TODO FIX IT  mFrag = new TeamListFragment();
         } else if (id == R.id.nav_alliance) {
             mFrag = new AllianceFragment();
         }
@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
-        
+
         return true;
     }
 
@@ -154,7 +154,6 @@ public class MainActivity extends AppCompatActivity
     public void refresh(MenuItem ignore) {
         //TODO update all text Views of current fragment
         loadAllTeamData();
-
     }
 
     public void loadAllTeamData() {
@@ -173,21 +172,18 @@ public class MainActivity extends AppCompatActivity
                         int numMatches = team.matches.size();
                         //AUTON
                         DataSnapshot data = teamData.child("auto");
-                        team.avgAutonScore *= (numMatches - 1);
+
                         //TODO this probably wont work
-                        team.avgAutonScore += data.child("defenseCrossed").getValue() == null ? 10 : ((boolean) data.child("reachDefence").getValue()) ? 2 : 0;
-                        team.avgAutonScore += ((boolean) data.child("scoreHighGoal").getValue()) ? 10 : ((boolean) data.child("scoredLowGoal").getValue()) ? 5 : 0;
-                        team.avgAutonScore /= numMatches;
+                        team.autonScore += data.child("defenseCrossed").getValue() == null ? 10 : ((boolean) data.child("reachDefence").getValue()) ? 2 : 0;
+                        team.autonScore += ((boolean) data.child("scoredHighGoal").getValue()) ? 10 : ((boolean) data.child("scoredLowGoal").getValue()) ? 5 : 0;
 
                         //Defence Scores
                         data = teamData.child("teleop");
-                        team.avgDefenseScore *= numMatches - 1;
-                        team.avgDefenseScore += Math.min(((long) data.child("defence1crosses").getValue()) * 5, 10);
-                        team.avgDefenseScore += Math.min(((long) data.child("defence2crosses").getValue()) * 5, 10);
-                        team.avgDefenseScore += Math.min(((long) data.child("defence3crosses").getValue()) * 5, 10);
-                        team.avgDefenseScore += Math.min(((long) data.child("defence4crosses").getValue()) * 5, 10);
-                        team.avgDefenseScore += Math.min(((long) data.child("defence5crosses").getValue()) * 5, 10);
-                        team.avgDefenseScore /= numMatches;
+                        team.defenseScore += Math.min(((long) data.child("defence1crosses").getValue()) * 5, 10);
+                        team.defenseScore += Math.min(((long) data.child("defence2crosses").getValue()) * 5, 10);
+                        team.defenseScore += Math.min(((long) data.child("defence3crosses").getValue()) * 5, 10);
+                        team.defenseScore += Math.min(((long) data.child("defence4crosses").getValue()) * 5, 10);
+                        team.defenseScore += Math.min(((long) data.child("defence5crosses").getValue()) * 5, 10);
 
                         //Shooting
                         team.highGoalMisses += ((long) data.child("highGoalMisses").getValue());
@@ -214,7 +210,31 @@ public class MainActivity extends AppCompatActivity
                             }
                             team.defences.get(d)[1] += (long) data.child("defence" + i + "crosses").getValue();
                         }
+
+                        //MISC
+                        data = teamData.child("misc");
+                        String challenge = "challenge";
+
+                        if (currentTournament.equals("GTC")) challenge = "challange";
+                        team.comments.put(match.getKey(), (String) data.child("comment").getValue());
+                        team.breaches += (boolean) data.child("breach").getValue() ? 1 : 0;
+                        team.captures += (boolean) data.child("capture").getValue() ? 1 : 0;
+                        team.challenges += (boolean) data.child(challenge).getValue() ? 1 : 0;
+                        team.hangs += (boolean) data.child("hang").getValue() ? 1 : 0;
+                        int rating = (int) data.child("defenseRating").getValue();
+                        if (rating != 0) {
+                            team.defensiveRating *= team.defensePlayed;
+                            team.defensePlayed++;
+                            team.defensiveRating += rating;
+                            team.defensiveRating /= team.defensePlayed;
+                        }
+                        team.shotFromCheckMate = team.shotFromCheckMate || (boolean) data.child("shotFromCheckMate").getValue();
+                        team.shotFromDefences = team.shotFromDefences || (boolean) data.child("shotFromDefences").getValue();
+                        team.shotFromCourtyard = team.shotFromCourtyard || (boolean) data.child("shotFromPopShot").getValue();
+
                     }
+
+
                 }
 
                 try {

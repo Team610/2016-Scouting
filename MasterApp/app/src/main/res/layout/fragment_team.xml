@@ -437,7 +437,7 @@
 
             <TextView
                 android:padding="@dimen/tablePadding"
-                android:text="Capture Percentage"
+                android:text="Capture %"
                 android:textSize="@dimen/defenseTextSize" />
 
             <TextView

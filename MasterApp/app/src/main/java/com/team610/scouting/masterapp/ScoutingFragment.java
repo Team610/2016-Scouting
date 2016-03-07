@@ -8,4 +8,5 @@ import android.app.Fragment;
 public abstract class ScoutingFragment extends Fragment {
 
     public abstract void updateViewsFromThe6ix() throws NoSuchFieldException, IllegalAccessException;
+    public static final int numberOfWillsFriends = 0;
 }
