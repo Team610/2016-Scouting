@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_field) {
             mFrag = new FieldFragment();
         } else if (id == R.id.nav_list) {
-            mFrag = new TeamListFragment();
+          //TODO FIX IT  mFrag = new TeamListFragment();
         } else if (id == R.id.nav_alliance) {
             mFrag = new AllianceFragment();
         }
@@ -134,6 +134,7 @@ public class MainActivity extends AppCompatActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+        
         return true;
     }
 

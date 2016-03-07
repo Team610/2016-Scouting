@@ -199,7 +199,7 @@
 
             <TextView
                 android:padding="@dimen/tablePadding"
-                android:text="Defense Stats"
+                android:text="Defence Stats"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
         </TableRow>
 
@@ -347,6 +347,7 @@
         android:layout_toRightOf="@+id/matchList"
         android:text="Miscellaneous"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+
     <TableLayout
         android:id="@+id/miscDataTable"
         android:layout_width="wrap_content"
@@ -361,11 +362,11 @@
 
             <TextView
                 android:padding="@dimen/tablePadding"
-                android:text="Portcullis"
+                android:text="Defence Rating"
                 android:textSize="@dimen/defenseTextSize" />
 
             <TextView
-                android:id="@+id/portcullisAvgTime"
+                android:id="@+id/defenceRating"
                 android:gravity="right"
                 android:padding="@dimen/tablePadding" />
         </TableRow>
@@ -376,11 +377,11 @@
 
             <TextView
                 android:padding="@dimen/tablePadding"
-                android:text="Cheval De Frise"
+                android:text="Defence Shot"
                 android:textSize="@dimen/defenseTextSize" />
 
-            <TextView
-                android:id="@+id/chevalDeFriseAvgTime"
+            <CheckBox
+                android:id="@+id/defenceCheck"
                 android:gravity="right"
                 android:padding="@dimen/tablePadding" />
         </TableRow>
@@ -391,11 +392,11 @@
 
             <TextView
                 android:padding="@dimen/tablePadding"
-                android:text="Moat"
+                android:text="Checkmate Shot"
                 android:textSize="@dimen/defenseTextSize" />
 
-            <TextView
-                android:id="@+id/moatAvgTime"
+            <CheckBox
+                android:id="@+id/checkMateCheck"
                 android:gravity="right"
                 android:padding="@dimen/tablePadding" />
         </TableRow>
@@ -406,11 +407,11 @@
 
             <TextView
                 android:padding="@dimen/tablePadding"
-                android:text="Ramparts"
+                android:text="Courtyard Shot"
                 android:textSize="@dimen/defenseTextSize" />
 
-            <TextView
-                android:id="@+id/rampartsAvgTime"
+            <CheckBox
+                android:id="@+id/courtyardShotCheck"
                 android:gravity="right"
                 android:padding="@dimen/tablePadding" />
         </TableRow>
@@ -421,11 +422,11 @@
 
             <TextView
                 android:padding="@dimen/tablePadding"
-                android:text="Drawbridge"
+                android:text="Breach %"
                 android:textSize="@dimen/defenseTextSize" />
 
             <TextView
-                android:id="@+id/drawbridgeAvgTime"
+                android:id="@+id/breachPercentage"
                 android:gravity="right"
                 android:padding="@dimen/tablePadding" />
         </TableRow>
@@ -436,56 +437,11 @@
 
             <TextView
                 android:padding="@dimen/tablePadding"
-                android:text="Sally Port"
+                android:text="Capture Percentage"
                 android:textSize="@dimen/defenseTextSize" />
 
             <TextView
-                android:id="@+id/sallyPortAvgTime"
-                android:gravity="right"
-                android:padding="@dimen/tablePadding" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:padding="@dimen/tablePadding"
-                android:text="Rock Wall"
-                android:textSize="@dimen/defenseTextSize" />
-
-            <TextView
-                android:id="@+id/rockWallAvgTime"
-                android:gravity="right"
-                android:padding="@dimen/tablePadding" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:padding="@dimen/tablePadding"
-                android:text="Rough Terrain"
-                android:textSize="@dimen/defenseTextSize" />
-
-            <TextView
-                android:id="@+id/roughTerrainAvgTime"
-                android:gravity="right"
-                android:padding="@dimen/tablePadding" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:padding="@dimen/tablePadding"
-                android:text="Low Bar"
-                android:textSize="@dimen/defenseTextSize" />
-
-            <TextView
-                android:id="@+id/lowBarAvgTime"
+                android:id="@+id/capturePercentage"
                 android:gravity="right"
                 android:padding="@dimen/tablePadding" />
         </TableRow>
