@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.team610.scouting.masterapp.R;
+import com.team610.scouting.masterapp.ScoutingFragment;
 import com.team610.scouting.masterapp.views.DrawView;
 
 
@@ -20,7 +21,7 @@ import com.team610.scouting.masterapp.views.DrawView;
  * Use the {@link FieldFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FieldFragment extends Fragment {
+public class FieldFragment extends ScoutingFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -119,6 +120,11 @@ public class FieldFragment extends Fragment {
             case R.id.red_bar:
                 DrawView.setRed();
         }
+    }
+
+    @Override
+    public void updateViewsFromThe6ix() throws NoSuchFieldException, IllegalAccessException {
+        //Unused
     }
 
     /**

@@ -8,8 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.lang.reflect.Type;
+
 import com.team610.scouting.masterapp.team.TeamData;
 
+import java.lang.reflect.Field;
 import java.util.Comparator;
 
 import de.codecrafters.tableview.SortableTableView;
@@ -24,7 +27,7 @@ import de.codecrafters.tableview.TableView;
  * Use the {@link TeamListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TeamListFragment extends Fragment {
+public class TeamListFragment extends ScoutingFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -64,8 +67,8 @@ public class TeamListFragment extends Fragment {
         // Inflate the layout for this fragment
         SortableTableView<TeamData> table = (SortableTableView) getActivity().findViewById(R.id.tableview);
         //TODO load all team data
-        table.setDataAdapter(new TeamTableDataAdapter(getActivity(),null));
-
+        table.setDataAdapter(new TeamTableDataAdapter(getActivity(), null));
+        table.setColumnComparator(3,new TeamDataComparator("highGoalShots"));//TODO
         return inflater.inflate(R.layout.fragment_team_list, container, false);
     }
 
@@ -93,6 +96,11 @@ public class TeamListFragment extends Fragment {
         mListener = null;
     }
 
+    @Override
+    public void updateViewsFromThe6ix() throws NoSuchFieldException, IllegalAccessException {
+        //TODO
+    }
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -108,10 +116,29 @@ public class TeamListFragment extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 
- /*   private static class TeamPointsDataComparator implements Comparator<TeamData>{
-        @Override
-        public int compare(TeamData one, TeamData two){
-            return one.points - two.points;
+    private static class TeamDataComparator implements Comparator<TeamData> {
+        Field f;
+
+        public TeamDataComparator(String field) {
+            try {
+                f = TeamData.class.getField(field);
+            } catch (NoSuchFieldException e) {
+                e.printStackTrace();
+            }
         }
-    }*/
+
+        @Override
+        public int compare(TeamData one, TeamData two) {
+            try {
+                if (f.getType().equals(Long.TYPE))
+                    return (int) (f.getLong(one) - f.getLong(two));
+                else {
+                    return (int) (f.getDouble(one) - f.getDouble(two));
+                }
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+            return -1;
+        }
+    }
 }

@@ -1,17 +1,23 @@
 package com.team610.scouting.masterapp.team;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.team610.scouting.masterapp.Defence;
+import com.team610.scouting.masterapp.MainActivity;
 import com.team610.scouting.masterapp.R;
+import com.team610.scouting.masterapp.ScoutingFragment;
 
 
 /**
@@ -23,12 +29,13 @@ import com.team610.scouting.masterapp.R;
  * create an instance of this fragment.
  */
 //TODO FOR COMMENTS HAVE Alert Dialog THING WITH COMMENT
-public class TeamFragment extends Fragment {
+public class TeamFragment extends ScoutingFragment {
 
     // TODO: Rename and change types of parameters
-    private int team;
+    private int id;
     private boolean left;
     private OnFragmentInteractionListener mListener;
+    TeamData team;
 
     public TeamFragment() {
         // Required empty public constructor
@@ -52,8 +59,9 @@ public class TeamFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            team = getArguments().getInt("TEAM");
+            id = getArguments().getInt("TEAM");
             left = getArguments().getBoolean("LEFT");
+            team = ((MainActivity) getActivity()).getTeam(id);
         }
     }
 
@@ -108,8 +116,8 @@ public class TeamFragment extends Fragment {
         //TODO
     }
 
-    public void updateViewsFromThe6ix(TeamData team) throws NoSuchFieldException, IllegalAccessException {
-
+    public void updateViewsFromThe6ix() throws NoSuchFieldException, IllegalAccessException {
+        if (team == null) return;
         ViewGroup splitFrag = (ViewGroup) getView().findViewById(R.id.class.getField("split" + (left ? "left" : "right")).getInt(R.id.class));
         TableLayout averages = (TableLayout) ((ViewGroup) splitFrag.getChildAt(0)).getChildAt(1);
         //Averages
@@ -120,13 +128,57 @@ public class TeamFragment extends Fragment {
         ((TextView) averages.findViewById(R.id.lowGoalScoreBox)).setText(team.avgLowGoalScore + "");
         ((TextView) averages.findViewById(R.id.lowGoalAccuracyScoreBox)).setText(team.lowGoalPercentage + "");
         ((TextView) averages.findViewById(R.id.courtyardScoreBox)).setText(team.avgCourtyardDrops + "");
-        ((TextView) averages.findViewById(R.id.hangingScoreBox)).setText(team.hangingPercentage + "");
+        ((TextView) averages.findViewById(R.id.hangingScoreBox)).setText(team.hangingPercentage() + "");
         ((TextView) averages.findViewById(R.id.challengeScoreBox)).setText(team.challengePercentage + "");
         ((TextView) averages.findViewById(R.id.hangingScoreBox)).setText(team.hangingPercentage + "");
 
         TableLayout defences = (TableLayout) ((ViewGroup) splitFrag.getChildAt(0)).getChildAt(4);
         //AvgTime = Crosses TODO fix that
         ((TextView) defences.findViewById(R.id.portcullisAvgTime)).setText(team.defences.get(Defence.PORTCULLIS)[1] + "");
+        ((TextView) defences.findViewById(R.id.chevalDeFriseAvgTime)).setText(team.defences.get(Defence.CHEVAL_DE_FRISE)[1] + "");
+        ((TextView) defences.findViewById(R.id.moatAvgTime)).setText(team.defences.get(Defence.MOAT)[1] + "");
+        ((TextView) defences.findViewById(R.id.rampartsAvgTime)).setText(team.defences.get(Defence.RAMPARTS)[1] + "");
+        ((TextView) defences.findViewById(R.id.drawbridgeAvgTime)).setText(team.defences.get(Defence.DRAWBRIDGE)[1] + "");
+        ((TextView) defences.findViewById(R.id.sallyPortAvgTime)).setText(team.defences.get(Defence.SALLY_PORT)[1] + "");
+        ((TextView) defences.findViewById(R.id.rockWallAvgTime)).setText(team.defences.get(Defence.ROCK_WALL)[1] + "");
+        ((TextView) defences.findViewById(R.id.roughTerrainAvgTime)).setText(team.defences.get(Defence.ROUGH_TERRAIN)[1] + "");
+        ((TextView) defences.findViewById(R.id.lowBarAvgTime)).setText(team.defences.get(Defence.LOW_BAR)[1] + "");
 
+        //Ratings
+        TableRow row = (TableRow) defences.getChildAt(0);
+        row.setBackgroundColor(getColor(team.defences.get(Defence.PORTCULLIS)[0]));
+        row = (TableRow) defences.getChildAt(1);
+        row.setBackgroundColor(getColor(team.defences.get(Defence.CHEVAL_DE_FRISE)[0]));
+        row = (TableRow) defences.getChildAt(2);
+        row.setBackgroundColor(getColor(team.defences.get(Defence.MOAT)[0]));
+        row = (TableRow) defences.getChildAt(3);
+        row.setBackgroundColor(getColor(team.defences.get(Defence.RAMPARTS)[0]));
+        row = (TableRow) defences.getChildAt(4);
+        row.setBackgroundColor(getColor(team.defences.get(Defence.DRAWBRIDGE)[0]));
+        row = (TableRow) defences.getChildAt(5);
+        row.setBackgroundColor(getColor(team.defences.get(Defence.SALLY_PORT)[0]));
+        row = (TableRow) defences.getChildAt(6);
+        row.setBackgroundColor(getColor(team.defences.get(Defence.ROCK_WALL)[0]));
+        row = (TableRow) defences.getChildAt(7);
+        row.setBackgroundColor(getColor(team.defences.get(Defence.ROUGH_TERRAIN)[0]));
+        row = (TableRow) defences.getChildAt(8);
+        row.setBackgroundColor(getColor(team.defences.get(Defence.LOW_BAR)[0]));
+
+        ArrayAdapter<String> itemsAdapter =  new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, team.matches);
+        ListView listView = (ListView) splitFrag.getChildAt(0).findViewById(R.id.matchList);
+        listView.setAdapter(itemsAdapter);
+    }
+
+    public int getColor(double rating) {
+        switch ((int) Math.round(rating)) {
+            case 1:
+                return Color.GREEN;
+            case 2:
+                return Color.YELLOW;
+            case 3:
+                return Color.RED;
+            default:
+                return Color.GRAY;
+        }
     }
 }
