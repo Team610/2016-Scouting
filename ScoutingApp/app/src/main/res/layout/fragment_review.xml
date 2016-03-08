@@ -355,9 +355,9 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Defensive Rating: "
         android:id="@+id/defence_rating_TextView"
-        android:layout_below="@+id/pop_shots_TextView"
-        android:layout_alignLeft="@+id/pop_shots_TextView"
-        android:layout_alignStart="@+id/pop_shots_TextView" />
+        android:layout_below="@+id/corner_shot_TextView"
+        android:layout_alignLeft="@+id/corner_shot_TextView"
+        android:layout_alignStart="@+id/corner_shot_TextView" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -389,6 +389,16 @@
         android:layout_below="@+id/comment_title_TextView"
         android:layout_alignLeft="@+id/comment_title_TextView"
         android:layout_alignStart="@+id/comment_title_TextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Corner Shot: "
+        android:id="@+id/corner_shot_TextView"
+        android:layout_below="@+id/pop_shots_TextView"
+        android:layout_alignLeft="@+id/pop_shots_TextView"
+        android:layout_alignStart="@+id/pop_shots_TextView" />
 
 
 </RelativeLayout>

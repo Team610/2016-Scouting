@@ -52,6 +52,7 @@ public class ReviewFragment extends Fragment {
     TextView checkmate;
     TextView defenceShots;
     TextView popShots;
+    TextView cornerShots;
     TextView defensiveRating;
     TextView scoutName;
     TextView comment;
@@ -230,6 +231,9 @@ public class ReviewFragment extends Fragment {
 
         popShots = (TextView) v.findViewById(R.id.pop_shots_TextView);
         popShots.setText("Courtyard Shots: " + match.shotFromPopShot);
+
+        cornerShots = (TextView) v.findViewById(R.id.corner_shot_TextView);
+        cornerShots.setText("Corner Shots: " + match.shotFromCorner);
 
         defensiveRating = (TextView) v.findViewById(R.id.defence_rating_TextView);
         defensiveRating.setText("Defensive Rating: " + match.defensiveRating);
