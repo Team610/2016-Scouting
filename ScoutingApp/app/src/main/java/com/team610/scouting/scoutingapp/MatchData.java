@@ -77,6 +77,7 @@ public class MatchData {
     public boolean shotFromDefences = false;
     public boolean shotFromCheckMate = false;
     public boolean shotFromPopShot = false;
+    public boolean shotFromCorner = false;
 
 
     //FireBase Refs

@@ -54,6 +54,7 @@ public class ExtraData extends Fragment implements SeekBar.OnSeekBarChangeListen
     CheckBox shotDefencesCheck;
     CheckBox shotCheckMateCheck;
     CheckBox shotPopShotCheck;
+    CheckBox shotCornerCheck;
 
     MatchData thisMatch = MatchData.getInstance();
 
@@ -85,6 +86,7 @@ public class ExtraData extends Fragment implements SeekBar.OnSeekBarChangeListen
         thisMatch.shotFromCheckMate = shotCheckMateCheck.isChecked();
         thisMatch.shotFromDefences = shotDefencesCheck.isChecked();
         thisMatch.shotFromPopShot = shotPopShotCheck.isChecked();
+        thisMatch.shotFromCorner = shotCornerCheck.isChecked();
     }
 
 
@@ -188,6 +190,7 @@ public class ExtraData extends Fragment implements SeekBar.OnSeekBarChangeListen
         shotDefencesCheck = (CheckBox) v.findViewById(R.id.defences_CheckBox);
         shotCheckMateCheck = (CheckBox) v.findViewById(R.id.checkmate_CheckBox);
         shotPopShotCheck = (CheckBox) v.findViewById(R.id.pop_shot_CheckBox);
+        shotCornerCheck = (CheckBox) v.findViewById(R.id.corner_shot_CheckBox);
 
         nextPage.setOnClickListener(new View.OnClickListener() {
             @Override

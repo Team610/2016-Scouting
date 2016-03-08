@@ -108,7 +108,7 @@
             android:layout_alignParentStart="true" />
 
         <EditText
-            android:layout_width="150dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:textSize="20dp"
             android:ems="20"
@@ -158,7 +158,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Shot from:"
+            android:text="High Shot from:"
             android:id="@+id/shot_location_title_TextView"
             android:layout_alignTop="@+id/hang_CheckBox"
             android:layout_toLeftOf="@+id/next_Button"
@@ -190,4 +190,13 @@
             android:layout_below="@+id/defences_CheckBox"
             android:layout_alignLeft="@+id/defences_CheckBox"
             android:layout_alignStart="@+id/defences_CheckBox" />
-    </RelativeLayout>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Corner Shot"
+        android:id="@+id/corner_shot_CheckBox"
+        android:layout_below="@+id/pop_shot_CheckBox"
+        android:layout_alignLeft="@+id/pop_shot_CheckBox"
+        android:layout_alignStart="@+id/pop_shot_CheckBox" />
+</RelativeLayout>
