@@ -139,8 +139,8 @@ public class MatchFragment extends ScoutingFragment {
         }
     }
 
-    private void createTeamDialog(Team team) {
-        TeamDialog dialog = TeamDialog.newInstance(team.id);
+    private void createTeamDialog(int i) {
+        TeamDialog dialog = TeamDialog.newInstance(i);
         dialog.show(getFragmentManager(), "Team Data");
     }
 
@@ -193,7 +193,7 @@ public class MatchFragment extends ScoutingFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //  teamNum = teams[which];
-                        createTeamDialog(data.teams[which]);
+                        createTeamDialog(which);
                     }
                 });
         //Set up negative button
