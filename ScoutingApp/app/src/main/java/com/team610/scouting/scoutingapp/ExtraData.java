@@ -59,6 +59,7 @@ public class ExtraData extends Fragment implements SeekBar.OnSeekBarChangeListen
     MatchData thisMatch = MatchData.getInstance();
 
     Button nextPage;
+    Button backPage;
 
     public static ExtraData getInstance(){
         if(instance == null){
@@ -184,6 +185,7 @@ public class ExtraData extends Fragment implements SeekBar.OnSeekBarChangeListen
         hangCheck = (CheckBox) v.findViewById(R.id.hang_CheckBox);
         //breachCheck = (CheckBox) v.findViewById(R.id.breach_CheckBox);
         nextPage = (Button) v.findViewById(R.id.next_Button);
+        backPage = (Button) v.findViewById(R.id.back_Button);
         commentText = (EditText) v.findViewById(R.id.comment_EditText);
         scoutNameText = (EditText) v.findViewById(R.id.scout_name_EditText);
 
@@ -201,6 +203,17 @@ public class ExtraData extends Fragment implements SeekBar.OnSeekBarChangeListen
                 transaction.replace(R.id.main_container, mFrag).commit();
 
             }
+        });
+        backPage.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                TeleopFragment mFrag = TeleopFragment.getInstance();
+                transaction.replace(R.id.main_container,mFrag).commit();
+
+            }
+
         });
 
         sb1 = (SeekBar) v.findViewById(R.id.set_defence_SeekBar);

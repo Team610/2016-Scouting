@@ -160,9 +160,10 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="High Shot from:"
             android:id="@+id/shot_location_title_TextView"
-            android:layout_alignTop="@+id/hang_CheckBox"
-            android:layout_toLeftOf="@+id/next_Button"
-            android:layout_toStartOf="@+id/next_Button" />
+            android:layout_marginLeft="20dp"
+            android:layout_alignTop="@+id/back_Button"
+            android:layout_toRightOf="@+id/challenge_CheckBox"
+            android:layout_toEndOf="@+id/challenge_CheckBox" />
 
         <CheckBox
             android:layout_width="wrap_content"
@@ -199,4 +200,13 @@
         android:layout_below="@+id/pop_shot_CheckBox"
         android:layout_alignLeft="@+id/pop_shot_CheckBox"
         android:layout_alignStart="@+id/pop_shot_CheckBox" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:id="@+id/back_Button"
+        android:layout_below="@+id/next_Button"
+        android:layout_alignLeft="@+id/next_Button"
+        android:layout_alignStart="@+id/next_Button" />
 </RelativeLayout>

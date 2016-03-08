@@ -61,6 +61,7 @@ public class ReviewFragment extends Fragment {
     MatchData match;
 
     Button submitButton;
+    Button backPage;
 
     static ReviewFragment instance;
 
@@ -114,6 +115,8 @@ public class ReviewFragment extends Fragment {
 
         match = MatchData.getInstance();
 
+
+        backPage = (Button) v.findViewById(R.id.back_Button);
 
         submitButton = (Button) v.findViewById(R.id.send_Button);
         matchNum = (TextView) v.findViewById(R.id.matchNum_review_TextView);
@@ -257,6 +260,17 @@ public class ReviewFragment extends Fragment {
 
             }
 
+
+        });
+        backPage.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                ExtraData mFrag = ExtraData.getInstance();
+                transaction.replace(R.id.main_container,mFrag).commit();
+
+            }
 
         });
 

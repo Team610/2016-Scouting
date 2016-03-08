@@ -19,7 +19,7 @@ public class MatchData {
     public int team = 0;
 
     //Change
-    static String competition = "GTC";
+    static String competition = "GTRE";
 
 
 

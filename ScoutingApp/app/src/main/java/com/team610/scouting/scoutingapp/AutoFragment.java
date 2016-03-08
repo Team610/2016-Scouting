@@ -69,6 +69,7 @@ public class AutoFragment extends Fragment {
     ImageButton lowBarDefence5;
 
     Button nextPage;
+    Button backPage;
 
 
 
@@ -235,6 +236,7 @@ public class AutoFragment extends Fragment {
         endedInNeutralCheckBox = (CheckBox) rootView.findViewById(R.id.neutralZone_CheckBox);
 
         nextPage = (Button) rootView.findViewById(R.id.next_Button);
+        backPage = (Button) rootView.findViewById(R.id.back_Button);
 
         defence1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -335,6 +337,17 @@ public class AutoFragment extends Fragment {
 
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 TeleopFragment mFrag = TeleopFragment.getInstance();
+                transaction.replace(R.id.main_container,mFrag).commit();
+
+            }
+
+        });
+        backPage.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                MatchSetup mFrag = MatchSetup.getInstance();
                 transaction.replace(R.id.main_container,mFrag).commit();
 
             }

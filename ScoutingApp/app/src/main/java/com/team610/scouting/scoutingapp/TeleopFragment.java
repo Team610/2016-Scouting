@@ -132,6 +132,7 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
     //int courtyardMisses = 0;
 
     Button nextPage;
+    Button backPage;
 
 
     private static TeleopFragment instance;
@@ -475,6 +476,7 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
         foulTitle = (TextView) rootView.findViewById(R.id.foul_title_TextView);
 
         nextPage = (Button) rootView.findViewById(R.id.next_Button);
+        backPage = (Button) rootView.findViewById(R.id.back_Button);
 
 
 
@@ -743,6 +745,17 @@ public class TeleopFragment extends Fragment implements SeekBar.OnSeekBarChangeL
 
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 ExtraData mFrag = ExtraData.getInstance();
+                transaction.replace(R.id.main_container,mFrag).commit();
+
+            }
+
+        });
+        backPage.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                AutoFragment mFrag = AutoFragment.getInstance();
                 transaction.replace(R.id.main_container,mFrag).commit();
 
             }
