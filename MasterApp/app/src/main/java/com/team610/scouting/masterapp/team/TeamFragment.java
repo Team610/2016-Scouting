@@ -121,16 +121,16 @@ public class TeamFragment extends ScoutingFragment {
         ViewGroup splitFrag = (ViewGroup) getView().findViewById(R.id.class.getField("split" + (left ? "left" : "right")).getInt(R.id.class));
         TableLayout averages = (TableLayout) ((ViewGroup) splitFrag.getChildAt(0)).getChildAt(1);
         //Averages
-        ((TextView) averages.findViewById(R.id.autonScoreBox)).setText(team.avgAutonScore + "");
-        ((TextView) averages.findViewById(R.id.defenseScoreBox)).setText(team.avgDefenseScore + "");
-        ((TextView) averages.findViewById(R.id.highGoalScoreBox)).setText(team.avgHighGoalScore + "");
-        ((TextView) averages.findViewById(R.id.highGoalAccuracyScoreBox)).setText(team.highGoalPercentage + "");
-        ((TextView) averages.findViewById(R.id.lowGoalScoreBox)).setText(team.avgLowGoalScore + "");
-        ((TextView) averages.findViewById(R.id.lowGoalAccuracyScoreBox)).setText(team.lowGoalPercentage + "");
-        ((TextView) averages.findViewById(R.id.courtyardScoreBox)).setText(team.avgCourtyardDrops + "");
+        ((TextView) averages.findViewById(R.id.autonScoreBox)).setText(team.avgAutonScore() + "");
+        ((TextView) averages.findViewById(R.id.defenseScoreBox)).setText(team.avgDefenceScore() + "");
+        ((TextView) averages.findViewById(R.id.highGoalScoreBox)).setText(team.avgHighGoalScore() + "");
+        ((TextView) averages.findViewById(R.id.highGoalAccuracyScoreBox)).setText(team.highGoalPercentage() + "");
+        ((TextView) averages.findViewById(R.id.lowGoalScoreBox)).setText(team.avgLowGoalScore() + "");
+        ((TextView) averages.findViewById(R.id.lowGoalAccuracyScoreBox)).setText(team.lowGoalPercentage() + "");
+        ((TextView) averages.findViewById(R.id.courtyardScoreBox)).setText(team.avgCourtyardDrops() + "");
         ((TextView) averages.findViewById(R.id.hangingScoreBox)).setText(team.hangingPercentage() + "");
-        ((TextView) averages.findViewById(R.id.challengeScoreBox)).setText(team.challengePercentage + "");
-        ((TextView) averages.findViewById(R.id.hangingScoreBox)).setText(team.hangingPercentage + "");
+        ((TextView) averages.findViewById(R.id.challengeScoreBox)).setText(team.challengePercentage() + "");
+        ((TextView) averages.findViewById(R.id.hangingScoreBox)).setText(team.hangingPercentage() + "");
 
         TableLayout defences = (TableLayout) ((ViewGroup) splitFrag.getChildAt(0)).getChildAt(4);
         //AvgTime = Crosses TODO fix that

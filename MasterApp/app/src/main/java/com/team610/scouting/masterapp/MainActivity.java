@@ -190,6 +190,7 @@ public class MainActivity extends AppCompatActivity
                         team.highGoalShots += ((long) data.child("highGoalShots").getValue());
                         team.lowGoalMisses += ((long) data.child("lowGoalMisses").getValue());
                         team.lowGoalShots += ((long) data.child("lowGoalShots").getValue());
+                        team.courtyardDrops += ((long) data.child("courtyardScores").getValue());
 
                         //Fouls
                         team.fouls += ((long) data.child("fouls").getValue());

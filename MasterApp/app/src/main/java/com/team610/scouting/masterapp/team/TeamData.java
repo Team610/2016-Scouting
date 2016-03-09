@@ -45,6 +45,7 @@ public class TeamData {
     public long highGoalMisses;
     public long lowGoalShots;
     public long lowGoalMisses;
+    public long courtyardDrops;
     //TODO courtyard drops
 
 
@@ -59,6 +60,30 @@ public class TeamData {
     public int challengePercentage() {
         return (int) (100 * (((double) challenges) / matches.size()));
     }
+    public int avgAutonScore() {
+        return (int) (100 * (((double) autonScore) / matches.size()));
+    }
+    public int avgDefenceScore() {
+        return (int) (100 * (((double) defenseScore) / matches.size()));
+    }
+    public int avgHighGoalScore() {
+        return (int) (100 * (((double) highGoalShots) / matches.size()));
+    }
+    public int highGoalPercentage() {
+        return (int) (100 * (((double) highGoalShots) / (highGoalShots + highGoalMisses)));
+    }
+    public int avgLowGoalScore() {
+        return (int) (100 * (((double) lowGoalShots) / matches.size()));
+    }
+    public int lowGoalPercentage() {
+        return (int) (100 * (((double) lowGoalShots) / (lowGoalShots + lowGoalMisses)));
+    }
+    public int avgCourtyardDrops() {
+        return (int) (100 * (((double) courtyardDrops) / matches.size()));
+    }
+
+
+
 
 
 
