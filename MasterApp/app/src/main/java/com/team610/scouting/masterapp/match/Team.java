@@ -34,16 +34,25 @@ public class Team {
 
     public boolean challenge = false;
     public boolean hang = false;
+    public boolean shotFromCheckMate = false;
+    public boolean shotFromDefences = false;
+    public boolean shotFromPopShot = false;
+    public boolean shotFromCorner = false;
+
+    public long defensiveRating = 0;
+
+    public String scoutName = "";
+    public String comment = "";
 
     //unimplemented
     public long defencecrosses[] = new long[5];
 
 
-    public long defense1rating;
-    public long defense2rating;
-    public long defense3rating;
-    public long defense4rating;
-    public long defense5rating;
+    public long defence1Rating;
+    public long defence2Rating;
+    public long defence3Rating;
+    public long defence4Rating;
+    public long defence5Rating;
 
     public String defence1;
     public String defence2;
