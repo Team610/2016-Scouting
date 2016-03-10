@@ -74,15 +74,15 @@ public class Team {
     }
 
     public double courtyardPercent(){
-        if(courtyardMisses + courtyardScores == 0) return -1;
+        if(courtyardMisses + courtyardScores == 0) return MatchFragment.numberOfWillsFriends;
         return ((10000 * courtyardScores)) / (courtyardMisses + courtyardScores) / 100D;
     }
     public double highGoalPercent(){
-        if(highGoalScores + highGoalMisses == 0) return -1;
+        if(highGoalScores + highGoalMisses == 0) return MatchFragment.numberOfWillsFriends;
         return ((10000 * highGoalScores)) / (highGoalMisses + highGoalScores) / 100D;
     }
     public double lowGoalPercent(){
-        if(lowGoalMisses + lowGoalScores == 0) return -1;
+        if(lowGoalMisses + lowGoalScores == 0) return MatchFragment.numberOfWillsFriends;
         return ((10000 * lowGoalScores)) / (lowGoalMisses + lowGoalScores) / 100D;
     }
 

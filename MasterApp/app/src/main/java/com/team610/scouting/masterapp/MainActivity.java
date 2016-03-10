@@ -2,6 +2,7 @@ package com.team610.scouting.masterapp;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -162,26 +163,27 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void loadAllTeamData() {
-        teams.clear();
+
         rootRef.child(currentTournament).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 System.out.println("YEA");
+                MainActivity.teams.clear();
                 for (DataSnapshot match : dataSnapshot.getChildren()) {
                     for (DataSnapshot teamData : match.getChildren()) {
                         TeamData team;
                         if (!teams.containsKey(teamData.getKey())) {
                             team = new TeamData(teamData.getKey());
-                            team.defences.put(Defence.PORTCULLIS,new Double[]{0D,0D});
-                            team.defences.put(Defence.LOW_BAR,new Double[]{0D,0D});
-                            team.defences.put(Defence.ROUGH_TERRAIN,new Double[]{0D,0D});
-                            team.defences.put(Defence.ROCK_WALL,new Double[]{0D,0D});
-                            team.defences.put(Defence.CHEVAL_DE_FRISE,new Double[]{0D,0D});
-                            team.defences.put(Defence.DRAWBRIDGE,new Double[]{0D,0D});
-                            team.defences.put(Defence.MOAT,new Double[]{0D,0D});
-                            team.defences.put(Defence.RAMPARTS,new Double[]{0D,0D});
-                            team.defences.put(Defence.SALLY_PORT,new Double[]{0D,0D});
-                            teams.put(team.id+"",team);
+                            team.defences.put(Defence.PORTCULLIS, new Double[]{0D, 0D});
+                            team.defences.put(Defence.LOW_BAR, new Double[]{0D, 0D});
+                            team.defences.put(Defence.ROUGH_TERRAIN, new Double[]{0D, 0D});
+                            team.defences.put(Defence.ROCK_WALL, new Double[]{0D, 0D});
+                            team.defences.put(Defence.CHEVAL_DE_FRISE, new Double[]{0D, 0D});
+                            team.defences.put(Defence.DRAWBRIDGE, new Double[]{0D, 0D});
+                            team.defences.put(Defence.MOAT, new Double[]{0D, 0D});
+                            team.defences.put(Defence.RAMPARTS, new Double[]{0D, 0D});
+                            team.defences.put(Defence.SALLY_PORT, new Double[]{0D, 0D});
+                            teams.put(team.id + "", team);
                         } else {
                             team = teams.get(teamData.getKey());
                         }
@@ -191,7 +193,7 @@ public class MainActivity extends AppCompatActivity
                         DataSnapshot data = teamData.child("auto");
 
                         //TODO this probably wont work
-                        team.autonScore += data.child("defenseCrossed").getValue() == null ? 10 : ((boolean) data.child("reachDefence").getValue()) ? 2 : 0;
+                        team.autonScore += data.child("defenseCrossed").getValue() != null ? 10 : ((boolean) data.child("reachDefence").getValue()) ? 2 : 0;
                         team.autonScore += ((boolean) data.child("scoredHighGoal").getValue()) ? 10 : ((boolean) data.child("scoredLowGoal").getValue()) ? 5 : 0;
 
                         //Defence Scores
@@ -249,7 +251,7 @@ public class MainActivity extends AppCompatActivity
                         team.shotFromCheckMate = team.shotFromCheckMate || (boolean) data.child("shotFromCheckMate").getValue();
                         team.shotFromDefences = team.shotFromDefences || (boolean) data.child("shotFromDefences").getValue();
                         team.shotFromCourtyard = team.shotFromCourtyard || (boolean) data.child("shotFromPopShot").getValue();
-                    //TODO    team.shotFromCorner = team.shotFromCorner || (boolean) data.child("sho")
+                        //TODO    team.shotFromCorner = team.shotFromCorner || (boolean) data.child("sho")
                     }
 
 
@@ -261,7 +263,7 @@ public class MainActivity extends AppCompatActivity
                     e.printStackTrace();
                 }
                 System.out.println("NAH");
-               Toast.makeText(MainActivity.mFrag.getActivity(), "Team Data Loaded", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.mFrag.getActivity(), "Team Data Loaded", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -299,6 +301,12 @@ public class MainActivity extends AppCompatActivity
         } else {
             return teams.get(id + "");
         }
+    }
+
+    public void matchFrag(String match) {
+        mFrag = MatchFragment.newInstance(match);
+        getFragmentManager().beginTransaction().replace(R.id.main_container, mFrag).commit();
+        actionbar.setGroupVisible(R.id.matchMenuItems,true);
     }
 }
 

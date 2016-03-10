@@ -210,6 +210,7 @@
             <TextView
                 android:padding="@dimen/tablePadding"
                 android:text="Portcullis"
+                android:textColor="@color/Black"
                 android:textSize="@dimen/defenseTextSize" />
 
             <TextView
@@ -225,6 +226,7 @@
             <TextView
                 android:padding="@dimen/tablePadding"
                 android:text="Cheval De Frise"
+                android:textColor="@color/Black"
                 android:textSize="@dimen/defenseTextSize" />
 
             <TextView
@@ -240,6 +242,7 @@
             <TextView
                 android:padding="@dimen/tablePadding"
                 android:text="Moat"
+                android:textColor="@color/Black"
                 android:textSize="@dimen/defenseTextSize" />
 
             <TextView
@@ -255,6 +258,7 @@
             <TextView
                 android:padding="@dimen/tablePadding"
                 android:text="Ramparts"
+                android:textColor="@color/Black"
                 android:textSize="@dimen/defenseTextSize" />
 
             <TextView
@@ -270,6 +274,7 @@
             <TextView
                 android:padding="@dimen/tablePadding"
                 android:text="Drawbridge"
+                android:textColor="@color/Black"
                 android:textSize="@dimen/defenseTextSize" />
 
             <TextView
@@ -285,6 +290,7 @@
             <TextView
                 android:padding="@dimen/tablePadding"
                 android:text="Sally Port"
+                android:textColor="@color/Black"
                 android:textSize="@dimen/defenseTextSize" />
 
             <TextView
@@ -300,6 +306,7 @@
             <TextView
                 android:padding="@dimen/tablePadding"
                 android:text="Rock Wall"
+                android:textColor="@color/Black"
                 android:textSize="@dimen/defenseTextSize" />
 
             <TextView
@@ -315,6 +322,7 @@
             <TextView
                 android:padding="@dimen/tablePadding"
                 android:text="Rough Terrain"
+                android:textColor="@color/Black"
                 android:textSize="@dimen/defenseTextSize" />
 
             <TextView
@@ -330,6 +338,7 @@
             <TextView
                 android:padding="@dimen/tablePadding"
                 android:text="Low Bar"
+                android:textColor="@color/Black"
                 android:textSize="@dimen/defenseTextSize" />
 
             <TextView
@@ -361,14 +370,12 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:padding="@dimen/tablePadding"
                 android:text="Defence Rating"
                 android:textSize="@dimen/defenseTextSize" />
 
             <TextView
                 android:id="@+id/defenceRating"
-                android:gravity="right"
-                android:padding="@dimen/tablePadding" />
+                android:gravity="right" />
         </TableRow>
 
         <TableRow
@@ -376,14 +383,14 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:padding="@dimen/tablePadding"
                 android:text="Defence Shot"
                 android:textSize="@dimen/defenseTextSize" />
 
             <CheckBox
                 android:id="@+id/defenceCheck"
                 android:gravity="right"
-                android:padding="@dimen/tablePadding" />
+                android:scaleX="0.7"
+                android:scaleY="0.7" />
         </TableRow>
 
         <TableRow
@@ -391,14 +398,15 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:padding="@dimen/tablePadding"
                 android:text="Checkmate Shot"
                 android:textSize="@dimen/defenseTextSize" />
 
             <CheckBox
                 android:id="@+id/checkMateCheck"
+                android:clickable="false"
                 android:gravity="right"
-                android:padding="@dimen/tablePadding" />
+                android:scaleX="0.7"
+                android:scaleY="0.7" />
         </TableRow>
 
         <TableRow
@@ -406,14 +414,30 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:padding="@dimen/tablePadding"
                 android:text="Courtyard Shot"
                 android:textSize="@dimen/defenseTextSize" />
 
             <CheckBox
                 android:id="@+id/courtyardShotCheck"
+                android:clickable="false"
                 android:gravity="right"
-                android:padding="@dimen/tablePadding" />
+                android:scaleX="0.7"
+                android:scaleY="0.7" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="Corner Shot"
+                android:textSize="@dimen/defenseTextSize" />
+
+            <CheckBox
+                android:id="@+id/cornerShotCheck"
+                android:clickable="false"
+                android:scaleX="0.7"
+                android:scaleY="0.7" />
         </TableRow>
 
         <TableRow

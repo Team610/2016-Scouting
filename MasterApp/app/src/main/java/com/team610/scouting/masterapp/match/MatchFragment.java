@@ -53,16 +53,13 @@ public class MatchFragment extends ScoutingFragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment MatchFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MatchFragment newInstance(String param1, String param2) {
+    public static MatchFragment newInstance(String match) {
         MatchFragment fragment = new MatchFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString("MATCH", match);
         fragment.setArguments(args);
         return fragment;
     }
@@ -71,8 +68,10 @@ public class MatchFragment extends ScoutingFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            if (getArguments().getString("MATCH") != null) {
+                matchNum = Integer.valueOf(getArguments().getString("MATCH"));
+                loadMatchData();
+            }
         }
     }
 
@@ -115,8 +114,8 @@ public class MatchFragment extends ScoutingFragment {
         } else {
             View auton = getActivity().findViewById(R.id.match_auton_layout),
                     teleop = getActivity().findViewById(R.id.match_teleop_layout);
-                 //   post = getActivity().findViewById(R.id.match_post_layout);
-           // post.setVisibility(View.GONE);
+            //   post = getActivity().findViewById(R.id.match_post_layout);
+            // post.setVisibility(View.GONE);
             teleop.setVisibility(View.GONE);
             auton.setVisibility(View.GONE);
             if (id == R.id.action_auton) {
@@ -177,7 +176,7 @@ public class MatchFragment extends ScoutingFragment {
 
     public void createTeamChoiceDialog() {
         //  ListAdapter adapter =  new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,teams);
-        if(data == null) return;
+        if (data == null) return;
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Choose Team")
                 .setItems(getStringArray(data.teams), new DialogInterface.OnClickListener() {
@@ -200,16 +199,16 @@ public class MatchFragment extends ScoutingFragment {
 
     private String[] getStringArray(Team[] teams) {
         String[] toReturn = new String[6];
-        for(int i = 0; i < 6; i++){
+        for (int i = 0; i < 6; i++) {
             toReturn[i] = teams[i].id + "";
         }
         return toReturn;
     }
 
-    public void loadMatchData(){
+    public void loadMatchData() {
         ActionMenuItemView item = (ActionMenuItemView) getActivity().findViewById(R.id.action_matchNumber);
         item.setTitle("Match # " + matchNum);
-        Toast.makeText(getActivity(),"Loading Match Data",Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), "Loading Match Data", Toast.LENGTH_LONG).show();
         data = new MatchData(matchNum);
 
     }
@@ -249,9 +248,10 @@ public class MatchFragment extends ScoutingFragment {
 //            ((TextView) postTable.findViewById(R.id.team_total_points)).setText(t.points + "");
 //            ((TextView) postTable.findViewById(R.id.team_total_crosses)).setText(t.totalCrosses + "");
 //            ((TextView) postTable.findViewById(R.id.tower_capture)).setText(t.capture);
-            Toast.makeText(getActivity(),"Match Data Loaded",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Match Data Loaded", Toast.LENGTH_SHORT).show();
         }
     }
+
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
