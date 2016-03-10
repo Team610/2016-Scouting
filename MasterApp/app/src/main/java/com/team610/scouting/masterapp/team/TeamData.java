@@ -75,11 +75,11 @@ public class TeamData {
     }
 
     public double avgDefenceScore() {
-        return (1000 * defenseScore) / matches.size() / 100D;
+        return (1000 * defenseScore) / matches.size() / 1000D;
     }
 
     public double avgHighGoalScore() {
-        return (1000 * highGoalShots) / matches.size() / 100D;
+        return (1000 * highGoalShots) / matches.size() / 1000D;
     }
 
     public int highGoalPercentage() {
@@ -88,7 +88,7 @@ public class TeamData {
 
 
     public double avgLowGoalScore() {
-        return (1000 * lowGoalShots) / matches.size() / 100D;
+        return (1000 * lowGoalShots) / matches.size() / 1000D;
     }
 
     public int lowGoalPercentage() {
@@ -97,7 +97,7 @@ public class TeamData {
 
 
     public double avgCourtyardDrops() {
-        return (1000 * courtyardDrops) / matches.size() / 100D;
+        return (1000 * courtyardDrops) / matches.size() / 1000D;
     }
 
     public int id() {

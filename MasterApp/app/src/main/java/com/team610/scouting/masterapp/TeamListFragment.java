@@ -86,10 +86,10 @@ public class TeamListFragment extends ScoutingFragment {
         table.setColumnComparator(0, new idComparator());
         table.setColumnComparator(1, new avgAutonScoreComparator());
         table.setColumnComparator(2, new avgDefenceScoreComparator());
-        table.setColumnComparator(3, new avgHighGoalScoreComparator());
-        table.setColumnComparator(4, new highGoalPercentageComparator());
-        table.setColumnComparator(5, new avgLowGoalScoreComparator());
-        table.setColumnComparator(6, new lowGoalScorePercentageComparator());
+        table.setColumnComparator(3, new highGoalPercentageComparator());
+        table.setColumnComparator(4, new avgHighGoalScoreComparator());
+        table.setColumnComparator(5, new lowGoalScorePercentageComparator());
+        table.setColumnComparator(6, new avgLowGoalScoreComparator());
         table.setColumnComparator(7, new hangingPercentageComparator());
         table.setColumnComparator(8, new challengePercentageComparator());
         table.setColumnComparator(9, new avgCourtyardDropsComparator());

@@ -76,17 +76,6 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -149,7 +138,15 @@ public class MainActivity extends AppCompatActivity
                 .getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
-
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            //super.onBackPressed();
+        }
+    }
     //TODO idk wtf to do
     @Override
     public void onFragmentInteraction(Uri uri) {
@@ -193,7 +190,8 @@ public class MainActivity extends AppCompatActivity
                         DataSnapshot data = teamData.child("auto");
 
                         //TODO this probably wont work
-                        team.autonScore += data.child("defenseCrossed").getValue() != null ? 10 : ((boolean) data.child("reachDefence").getValue()) ? 2 : 0;
+                        if(data.child("defenseCrossed") != null)
+                        team.autonScore += !data.child("defenseCrossed").getValue().equals("") ? 10 : ((boolean) data.child("reachDefence").getValue()) ? 2 : 0;
                         team.autonScore += ((boolean) data.child("scoredHighGoal").getValue()) ? 10 : ((boolean) data.child("scoredLowGoal").getValue()) ? 5 : 0;
 
                         //Defence Scores
