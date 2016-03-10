@@ -83,16 +83,16 @@ public class TeamListFragment extends ScoutingFragment {
         headerAdapter.setTextSize(8);
 
         table.setHeaderAdapter(headerAdapter);
-        table.setColumnComparator(0, new TeamDataComparator("id"));
-        table.setColumnComparator(1, new TeamDataComparator("avgAutonScore"));
-        table.setColumnComparator(2, new TeamDataComparator("avgDefenceScore"));
-        table.setColumnComparator(3, new TeamDataComparator("avgHighGoalScore"));
-        table.setColumnComparator(4, new TeamDataComparator("highGoalPercentage"));
-        table.setColumnComparator(5, new TeamDataComparator("avgLowGoalScore"));
-        table.setColumnComparator(6, new TeamDataComparator("lowGoalPercentage"));
-        table.setColumnComparator(7, new TeamDataComparator("hangingPercentage"));
-        table.setColumnComparator(8, new TeamDataComparator("challengePercentage"));
-        table.setColumnComparator(9, new TeamDataComparator("avgCourtyardDrops"));
+        table.setColumnComparator(0, new idComparator());
+        table.setColumnComparator(1, new avgAutonScoreComparator());
+        table.setColumnComparator(2, new avgDefenceScoreComparator());
+        table.setColumnComparator(3, new avgHighGoalScoreComparator());
+        table.setColumnComparator(4, new highGoalPercentageComparator());
+        table.setColumnComparator(5, new avgLowGoalScoreComparator());
+        table.setColumnComparator(6, new lowGoalScorePercentageComparator());
+        table.setColumnComparator(7, new hangingPercentageComparator());
+        table.setColumnComparator(8, new challengePercentageComparator());
+        table.setColumnComparator(9, new avgCourtyardDropsComparator());
         return view;
     }
 
@@ -140,29 +140,102 @@ public class TeamListFragment extends ScoutingFragment {
         void onFragmentInteraction(Uri uri);
     }
 
-    private static class TeamDataComparator implements Comparator<TeamData> {
-        Method m;
+//    private static class TeamDataComparator implements Comparator<TeamData> {
+//        Method m;
+//
+//        public TeamDataComparator(String field) {
+//            try {
+//                m = TeamData.class.getMethod(field);
+//            } catch (NoSuchMethodException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//
+//        @Override
+//        public int compare(TeamData one, TeamData two) {
+//            try {
+//                return (int) (m.invoke(one)) - (int) (m.invoke(two));
+//            } catch (IllegalAccessException e) {
+//                e.printStackTrace();
+//            } catch (InvocationTargetException e) {
+//                e.printStackTrace();
+//            }
+//            return -1;
+//        }
+//
+//    }
 
-        public TeamDataComparator(String field) {
-            try {
-                m = TeamData.class.getMethod(field);
-            } catch (NoSuchMethodException e) {
-                e.printStackTrace();
-            }
-        }
+    private static class idComparator implements Comparator<TeamData> {
 
-        @Override
         public int compare(TeamData one, TeamData two) {
-            try {
-                return (int) (m.invoke(one)) - (int) (m.invoke(two));
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (InvocationTargetException e) {
-                e.printStackTrace();
-            }
-            return -1;
+                return (one.id) - (two.id);
         }
-
     }
+    private static class avgAutonScoreComparator implements Comparator<TeamData> {
+
+        public int compare(TeamData one, TeamData two) {
+            //return (one.avgAutonScore()) - (two.avgAutonScore());
+            return Double.compare(one.avgAutonScore(), two.avgAutonScore());
+
+
+        }
+    }
+    private static class avgDefenceScoreComparator implements Comparator<TeamData> {
+
+        public int compare(TeamData one, TeamData two) {
+           // return (one.avgDefenceScore()) - (two.avgDefenceScore());
+           return Double.compare(one.avgDefenceScore(), two.avgDefenceScore());
+        }
+    }
+    private static class avgHighGoalScoreComparator implements Comparator<TeamData> {
+
+        public int compare(TeamData one, TeamData two) {
+            //return (one.avgHighGoalScore()) - (two.avgHighGoalScore());
+            return Double.compare(one.avgHighGoalScore(), two.avgHighGoalScore());
+        }
+    }
+    private static class highGoalPercentageComparator implements Comparator<TeamData> {
+
+        public int compare(TeamData one, TeamData two) {
+            return (one.highGoalPercentage()) - (two.highGoalPercentage());
+        }
+    }
+    private static class avgLowGoalScoreComparator implements Comparator<TeamData> {
+
+        public int compare(TeamData one, TeamData two) {
+            //return (one.avgLowGoalScore()) - (two.avgLowGoalScore());
+            return Double.compare(one.avgLowGoalScore(), two.avgLowGoalScore());
+        }
+    }
+    private static class lowGoalScorePercentageComparator implements Comparator<TeamData> {
+
+        public int compare(TeamData one, TeamData two) {
+            return (one.lowGoalPercentage()) - (two.lowGoalPercentage());
+        }
+    }
+    private static class hangingPercentageComparator implements Comparator<TeamData> {
+
+        public int compare(TeamData one, TeamData two) {
+            return (one.hangingPercentage()) - (two.hangingPercentage());
+        }
+    }
+    private static class challengePercentageComparator implements Comparator<TeamData> {
+
+        public int compare(TeamData one, TeamData two) {
+            return (one.challengePercentage()) - (two.challengePercentage());
+        }
+    }
+    private static class avgCourtyardDropsComparator implements Comparator<TeamData> {
+
+        public int compare(TeamData one, TeamData two) {
+            //return (one.avgCourtyardDrops()) - (two.avgCourtyardDrops());
+          return Double.compare(one.avgCourtyardDrops(), two.avgCourtyardDrops());
+        }
+    }
+
 }
+
+/*table.setColumnComparator(7, new TeamDataComparator("hangingPercentage"));
+        table.setColumnComparator(8, new TeamDataComparator("challengePercentage"));
+        table.setColumnComparator(9, new TeamDataComparator("avgCourtyardDrops")); */
 
