@@ -61,25 +61,25 @@ public class TeamData {
         return (int) (100 * (((double) challenges) / matches.size()));
     }
     public int avgAutonScore() {
-        return (int) (100 * (((double) autonScore) / matches.size()));
+        return (int) (autonScore / matches.size());
     }
     public int avgDefenceScore() {
-        return (int) (100 * (((double) defenseScore) / matches.size()));
+        return (int) (defenseScore / matches.size());
     }
     public int avgHighGoalScore() {
-        return (int) (100 * (((double) highGoalShots) / matches.size()));
+        return (int) highGoalShots / matches.size();
     }
     public int highGoalPercentage() {
         return (int) (100 * (((double) highGoalShots) / (highGoalShots + highGoalMisses)));
     }
     public int avgLowGoalScore() {
-        return (int) (100 * (((double) lowGoalShots) / matches.size()));
+        return (int) lowGoalShots / matches.size();
     }
     public int lowGoalPercentage() {
         return (int) (100 * (((double) lowGoalShots) / (lowGoalShots + lowGoalMisses)));
     }
     public int avgCourtyardDrops() {
-        return (int) (100 * (((double) courtyardDrops) / matches.size()));
+        return (int) ( courtyardDrops) / matches.size();
     }
     public int id(){
         return id;

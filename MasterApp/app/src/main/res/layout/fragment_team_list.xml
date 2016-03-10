@@ -11,6 +11,7 @@
         android:layout_height="match_parent"
         android:id="@+id/tableview"
         table:columnCount="10"
-        table:headerElevation="5"
+        table:headerElevation="2"
+        table:theme="@style/TextAppearance.AppCompat.Small"
         />
 </FrameLayout>

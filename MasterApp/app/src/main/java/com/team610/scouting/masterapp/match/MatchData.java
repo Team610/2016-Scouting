@@ -17,7 +17,7 @@ import java.util.Random;
 public class MatchData {
 
     public Team[] teams;
-    int matchNumber;
+    public int matchNumber;
 
     public static MatchData instance; //current match
 
@@ -37,9 +37,9 @@ public class MatchData {
         }
         instance = this;
         updateDatagen();
+    }
 
-        }
-    public void updateDatagen(){
+    public void updateDatagen() {
         MainActivity.rootRef.child("GTC").child("match" + matchNumber).addValueEventListener(new ValueEventListener() {
 
             public void onDataChange(DataSnapshot snapshot) {
@@ -48,11 +48,10 @@ public class MatchData {
                     i++;
                     teams[i].id = Integer.valueOf(team.getKey());
                     for (DataSnapshot mode : team.getChildren()) {
-                        for(DataSnapshot data : mode.getChildren()){
+                        for (DataSnapshot data : mode.getChildren()) {
                             try {
                                 Log.d(data.getKey(), "" + data.getValue().getClass());
-
-                                Team.class.getField(data.getKey()).set(teams[i],data.getValue());
+                                Team.class.getField(data.getKey()).set(teams[i], data.getValue());
                             } catch (IllegalAccessException e) {
                                 e.printStackTrace();
                             } catch (NoSuchFieldException e) {
@@ -60,14 +59,16 @@ public class MatchData {
                             }
                         }
                     }
+
                 }
+                Log.d("K", "DONE");
                 try {
                     MainActivity.mFrag.updateViewsFromThe6ix();
                 } catch (NoSuchFieldException e) {
                     e.printStackTrace();
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
-                }catch (NullPointerException e){
+                } catch (NullPointerException e) {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.mFrag.getActivity());
                     dialog.setTitle("Error");
                     dialog.setMessage("Data took too long to get");

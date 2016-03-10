@@ -25,7 +25,7 @@ public class SplitScreenFragment extends ScoutingFragment {
     // TODO: Rename and change types of parameters
     private int team1;
     private int team2;
-    private TeamFragment one,two;
+    public TeamFragment one,two;
     private OnFragmentInteractionListener mListener;
 
     public SplitScreenFragment() {
@@ -56,7 +56,7 @@ public class SplitScreenFragment extends ScoutingFragment {
         }
         FragmentTransaction trans = getFragmentManager().beginTransaction();
         one = TeamFragment.newInstance(team1,true);
-        two = TeamFragment.newInstance(team2,true);
+        two = TeamFragment.newInstance(team2,false);
         trans.add(R.id.splitleft,one);
         trans.add(R.id.splitright,two).commit();
     }

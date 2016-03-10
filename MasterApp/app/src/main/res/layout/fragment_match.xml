@@ -13,12 +13,12 @@
         android:id="@+id/match_auton_layout"
         />
 
-    <include
+  <!--  <include
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         layout="@layout/match_post"
         android:id="@+id/match_post_layout"
-         />
+         /> -->
 
     <include
         android:layout_width="match_parent"

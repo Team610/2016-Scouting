@@ -24,6 +24,7 @@ public class TeamTableDataAdapter  extends TableDataAdapter<TeamData> {
         switch (columnIndex){
             case 0:
                 toReturn = renderID(team);
+                break;
             case 1:
                 toReturn = renderAuton(team);
                 break;

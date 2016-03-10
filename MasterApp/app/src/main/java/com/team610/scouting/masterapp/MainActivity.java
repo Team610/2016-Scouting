@@ -21,6 +21,7 @@ import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -157,9 +158,11 @@ public class MainActivity extends AppCompatActivity
     public void refresh(MenuItem ignore) {
         //TODO update all text Views of current fragment
         loadAllTeamData();
+        Toast.makeText(MainActivity.mFrag.getActivity(), "Refreshing Team Data", Toast.LENGTH_LONG).show();
     }
 
     public void loadAllTeamData() {
+        teams.clear();
         rootRef.child(currentTournament).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -169,6 +172,15 @@ public class MainActivity extends AppCompatActivity
                         TeamData team;
                         if (!teams.containsKey(teamData.getKey())) {
                             team = new TeamData(teamData.getKey());
+                            team.defences.put(Defence.PORTCULLIS,new Double[]{0D,0D});
+                            team.defences.put(Defence.LOW_BAR,new Double[]{0D,0D});
+                            team.defences.put(Defence.ROUGH_TERRAIN,new Double[]{0D,0D});
+                            team.defences.put(Defence.ROCK_WALL,new Double[]{0D,0D});
+                            team.defences.put(Defence.CHEVAL_DE_FRISE,new Double[]{0D,0D});
+                            team.defences.put(Defence.DRAWBRIDGE,new Double[]{0D,0D});
+                            team.defences.put(Defence.MOAT,new Double[]{0D,0D});
+                            team.defences.put(Defence.RAMPARTS,new Double[]{0D,0D});
+                            team.defences.put(Defence.SALLY_PORT,new Double[]{0D,0D});
                             teams.put(team.id+"",team);
                         } else {
                             team = teams.get(teamData.getKey());
@@ -249,6 +261,7 @@ public class MainActivity extends AppCompatActivity
                     e.printStackTrace();
                 }
                 System.out.println("NAH");
+               Toast.makeText(MainActivity.mFrag.getActivity(), "Team Data Loaded", Toast.LENGTH_SHORT).show();
             }
 
             @Override

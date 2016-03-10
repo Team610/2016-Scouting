@@ -1,14 +1,12 @@
 package com.team610.scouting.masterapp.team;
 
 import android.app.DialogFragment;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import com.team610.scouting.masterapp.R;
 import com.team610.scouting.masterapp.match.MatchData;
@@ -18,9 +16,6 @@ import com.team610.scouting.masterapp.match.Team;
 public class TeamDialog extends DialogFragment {
 
 
-
-    int matchNumber;
-    int teamNumber;
     int index;
 
     TextView matchNum;
@@ -106,10 +101,10 @@ public class TeamDialog extends DialogFragment {
 //        submitButton = (Button) v.findViewById(R.id.send_Button);
 
         matchNum = (TextView) v.findViewById(R.id.matchNum_review_TextView);
-        matchNum.setText("Match: "+matchNumber);
+        matchNum.setText("Match: "+ match.matchNumber);
 
         teamNum = (TextView) v.findViewById(R.id.team_num_review_TextView);
-        teamNum.setText("Team: " + teamNumber);
+        teamNum.setText("Team: " + team.id);
 
         defences[0] = (TextView) v.findViewById(R.id.defence1_selection_TextView);
         defences[0].setText("1. " + team.defence1);
@@ -124,7 +119,7 @@ public class TeamDialog extends DialogFragment {
         defences[3].setText("4. " + team.defence4);
 
         autonCrossedDefence = (TextView) v.findViewById(R.id.auton_crossed_defence_TextView);
-        autonCrossedDefence.setText("Defence Crossed: " + team.defenceCrossed);
+        autonCrossedDefence.setText("Defence Crossed: " + team.defenseCrossed);
 
         reachedDefence = (TextView) v.findViewById(R.id.reached_defence_TextView);
         reachedDefence.setText("Reached Defence: " + team.reachDefence);
@@ -174,19 +169,19 @@ public class TeamDialog extends DialogFragment {
 
 
         teleopDefences[0] = (TextView) v.findViewById(R.id.teleop_defence1_TextView);
-        teleopDefences[0].setText("1. " + team.defencecrosses[0] + " crosses, " + chooseDefenceRating(team.defence1Rating));
+        teleopDefences[0].setText("1. " + team.defence1crosses + " crosses, " + chooseDefenceRating(team.defence1rating));
 
         teleopDefences[1] = (TextView) v.findViewById(R.id.teleop_defence2_TextView);
-        teleopDefences[1].setText("2. " + team.defencecrosses[1]+" crosses, " + chooseDefenceRating(team.defence2Rating));
+        teleopDefences[1].setText("2. " + team.defence2crosses+" crosses, " + chooseDefenceRating(team.defence2rating));
 
         teleopDefences[2] = (TextView) v.findViewById(R.id.teleop_defence3_TextView);
-        teleopDefences[2].setText("3. " + team.defencecrosses[2]+" crosses, " + chooseDefenceRating(team.defence3Rating));
+        teleopDefences[2].setText("3. " + team.defence3crosses+" crosses, " + chooseDefenceRating(team.defence3rating));
 
         teleopDefences[3] = (TextView) v.findViewById(R.id.teleop_defence4_TextView);
-        teleopDefences[3].setText("4. " + team.defencecrosses[3]+" crosses, " + chooseDefenceRating(team.defence4Rating));
+        teleopDefences[3].setText("4. " + team.defence4crosses+" crosses, " + chooseDefenceRating(team.defence4rating));
 
         teleopDefences[4] = (TextView) v.findViewById(R.id.teleop_defence5_TextView);
-        teleopDefences[4].setText("5. " + team.defencecrosses[4]+" crosses, " + chooseDefenceRating(team.defence5Rating));
+        teleopDefences[4].setText("5. " + team.defence5crosses+" crosses, " + chooseDefenceRating(team.defence5rating));
 
         highGoal = (TextView) v.findViewById(R.id.high_goal_teleop_TextView);
         highGoal.setText("HighGoal - Scores: " + team.highGoalScores+", Misses: " + team.highGoalMisses);
@@ -233,18 +228,10 @@ public class TeamDialog extends DialogFragment {
         comment = (TextView) v.findViewById(R.id.comment_TextView);
         comment.setText(team.comment);
 
-
-
-
         return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onReviewFragmentInteraction(uri);
-        }
-    }
 
     public static String chooseDefenceRating(long rate){
         int r = (int) rate;

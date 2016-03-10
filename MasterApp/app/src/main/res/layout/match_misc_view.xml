@@ -16,7 +16,7 @@
                 android:text="@string/teamNum"
                 />
             <TextView
-                android:id="@+id/match_post_team_num"
+                android:id="@+id/match_misc_team_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 />

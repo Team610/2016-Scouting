@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.team610.scouting.masterapp.R;
 import com.team610.scouting.masterapp.ScoutingFragment;
@@ -83,17 +84,7 @@ public class MatchFragment extends ScoutingFragment {
         View auton = root.findViewById(R.id.match_auton_layout),
                 teleop = root.findViewById(R.id.match_teleop_layout);
         auton.setVisibility(View.GONE);
-        teleop.setVisibility(View.GONE);
         return root;
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-
-
     }
 
     @Override
@@ -122,20 +113,20 @@ public class MatchFragment extends ScoutingFragment {
             createTeamChoiceDialog();
 
         } else {
-
             View auton = getActivity().findViewById(R.id.match_auton_layout),
-                    teleop = getActivity().findViewById(R.id.match_teleop_layout),
-                    post = getActivity().findViewById(R.id.match_post_layout);
-            post.setVisibility(View.GONE);
+                    teleop = getActivity().findViewById(R.id.match_teleop_layout);
+                 //   post = getActivity().findViewById(R.id.match_post_layout);
+           // post.setVisibility(View.GONE);
             teleop.setVisibility(View.GONE);
             auton.setVisibility(View.GONE);
             if (id == R.id.action_auton) {
                 auton.setVisibility(View.VISIBLE);
             } else if (id == R.id.action_teleop) {
                 teleop.setVisibility(View.VISIBLE);
-            } else if (id == R.id.action_postMatch) {
-                post.setVisibility(View.VISIBLE);
             }
+//            } else if (id == R.id.action_postMatch) {
+//                post.setVisibility(View.VISIBLE);
+//            }
         }
     }
 
@@ -218,12 +209,12 @@ public class MatchFragment extends ScoutingFragment {
     public void loadMatchData(){
         ActionMenuItemView item = (ActionMenuItemView) getActivity().findViewById(R.id.action_matchNumber);
         item.setTitle("Match # " + matchNum);
+        Toast.makeText(getActivity(),"Loading Match Data",Toast.LENGTH_LONG).show();
         data = new MatchData(matchNum);
 
     }
 
     public void updateViewsFromThe6ix() throws NoSuchFieldException, IllegalAccessException {
-
         for (int i = 0; i < 6; i++) {
             Team t = data.teams[i];
             //Auton
@@ -242,23 +233,23 @@ public class MatchFragment extends ScoutingFragment {
             ((TextView) teleTable.findViewById(R.id.match_teleop_team_num)).setText(t.id + "");
             ((TextView) teleTable.findViewById(R.id.match_teleop_court_goals)).setText(t.courtyardScores + "");
             ((TextView) teleTable.findViewById(R.id.match_teleop_court_attempts)).setText(t.courtyardScores + t.courtyardMisses + "");
-            ((TextView) teleTable.findViewById(R.id.match_teleop_court_percent)).setText(t.courtyardPercent + "%");
+            ((TextView) teleTable.findViewById(R.id.match_teleop_court_percent)).setText(t.courtyardPercent() + "%");
             ((TextView) teleTable.findViewById(R.id.match_teleop_high_goals)).setText(t.highGoalScores + "");
             ((TextView) teleTable.findViewById(R.id.match_teleop_high_attempts)).setText(t.highGoalScores + t.highGoalMisses + "");
-            ((TextView) teleTable.findViewById(R.id.match_teleop_high_percent)).setText(t.highGoalPercent + "%");
+            ((TextView) teleTable.findViewById(R.id.match_teleop_high_percent)).setText(t.highGoalPercent() + "%");
             ((TextView) teleTable.findViewById(R.id.match_teleop_low_goals)).setText(t.lowGoalScores + "");
             ((TextView) teleTable.findViewById(R.id.match_teleop_low_attempts)).setText(t.lowGoalScores + t.lowGoalMisses + "");
-            ((TextView) teleTable.findViewById(R.id.match_teleop_low_percent)).setText(t.lowGoalPercent + "%");
+            ((TextView) teleTable.findViewById(R.id.match_teleop_low_percent)).setText(t.lowGoalPercent() + "%");
 
 
             //Post Match
-            ViewGroup postView = (ViewGroup) getView().findViewById(R.id.class.getField("match_post_team" + (i + 1)).getInt(R.id.class));
-            TableLayout postTable = (TableLayout) ((ViewGroup) postView.getChildAt(0)).getChildAt(0);
-            ((TextView) postTable.findViewById(R.id.match_post_team_num)).setText(t.id + "");
-            ((TextView) postTable.findViewById(R.id.team_total_points)).setText(t.points + "");
-            ((TextView) postTable.findViewById(R.id.team_total_crosses)).setText(t.totalCrosses + "");
-            ((TextView) postTable.findViewById(R.id.tower_capture)).setText(t.capture);
-
+//            ViewGroup postView = (ViewGroup) getView().findViewById(R.id.class.getField("match_post_team" + (i + 1)).getInt(R.id.class));
+//            TableLayout postTable = (TableLayout) ((ViewGroup) postView.getChildAt(0)).getChildAt(0);
+//            ((TextView) postTable.findViewById(R.id.match_misc_team_num)).setText(t.id + "");
+//            ((TextView) postTable.findViewById(R.id.team_total_points)).setText(t.points + "");
+//            ((TextView) postTable.findViewById(R.id.team_total_crosses)).setText(t.totalCrosses + "");
+//            ((TextView) postTable.findViewById(R.id.tower_capture)).setText(t.capture);
+            Toast.makeText(getActivity(),"Match Data Loaded",Toast.LENGTH_SHORT).show();
         }
     }
     public interface OnFragmentInteractionListener {

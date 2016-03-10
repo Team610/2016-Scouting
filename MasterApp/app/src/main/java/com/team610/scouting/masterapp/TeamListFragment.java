@@ -79,7 +79,10 @@ public class TeamListFragment extends ScoutingFragment {
             teams[i++] = t;
         }
         table.setDataAdapter(new TeamTableDataAdapter(getActivity(), teams));
-        table.setHeaderAdapter(new SimpleTableHeaderAdapter(getActivity(), "Team", "Auton", "Defence", "High %", "High Shots", "Low %", "Low Shots", "Hang %", "Challenge %", "Courtyard Drops"));
+        SimpleTableHeaderAdapter headerAdapter = new SimpleTableHeaderAdapter(getActivity(), "Team", "Auton", "Defence", "High %", "High Shots", "Low %", "Low Shots", "Hang %", "Challenge %", "Courtyard Drops");
+        headerAdapter.setTextSize(8);
+
+        table.setHeaderAdapter(headerAdapter);
         table.setColumnComparator(0, new TeamDataComparator("id"));
         table.setColumnComparator(1, new TeamDataComparator("avgAutonScore"));
         table.setColumnComparator(2, new TeamDataComparator("avgDefenceScore"));

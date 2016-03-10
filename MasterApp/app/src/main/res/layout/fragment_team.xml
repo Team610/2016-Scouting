@@ -140,7 +140,7 @@
 
             <TextView
                 android:padding="@dimen/tablePadding"
-                android:text="Hanging" />
+                android:text="Hanging %" />
 
             <TextView
                 android:id="@+id/hangingScoreBox"
@@ -154,7 +154,7 @@
 
             <TextView
                 android:padding="@dimen/tablePadding"
-                android:text="Challenge" />
+                android:text="Challenge %" />
 
             <TextView
                 android:id="@+id/challengeScoreBox"

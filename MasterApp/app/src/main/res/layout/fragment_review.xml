@@ -364,22 +364,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_marginLeft="50dp"
         android:text="Comment:"
         android:id="@+id/comment_title_TextView"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/miscellaneous_title_TextView"
-        android:layout_toEndOf="@+id/miscellaneous_title_TextView" />
+        android:layout_below="@id/scout_name_TextView"
+        android:layout_alignLeft="@id/scout_name_TextView"/>
 
     <TextView
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Comments"
+        android:text="No Comment Found"
         android:id="@+id/comment_TextView"
-        android:layout_below="@+id/comment_title_TextView"
+
+        android:layout_centerVertical="true"
         android:layout_alignLeft="@+id/comment_title_TextView"
-        android:layout_alignStart="@+id/comment_title_TextView" />
+        android:layout_below="@+id/comment_title_TextView" />
 
     <TextView
         android:layout_width="wrap_content"
