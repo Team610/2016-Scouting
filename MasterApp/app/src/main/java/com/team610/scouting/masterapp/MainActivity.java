@@ -138,6 +138,7 @@ public class MainActivity extends AppCompatActivity
                 .getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -147,6 +148,7 @@ public class MainActivity extends AppCompatActivity
             //super.onBackPressed();
         }
     }
+
     //TODO idk wtf to do
     @Override
     public void onFragmentInteraction(Uri uri) {
@@ -161,7 +163,7 @@ public class MainActivity extends AppCompatActivity
 
     public void loadAllTeamData() {
 
-        rootRef.child(currentTournament).addValueEventListener(new ValueEventListener() {
+        rootRef.child(currentTournament).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 System.out.println("YEA");
@@ -190,9 +192,21 @@ public class MainActivity extends AppCompatActivity
                         DataSnapshot data = teamData.child("auto");
 
                         //TODO this probably wont work
-                        if(data.child("defenseCrossed") != null)
-                        team.autonScore += !data.child("defenseCrossed").getValue().equals("") ? 10 : ((boolean) data.child("reachDefence").getValue()) ? 2 : 0;
-                        team.autonScore += ((boolean) data.child("scoredHighGoal").getValue()) ? 10 : ((boolean) data.child("scoredLowGoal").getValue()) ? 5 : 0;
+//                        if (data.child("defenseCrossed") != null && data.child("defenseCrossed").getValue() != null)
+//                            team.autonScore += !data.child("defenseCrossed").getValue().equals("") ? 10 : ((boolean) data.child("reachDefence").getValue()) ? 2 : 0;
+//                        team.autonScore += ((boolean) data.child("scoredHighGoal").getValue()) ? 10 : ((boolean) data.child("scoredLowGoal").getValue()) ? 5 : 0;
+
+                        if(data.child("defenseCrossed").getValue() != null){
+                            team.autonScore+=10;
+                        }else if((boolean)data.child("reachDefence").getValue()){
+                            team.autonScore+=2;
+                        }
+
+                        if((boolean)data.child("scoredHighGoal").getValue()){
+                            team.autonScore+=10;
+                        }else if((boolean)data.child("scoredLowGoal").getValue()){
+                            team.autonScore+=5;
+                        }
 
                         //Defence Scores
                         data = teamData.child("teleop");
@@ -215,7 +229,12 @@ public class MainActivity extends AppCompatActivity
                         //Defence rating
                         for (int i = 1; i <= 5; i++) {
                             data = teamData.child("matchSetup");
-                            Defence d = Defence.getDefence((String) data.child("defence" + i).getValue());
+                            Defence d;
+                            if (i == 5) {
+                                d = Defence.LOW_BAR;
+                            } else {
+                                d = Defence.getDefence((String) data.child("defence" + i).getValue());
+                            }
                             if (!team.defences.containsKey(d)) {
                                 team.defences.put(d, new Double[]{0D, 0D});
                             }
@@ -226,6 +245,8 @@ public class MainActivity extends AppCompatActivity
                                 team.defences.get(d)[0] += val;
                                 team.defences.get(d)[0] /= numMatches;
                             }
+                            System.out.println(d);
+                            System.out.println(team.id + " " + d.toString() + " " + data.child("defence" + i + "crosses").getValue());
                             team.defences.get(d)[1] += (long) data.child("defence" + i + "crosses").getValue();
                         }
 
@@ -304,7 +325,7 @@ public class MainActivity extends AppCompatActivity
     public void matchFrag(String match) {
         mFrag = MatchFragment.newInstance(match);
         getFragmentManager().beginTransaction().replace(R.id.main_container, mFrag).commit();
-        actionbar.setGroupVisible(R.id.matchMenuItems,true);
+        actionbar.setGroupVisible(R.id.matchMenuItems, true);
     }
 }
 

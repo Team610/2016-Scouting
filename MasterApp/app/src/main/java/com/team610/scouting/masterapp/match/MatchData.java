@@ -40,7 +40,7 @@ public class MatchData {
     }
 
     public void updateDatagen() {
-        MainActivity.rootRef.child(MainActivity.currentTournament).child("match" + matchNumber).addValueEventListener(new ValueEventListener() {
+        MainActivity.rootRef.child(MainActivity.currentTournament).child("match" + matchNumber).addListenerForSingleValueEvent(new ValueEventListener() {
 
             public void onDataChange(DataSnapshot snapshot) {
                 int i = -1;

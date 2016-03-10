@@ -39,7 +39,6 @@ public class MatchFragment extends ScoutingFragment {
     private String mParam1;
     private String mParam2;
 
-    private MatchFragment.OnFragmentInteractionListener mListener;
 
 
     private int matchNum;
@@ -89,18 +88,18 @@ public class MatchFragment extends ScoutingFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
+//        if (context instanceof OnFragmentInteractionListener) {
+//            mListener = (OnFragmentInteractionListener) context;
+//        } else {
+//            throw new RuntimeException(context.toString()
+//                    + " must implement OnFragmentInteractionListener");
+//        }
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+      //  mListener = null;
     }
 
     public void onMenuTap(int id) {
@@ -113,19 +112,19 @@ public class MatchFragment extends ScoutingFragment {
 
         } else {
             View auton = getActivity().findViewById(R.id.match_auton_layout),
-                    teleop = getActivity().findViewById(R.id.match_teleop_layout);
-            //   post = getActivity().findViewById(R.id.match_post_layout);
-            // post.setVisibility(View.GONE);
+                    teleop = getActivity().findViewById(R.id.match_teleop_layout),
+               defences = getActivity().findViewById(R.id.match_defence_layout);
+
+            defences.setVisibility(View.GONE);
             teleop.setVisibility(View.GONE);
             auton.setVisibility(View.GONE);
             if (id == R.id.action_auton) {
                 auton.setVisibility(View.VISIBLE);
             } else if (id == R.id.action_teleop) {
                 teleop.setVisibility(View.VISIBLE);
+            } else if (id == R.id.action_defences) {
+                defences.setVisibility(View.VISIBLE);
             }
-//            } else if (id == R.id.action_postMatch) {
-//                post.setVisibility(View.VISIBLE);
-//            }
         }
     }
 

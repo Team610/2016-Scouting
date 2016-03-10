@@ -215,6 +215,7 @@
 
             <TextView
                 android:id="@+id/portcullisAvgTime"
+                android:textColor="@color/Black"
                 android:gravity="right"
                 android:padding="@dimen/tablePadding" />
         </TableRow>
@@ -231,6 +232,7 @@
 
             <TextView
                 android:id="@+id/chevalDeFriseAvgTime"
+                android:textColor="@color/Black"
                 android:gravity="right"
                 android:padding="@dimen/tablePadding" />
         </TableRow>
@@ -248,6 +250,7 @@
             <TextView
                 android:id="@+id/moatAvgTime"
                 android:gravity="right"
+                android:textColor="@color/Black"
                 android:padding="@dimen/tablePadding" />
         </TableRow>
 
@@ -264,6 +267,7 @@
             <TextView
                 android:id="@+id/rampartsAvgTime"
                 android:gravity="right"
+                android:textColor="@color/Black"
                 android:padding="@dimen/tablePadding" />
         </TableRow>
 
@@ -280,6 +284,7 @@
             <TextView
                 android:id="@+id/drawbridgeAvgTime"
                 android:gravity="right"
+                android:textColor="@color/Black"
                 android:padding="@dimen/tablePadding" />
         </TableRow>
 
@@ -296,6 +301,7 @@
             <TextView
                 android:id="@+id/sallyPortAvgTime"
                 android:gravity="right"
+                android:textColor="@color/Black"
                 android:padding="@dimen/tablePadding" />
         </TableRow>
 
@@ -312,6 +318,7 @@
             <TextView
                 android:id="@+id/rockWallAvgTime"
                 android:gravity="right"
+                android:textColor="@color/Black"
                 android:padding="@dimen/tablePadding" />
         </TableRow>
 
@@ -328,6 +335,7 @@
             <TextView
                 android:id="@+id/roughTerrainAvgTime"
                 android:gravity="right"
+                android:textColor="@color/Black"
                 android:padding="@dimen/tablePadding" />
         </TableRow>
 
@@ -344,6 +352,7 @@
             <TextView
                 android:id="@+id/lowBarAvgTime"
                 android:gravity="right"
+                android:textColor="@color/Black"
                 android:padding="@dimen/tablePadding" />
         </TableRow>
     </TableLayout>

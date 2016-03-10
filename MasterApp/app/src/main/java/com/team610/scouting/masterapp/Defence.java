@@ -4,7 +4,7 @@ package com.team610.scouting.masterapp;
  * Created by Tate on 2016-02-06.
  */
 public enum Defence {
-    PORTCULLIS('A',"portcullis"),
+    PORTCULLIS('A',"porticullis"),
     CHEVAL_DE_FRISE('A',"chevaldefrise"),
     MOAT('B',"moat"),
     RAMPARTS('B',"ramparts"),
