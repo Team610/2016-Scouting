@@ -12,12 +12,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.team610.scouting.masterapp.Defence;
 import com.team610.scouting.masterapp.MainActivity;
@@ -83,7 +86,6 @@ public class TeamFragment extends ScoutingFragment {
                 boolean yes = false;
                 if (actionId == EditorInfo.IME_ACTION_SEND || actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_NEXT) {
                     yes = true;
-                    System.out.println("Worked");
                     if (!v.getText().toString().equals("")) {
                         if (left) {
                             ((SplitScreenFragment) MainActivity.mFrag).one.loadTeamData(v.getText().toString());
@@ -136,6 +138,10 @@ public class TeamFragment extends ScoutingFragment {
 
     public void loadTeamData(String teamNum) {
         team = MainActivity.teams.get(teamNum);
+        if(team == null){
+            Toast.makeText(getActivity(),"Team Not Found",Toast.LENGTH_SHORT).show();
+            return;
+        }
         try {
             updateViewsFromThe6ix();
         } catch (NoSuchFieldException e) {
@@ -199,8 +205,27 @@ public class TeamFragment extends ScoutingFragment {
         row.setBackgroundColor(getColor(team.defences.get(Defence.LOW_BAR)[0]));
 
         ArrayAdapter<String> itemsAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, team.matches);
-        ListView listView = (ListView) splitFrag.getChildAt(0).findViewById(R.id.matchList);
+        final ListView listView = (ListView) splitFrag.getChildAt(0).findViewById(R.id.matchList);
         listView.setAdapter(itemsAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                (  (MainActivity) getActivity()).matchFrag((String) listView.getItemAtPosition(position));
+
+            }
+        });
+
+        //MISC
+
+        TableLayout misc = (TableLayout)teamFrag.getChildAt(6);
+        ((TextView) misc.findViewById(R.id.defenceRating)).setText(team.defensiveRating + "");
+        ((CheckBox) misc.findViewById(R.id.checkMateCheck)).setChecked(team.shotFromCheckMate);
+        ((CheckBox) misc.findViewById(R.id.courtyardShotCheck)).setChecked(team.shotFromCourtyard);
+        ((CheckBox) misc.findViewById(R.id.defenceCheck)).setChecked(team.shotFromDefences);
+        ((CheckBox) misc.findViewById(R.id.cornerShotCheck)).setChecked(team.shotFromCorner);
+
+
+
     }
 
     public int getColor(double rating) {

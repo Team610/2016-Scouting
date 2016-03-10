@@ -35,7 +35,8 @@ public class TeamData {
 
     public boolean shotFromCourtyard,
             shotFromCheckMate,
-            shotFromDefences;
+            shotFromDefences,
+            shotFromCorner;
     public long fouls;
 
     public double defensiveRating;
@@ -57,38 +58,42 @@ public class TeamData {
     public int hangingPercentage() {
         return (int) (100 * (((double) hangs) / matches.size()));
     }
+
     public int challengePercentage() {
         return (int) (100 * (((double) challenges) / matches.size()));
     }
+
     public int avgAutonScore() {
         return (int) (autonScore / matches.size());
     }
+
     public int avgDefenceScore() {
         return (int) (defenseScore / matches.size());
     }
+
     public int avgHighGoalScore() {
         return (int) highGoalShots / matches.size();
     }
+
     public int highGoalPercentage() {
         return (int) (100 * (((double) highGoalShots) / (highGoalShots + highGoalMisses)));
     }
+
     public int avgLowGoalScore() {
         return (int) lowGoalShots / matches.size();
     }
+
     public int lowGoalPercentage() {
         return (int) (100 * (((double) lowGoalShots) / (lowGoalShots + lowGoalMisses)));
     }
+
     public int avgCourtyardDrops() {
-        return (int) ( courtyardDrops) / matches.size();
+        return (int) (courtyardDrops) / matches.size();
     }
-    public int id(){
+
+    public int id() {
         return id;
     }
-
-
-
-
-
 
 
 }
