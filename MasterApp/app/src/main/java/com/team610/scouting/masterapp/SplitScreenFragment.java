@@ -25,7 +25,7 @@ public class SplitScreenFragment extends ScoutingFragment {
     // TODO: Rename and change types of parameters
     private int team1;
     private int team2;
-
+    private TeamFragment one,two;
     private OnFragmentInteractionListener mListener;
 
     public SplitScreenFragment() {
@@ -55,8 +55,10 @@ public class SplitScreenFragment extends ScoutingFragment {
             team2 = getArguments().getInt("TEAM_2");
         }
         FragmentTransaction trans = getFragmentManager().beginTransaction();
-        trans.add(R.id.splitleft,TeamFragment.newInstance(team1,true));
-        trans.add(R.id.splitright,TeamFragment.newInstance(team2,false)).commit();
+        one = TeamFragment.newInstance(team1,true);
+        two = TeamFragment.newInstance(team2,true);
+        trans.add(R.id.splitleft,one);
+        trans.add(R.id.splitright,two).commit();
     }
 
     @Override
@@ -99,7 +101,8 @@ public class SplitScreenFragment extends ScoutingFragment {
 
     @Override
     public void updateViewsFromThe6ix() throws NoSuchFieldException, IllegalAccessException {
-        //Unused
+        one.updateViewsFromThe6ix();
+        two.updateViewsFromThe6ix();
     }
 
     /**

@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity
     public static String currentTournament = "GTC";//TODO default when on that date
 
 
-    HashMap<String, TeamData> teams;
+    public static HashMap<String, TeamData> teams;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,11 +64,14 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         //Create Fragment to place in main activity
-        getFragmentManager().beginTransaction().add(R.id.main_container, new SplitScreenFragment()).commit();
+        mFrag = new SplitScreenFragment();
+        getFragmentManager().beginTransaction().add(R.id.main_container, mFrag).commit();
 
 
         Firebase.setAndroidContext(this);
         rootRef = new Firebase("https://scouting-app.firebaseio.com/");
+        teams = new HashMap<>();
+
     }
 
 
@@ -126,7 +129,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_field) {
             mFrag = new FieldFragment();
         } else if (id == R.id.nav_list) {
-            //TODO FIX IT  mFrag = new TeamListFragment();
+            mFrag = new TeamListFragment();
         } else if (id == R.id.nav_alliance) {
             mFrag = new AllianceFragment();
         }
@@ -160,11 +163,13 @@ public class MainActivity extends AppCompatActivity
         rootRef.child(currentTournament).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                System.out.println("YEA");
                 for (DataSnapshot match : dataSnapshot.getChildren()) {
                     for (DataSnapshot teamData : match.getChildren()) {
                         TeamData team;
                         if (!teams.containsKey(teamData.getKey())) {
                             team = new TeamData(teamData.getKey());
+                            teams.put(team.id+"",team);
                         } else {
                             team = teams.get(teamData.getKey());
                         }
@@ -187,16 +192,16 @@ public class MainActivity extends AppCompatActivity
 
                         //Shooting
                         team.highGoalMisses += ((long) data.child("highGoalMisses").getValue());
-                        team.highGoalShots += ((long) data.child("highGoalShots").getValue());
+                        team.highGoalShots += ((long) data.child("highGoalScores").getValue());
                         team.lowGoalMisses += ((long) data.child("lowGoalMisses").getValue());
-                        team.lowGoalShots += ((long) data.child("lowGoalShots").getValue());
+                        team.lowGoalShots += ((long) data.child("lowGoalScores").getValue());
                         team.courtyardDrops += ((long) data.child("courtyardScores").getValue());
 
                         //Fouls
                         team.fouls += ((long) data.child("fouls").getValue());
 
                         //Defence rating
-                        for (int i = 0; i < 5; i++) {
+                        for (int i = 1; i <= 5; i++) {
                             data = teamData.child("matchSetup");
                             Defence d = Defence.getDefence((String) data.child("defence" + i).getValue());
                             if (!team.defences.containsKey(d)) {
@@ -222,7 +227,7 @@ public class MainActivity extends AppCompatActivity
                         team.captures += (boolean) data.child("capture").getValue() ? 1 : 0;
                         team.challenges += (boolean) data.child(challenge).getValue() ? 1 : 0;
                         team.hangs += (boolean) data.child("hang").getValue() ? 1 : 0;
-                        int rating = (int) data.child("defenseRating").getValue();
+                        long rating = (long) (data.child("defensiveRating").getValue());
                         if (rating != 0) {
                             team.defensiveRating *= team.defensePlayed;
                             team.defensePlayed++;
@@ -232,7 +237,7 @@ public class MainActivity extends AppCompatActivity
                         team.shotFromCheckMate = team.shotFromCheckMate || (boolean) data.child("shotFromCheckMate").getValue();
                         team.shotFromDefences = team.shotFromDefences || (boolean) data.child("shotFromDefences").getValue();
                         team.shotFromCourtyard = team.shotFromCourtyard || (boolean) data.child("shotFromPopShot").getValue();
-
+                    //TODO    team.shotFromCorner = team.shotFromCorner || (boolean) data.child("sho")
                     }
 
 
@@ -243,6 +248,7 @@ public class MainActivity extends AppCompatActivity
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                System.out.println("NAH");
             }
 
             @Override

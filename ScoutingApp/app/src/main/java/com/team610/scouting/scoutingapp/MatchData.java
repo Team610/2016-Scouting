@@ -225,6 +225,7 @@ public class MatchData {
         misc.put("shotFromDefences", instance.shotFromDefences);
         misc.put("shotFromCheckMate", instance.shotFromCheckMate);
         misc.put("shotFromPopShot",instance.shotFromPopShot);
+        misc.put("shotFromCorner",instance.shotFromCorner);
         miscRef.updateChildren(misc);
     }
 

@@ -38,27 +38,6 @@ public class MatchData {
         instance = this;
         updateDatagen();
 
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if(MainActivity.mFrag instanceof MatchFragment)
-                    try {
-                        MainActivity.mFrag.updateViewsFromThe6ix();
-                    } catch (NoSuchFieldException e) {
-                        e.printStackTrace();
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    }catch (NullPointerException e){
-                        AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.mFrag.getActivity());
-                        dialog.setTitle("Error");
-                        dialog.setMessage("Data took too long to get");
-                    }
-            }
-
-}, 2000);//7.5 second timeout
-
-
         }
     public void updateDatagen(){
         MainActivity.rootRef.child("GTC").child("match" + matchNumber).addValueEventListener(new ValueEventListener() {
@@ -81,6 +60,17 @@ public class MatchData {
                             }
                         }
                     }
+                }
+                try {
+                    MainActivity.mFrag.updateViewsFromThe6ix();
+                } catch (NoSuchFieldException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }catch (NullPointerException e){
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.mFrag.getActivity());
+                    dialog.setTitle("Error");
+                    dialog.setMessage("Data took too long to get");
                 }
             }
 

@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.lang.reflect.Type;
 
 import com.team610.scouting.masterapp.team.TeamData;
@@ -17,6 +19,7 @@ import java.util.Comparator;
 
 import de.codecrafters.tableview.SortableTableView;
 import de.codecrafters.tableview.TableView;
+import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
 
 
 /**
@@ -61,15 +64,33 @@ public class TeamListFragment extends ScoutingFragment {
         }
     }
 
+    TeamData[] teams;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        SortableTableView<TeamData> table = (SortableTableView) getActivity().findViewById(R.id.tableview);
+        View view = inflater.inflate(R.layout.fragment_team_list, container, false);
+        SortableTableView<TeamData> table = (SortableTableView) view.findViewById(R.id.tableview);
         //TODO load all team data
-        table.setDataAdapter(new TeamTableDataAdapter(getActivity(), null));
-        table.setColumnComparator(3,new TeamDataComparator("highGoalShots"));//TODO
-        return inflater.inflate(R.layout.fragment_team_list, container, false);
+        teams = new TeamData[MainActivity.teams.size()];
+        int i = 0;
+        for (TeamData t : MainActivity.teams.values()) {
+            teams[i++] = t;
+        }
+        table.setDataAdapter(new TeamTableDataAdapter(getActivity(), teams));
+        table.setHeaderAdapter(new SimpleTableHeaderAdapter(getActivity(), "Team", "Auton", "Defence", "High %", "High Shots", "Low %", "Low Shots", "Hang %", "Challenge %", "Courtyard Drops"));
+        table.setColumnComparator(0, new TeamDataComparator("id"));
+        table.setColumnComparator(1, new TeamDataComparator("avgAutonScore"));
+        table.setColumnComparator(2, new TeamDataComparator("avgDefenceScore"));
+        table.setColumnComparator(3, new TeamDataComparator("avgHighGoalScore"));
+        table.setColumnComparator(4, new TeamDataComparator("highGoalPercentage"));
+        table.setColumnComparator(5, new TeamDataComparator("avgLowGoalScore"));
+        table.setColumnComparator(6, new TeamDataComparator("lowGoalPercentage"));
+        table.setColumnComparator(7, new TeamDataComparator("hangingPercentage"));
+        table.setColumnComparator(8, new TeamDataComparator("challengePercentage"));
+        table.setColumnComparator(9, new TeamDataComparator("avgCourtyardDrops"));
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -98,7 +119,7 @@ public class TeamListFragment extends ScoutingFragment {
 
     @Override
     public void updateViewsFromThe6ix() throws NoSuchFieldException, IllegalAccessException {
-        //TODO
+
     }
 
     /**
@@ -117,12 +138,12 @@ public class TeamListFragment extends ScoutingFragment {
     }
 
     private static class TeamDataComparator implements Comparator<TeamData> {
-        Field f;
+        Method m;
 
         public TeamDataComparator(String field) {
             try {
-                f = TeamData.class.getField(field);
-            } catch (NoSuchFieldException e) {
+                m = TeamData.class.getMethod(field);
+            } catch (NoSuchMethodException e) {
                 e.printStackTrace();
             }
         }
@@ -130,15 +151,15 @@ public class TeamListFragment extends ScoutingFragment {
         @Override
         public int compare(TeamData one, TeamData two) {
             try {
-                if (f.getType().equals(Long.TYPE))
-                    return (int) (f.getLong(one) - f.getLong(two));
-                else {
-                    return (int) (f.getDouble(one) - f.getDouble(two));
-                }
+                return (int) (m.invoke(one)) - (int) (m.invoke(two));
             } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
                 e.printStackTrace();
             }
             return -1;
         }
+
     }
 }
+

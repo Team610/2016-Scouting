@@ -23,39 +23,88 @@ public class TeamTableDataAdapter  extends TableDataAdapter<TeamData> {
         View toReturn = null;
         switch (columnIndex){
             case 0:
+                toReturn = renderID(team);
+            case 1:
                 toReturn = renderAuton(team);
                 break;
-            case 1:
+            case 2:
                 toReturn = renderDefense(team);
                 break;
-            case 2:
+            case 3:
                 toReturn = renderHighPercent(team);
                 break;
-            case 3:
+            case 4:
                 toReturn  = renderHighShots(team);
                 break;
-            case 4:
+            case 5:
                 toReturn = renderLowPercent(team);
                 break;
-            case 5:
+            case 6:
                 toReturn = renderLowShots(team);
                 break;
-            case 6:
-                toReturn = renderHangingPercent(team);
-                break;
             case 7:
-                toReturn = renderChallengePercent(team);
+                toReturn = renderHangingPercent(team);
                 break;
             case 8:
-                toReturn = renderHangingPercent(team);
+                toReturn = renderChallengePercent(team);
+                break;
+            case 9:
+                toReturn = renderCourtyardDrops(team);
                 break;
         }
         return toReturn;
     }
+
+    private View renderCourtyardDrops(TeamData team) {
+        TextView tv = new TextView(getContext());
+        tv.setText(team.avgCourtyardDrops()+"");
+        return tv;
+    }
+    private View renderID(TeamData team) {
+        TextView tv = new TextView(getContext());
+        tv.setText(team.id()+"");
+        return tv;
+    }
+
     //TODO
     private View renderAuton(TeamData team) {
         TextView tv = new TextView(getContext());
-        tv.setText(team.avgAutonScore);
+        tv.setText(team.avgAutonScore()+"");
+        return tv;
+    }
+    private View renderDefense(TeamData team) {
+        TextView tv = new TextView(getContext());
+        tv.setText(team.avgDefenceScore()+"");
+        return tv;
+    }
+    private View renderHighPercent(TeamData team) {
+        TextView tv = new TextView(getContext());
+        tv.setText(team.highGoalPercentage()+"%");
+        return tv;
+    }
+    private View renderHighShots(TeamData team) {
+        TextView tv = new TextView(getContext());
+        tv.setText(team.avgHighGoalScore()+"");
+        return tv;
+    }
+    private View renderLowPercent(TeamData team) {
+        TextView tv = new TextView(getContext());
+        tv.setText(team.lowGoalPercentage()+"%");
+        return tv;
+    }
+    private View renderLowShots(TeamData team) {
+        TextView tv = new TextView(getContext());
+        tv.setText(team.avgLowGoalScore()+"");
+        return tv;
+    }
+    private View renderHangingPercent(TeamData team) {
+        TextView tv = new TextView(getContext());
+        tv.setText(team.hangingPercentage()+"%");
+        return tv;
+    }
+    private View renderChallengePercent(TeamData team) {
+        TextView tv = new TextView(getContext());
+        tv.setText(team.challengePercentage()+"%");
         return tv;
     }
 }

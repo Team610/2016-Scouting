@@ -81,6 +81,9 @@ public class TeamData {
     public int avgCourtyardDrops() {
         return (int) (100 * (((double) courtyardDrops) / matches.size()));
     }
+    public int id(){
+        return id;
+    }
 
 
 
