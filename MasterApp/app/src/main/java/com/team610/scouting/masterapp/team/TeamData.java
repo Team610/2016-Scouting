@@ -103,6 +103,6 @@ public class TeamData {
     public int id() {
         return id;
     }
-    
+
 }
 

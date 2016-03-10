@@ -21,18 +21,17 @@
         <TableRow>
 
             <TextView
-                android:id="@+id/defenseCrossedText"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:text="Defense Crossed" />
 
-            <ImageView
-                android:id="@+id/defenseCrossedImage"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/lowbar" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/defenseCrossedText"
+                     />
         </TableRow>
 
         <TableRow>

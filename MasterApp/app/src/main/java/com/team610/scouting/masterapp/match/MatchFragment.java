@@ -225,6 +225,7 @@ public class MatchFragment extends ScoutingFragment {
             ((TextView) autonTable.findViewById(R.id.robotLocation)).setText(t.endedCourtyard + "");
             String s = t.scoredHighGoal ? "High Goal" : t.scoredLowGoal ? "Low Goal" : t.placedCourtyard ? "Courtyard" : "Neutral Zone";
             ((TextView) autonTable.findViewById(R.id.ballLocation)).setText(s);
+            ((TextView) autonTable.findViewById(R.id.defenseCrossedText)).setText(t.defenseCrossed);
 
             //Tele-OP
             ViewGroup teleView = (ViewGroup) getView().findViewById(R.id.class.getField("match_teleop_team" + (i + 1)).getInt(R.id.class));
