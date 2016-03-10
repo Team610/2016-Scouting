@@ -235,6 +235,7 @@ public class MainActivity extends AppCompatActivity
                             } else {
                                 d = Defence.getDefence((String) data.child("defence" + i).getValue());
                             }
+                            if(d == null)continue;
                             if (!team.defences.containsKey(d)) {
                                 team.defences.put(d, new Double[]{0D, 0D});
                             }
@@ -245,7 +246,8 @@ public class MainActivity extends AppCompatActivity
                                 team.defences.get(d)[0] += val;
                                 team.defences.get(d)[0] /= numMatches;
                             }
-                            System.out.println(d);
+
+                            System.out.println(match.getKey() + " " + team.id +  " " + i);
                             System.out.println(team.id + " " + d.toString() + " " + data.child("defence" + i + "crosses").getValue());
                             team.defences.get(d)[1] += (long) data.child("defence" + i + "crosses").getValue();
                         }
