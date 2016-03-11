@@ -162,7 +162,7 @@
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/review_title_TextView"
         android:layout_toEndOf="@+id/review_title_TextView"
-        android:layout_marginLeft="72dp"
+        android:layout_marginLeft="90dp"
         android:layout_marginStart="72dp" />
 
     <TextView
@@ -405,10 +405,9 @@
         android:layout_height="wrap_content"
         android:text="Back"
         android:id="@+id/back_Button"
-        android:layout_marginTop="30dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_above="@+id/send_Button"
+        android:layout_alignRight="@+id/send_Button"
+        android:layout_alignEnd="@+id/send_Button" />
 
 
 </RelativeLayout>
