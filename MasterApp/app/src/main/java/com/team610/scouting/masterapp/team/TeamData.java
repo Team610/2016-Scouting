@@ -19,7 +19,8 @@ public class TeamData {
     }
 
     public int id;
-    //Long array stores rating and times crossed, index 0 for rating, index 1 for crosses
+    //Double array stores rating and times crossed, index 0 for rating, index 1 for crosses,
+    //index 2 for num matches it occured in
     public HashMap<Defence, Double[]> defences;
 
 
@@ -104,5 +105,9 @@ public class TeamData {
         return id;
     }
 
+    public double avgTotalPoints() {
+
+        return (avgLowGoalScore() * 2 + avgHighGoalScore() * 5 + avgDefenceScore());
+    }
 }
 

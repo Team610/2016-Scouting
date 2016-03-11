@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity
         SplitScreenFragment.OnFragmentInteractionListener, TeamFragment.OnFragmentInteractionListener,
         FieldFragment.OnFragmentInteractionListener, TeamListFragment.OnFragmentInteractionListener,
         CommentFragment.OnFragmentInteractionListener, TeamDialog.OnFragmentInteractionListener,
-        AllianceFragment.OnFragmentInteractionListener{
+        AllianceFragment.OnFragmentInteractionListener {
 
 
     public static Firebase rootRef;
@@ -128,8 +128,7 @@ public class MainActivity extends AppCompatActivity
             mFrag = new TeamListFragment();
         } else if (id == R.id.nav_alliance) {
             mFrag = new AllianceFragment();
-        }
-        else if(id == R.id.nav_comments){
+        } else if (id == R.id.nav_comments) {
             mFrag = new CommentFragment();
         }
         transaction.replace(R.id.main_container, mFrag).commit();
@@ -181,15 +180,15 @@ public class MainActivity extends AppCompatActivity
                         TeamData team;
                         if (!teams.containsKey(teamData.getKey())) {
                             team = new TeamData(teamData.getKey());
-                            team.defences.put(Defence.PORTCULLIS, new Double[]{0D, 0D});
-                            team.defences.put(Defence.LOW_BAR, new Double[]{0D, 0D});
-                            team.defences.put(Defence.ROUGH_TERRAIN, new Double[]{0D, 0D});
-                            team.defences.put(Defence.ROCK_WALL, new Double[]{0D, 0D});
-                            team.defences.put(Defence.CHEVAL_DE_FRISE, new Double[]{0D, 0D});
-                            team.defences.put(Defence.DRAWBRIDGE, new Double[]{0D, 0D});
-                            team.defences.put(Defence.MOAT, new Double[]{0D, 0D});
-                            team.defences.put(Defence.RAMPARTS, new Double[]{0D, 0D});
-                            team.defences.put(Defence.SALLY_PORT, new Double[]{0D, 0D});
+                            team.defences.put(Defence.PORTCULLIS, new Double[]{0D, 0D, 0D});
+                            team.defences.put(Defence.LOW_BAR, new Double[]{0D, 0D, 0D});
+                            team.defences.put(Defence.ROUGH_TERRAIN, new Double[]{0D, 0D, 0D});
+                            team.defences.put(Defence.ROCK_WALL, new Double[]{0D, 0D, 0D});
+                            team.defences.put(Defence.CHEVAL_DE_FRISE, new Double[]{0D, 0D, 0D});
+                            team.defences.put(Defence.DRAWBRIDGE, new Double[]{0D, 0D, 0D});
+                            team.defences.put(Defence.MOAT, new Double[]{0D, 0D, 0D});
+                            team.defences.put(Defence.RAMPARTS, new Double[]{0D, 0D, 0D});
+                            team.defences.put(Defence.SALLY_PORT, new Double[]{0D, 0D, 0D});
                             teams.put(team.id + "", team);
                         } else {
                             team = teams.get(teamData.getKey());
@@ -204,16 +203,16 @@ public class MainActivity extends AppCompatActivity
 //                            team.autonScore += !data.child("defenseCrossed").getValue().equals("") ? 10 : ((boolean) data.child("reachDefence").getValue()) ? 2 : 0;
 //                        team.autonScore += ((boolean) data.child("scoredHighGoal").getValue()) ? 10 : ((boolean) data.child("scoredLowGoal").getValue()) ? 5 : 0;
 
-                        if(data.child("defenseCrossed").getValue() != null){
-                            team.autonScore+=10;
-                        }else if((boolean)data.child("reachDefence").getValue()){
-                            team.autonScore+=2;
+                        if (data.child("defenseCrossed").getValue() != null) {
+                            team.autonScore += 10;
+                        } else if ((boolean) data.child("reachDefence").getValue()) {
+                            team.autonScore += 2;
                         }
 
-                        if((boolean)data.child("scoredHighGoal").getValue()){
-                            team.autonScore+=10;
-                        }else if((boolean)data.child("scoredLowGoal").getValue()){
-                            team.autonScore+=5;
+                        if ((boolean) data.child("scoredHighGoal").getValue()) {
+                            team.autonScore += 10;
+                        } else if ((boolean) data.child("scoredLowGoal").getValue()) {
+                            team.autonScore += 5;
                         }
 
                         //Defence Scores
@@ -243,10 +242,11 @@ public class MainActivity extends AppCompatActivity
                             } else {
                                 d = Defence.getDefence((String) data.child("defence" + i).getValue());
                             }
-                            if(d == null)continue;
+                            if (d == null) continue;
                             if (!team.defences.containsKey(d)) {
-                                team.defences.put(d, new Double[]{0D, 0D});
+                                team.defences.put(d, new Double[]{0D, 0D, 0D});
                             }
+                            team.defences.get(d)[2]++;//Increase number of matches this defence occured
                             data = teamData.child("teleop");
                             long val = (long) data.child("defence" + i + "rating").getValue();
                             if (val != 0) {
@@ -255,7 +255,7 @@ public class MainActivity extends AppCompatActivity
                                 team.defences.get(d)[0] /= numMatches;
                             }
 
-                            System.out.println(match.getKey() + " " + team.id +  " " + i);
+                            System.out.println(match.getKey() + " " + team.id + " " + i);
                             System.out.println(team.id + " " + d.toString() + " " + data.child("defence" + i + "crosses").getValue());
                             team.defences.get(d)[1] += (long) data.child("defence" + i + "crosses").getValue();
                         }

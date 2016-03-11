@@ -88,16 +88,14 @@ public class CommentFragment extends ScoutingFragment {
 
 
         //start
-       View rootView = inflater.inflate(R.layout.fragment_comment,
+        View rootView = inflater.inflate(R.layout.fragment_comment,
                 container, false);
         tl = (TableLayout) rootView.findViewById(R.id.main_table);
 
 
-
         //Table
 
-            //
-
+        //
 
 
         String[] teams = MainActivity.teams.keySet().toArray(new String[MainActivity.teams.keySet().size()]);
@@ -131,92 +129,89 @@ public class CommentFragment extends ScoutingFragment {
                         String teamNumPicked = String.valueOf(adapterView
                                 .getItemAtPosition(position));
 
-                                tl.removeAllViews();
+                        tl.removeAllViews();
 
-                               TeamData a = MainActivity.teams.get(teamNumPicked);
-                              ArrayList<String> matchNums =  new ArrayList<String> (Arrays.asList(a.comments.keySet().toArray(new String[a.comments.keySet().size()])));
+                        TeamData a = MainActivity.teams.get(teamNumPicked);
+                        ArrayList<String> matchNums = new ArrayList<String>(Arrays.asList(a.comments.keySet().toArray(new String[a.comments.keySet().size()])));
 
-                                HashMap comments = a.comments;
+                        HashMap comments = a.comments;
 
-                                TextView[] textArray = new TextView[matchNums.size()];
-                                TableRow[] tr_headA = new TableRow[matchNums.size()];
-
-
-
-                                Context c = getActivity().getApplicationContext();
-
-                                TableRow tr_head = new TableRow(c);
-                                tr_head.setId(generateViewId());
-                                tr_head.setBackgroundColor(Color.GRAY);        // part1
-                                tr_head.setLayoutParams(new TableLayout.LayoutParams(
-                                        TableLayout.LayoutParams.WRAP_CONTENT,
-                                        TableLayout.LayoutParams.WRAP_CONTENT));
-
-                                TextView label_hello = new TextView(c);
-                                label_hello.setId(generateViewId());
-                                label_hello.setText("Match Number");
-                                label_hello.setTextColor(Color.WHITE);          // part2
-                                label_hello.setPadding(5, 5, 5, 5);
+                        TextView[] textArray = new TextView[matchNums.size()];
+                        TableRow[] tr_headA = new TableRow[matchNums.size()];
 
 
-                                tr_head.addView(label_hello);// add the column to the table row here
+                        Context c = getActivity().getApplicationContext();
 
-                                TextView label_android = new TextView(c);    // part3
-                                label_android.setId(generateViewId());// define id that must be unique
-                                label_android.setText("Comment"); // set the text for the header
-                                label_android.setTextColor(Color.WHITE); // set the color
-                                label_android.setPadding(5, 5, 5, 5); // set the padding (if required)
-                                tr_head.addView(label_android); // add the column to the table row here
+                        TableRow tr_head = new TableRow(c);
+                        tr_head.setId(generateViewId());
+                        tr_head.setBackgroundColor(Color.GRAY);        // part1
+                        tr_head.setLayoutParams(new TableLayout.LayoutParams(
+                                TableLayout.LayoutParams.WRAP_CONTENT,
+                                TableLayout.LayoutParams.WRAP_CONTENT));
 
-                                tl.addView(tr_head, new TableLayout.LayoutParams(
-                                        TableLayout.LayoutParams.WRAP_CONTENT,                    //part4
-                                        TableLayout.LayoutParams.WRAP_CONTENT));
+                        TextView label_hello = new TextView(c);
+                        label_hello.setId(generateViewId());
+                        label_hello.setText("Match Number");
+                        label_hello.setTextColor(Color.WHITE);          // part2
+                        label_hello.setPadding(5, 5, 5, 5);
 
-                                //
+
+                        tr_head.addView(label_hello);// add the column to the table row here
+
+                        TextView label_android = new TextView(c);    // part3
+                        label_android.setId(generateViewId());// define id that must be unique
+                        label_android.setText("Comment"); // set the text for the header
+                        label_android.setTextColor(Color.WHITE); // set the color
+                        label_android.setPadding(5, 5, 5, 5); // set the padding (if required)
+                        tr_head.addView(label_android); // add the column to the table row here
+
+                        tl.addView(tr_head, new TableLayout.LayoutParams(
+                                TableLayout.LayoutParams.WRAP_CONTENT,                    //part4
+                                TableLayout.LayoutParams.WRAP_CONTENT));
+
+                        //
 
 
-                                for(int i=0; i< matchNums.size();i++) {
+                        for (int i = 0; i < matchNums.size(); i++) {
 
 //Create the tablerows
-                                   // Context c = getActivity().getApplicationContext();
-                                    tr_headA[i] = new TableRow(c);
-                                    tr_headA[i].setId(i + 1);
-                                    tr_headA[i].setBackgroundColor(Color.GRAY);
-                                    tr_headA[i].setLayoutParams(new TableLayout.LayoutParams(
-                                            TableLayout.LayoutParams.WRAP_CONTENT,
-                                            TableLayout.LayoutParams.WRAP_CONTENT));
+                            // Context c = getActivity().getApplicationContext();
+                            tr_headA[i] = new TableRow(c);
+                            tr_headA[i].setId(i + 1);
+                            tr_headA[i].setBackgroundColor(Color.GRAY);
+                            tr_headA[i].setLayoutParams(new TableLayout.LayoutParams(
+                                    TableLayout.LayoutParams.WRAP_CONTENT,
+                                    TableLayout.LayoutParams.WRAP_CONTENT));
 
-                                    // Here create the TextView dynamically
+                            // Here create the TextView dynamically
 
-                                    textArray[i] = new TextView(c);
-                                    textArray[i].setId(i + 111);
-                                    textArray[i].setText(matchNums.get(i));
-                                    textArray[i].setTextColor(Color.WHITE);
-                                    textArray[i].setPadding(5, 5, 5, 5);
-                                    tr_headA[i].addView(textArray[i]);
-
-
-                                    textArray[i] = new TextView(c);
-                                    textArray[i].setId(i + 99);
-                                    String comment = a.comments.get(""+ matchNums.get(i));
-                                    final int CHAR_LIMIT = 40;
-                                    for(int k = 0; comment.length() - k*CHAR_LIMIT  > CHAR_LIMIT; k++){
-                                        int lastIndex = comment.substring(0,40*(k+1)).lastIndexOf(' ');
-                                        comment = comment.substring(0, lastIndex) + "\n"+comment.substring(lastIndex+1);
-                                    }
-                                    textArray[i].setText(comment);
-                                    Log.d("comment", a.comments.get("" + matchNums.get(i)));
-                                    textArray[i].setTextColor(Color.WHITE);
-                                    textArray[i].setPadding(5, 5, 5, 5);
-                                    tr_headA[i].addView(textArray[i]); // add the column to the table row here
-
-                                    tl.addView(tr_headA[i], new TableLayout.LayoutParams(
-                                            TableLayout.LayoutParams.WRAP_CONTENT,
-                                            TableLayout.LayoutParams.WRAP_CONTENT));
-
-                                }
+                            textArray[i] = new TextView(c);
+                            textArray[i].setId(i + 111);
+                            textArray[i].setText(matchNums.get(i));
+                            textArray[i].setTextColor(Color.WHITE);
+                            textArray[i].setPadding(5, 5, 5, 5);
+                            tr_headA[i].addView(textArray[i]);
 
 
+                            textArray[i] = new TextView(c);
+                            textArray[i].setId(i + 99);
+                            String comment = a.comments.get("" + matchNums.get(i));
+                            final int CHAR_LIMIT = 40;
+                            for (int k = 0; comment.length() - k * CHAR_LIMIT > CHAR_LIMIT; k++) {
+                                int lastIndex = comment.substring(0, 40 * (k + 1)).lastIndexOf(' ');
+                                comment = comment.substring(0, lastIndex) + "\n" + comment.substring(lastIndex + 1);
+                            }
+                            textArray[i].setText(comment);
+                            Log.d("comment", a.comments.get("" + matchNums.get(i)));
+                            textArray[i].setTextColor(Color.WHITE);
+                            textArray[i].setPadding(5, 5, 5, 5);
+                            tr_headA[i].addView(textArray[i]); // add the column to the table row here
+
+                            tl.addView(tr_headA[i], new TableLayout.LayoutParams(
+                                    TableLayout.LayoutParams.WRAP_CONTENT,
+                                    TableLayout.LayoutParams.WRAP_CONTENT));
+
+                        }
 
 
 //                                Object[][] data = PhpRequest.getTable(610);
@@ -238,16 +233,14 @@ public class CommentFragment extends ScoutingFragment {
 //                                }
 
 
-
                     }
 
                 });
 
-       // parentActivity = (MainActivity) getActivity();
+        // parentActivity = (MainActivity) getActivity();
         return rootView;
         //end
     }
-
 
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -298,7 +291,7 @@ public class CommentFragment extends ScoutingFragment {
      * @return a generated ID value
      */
     public static int generateViewId() {
-        for (;;) {
+        for (; ; ) {
             final int result = sNextGeneratedId.get();
             // aapt-generated IDs have the high byte nonzero; clamp to the range under that.
             int newValue = result + 1;
@@ -309,7 +302,7 @@ public class CommentFragment extends ScoutingFragment {
         }
     }
 
-    public void updateViewsFromThe6ix(){
+    public void updateViewsFromThe6ix() {
 
     }
 }

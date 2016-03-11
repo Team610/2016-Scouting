@@ -217,7 +217,7 @@ public class TeamFragment extends ScoutingFragment {
 
         //MISC
 
-        TableLayout misc = (TableLayout) teamFrag.getChildAt(6);
+        TableLayout misc = (TableLayout) ((ViewGroup) teamFrag.getChildAt(6)).getChildAt(0);
         ((TextView) misc.findViewById(R.id.defenceRating)).setText(team.defensiveRating + "");
         ((CheckBox) misc.findViewById(R.id.checkMateCheck)).setChecked(team.shotFromCheckMate);
         ((CheckBox) misc.findViewById(R.id.courtyardShotCheck)).setChecked(team.shotFromCourtyard);
