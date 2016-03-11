@@ -99,7 +99,7 @@ public class TeamListFragment extends ScoutingFragment {
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+            mListener.onTeamListFragmentInteraction(uri);
         }
     }
 
@@ -125,6 +125,8 @@ public class TeamListFragment extends ScoutingFragment {
 
     }
 
+
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -137,7 +139,7 @@ public class TeamListFragment extends ScoutingFragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onTeamListFragmentInteraction(Uri uri);
     }
 
 //    private static class TeamDataComparator implements Comparator<TeamData> {
@@ -232,6 +234,9 @@ public class TeamListFragment extends ScoutingFragment {
           return Double.compare(one.avgCourtyardDrops(), two.avgCourtyardDrops());
         }
     }
+
+
+
 
 }
 

@@ -31,12 +31,16 @@ import com.firebase.client.ValueEventListener;
 import com.team610.scouting.masterapp.field.FieldFragment;
 import com.team610.scouting.masterapp.match.MatchFragment;
 import com.team610.scouting.masterapp.team.TeamData;
+import com.team610.scouting.masterapp.team.TeamDialog;
 import com.team610.scouting.masterapp.team.TeamFragment;
 
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, MatchFragment.OnFragmentInteractionListener, SplitScreenFragment.OnFragmentInteractionListener, TeamFragment.OnFragmentInteractionListener, FieldFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, MatchFragment.OnFragmentInteractionListener,
+        SplitScreenFragment.OnFragmentInteractionListener, TeamFragment.OnFragmentInteractionListener,
+        FieldFragment.OnFragmentInteractionListener, TeamListFragment.OnFragmentInteractionListener,
+        CommentFragment.OnFragmentInteractionListener, TeamDialog.OnFragmentInteractionListener {
 
 
     public static Firebase rootRef;
@@ -123,6 +127,9 @@ public class MainActivity extends AppCompatActivity
             mFrag = new TeamListFragment();
         } else if (id == R.id.nav_alliance) {
             mFrag = new AllianceFragment();
+        }
+        else if(id == R.id.nav_comments){
+            mFrag = new CommentFragment();
         }
         transaction.replace(R.id.main_container, mFrag).commit();
 
@@ -328,6 +335,21 @@ public class MainActivity extends AppCompatActivity
         mFrag = MatchFragment.newInstance(match);
         getFragmentManager().beginTransaction().replace(R.id.main_container, mFrag).commit();
         actionbar.setGroupVisible(R.id.matchMenuItems, true);
+    }
+
+    @Override
+    public void onTeamListFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onCommentFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onReviewFragmentInteraction(Uri uri) {
+
     }
 }
 
