@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.view.menu.ActionMenuItemView;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -240,14 +242,19 @@ public class MatchFragment extends ScoutingFragment {
             ((TextView) teleTable.findViewById(R.id.match_teleop_low_attempts)).setText(t.lowGoalScores + t.lowGoalMisses + "");
             ((TextView) teleTable.findViewById(R.id.match_teleop_low_percent)).setText(t.lowGoalPercent() + "%");
 
-
-            //Post Match
-//            ViewGroup postView = (ViewGroup) getView().findViewById(R.id.class.getField("match_post_team" + (i + 1)).getInt(R.id.class));
-//            TableLayout postTable = (TableLayout) ((ViewGroup) postView.getChildAt(0)).getChildAt(0);
-//            ((TextView) postTable.findViewById(R.id.match_misc_team_num)).setText(t.id + "");
-//            ((TextView) postTable.findViewById(R.id.team_total_points)).setText(t.points + "");
-//            ((TextView) postTable.findViewById(R.id.team_total_crosses)).setText(t.totalCrosses + "");
-//            ((TextView) postTable.findViewById(R.id.tower_capture)).setText(t.capture);
+            //Defences
+            ViewGroup defenceView = (ViewGroup) getView().findViewById(R.id.class.getField("match_defence_team" + (i + 1)).getInt(R.id.class));
+            ((TextView) defenceView.findViewById(R.id.defence_team_num)).setText(t.id + "");
+            TableLayout defenceTable = (TableLayout) defenceView.findViewById(R.id.defence_table);
+            for(int j = 0; j < 4; j++){
+                TableRow row = (TableRow) defenceTable.getChildAt(j);
+                String defence = (String) Team.class.getField("defence"+j).get(t);
+                long rating = Team.class.getField("defence"+j+"rating").getLong(t);
+                long crosses = Team.class.getField("defence"+j+"crosses").getLong(t);
+                row.setBackgroundColor(rating == 1 ? Color.GREEN : rating == 2 ? Color.YELLOW : rating == 3 ? Color.RED : Color.GRAY);
+                ((TextView) row.getChildAt(0)).setText(defence);
+                ((TextView) row.getChildAt(1)).setText(crosses + "");
+            }
             Toast.makeText(getActivity(), "Match Data Loaded", Toast.LENGTH_SHORT).show();
         }
     }

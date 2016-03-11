@@ -18,7 +18,7 @@ public class Team {
     public String defenseCrossed;
     public boolean breach;
     public boolean capture;
-    //public String defenseCrossed = "Lowbar";
+
     //Teleop
     public long highGoalScores;
     public long lowGoalScores;
@@ -40,10 +40,6 @@ public class Team {
     public String scoutName = "";
     public String comment = "";
 
-    //unimplemented
-    //public long defencecrosses[] = new long[5];
-
-
     public long defence1rating;
     public long defence2rating;
     public long defence3rating;
@@ -60,9 +56,6 @@ public class Team {
     public String defence2;
     public String defence3;
     public String defence4;
-
-    boolean[] defenceCrosses;
-
 
     public long fouls;
 

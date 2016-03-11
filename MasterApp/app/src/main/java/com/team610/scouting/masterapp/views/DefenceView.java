@@ -17,7 +17,6 @@ import com.team610.scouting.masterapp.R;
 public class DefenceView extends LinearLayout {
 
 
-
     public DefenceView(Context context, AttributeSet attrs) {
         super(context, attrs);
         LayoutInflater inflater = LayoutInflater.from(context);
