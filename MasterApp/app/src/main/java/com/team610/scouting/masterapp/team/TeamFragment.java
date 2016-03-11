@@ -138,8 +138,8 @@ public class TeamFragment extends ScoutingFragment {
 
     public void loadTeamData(String teamNum) {
         team = MainActivity.teams.get(teamNum);
-        if(team == null){
-            Toast.makeText(getActivity(),"Team Not Found",Toast.LENGTH_SHORT).show();
+        if (team == null) {
+            Toast.makeText(getActivity(), "Team Not Found", Toast.LENGTH_SHORT).show();
             return;
         }
         try {
@@ -156,7 +156,7 @@ public class TeamFragment extends ScoutingFragment {
         System.out.println(left);
         ViewGroup splitFrag = (ViewGroup) getActivity().findViewById(left ? R.id.splitleft : R.id.splitright);
         ViewGroup teamFrag = (ViewGroup) splitFrag.getChildAt(0);
-       // System.out.println(teamFrag == null);
+        // System.out.println(teamFrag == null);
         TableLayout averages = (TableLayout) teamFrag.getChildAt(1);
         //Averages
         ((TextView) averages.findViewById(R.id.autonScoreBox)).setText(team.avgAutonScore() + "");
@@ -210,14 +210,14 @@ public class TeamFragment extends ScoutingFragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                (  (MainActivity) getActivity()).matchFrag((String) listView.getItemAtPosition(position));
+                ((MainActivity) getActivity()).matchFrag((String) listView.getItemAtPosition(position));
 
             }
         });
 
         //MISC
 
-        TableLayout misc = (TableLayout)teamFrag.getChildAt(6);
+        TableLayout misc = (TableLayout) teamFrag.getChildAt(6);
         ((TextView) misc.findViewById(R.id.defenceRating)).setText(team.defensiveRating + "");
         ((CheckBox) misc.findViewById(R.id.checkMateCheck)).setChecked(team.shotFromCheckMate);
         ((CheckBox) misc.findViewById(R.id.courtyardShotCheck)).setChecked(team.shotFromCourtyard);
@@ -225,19 +225,21 @@ public class TeamFragment extends ScoutingFragment {
         ((CheckBox) misc.findViewById(R.id.cornerShotCheck)).setChecked(team.shotFromCorner);
 
 
-
     }
 
     public int getColor(double rating) {
-        switch ((int) Math.round(rating)) {
-            case 1:
-                return Color.GREEN;
-            case 2:
-                return Color.YELLOW;
-            case 3:
-                return Color.RED;
-            default:
-                return Color.GRAY;
+        //Green R:0 G:225 B:0
+        //Yellow R:225 G:225 B:0
+        //Red R:225 G:0 B:0
+        int r, g, b = 0;
+        if (rating == 0) return Color.GRAY;
+        else if (rating <= 2) {
+            r = (int) (225 * (rating - 1));
+            g = 225;
+        } else {
+            r = 225;
+            g = (int) (225 - 225 * (rating - 2));
         }
+        return Color.argb(255, r, g, b);
     }
 }
