@@ -79,7 +79,7 @@ public class TeamListFragment extends ScoutingFragment {
             teams[i++] = t;
         }
         table.setDataAdapter(new TeamTableDataAdapter(getActivity(), teams));
-        SimpleTableHeaderAdapter headerAdapter = new SimpleTableHeaderAdapter(getActivity(), "Team", "Auton", "Defence", "High %", "High Shots", "Low %", "Low Shots", "Hang %", "Challenge %", "Courtyard Drops");
+        SimpleTableHeaderAdapter headerAdapter = new SimpleTableHeaderAdapter(getActivity(), "Team", "Auton", "Defence", "High %", "High Shots", "Low %", "Low Shots", "Hang %", "Challenge %", "Total Points");
         headerAdapter.setTextSize(8);
 
         table.setHeaderAdapter(headerAdapter);
@@ -92,7 +92,7 @@ public class TeamListFragment extends ScoutingFragment {
         table.setColumnComparator(6, new avgLowGoalScoreComparator());
         table.setColumnComparator(7, new hangingPercentageComparator());
         table.setColumnComparator(8, new challengePercentageComparator());
-        table.setColumnComparator(9, new avgCourtyardDropsComparator());
+        table.setColumnComparator(9, new avgTotalPointsComparator());
         return view;
     }
 
@@ -227,11 +227,11 @@ public class TeamListFragment extends ScoutingFragment {
             return (one.challengePercentage()) - (two.challengePercentage());
         }
     }
-    private static class avgCourtyardDropsComparator implements Comparator<TeamData> {
+    private static class avgTotalPointsComparator implements Comparator<TeamData> {
 
         public int compare(TeamData one, TeamData two) {
             //return (one.avgCourtyardDrops()) - (two.avgCourtyardDrops());
-          return Double.compare(one.avgCourtyardDrops(), two.avgCourtyardDrops());
+          return Double.compare(one.avgTotalPoints(), two.avgTotalPoints());
         }
     }
 
