@@ -40,8 +40,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, MatchFragment.OnFragmentInteractionListener,
         SplitScreenFragment.OnFragmentInteractionListener, TeamFragment.OnFragmentInteractionListener,
         FieldFragment.OnFragmentInteractionListener, TeamListFragment.OnFragmentInteractionListener,
-        CommentFragment.OnFragmentInteractionListener, TeamDialog.OnFragmentInteractionListener,
-        AllianceFragment.OnFragmentInteractionListener {
+        CommentFragment.OnFragmentInteractionListener, TeamDialog.OnFragmentInteractionListener {
 
 
     public static Firebase rootRef;
@@ -292,6 +291,7 @@ public class MainActivity extends AppCompatActivity
                     e.printStackTrace();
                 }
                 System.out.println("NAH");
+                printErrors();
                 Toast.makeText(MainActivity.mFrag.getActivity(), "Team Data Loaded", Toast.LENGTH_SHORT).show();
             }
 
@@ -353,9 +353,22 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    @Override
-    public void onAllianceFragmentInteraction(Uri uri) {
+    public void printErrors() {
+        rootRef.child(currentTournament).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot tournament) {
+                for(DataSnapshot match : tournament.getChildren()){
+                    if(match.getChildrenCount() != 6L){
+                        System.out.println(match.getKey() + " has " + match.getChildrenCount() + " teams");
+                    }
+                }
+            }
 
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
     }
 }
 

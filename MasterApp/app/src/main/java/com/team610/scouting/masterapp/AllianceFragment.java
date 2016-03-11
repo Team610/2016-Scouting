@@ -32,7 +32,7 @@ public class AllianceFragment extends ScoutingFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_team, container, false);
+        View view = inflater.inflate(R.layout.fragment_alliance, container, false);
         EditText teamNum1 = (EditText) view.findViewById(R.id.alliance_team1);
 
         teamNum1.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -47,7 +47,7 @@ public class AllianceFragment extends ScoutingFragment {
             }
         });
 
-        EditText teamNum2 = (EditText) view.findViewById(R.id.alliance_team1);
+        EditText teamNum2 = (EditText) view.findViewById(R.id.alliance_team2);
         teamNum2.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -60,7 +60,7 @@ public class AllianceFragment extends ScoutingFragment {
             }
         });
 
-        EditText teamNum3 = (EditText) view.findViewById(R.id.alliance_team1);
+        EditText teamNum3 = (EditText) view.findViewById(R.id.alliance_team3);
 
         teamNum3.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
