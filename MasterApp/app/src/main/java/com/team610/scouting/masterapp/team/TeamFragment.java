@@ -223,6 +223,9 @@ public class TeamFragment extends ScoutingFragment {
         ((CheckBox) misc.findViewById(R.id.courtyardShotCheck)).setChecked(team.shotFromCourtyard);
         ((CheckBox) misc.findViewById(R.id.defenceCheck)).setChecked(team.shotFromDefences);
         ((CheckBox) misc.findViewById(R.id.cornerShotCheck)).setChecked(team.shotFromCorner);
+//        ((TextView)misc.findViewById(R.id.capturePercentage)).setText(team.captures);
+//        ((TextView)misc.findViewById(R.id.breachPercentage)).setText(team.breaches);
+
 
 
     }

@@ -215,9 +215,9 @@
 
             <TextView
                 android:id="@+id/portcullisAvgTime"
-                android:textColor="@color/Black"
                 android:gravity="right"
-                android:padding="@dimen/tablePadding" />
+                android:padding="@dimen/tablePadding"
+                android:textColor="@color/Black" />
         </TableRow>
 
         <TableRow
@@ -232,9 +232,9 @@
 
             <TextView
                 android:id="@+id/chevalDeFriseAvgTime"
-                android:textColor="@color/Black"
                 android:gravity="right"
-                android:padding="@dimen/tablePadding" />
+                android:padding="@dimen/tablePadding"
+                android:textColor="@color/Black" />
         </TableRow>
 
         <TableRow
@@ -250,8 +250,8 @@
             <TextView
                 android:id="@+id/moatAvgTime"
                 android:gravity="right"
-                android:textColor="@color/Black"
-                android:padding="@dimen/tablePadding" />
+                android:padding="@dimen/tablePadding"
+                android:textColor="@color/Black" />
         </TableRow>
 
         <TableRow
@@ -267,8 +267,8 @@
             <TextView
                 android:id="@+id/rampartsAvgTime"
                 android:gravity="right"
-                android:textColor="@color/Black"
-                android:padding="@dimen/tablePadding" />
+                android:padding="@dimen/tablePadding"
+                android:textColor="@color/Black" />
         </TableRow>
 
         <TableRow
@@ -284,8 +284,8 @@
             <TextView
                 android:id="@+id/drawbridgeAvgTime"
                 android:gravity="right"
-                android:textColor="@color/Black"
-                android:padding="@dimen/tablePadding" />
+                android:padding="@dimen/tablePadding"
+                android:textColor="@color/Black" />
         </TableRow>
 
         <TableRow
@@ -301,8 +301,8 @@
             <TextView
                 android:id="@+id/sallyPortAvgTime"
                 android:gravity="right"
-                android:textColor="@color/Black"
-                android:padding="@dimen/tablePadding" />
+                android:padding="@dimen/tablePadding"
+                android:textColor="@color/Black" />
         </TableRow>
 
         <TableRow
@@ -318,8 +318,8 @@
             <TextView
                 android:id="@+id/rockWallAvgTime"
                 android:gravity="right"
-                android:textColor="@color/Black"
-                android:padding="@dimen/tablePadding" />
+                android:padding="@dimen/tablePadding"
+                android:textColor="@color/Black" />
         </TableRow>
 
         <TableRow
@@ -335,8 +335,8 @@
             <TextView
                 android:id="@+id/roughTerrainAvgTime"
                 android:gravity="right"
-                android:textColor="@color/Black"
-                android:padding="@dimen/tablePadding" />
+                android:padding="@dimen/tablePadding"
+                android:textColor="@color/Black" />
         </TableRow>
 
         <TableRow
@@ -352,8 +352,8 @@
             <TextView
                 android:id="@+id/lowBarAvgTime"
                 android:gravity="right"
-                android:textColor="@color/Black"
-                android:padding="@dimen/tablePadding" />
+                android:padding="@dimen/tablePadding"
+                android:textColor="@color/Black" />
         </TableRow>
     </TableLayout>
 
@@ -366,120 +366,126 @@
         android:text="Miscellaneous"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <TableLayout
-        android:id="@+id/miscDataTable"
+
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/miscText"
         android:layout_toRightOf="@id/matchList">
 
+        <TableLayout
+            android:id="@+id/miscDataTable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:text="Defence Rating"
-                android:textSize="@dimen/defenseTextSize" />
+                <TextView
+                    android:text="Defence Rating"
+                    android:textSize="@dimen/defenseTextSize" />
 
-            <TextView
-                android:id="@+id/defenceRating"
-                android:gravity="right" />
-        </TableRow>
+                <TextView
+                    android:id="@+id/defenceRating"
+                    android:gravity="right" />
+            </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:text="Defence Shot"
-                android:textSize="@dimen/defenseTextSize" />
+                <TextView
+                    android:text="Defence Shot"
+                    android:textSize="@dimen/defenseTextSize" />
 
-            <CheckBox
-                android:id="@+id/defenceCheck"
-                android:gravity="right"
-                android:scaleX="0.7"
-                android:scaleY="0.7"
-                android:clickable="false"/>
-        </TableRow>
+                <CheckBox
+                    android:id="@+id/defenceCheck"
+                    android:clickable="false"
+                    android:gravity="right"
+                    android:scaleX="0.7"
+                    android:scaleY="0.7" />
+            </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:text="Checkmate Shot"
-                android:textSize="@dimen/defenseTextSize" />
+                <TextView
+                    android:text="Checkmate Shot"
+                    android:textSize="@dimen/defenseTextSize" />
 
-            <CheckBox
-                android:id="@+id/checkMateCheck"
-                android:clickable="false"
-                android:gravity="right"
-                android:scaleX="0.7"
-                android:scaleY="0.7" />
-        </TableRow>
+                <CheckBox
+                    android:id="@+id/checkMateCheck"
+                    android:clickable="false"
+                    android:gravity="right"
+                    android:scaleX="0.7"
+                    android:scaleY="0.7" />
+            </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:text="Courtyard Shot"
-                android:textSize="@dimen/defenseTextSize" />
+                <TextView
+                    android:text="Courtyard Shot"
+                    android:textSize="@dimen/defenseTextSize" />
 
-            <CheckBox
-                android:id="@+id/courtyardShotCheck"
-                android:clickable="false"
-                android:gravity="right"
-                android:scaleX="0.7"
-                android:scaleY="0.7" />
-        </TableRow>
+                <CheckBox
+                    android:id="@+id/courtyardShotCheck"
+                    android:clickable="false"
+                    android:gravity="right"
+                    android:scaleX="0.7"
+                    android:scaleY="0.7" />
+            </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:text="Corner Shot"
-                android:textSize="@dimen/defenseTextSize" />
+                <TextView
+                    android:text="Corner Shot"
+                    android:textSize="@dimen/defenseTextSize" />
 
-            <CheckBox
-                android:id="@+id/cornerShotCheck"
-                android:clickable="false"
-                android:scaleX="0.7"
-                android:scaleY="0.7" />
-        </TableRow>
+                <CheckBox
+                    android:id="@+id/cornerShotCheck"
+                    android:clickable="false"
+                    android:scaleX="0.7"
+                    android:scaleY="0.7" />
+            </TableRow>
+<!--
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                <TextView
+                    android:padding="@dimen/tablePadding"
+                    android:text="Breaches"
+                    android:textSize="@dimen/defenseTextSize" />
 
-            <TextView
-                android:padding="@dimen/tablePadding"
-                android:text="Breach %"
-                android:textSize="@dimen/defenseTextSize" />
+                <TextView
+                    android:id="@+id/breachPercentage"
+                    android:gravity="right"
+                    android:padding="@dimen/tablePadding" />
+            </TableRow>
 
-            <TextView
-                android:id="@+id/breachPercentage"
-                android:gravity="right"
-                android:padding="@dimen/tablePadding" />
-        </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                <TextView
+                    android:padding="@dimen/tablePadding"
+                    android:text="Captures"
+                    android:textSize="@dimen/defenseTextSize" />
 
-            <TextView
-                android:padding="@dimen/tablePadding"
-                android:text="Capture %"
-                android:textSize="@dimen/defenseTextSize" />
-
-            <TextView
-                android:id="@+id/capturePercentage"
-                android:gravity="right"
-                android:padding="@dimen/tablePadding" />
-        </TableRow>
-    </TableLayout>
+                <TextView
+                    android:id="@+id/capturePercentage"
+                    android:gravity="right"
+                    android:padding="@dimen/tablePadding" />
+            </TableRow>-->
+        </TableLayout>
+    </ScrollView>
 
 
 </RelativeLayout>
