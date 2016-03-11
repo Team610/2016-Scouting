@@ -41,7 +41,7 @@ public class AllianceFragment extends ScoutingFragment {
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+            mListener.onAllianceFragmentInteraction(uri);
         }
     }
 
@@ -79,6 +79,6 @@ public class AllianceFragment extends ScoutingFragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onAllianceFragmentInteraction(Uri uri);
     }
 }

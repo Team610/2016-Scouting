@@ -52,7 +52,7 @@ public class TeamData {
 
     public ArrayList<String> matches;
     //TODO
-    public static HashMap<String, String> comments; //Key is match number, object is comment
+    public HashMap<String, String> comments; //Key is match number, object is comment
 
     /*
     public double courtyardPercent(){
