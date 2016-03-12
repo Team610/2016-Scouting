@@ -196,7 +196,7 @@ public class CommentFragment extends ScoutingFragment {
                             textArray[i] = new TextView(c);
                             textArray[i].setId(i + 99);
                             String comment = a.comments.get("" + matchNums.get(i));
-                            final int CHAR_LIMIT = 40;
+                            final int CHAR_LIMIT = 50;
                             for (int k = 0; comment.length() - k * CHAR_LIMIT > CHAR_LIMIT; k++) {
                                 int lastIndex = comment.substring(0, 40 * (k + 1)).lastIndexOf(' ');
                                 comment = comment.substring(0, lastIndex) + "\n" + comment.substring(lastIndex + 1);

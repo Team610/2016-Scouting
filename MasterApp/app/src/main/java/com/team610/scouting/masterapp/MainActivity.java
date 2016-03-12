@@ -41,7 +41,8 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, MatchFragment.OnFragmentInteractionListener,
         SplitScreenFragment.OnFragmentInteractionListener, TeamFragment.OnFragmentInteractionListener,
         FieldFragment.OnFragmentInteractionListener, TeamListFragment.OnFragmentInteractionListener,
-        CommentFragment.OnFragmentInteractionListener, TeamDialog.OnFragmentInteractionListener {
+        CommentFragment.OnFragmentInteractionListener, TeamDialog.OnFragmentInteractionListener,
+        AllianceFragment.OnFragmentInteractionListener{
 
 
     public static Firebase rootRef;
@@ -396,6 +397,11 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
+    }
+
+    @Override
+    public void onAllianceFragmentInteraction(Uri uri) {
+
     }
 }
 

@@ -19,6 +19,7 @@ import com.team610.scouting.masterapp.team.TeamData;
 
 public class AllianceFragment extends ScoutingFragment {
 
+    private OnFragmentInteractionListener mListener;
 
     public AllianceFragment() {
         // Required empty public constructor
@@ -35,7 +36,7 @@ public class AllianceFragment extends ScoutingFragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_alliance, container, false);
         EditText teamNum1 = (EditText) view.findViewById(R.id.alliance_team1);
-
+        
         teamNum1.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -81,6 +82,17 @@ public class AllianceFragment extends ScoutingFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        if (context instanceof OnFragmentInteractionListener) {
+            mListener = (OnFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
+    public void onButtonPressed(Uri uri) {
+        if (mListener != null) {
+            mListener.onAllianceFragmentInteraction(uri);
+        }
     }
 
     @Override
@@ -144,5 +156,9 @@ public class AllianceFragment extends ScoutingFragment {
             ((TextView) r4.getChildAt(i)).setText(((int) (1000 * avg / count)) / 1000D + "");
         }
 
+    }
+
+    public interface OnFragmentInteractionListener {
+        void onAllianceFragmentInteraction(Uri uri);
     }
 }
