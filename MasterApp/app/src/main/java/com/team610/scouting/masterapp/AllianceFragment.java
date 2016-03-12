@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.team610.scouting.masterapp.team.TeamData;
 
@@ -90,6 +91,10 @@ public class AllianceFragment extends ScoutingFragment {
     public void updateRow(int row, String team) {
         TableLayout table = (TableLayout) getActivity().findViewById(R.id.alliance_table);
         TeamData teamData = MainActivity.teams.get(team);
+        if(teamData == null){
+            Toast.makeText(getActivity(),"Team not Found", Toast.LENGTH_SHORT).show();
+            return;
+        }
         TableRow r = (TableRow) table.getChildAt(row);
         ((TextView) r.getChildAt(1)).setText(teamData.getRating(Defence.PORTCULLIS) + "");
         ((TextView) r.getChildAt(2)).setText(teamData.getRating(Defence.CHEVAL_DE_FRISE) + "");
