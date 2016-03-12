@@ -84,6 +84,7 @@ public class MatchFragment extends ScoutingFragment {
         View auton = root.findViewById(R.id.match_auton_layout),
                 teleop = root.findViewById(R.id.match_teleop_layout);
         auton.setVisibility(View.GONE);
+        teleop.setVisibility(View.GONE);
         return root;
     }
 
