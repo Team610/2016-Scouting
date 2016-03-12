@@ -180,15 +180,15 @@ public class MainActivity extends AppCompatActivity
                         TeamData team;
                         if (!teams.containsKey(teamData.getKey())) {
                             team = new TeamData(teamData.getKey());
-                            team.defences.put(Defence.PORTCULLIS, new Double[]{0D, 0D, 0D});
-                            team.defences.put(Defence.LOW_BAR, new Double[]{0D, 0D, 0D});
-                            team.defences.put(Defence.ROUGH_TERRAIN, new Double[]{0D, 0D, 0D});
-                            team.defences.put(Defence.ROCK_WALL, new Double[]{0D, 0D, 0D});
-                            team.defences.put(Defence.CHEVAL_DE_FRISE, new Double[]{0D, 0D, 0D});
-                            team.defences.put(Defence.DRAWBRIDGE, new Double[]{0D, 0D, 0D});
-                            team.defences.put(Defence.MOAT, new Double[]{0D, 0D, 0D});
-                            team.defences.put(Defence.RAMPARTS, new Double[]{0D, 0D, 0D});
-                            team.defences.put(Defence.SALLY_PORT, new Double[]{0D, 0D, 0D});
+                            team.putDefence(Defence.PORTCULLIS, new Double[]{0D, 0D, 0D, 0D});
+                            team.putDefence(Defence.LOW_BAR, new Double[]{0D, 0D, 0D, 0D});
+                            team.putDefence(Defence.ROUGH_TERRAIN, new Double[]{0D, 0D, 0D, 0D});
+                            team.putDefence(Defence.ROCK_WALL, new Double[]{0D, 0D, 0D, 0D});
+                            team.putDefence(Defence.CHEVAL_DE_FRISE, new Double[]{0D, 0D, 0D, 0D});
+                            team.putDefence(Defence.DRAWBRIDGE, new Double[]{0D, 0D, 0D, 0D});
+                            team.putDefence(Defence.MOAT, new Double[]{0D, 0D, 0D, 0D});
+                            team.putDefence(Defence.RAMPARTS, new Double[]{0D, 0D, 0D, 0D});
+                            team.putDefence(Defence.SALLY_PORT, new Double[]{0D, 0D, 0D, 0D});
                             teams.put(team.id + "", team);
                         } else {
                             team = teams.get(teamData.getKey());
@@ -244,15 +244,14 @@ public class MainActivity extends AppCompatActivity
                             }
                             if (d == null) continue;
                             if (!team.defences.containsKey(d)) {
-                                team.defences.put(d, new Double[]{0D, 0D, 0D});
+                                team.defences.put(d, new Double[]{0D, 0D, 0D, 0D});
                             }
                             team.defences.get(d)[2]++;//Increase number of matches this defence occured
                             data = teamData.child("teleop");
                             long val = (long) data.child("defence" + i + "rating").getValue();
                             if (val != 0) {
-                                team.defences.get(d)[0] *= numMatches - 1;
-                                team.defences.get(d)[0] += val;
-                                team.defences.get(d)[0] /= numMatches;
+                                team.defences.get(d)[0]+=val;
+                                team.defences.get(d)[3]++;
                             }
 
                             System.out.println(match.getKey() + " " + team.id + " " + i);

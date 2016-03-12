@@ -174,35 +174,35 @@ public class TeamFragment extends ScoutingFragment {
 
         TableLayout defences = (TableLayout) teamFrag.getChildAt(4);
         //AvgTime = Crosses TODO fix that
-        ((TextView) defences.findViewById(R.id.portcullisAvgTime)).setText(team.defences.get(Defence.PORTCULLIS)[1] + "");
-        ((TextView) defences.findViewById(R.id.chevalDeFriseAvgTime)).setText(team.defences.get(Defence.CHEVAL_DE_FRISE)[1] + "");
-        ((TextView) defences.findViewById(R.id.moatAvgTime)).setText(team.defences.get(Defence.MOAT)[1] + "");
-        ((TextView) defences.findViewById(R.id.rampartsAvgTime)).setText(team.defences.get(Defence.RAMPARTS)[1] + "");
-        ((TextView) defences.findViewById(R.id.drawbridgeAvgTime)).setText(team.defences.get(Defence.DRAWBRIDGE)[1] + "");
-        ((TextView) defences.findViewById(R.id.sallyPortAvgTime)).setText(team.defences.get(Defence.SALLY_PORT)[1] + "");
-        ((TextView) defences.findViewById(R.id.rockWallAvgTime)).setText(team.defences.get(Defence.ROCK_WALL)[1] + "");
-        ((TextView) defences.findViewById(R.id.roughTerrainAvgTime)).setText(team.defences.get(Defence.ROUGH_TERRAIN)[1] + "");
-        ((TextView) defences.findViewById(R.id.lowBarAvgTime)).setText(team.defences.get(Defence.LOW_BAR)[1] + "");
+        ((TextView) defences.findViewById(R.id.portcullisAvgTime)).setText(team.getTimesCrossed(Defence.PORTCULLIS) + "");
+        ((TextView) defences.findViewById(R.id.chevalDeFriseAvgTime)).setText(team.getTimesCrossed(Defence.CHEVAL_DE_FRISE) + "");
+        ((TextView) defences.findViewById(R.id.moatAvgTime)).setText(team.getTimesCrossed(Defence.MOAT) + "");
+        ((TextView) defences.findViewById(R.id.rampartsAvgTime)).setText(team.getTimesCrossed(Defence.RAMPARTS) + "");
+        ((TextView) defences.findViewById(R.id.drawbridgeAvgTime)).setText(team.getTimesCrossed(Defence.DRAWBRIDGE) + "");
+        ((TextView) defences.findViewById(R.id.sallyPortAvgTime)).setText(team.getTimesCrossed(Defence.SALLY_PORT) + "");
+        ((TextView) defences.findViewById(R.id.rockWallAvgTime)).setText(team.getTimesCrossed(Defence.ROCK_WALL) + "");
+        ((TextView) defences.findViewById(R.id.roughTerrainAvgTime)).setText(team.getTimesCrossed(Defence.ROUGH_TERRAIN) + "");
+        ((TextView) defences.findViewById(R.id.lowBarAvgTime)).setText(team.getTimesCrossed(Defence.LOW_BAR) + "");
 
         //Ratings
         TableRow row = (TableRow) defences.getChildAt(1);
-        row.setBackgroundColor(getColor(team.defences.get(Defence.PORTCULLIS)[0]));
+        row.setBackgroundColor(getColor(team.getRating(Defence.PORTCULLIS)));
         row = (TableRow) defences.getChildAt(2);
-        row.setBackgroundColor(getColor(team.defences.get(Defence.CHEVAL_DE_FRISE)[0]));
+        row.setBackgroundColor(getColor(team.getRating(Defence.CHEVAL_DE_FRISE)));
         row = (TableRow) defences.getChildAt(3);
-        row.setBackgroundColor(getColor(team.defences.get(Defence.MOAT)[0]));
+        row.setBackgroundColor(getColor(team.getRating(Defence.MOAT)));
         row = (TableRow) defences.getChildAt(4);
-        row.setBackgroundColor(getColor(team.defences.get(Defence.RAMPARTS)[0]));
+        row.setBackgroundColor(getColor(team.getRating(Defence.RAMPARTS)));
         row = (TableRow) defences.getChildAt(5);
-        row.setBackgroundColor(getColor(team.defences.get(Defence.DRAWBRIDGE)[0]));
+        row.setBackgroundColor(getColor(team.getRating(Defence.DRAWBRIDGE)));
         row = (TableRow) defences.getChildAt(6);
-        row.setBackgroundColor(getColor(team.defences.get(Defence.SALLY_PORT)[0]));
+        row.setBackgroundColor(getColor(team.getRating(Defence.SALLY_PORT)));
         row = (TableRow) defences.getChildAt(7);
-        row.setBackgroundColor(getColor(team.defences.get(Defence.ROCK_WALL)[0]));
+        row.setBackgroundColor(getColor(team.getRating(Defence.ROCK_WALL)));
         row = (TableRow) defences.getChildAt(8);
-        row.setBackgroundColor(getColor(team.defences.get(Defence.ROUGH_TERRAIN)[0]));
+        row.setBackgroundColor(getColor(team.getRating(Defence.ROUGH_TERRAIN)));
         row = (TableRow) defences.getChildAt(9);
-        row.setBackgroundColor(getColor(team.defences.get(Defence.LOW_BAR)[0]));
+        row.setBackgroundColor(getColor(team.getRating(Defence.LOW_BAR)));
 
         ArrayAdapter<String> itemsAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, team.matches);
         final ListView listView = (ListView) splitFrag.getChildAt(0).findViewById(R.id.matchList);
@@ -235,6 +235,7 @@ public class TeamFragment extends ScoutingFragment {
         //Yellow R:225 G:225 B:0
         //Red R:225 G:0 B:0
         int r, g, b = 0;
+        System.out.println(rating);
         if (rating == 0) return Color.GRAY;
         else if (rating <= 2) {
             r = (int) (225 * (rating - 1));

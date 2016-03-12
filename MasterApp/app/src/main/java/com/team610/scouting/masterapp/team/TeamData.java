@@ -21,8 +21,21 @@ public class TeamData {
     public int id;
     //Double array stores rating and times crossed, index 0 for rating, index 1 for crosses,
     //index 2 for num matches it occured in
+    //Index 3 for num matches they got a rating
     public HashMap<Defence, Double[]> defences;
 
+    public double getRating(Defence d) {
+        if(defences.get(d)[3] == 0) return 0;
+        return (1000 * defences.get(d)[0]) / defences.get(d)[3] / 1000D;
+    }
+
+    public double getTimesCrossed(Defence d){
+        return defences.get(d)[1];
+    }
+
+    public void putDefence(Defence d, Double[] array){
+        defences.put(d,array);
+    }
 
     public long autonScore = 0;
     public long defenseScore = 0;

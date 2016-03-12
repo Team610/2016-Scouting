@@ -91,15 +91,15 @@ public class AllianceFragment extends ScoutingFragment {
         TableLayout table = (TableLayout) getActivity().findViewById(R.id.alliance_table);
         TeamData teamData = MainActivity.teams.get(team);
         TableRow r = (TableRow) table.getChildAt(row);
-        ((TextView) r.getChildAt(1)).setText(teamData.defences.get(Defence.PORTCULLIS)[0] + "");
-        ((TextView) r.getChildAt(2)).setText(teamData.defences.get(Defence.CHEVAL_DE_FRISE)[0] + "");
-        ((TextView) r.getChildAt(3)).setText(teamData.defences.get(Defence.MOAT)[0] + "");
-        ((TextView) r.getChildAt(4)).setText(teamData.defences.get(Defence.RAMPARTS)[0] + "");
-        ((TextView) r.getChildAt(5)).setText(teamData.defences.get(Defence.DRAWBRIDGE)[0] + "");
-        ((TextView) r.getChildAt(6)).setText(teamData.defences.get(Defence.SALLY_PORT)[0] + "");
-        ((TextView) r.getChildAt(7)).setText(teamData.defences.get(Defence.ROCK_WALL)[0] + "");
-        ((TextView) r.getChildAt(8)).setText(teamData.defences.get(Defence.ROUGH_TERRAIN)[0] + "");
-        ((TextView) r.getChildAt(9)).setText(teamData.defences.get(Defence.LOW_BAR)[0] + "");
+        ((TextView) r.getChildAt(1)).setText(teamData.getRating(Defence.PORTCULLIS) + "");
+        ((TextView) r.getChildAt(2)).setText(teamData.getRating(Defence.CHEVAL_DE_FRISE) + "");
+        ((TextView) r.getChildAt(3)).setText(teamData.getRating(Defence.MOAT) + "");
+        ((TextView) r.getChildAt(4)).setText(teamData.getRating(Defence.RAMPARTS) + "");
+        ((TextView) r.getChildAt(5)).setText(teamData.getRating(Defence.DRAWBRIDGE) + "");
+        ((TextView) r.getChildAt(6)).setText(teamData.getRating(Defence.SALLY_PORT) + "");
+        ((TextView) r.getChildAt(7)).setText(teamData.getRating(Defence.ROCK_WALL) + "");
+        ((TextView) r.getChildAt(8)).setText(teamData.getRating(Defence.ROUGH_TERRAIN) + "");
+        ((TextView) r.getChildAt(9)).setText(teamData.getRating(Defence.LOW_BAR) + "");
         try {
             updateViewsFromThe6ix();
         } catch (NoSuchFieldException e) {
