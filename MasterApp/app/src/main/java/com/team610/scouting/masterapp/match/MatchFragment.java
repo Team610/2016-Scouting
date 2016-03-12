@@ -82,9 +82,10 @@ public class MatchFragment extends ScoutingFragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_match, container, false);
         View auton = root.findViewById(R.id.match_auton_layout),
-                teleop = root.findViewById(R.id.match_teleop_layout);
+                teleop = root.findViewById(R.id.match_teleop_layout),
+        defences = getActivity().findViewById(R.id.match_defence_layout)
         auton.setVisibility(View.GONE);
-        teleop.setVisibility(View.GONE);
+        defences.setVisibility(View.GONE);
         return root;
     }
 
@@ -216,7 +217,10 @@ public class MatchFragment extends ScoutingFragment {
     }
 
     public void updateViewsFromThe6ix() throws NoSuchFieldException, IllegalAccessException {
+        System.out.println("UPDATE");
+
         for (int i = 0; i < 6; i++) {
+            System.out.println(i);
             Team t = data.teams[i];
             //Auton
             ViewGroup autonView = (ViewGroup) getView().findViewById(R.id.class.getField("match_auton_team" + (i + 1)).getInt(R.id.class));
@@ -244,20 +248,20 @@ public class MatchFragment extends ScoutingFragment {
             ((TextView) teleTable.findViewById(R.id.match_teleop_low_percent)).setText(t.lowGoalPercent() + "%");
 
             //Defences
-            ViewGroup defenceView = (ViewGroup) getView().findViewById(R.id.class.getField("match_defence_team" + (i + 1)).getInt(R.id.class));
-            ((TextView) defenceView.findViewById(R.id.defence_team_num)).setText(t.id + "");
-            TableLayout defenceTable = (TableLayout) defenceView.findViewById(R.id.defence_table);
-            for(int j = 0; j < 4; j++){
-                TableRow row = (TableRow) defenceTable.getChildAt(j);
-                String defence = (String) Team.class.getField("defence"+j).get(t);
-                long rating = Team.class.getField("defence"+j+"rating").getLong(t);
-                long crosses = Team.class.getField("defence"+j+"crosses").getLong(t);
-                row.setBackgroundColor(rating == 1 ? Color.GREEN : rating == 2 ? Color.YELLOW : rating == 3 ? Color.RED : Color.GRAY);
-                ((TextView) row.getChildAt(0)).setText(defence);
-                ((TextView) row.getChildAt(1)).setText(crosses + "");
-            }
-            Toast.makeText(getActivity(), "Match Data Loaded", Toast.LENGTH_SHORT).show();
+//            ViewGroup defenceView = (ViewGroup) getView().findViewById(R.id.class.getField("match_defence_team" + (i + 1)).getInt(R.id.class));
+//            ((TextView) defenceView.findViewById(R.id.defence_team_num)).setText(t.id + "");
+//            TableLayout defenceTable = (TableLayout) defenceView.findViewById(R.id.defence_table);
+//            for(int j = 1; j <= 4; j++){
+//                TableRow row = (TableRow) defenceTable.getChildAt(j);
+//                String defence = (String) Team.class.getField("defence"+j).get(t);
+//                long rating = Team.class.getField("defence"+j+"rating").getLong(t);
+//                long crosses = Team.class.getField("defence"+j+"crosses").getLong(t);
+//                row.setBackgroundColor(rating == 1 ? Color.GREEN : rating == 2 ? Color.YELLOW : rating == 3 ? Color.RED : Color.GRAY);
+//                ((TextView) row.getChildAt(0)).setText(defence);
+//                ((TextView) row.getChildAt(1)).setText(crosses + "");
+//            }
         }
+        Toast.makeText(getActivity(), "Match Data Loaded", Toast.LENGTH_SHORT).show();
     }
 
     public interface OnFragmentInteractionListener {
