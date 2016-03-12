@@ -26,7 +26,7 @@ public class TeamData {
 
     public double getRating(Defence d) {
         if(defences.get(d)[3] == 0) return 0;
-        return (1000 * defences.get(d)[0]) / defences.get(d)[3] / 1000D;
+        return ((int) (1000 * defences.get(d)[0]) / defences.get(d)[3])/ 1000D;
     }
 
     public double getTimesCrossed(Defence d){

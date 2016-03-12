@@ -121,21 +121,22 @@ public class AllianceFragment extends ScoutingFragment {
             double avg = 0;
             int count = 0;
             String s = ((TextView) r1.getChildAt(i)).getText().toString();
-            if (!s.equals("")) {
+            if (!s.equals("") && Double.valueOf(s) != 0) {
+
                 avg += Double.valueOf(s);
                 count++;
             }
             s = ((TextView) r2.getChildAt(i)).getText().toString();
-            if (!s.equals("")) {
+            if (!s.equals("") && Double.valueOf(s) != 0) {
                 avg += Double.valueOf(s);
                 count++;
             }
             s = ((TextView) r3.getChildAt(i)).getText().toString();
-            if (!s.equals("")) {
+            if (!s.equals("") && Double.valueOf(s) != 0) {
                 avg += Double.valueOf(s);
                 count++;
             }
-            ((TextView) r1.getChildAt(i)).setText(avg / count + "");
+            ((TextView) r4.getChildAt(i)).setText(((int) (1000 * avg / count)) / 1000D + "");
         }
 
     }
