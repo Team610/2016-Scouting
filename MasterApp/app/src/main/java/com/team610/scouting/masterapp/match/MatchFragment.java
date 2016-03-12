@@ -82,9 +82,10 @@ public class MatchFragment extends ScoutingFragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_match, container, false);
         View auton = root.findViewById(R.id.match_auton_layout),
-                teleop = root.findViewById(R.id.match_teleop_layout);
+                teleop = root.findViewById(R.id.match_teleop_layout),
+                defences = root.findViewById(R.id.match_defence_layout);
         auton.setVisibility(View.GONE);
-        teleop.setVisibility(View.GONE);
+        defences.setVisibility(View.GONE);
         return root;
     }
 
