@@ -50,15 +50,15 @@ public class TeamTableDataAdapter  extends TableDataAdapter<TeamData> {
                 toReturn = renderChallengePercent(team);
                 break;
             case 9:
-                toReturn = renderCourtyardDrops(team);
+                toReturn = renderPPG(team);
                 break;
         }
         return toReturn;
     }
 
-    private View renderCourtyardDrops(TeamData team) {
+    private View renderPPG(TeamData team) {
         TextView tv = new TextView(getContext());
-        tv.setText(team.avgCourtyardDrops()+"");
+        tv.setText(team.avgTotalPoints()+"");
         return tv;
     }
     private View renderID(TeamData team) {

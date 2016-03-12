@@ -35,6 +35,7 @@ import com.team610.scouting.masterapp.team.TeamDialog;
 import com.team610.scouting.masterapp.team.TeamFragment;
 
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, MatchFragment.OnFragmentInteractionListener,
@@ -357,11 +358,38 @@ public class MainActivity extends AppCompatActivity
         rootRef.child(currentTournament).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot tournament) {
-                for(DataSnapshot match : tournament.getChildren()){
-                    if(match.getChildrenCount() != 6L){
+                int teamNumErrors = 0;
+                int defenceErrors = 0;
+                for (DataSnapshot match : tournament.getChildren()) {
+                    if (match.getChildrenCount() != 6L) {
                         System.out.println(match.getKey() + " has " + match.getChildrenCount() + " teams");
+                        teamNumErrors++;
+                        continue;
                     }
+                    HashMap<Integer, Integer> check = new HashMap<>();
+                    for (DataSnapshot team : match.getChildren()) {
+                        String s = "";
+                        for (DataSnapshot defence : team.child("matchSetup").getChildren()) {
+                            s += defence.getValue();
+                        }
+                        if (!check.containsKey(s.hashCode())) check.put(s.hashCode(), 1);
+                        else check.put(s.hashCode(), check.get(s.hashCode()) + 1);
+                    }
+                    if (check.size() != 2) {
+                        System.out.println(match.getKey() + " has " + check.size() + " defences");
+                        defenceErrors++;
+                    }else{
+                       for(int i : check.values())
+                           if(i != 3){
+                               System.out.println(match.getKey() + " has a defence config " + i + "times");
+                               defenceErrors++;
+                               break;
+                           }
+                    }
+
                 }
+                System.out.println("Defence Errors: " + defenceErrors);
+                System.out.println("Team Num Errors: " + teamNumErrors);
             }
 
             @Override
