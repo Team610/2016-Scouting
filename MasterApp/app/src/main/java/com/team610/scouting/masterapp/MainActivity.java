@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity
         SplitScreenFragment.OnFragmentInteractionListener, TeamFragment.OnFragmentInteractionListener,
         FieldFragment.OnFragmentInteractionListener, TeamListFragment.OnFragmentInteractionListener,
         CommentFragment.OnFragmentInteractionListener, TeamDialog.OnFragmentInteractionListener,
-        AllianceFragment.OnFragmentInteractionListener{
+        AllianceFragment.OnFragmentInteractionListener {
 
 
     public static Firebase rootRef;
@@ -175,6 +175,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 System.out.println("YEA");
+                int redRating = 0;
                 MainActivity.teams.clear();
                 for (DataSnapshot match : dataSnapshot.getChildren()) {
                     for (DataSnapshot teamData : match.getChildren()) {
@@ -251,7 +252,8 @@ public class MainActivity extends AppCompatActivity
                             data = teamData.child("teleop");
                             long val = (long) data.child("defence" + i + "rating").getValue();
                             if (val != 0) {
-                                team.defences.get(d)[0]+=val;
+                                if(val == 3) redRating++;
+                                team.defences.get(d)[0] += val;
                                 team.defences.get(d)[3]++;
                             }
 
@@ -285,7 +287,7 @@ public class MainActivity extends AppCompatActivity
 
 
                 }
-
+                System.out.println(redRating);
                 try {
                     mFrag.updateViewsFromThe6ix();
                 } catch (Exception e) {
@@ -360,7 +362,22 @@ public class MainActivity extends AppCompatActivity
             public void onDataChange(DataSnapshot tournament) {
                 int teamNumErrors = 0;
                 int defenceErrors = 0;
+                int teamIDErrors = 0;
+                int noScout = 0;
+                HashMap<String, Integer> scouts = new HashMap<>();
                 for (DataSnapshot match : tournament.getChildren()) {
+                    for (DataSnapshot team : match.getChildren()) {
+                        if (team.child("misc").child("scoutName").getValue().equals("")) {
+                            noScout++;
+                        } else {
+                            String s = (String) team.child("misc").child("scoutName").getValue();
+                            if (!scouts.containsKey(s)) {
+                                scouts.put(s,1);
+                            } else {
+                                scouts.put(s,scouts.get(s) + 1);
+                            }
+                        }
+                    }
                     if (match.getChildrenCount() != 6L) {
                         System.out.println(match.getKey() + " has " + match.getChildrenCount() + " teams");
                         teamNumErrors++;
@@ -375,21 +392,40 @@ public class MainActivity extends AppCompatActivity
                         if (!check.containsKey(s.hashCode())) check.put(s.hashCode(), 1);
                         else check.put(s.hashCode(), check.get(s.hashCode()) + 1);
                     }
-                    if (check.size() != 2) {
-                        System.out.println(match.getKey() + " has " + check.size() + " defences");
+                    if (check.size() != 2 && match.getChildrenCount() != 7) {
+                        System.out.println(match.getKey() + " has " + check.size() + " defence configs");
                         defenceErrors++;
-                    }else{
-                       for(int i : check.values())
-                           if(i != 3){
-                               System.out.println(match.getKey() + " has a defence config " + i + "times");
-                               defenceErrors++;
-                               break;
-                           }
+                    } else {
+                        for (int i : check.values())
+                            if (i != 3) {
+                                System.out.println(match.getKey() + " has a defence config " + i + " times");
+                                defenceErrors++;
+                                break;
+                            }
                     }
 
+
+                }
+                for (TeamData teamData : teams.values()) {
+                    if (teamData.matches.size() != 10) {
+                        if (teamData.matches.size() < 3) {
+                            System.out.println(teamData.id + " isnt real " + teamData.matches.get(0));
+                            //teamIDErrors++;
+                        } else if (teamData.matches.size() > 6) {
+                            System.out.println(teamData.id + " is missing " + (10 - teamData.matches.size()) + " matches");
+                            teamIDErrors++;
+                        }
+                    }
+                }
+                for(String s : scouts.keySet()){
+                    System.out.println(s + ":  " + scouts.get(s) + " matches");
                 }
                 System.out.println("Defence Errors: " + defenceErrors);
                 System.out.println("Team Num Errors: " + teamNumErrors);
+                System.out.println("Team ID Errors: " + teamIDErrors);
+                System.out.println("No Scout Names : " + noScout);
+
+
             }
 
             @Override

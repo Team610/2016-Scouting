@@ -1,7 +1,9 @@
 package com.team610.scouting.scoutingapp;
 
+import android.app.AlertDialog;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -71,9 +73,9 @@ public class ReviewFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static ReviewFragment getInstance(){
+    public static ReviewFragment getInstance() {
 
-        if(instance == null){
+        if (instance == null) {
             instance = new ReviewFragment();
         }
 
@@ -120,7 +122,7 @@ public class ReviewFragment extends Fragment {
 
         submitButton = (Button) v.findViewById(R.id.send_Button);
         matchNum = (TextView) v.findViewById(R.id.matchNum_review_TextView);
-        matchNum.setText("Match: "+match.match);
+        matchNum.setText("Match: " + match.match);
 
         teamNum = (TextView) v.findViewById(R.id.team_num_review_TextView);
         teamNum.setText("Team: " + match.team);
@@ -147,22 +149,20 @@ public class ReviewFragment extends Fragment {
         spybot.setText("Spybot: " + match.spybot);
 
         String ballLocation = "";
-        if(match.scoredHighGoal){
+        if (match.scoredHighGoal) {
             ballLocation = "High Goal";
         }
-        if(match.scoredLowGoal){
-            if(!ballLocation.equals("")){
+        if (match.scoredLowGoal) {
+            if (!ballLocation.equals("")) {
                 ballLocation = "error";
-            }
-            else{
+            } else {
                 ballLocation = "Low Goal";
             }
         }
-        if(match.placedCourtyard){
-            if(!ballLocation.equals("")){
+        if (match.placedCourtyard) {
+            if (!ballLocation.equals("")) {
                 ballLocation = "error";
-            }
-            else{
+            } else {
                 ballLocation = "Courtyard Drop";
             }
         }
@@ -172,14 +172,13 @@ public class ReviewFragment extends Fragment {
 
 
         String robotLocation = "";
-        if(match.endedCourtyard){
+        if (match.endedCourtyard) {
             robotLocation = "Courtyard";
         }
-        if(match.endedNeutralZone){
-            if(!robotLocation.equals("")){
+        if (match.endedNeutralZone) {
+            if (!robotLocation.equals("")) {
                 robotLocation = "error";
-            }
-            else{
+            } else {
                 robotLocation = "Neutral Zone";
             }
         }
@@ -191,28 +190,28 @@ public class ReviewFragment extends Fragment {
         teleopDefences[0].setText("1. " + match.defence1Cross + " crosses, " + chooseDefenceRating(match.defence1Rating));
 
         teleopDefences[1] = (TextView) v.findViewById(R.id.teleop_defence2_TextView);
-        teleopDefences[1].setText("2. " + match.defence2Cross+" crosses, " + chooseDefenceRating(match.defence2Rating));
+        teleopDefences[1].setText("2. " + match.defence2Cross + " crosses, " + chooseDefenceRating(match.defence2Rating));
 
         teleopDefences[2] = (TextView) v.findViewById(R.id.teleop_defence3_TextView);
-        teleopDefences[2].setText("3. " + match.defence3Cross+" crosses, " + chooseDefenceRating(match.defence3Rating));
+        teleopDefences[2].setText("3. " + match.defence3Cross + " crosses, " + chooseDefenceRating(match.defence3Rating));
 
         teleopDefences[3] = (TextView) v.findViewById(R.id.teleop_defence4_TextView);
-        teleopDefences[3].setText("4. " + match.defence4Cross+" crosses, " + chooseDefenceRating(match.defence4Rating));
+        teleopDefences[3].setText("4. " + match.defence4Cross + " crosses, " + chooseDefenceRating(match.defence4Rating));
 
         teleopDefences[4] = (TextView) v.findViewById(R.id.teleop_defence5_TextView);
-        teleopDefences[4].setText("5. " + match.defence5Cross+" crosses, " + chooseDefenceRating(match.defence5Rating));
+        teleopDefences[4].setText("5. " + match.defence5Cross + " crosses, " + chooseDefenceRating(match.defence5Rating));
 
         highGoal = (TextView) v.findViewById(R.id.high_goal_teleop_TextView);
-        highGoal.setText("HighGoal - Scores: " + match.highGoalScores+", Misses: " + match.highGoalMisses);
+        highGoal.setText("HighGoal - Scores: " + match.highGoalScores + ", Misses: " + match.highGoalMisses);
 
         lowGoal = (TextView) v.findViewById(R.id.low_goal_teleop_TextView);
-        lowGoal.setText("LowGoal - Scores: " + match.lowGoalScores+", Misses: " + match.lowGoalMisses);
+        lowGoal.setText("LowGoal - Scores: " + match.lowGoalScores + ", Misses: " + match.lowGoalMisses);
 
         courtyard = (TextView) v.findViewById(R.id.courtyard_drop_teleop_TextView);
-        courtyard.setText("Courtyard - Scores: " + match.courtyardScores+", Misses: " + match.courtyardMisses);
+        courtyard.setText("Courtyard - Scores: " + match.courtyardScores + ", Misses: " + match.courtyardMisses);
 
         fouls = (TextView) v.findViewById(R.id.foul_TextView);
-        fouls.setText("Fouls: " +match.fouls);
+        fouls.setText("Fouls: " + match.fouls);
 
         hang = (TextView) v.findViewById(R.id.hang_TextView);
         hang.setText("Hang: " + match.hang);
@@ -230,7 +229,7 @@ public class ReviewFragment extends Fragment {
         checkmate.setText("Checkmate Shots: " + match.shotFromCheckMate);
 
         defenceShots = (TextView) v.findViewById(R.id.defence_shots_TextView);
-        defenceShots.setText("Defence Shots: " +  match.shotFromDefences);
+        defenceShots.setText("Defence Shots: " + match.shotFromDefences);
 
         popShots = (TextView) v.findViewById(R.id.pop_shots_TextView);
         popShots.setText("Courtyard Shots: " + match.shotFromPopShot);
@@ -248,27 +247,65 @@ public class ReviewFragment extends Fragment {
         comment.setText(match.comment);
 
         submitButton.setOnClickListener(new View.OnClickListener() {
+            boolean moveOn = false;
 
             @Override
             public void onClick(View v) {
+                //TODO check for possible errors
+                //Have text file of teams and check team num
+                //Save previous match num and compare
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("ERROR");
+                MatchData i = MatchData.getInstance();
+                String errors = "";
+                if (i.scoutName.equals("")) {
+                    errors += "No Scout Name\n";
+                }
+                if (i.comment.equals("")) {
+                    errors += "No Comment\n";
+                }
 
-                MatchData.newMatch();
+                if (errors.equals("")) {
+                    builder.setTitle("Success");
+                    errors = "Good Job";
+                } else {
+                    return;
+                }
+                if (i.match - i.prevMatch != 1) {
 
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                MatchSetup mFrag = MatchSetup.getInstance();
-                transaction.replace(R.id.main_container, mFrag).commit();
+                    builder.setMessage("This match number does not succeed the previous match\n Are you sure this is the correct number").
+                            setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    MatchData.newMatch();
+
+                                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                                    MatchSetup mFrag = MatchSetup.getInstance();
+                                    transaction.replace(R.id.main_container, mFrag).commit();
+                                }
+                            }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            moveOn = false;
+                        }
+                    });
+                }
+                builder.show();
+
+
+
 
             }
 
 
         });
-        backPage.setOnClickListener(new View.OnClickListener(){
+        backPage.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
 
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 ExtraData mFrag = ExtraData.getInstance();
-                transaction.replace(R.id.main_container,mFrag).commit();
+                transaction.replace(R.id.main_container, mFrag).commit();
 
             }
 
@@ -284,23 +321,23 @@ public class ReviewFragment extends Fragment {
         }
     }
 
-    public static String chooseDefenceRating(int rate){
-        switch (rate){
+    public static String chooseDefenceRating(int rate) {
+        switch (rate) {
             case 0:
                 return "white";
-                //break;
+            //break;
             case 1:
                 return "green";
-                //break;
+            //break;
             case 2:
                 return "yellow";
-                //break;
+            //break;
             case 3:
                 return "red";
-                //break;
+            //break;
             default:
                 return "error";
-                //break;
+            //break;
         }
     }
 
@@ -321,13 +358,13 @@ public class ReviewFragment extends Fragment {
         mListener = null;
     }
 
-    public void sendData(){
+    public void sendData() {
 
         MatchData.newMatch();
 
     }
 
-    public static void clearFragment(){
+    public static void clearFragment() {
         instance = new ReviewFragment();
     }
 

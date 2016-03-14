@@ -22,7 +22,6 @@ public class MatchData {
     static String competition = "GTE";
 
 
-
     //Auton
     public boolean spybot;
     public boolean scoredHighGoal;
@@ -31,7 +30,7 @@ public class MatchData {
     public boolean endedCourtyard;
     public boolean endedNeutralZone;
     public boolean reachDefence;
-    public String crossedDefence="";
+    public String crossedDefence = "";
 
     //Teleop
 
@@ -79,6 +78,7 @@ public class MatchData {
     public boolean shotFromPopShot = false;
     public boolean shotFromCorner = false;
 
+    public int prevMatch = 0;
 
     //FireBase Refs
     static Firebase competitionRef;
@@ -92,25 +92,19 @@ public class MatchData {
     static Firebase miscRef;
 
 
-
-
-
-
-    private MatchData(){
-
-
-
+    private MatchData(int prev) {
+        prevMatch = prev;
 
     }
 
-    public static MatchData getInstance(){
-        if(instance == null){
-            instance = new MatchData();
+    public static MatchData getInstance() {
+        if (instance == null) {
+            instance = new MatchData(0);
         }
         return instance;
     }
 
-    public static void createBranches(){
+    public static void createBranches() {
         competitionRef = MainActivity.rootRef.child(competition);
         matchRef = competitionRef.child("match" + instance.match);
 
@@ -122,9 +116,9 @@ public class MatchData {
         miscRef = teamRef.child("misc");
 
 
-
     }
-    public static void updateMatchSetup(){
+
+    public static void updateMatchSetup() {
 
         createBranches();
         Map<String, Object> defences = new HashMap<String, Object>();
@@ -139,10 +133,7 @@ public class MatchData {
     }
 
 
-
-
-
-    public static void updateTeleop(){
+    public static void updateTeleop() {
 //        MainActivity.rootRef.child("init").setValue(highGoalScores);
 //        MainActivity.rootRef.child("init").setValue(lowGoalScores);
 //        MainActivity.rootRef.child("init").setValue(courtyardScores);
@@ -185,12 +176,12 @@ public class MatchData {
         teleRef.updateChildren(score);
     }
 
-    public static void updateAuto(){
+    public static void updateAuto() {
 
         Map<String, Object> auto = new HashMap<String, Object>();
 
         auto.put("spybot", instance.spybot);
-        auto.put("scoredHighGoal",instance.scoredHighGoal);
+        auto.put("scoredHighGoal", instance.scoredHighGoal);
         auto.put("scoredLowGoal", instance.scoredLowGoal);
         auto.put("placedCourtyard", instance.placedCourtyard);
         auto.put("endedCourtyard", instance.endedCourtyard);
@@ -200,7 +191,7 @@ public class MatchData {
         autoRef.updateChildren(auto);
     }
 
-    public static void updateMisc(){
+    public static void updateMisc() {
 
         Map<String, Object> misc = new HashMap<String, Object>();
 
@@ -224,26 +215,20 @@ public class MatchData {
         misc.put("defensiveRating", instance.defensiveRating);
         misc.put("shotFromDefences", instance.shotFromDefences);
         misc.put("shotFromCheckMate", instance.shotFromCheckMate);
-        misc.put("shotFromPopShot",instance.shotFromPopShot);
-        misc.put("shotFromCorner",instance.shotFromCorner);
+        misc.put("shotFromPopShot", instance.shotFromPopShot);
+        misc.put("shotFromCorner", instance.shotFromCorner);
         miscRef.updateChildren(misc);
     }
 
 
-
-
-
-
-
-    public static void newMatch(){
+    public static void newMatch() {
         updateMatchSetup();
         updateTeleop();
         updateAuto();
         updateMisc();
 
 
-
-        instance = new MatchData();
+        instance = new MatchData(instance.match);
 
         AutoFragment.clearFragment();
         ExtraData.clearFragment();
@@ -271,8 +256,6 @@ public class MatchData {
 //
 //        match = 0;
 //        team = 0;
-
-
 
 
     }
