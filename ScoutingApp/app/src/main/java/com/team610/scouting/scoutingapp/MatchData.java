@@ -91,6 +91,7 @@ public class MatchData {
     static Firebase autoRef;
     static Firebase teleRef;
     static Firebase miscRef;
+    //static Firebase allianceRef;
 
 
     private MatchData(int prev) {
@@ -108,6 +109,9 @@ public class MatchData {
     public static void createBranches() {
         competitionRef = MainActivity.rootRef.child(competition);
         matchRef = competitionRef.child("match" + instance.match);
+
+//        allianceRef = matchRef.child(""+instance.alliance);
+//        teamRef = allianceRef.child(""+instance.team);
 
         teamRef = matchRef.child("" + instance.team);
 
@@ -127,6 +131,7 @@ public class MatchData {
         defences.put("defence2", instance.defenceTypes[1]);
         defences.put("defence3", instance.defenceTypes[2]);
         defences.put("defence4", instance.defenceTypes[3]);
+        defences.put("alliance", instance.alliance);
 
         matchSetupRef.updateChildren(defences);
 
