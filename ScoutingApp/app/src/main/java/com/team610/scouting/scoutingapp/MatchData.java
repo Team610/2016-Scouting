@@ -20,7 +20,7 @@ public class MatchData {
     public String alliance;
 
     //Change
-    static String competition = "Waterloo";
+    static String competition = "WATERLOO";
 
 
     //Auton

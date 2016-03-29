@@ -191,9 +191,9 @@
         android:text="Blue"
         android:textSize="20dp"
         android:id="@+id/alliance_Switch"
-        android:layout_alignTop="@+id/matchNum_EditText"
-        android:layout_alignRight="@+id/lowBar_ImageView"
-        android:layout_alignEnd="@+id/lowBar_ImageView" />
+        android:layout_below="@+id/alliance_title_TextView"
+        android:layout_alignLeft="@+id/alliance_title_TextView"
+        android:layout_alignStart="@+id/alliance_title_TextView" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -202,9 +202,9 @@
         android:text="Alliance"
         android:textSize="25dp"
         android:id="@+id/alliance_title_TextView"
-        android:layout_above="@+id/alliance_Switch"
-        android:layout_alignLeft="@+id/alliance_Switch"
-        android:layout_alignStart="@+id/alliance_Switch" />
+        android:layout_above="@+id/matchNum_EditText"
+        android:layout_toRightOf="@+id/defence3_TextView"
+        android:layout_toEndOf="@+id/defence3_TextView" />
 
     <TextView
         android:layout_width="wrap_content"
