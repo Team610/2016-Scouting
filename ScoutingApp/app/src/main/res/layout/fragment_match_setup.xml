@@ -185,7 +185,37 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Blue"
+        android:textSize="20dp"
+        android:id="@+id/alliance_Switch"
+        android:layout_alignTop="@+id/matchNum_EditText"
+        android:layout_alignRight="@+id/lowBar_ImageView"
+        android:layout_alignEnd="@+id/lowBar_ImageView" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Alliance"
+        android:textSize="25dp"
+        android:id="@+id/alliance_title_TextView"
+        android:layout_above="@+id/alliance_Switch"
+        android:layout_alignLeft="@+id/alliance_Switch"
+        android:layout_alignStart="@+id/alliance_Switch" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Red"
+        android:textSize="20dp"
+        android:id="@+id/red_alliance_TextView"
+        android:layout_alignBottom="@+id/alliance_Switch"
+        android:layout_toRightOf="@+id/alliance_Switch"
+        android:layout_toEndOf="@+id/alliance_Switch" />
 
 
 </RelativeLayout>

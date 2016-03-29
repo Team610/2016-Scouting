@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Switch;
 
 
 /**
@@ -51,6 +52,7 @@ public class MatchSetup extends Fragment implements View.OnClickListener {
     EditText teamNum;
 
     Button nextPage;
+    Switch alliance;
 
 
 
@@ -108,6 +110,13 @@ public class MatchSetup extends Fragment implements View.OnClickListener {
             if (teamNum.getText().toString().length() > 0) {
                 team = Integer.parseInt(teamNum.getText().toString());
             }
+        }
+
+        if(alliance.isChecked()){
+            thisMatch.alliance = "Red";
+        }
+        else{
+            thisMatch.alliance = "Blue";
         }
 
         thisMatch.match = match;
@@ -175,6 +184,8 @@ public class MatchSetup extends Fragment implements View.OnClickListener {
                 (ImageButton) v.findViewById(R.id.defence4_ImageButton)};
         openMatchSetup();
 
+
+        alliance = (Switch) v.findViewById(R.id.alliance_Switch);
 
         //COME BACK TO THIS
         //weird issue of losing the edit text on first try

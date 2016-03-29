@@ -17,9 +17,10 @@ public class MatchData {
     public String[] defenceTypes = new String[4];
     public int match;
     public int team = 0;
+    public String alliance;
 
     //Change
-    static String competition = "GTE";
+    static String competition = "Waterloo";
 
 
     //Auton
