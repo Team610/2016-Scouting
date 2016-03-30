@@ -36,6 +36,7 @@ public class ReviewFragment extends Fragment {
 
     TextView matchNum;
     TextView teamNum;
+    TextView alliance;
     TextView[] defences = new TextView[4];
     TextView autonCrossedDefence;
     TextView reachedDefence;
@@ -126,6 +127,9 @@ public class ReviewFragment extends Fragment {
 
         teamNum = (TextView) v.findViewById(R.id.team_num_review_TextView);
         teamNum.setText("Team: " + match.team);
+
+        alliance = (TextView) v.findViewById(R.id.alliance_TextView);
+        alliance.setText("Alliance: " + match.alliance);
 
         defences[0] = (TextView) v.findViewById(R.id.defence1_selection_TextView);
         defences[0].setText("1. " + match.defenceTypes[0]);
@@ -264,14 +268,20 @@ public class ReviewFragment extends Fragment {
                 if (i.comment.equals("")) {
                     errors += "No Comment\n";
                 }
-
-                if (errors.equals("")) {
-                    builder.setTitle("Success");
-                    errors = "Good Job";
-                } else {
-                    return;
+                if(i.team == 0){
+                    errors+= "No Team Number\n";
                 }
-                if (i.match - i.prevMatch != 1) {
+
+
+//                if (errors.equals("")) {
+//                    builder.setTitle("Success");
+//                    errors = "Good Job";
+//                }
+                if(!errors.equals("")){
+                    builder.setMessage(errors);
+                    builder.show();
+                }
+                else if (i.match - i.prevMatch != 1) {
 
                     builder.setMessage("This match number does not succeed the previous match\n Are you sure this is the correct number").
                             setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -289,8 +299,17 @@ public class ReviewFragment extends Fragment {
                             moveOn = false;
                         }
                     });
+                    builder.show();
+
+                }else{
+                    builder.show();
+                    if(errors.equals(""))
+                    MatchData.newMatch();
+
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    MatchSetup mFrag = MatchSetup.getInstance();
+                    transaction.replace(R.id.main_container, mFrag).commit();
                 }
-                builder.show();
 
 
 

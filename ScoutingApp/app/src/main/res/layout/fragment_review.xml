@@ -59,7 +59,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Defences: "
         android:id="@+id/defence_select_title_TextView"
-        android:layout_below="@+id/team_num_review_TextView"
+        android:layout_below="@+id/alliance_TextView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -408,6 +408,16 @@
         android:layout_above="@+id/send_Button"
         android:layout_alignRight="@+id/send_Button"
         android:layout_alignEnd="@+id/send_Button" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Alliance: "
+        android:id="@+id/alliance_TextView"
+        android:layout_below="@+id/team_num_review_TextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 
 </RelativeLayout>

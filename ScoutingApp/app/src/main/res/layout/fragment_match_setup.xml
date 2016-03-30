@@ -22,10 +22,9 @@
         android:layout_height="wrap_content"
         android:src="@drawable/secretpassage"
         android:id="@+id/secretPassage_ImageView"
+        android:layout_alignTop="@+id/defence1_ImageButton"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/secretPassage_TextView"
-        android:layout_alignEnd="@+id/secretPassage_TextView" />
+        android:layout_alignParentStart="true" />
 
 
 
@@ -69,10 +68,11 @@
         android:layout_width="@dimen/setup_button_layout_width"
         android:layout_height="@dimen/setup_button_layout_height"
         android:id="@+id/defence1_ImageButton"
-        android:layout_below="@+id/secretPassage_TextView"
+        android:onClick="onClick"
+        android:layout_below="@+id/next_Button"
+        android:layout_marginTop="25dp"
         android:layout_toRightOf="@+id/secretPassage_ImageView"
-        android:layout_toEndOf="@+id/secretPassage_ImageView"
-        android:onClick="onClick" />
+        android:layout_toEndOf="@+id/secretPassage_ImageView" />
 
     <ImageButton
         android:layout_width="@dimen/setup_button_layout_width"
@@ -150,9 +150,10 @@
         android:textSize="30dp"
         android:text="@string/MatchSetupTeamNum"
         android:id="@+id/teamNum_TextView"
-        android:layout_alignBottom="@+id/secretPassage_ImageView"
-        android:layout_alignLeft="@+id/matchNum_TextView"
-        android:layout_alignStart="@+id/matchNum_TextView" />
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/matchNum_EditText"
+        android:layout_toLeftOf="@+id/matchNum_EditText"
+        android:layout_toStartOf="@+id/matchNum_EditText" />
 
     <EditText
         android:layout_width="100dp"

@@ -79,7 +79,7 @@ public class MatchData {
     public boolean shotFromPopShot = false;
     public boolean shotFromCorner = false;
 
-    public int prevMatch = 0;
+    public static int prevMatch = 0;
 
     //FireBase Refs
     static Firebase competitionRef;
@@ -94,14 +94,13 @@ public class MatchData {
     //static Firebase allianceRef;
 
 
-    private MatchData(int prev) {
-        prevMatch = prev;
+    private MatchData() {
 
     }
 
     public static MatchData getInstance() {
         if (instance == null) {
-            instance = new MatchData(0);
+            instance = new MatchData();
         }
         return instance;
     }
@@ -233,8 +232,9 @@ public class MatchData {
         updateAuto();
         updateMisc();
 
+        prevMatch = instance.match;
+        instance = new MatchData();
 
-        instance = new MatchData(instance.match);
 
         AutoFragment.clearFragment();
         ExtraData.clearFragment();
