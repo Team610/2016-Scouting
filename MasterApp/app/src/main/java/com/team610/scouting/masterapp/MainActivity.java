@@ -104,6 +104,14 @@ public class MainActivity extends AppCompatActivity
             ((MatchFragment) mFrag).onMenuTap(id);
         } else if (mFrag instanceof FieldFragment) {
             ((FieldFragment) mFrag).onMenuTap(id);
+        }else if(mFrag instanceof MetricsFragment){
+            try {
+                mFrag.updateViewsFromThe6ix();
+            } catch (NoSuchFieldException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
         }
         return super.onOptionsItemSelected(item);
     }
@@ -294,7 +302,7 @@ public class MainActivity extends AppCompatActivity
                     e.printStackTrace();
                 }
                 System.out.println("NAH");
-                printErrors();
+              //  printErrors();
                 Toast.makeText(MainActivity.mFrag.getActivity(), "Team Data Loaded", Toast.LENGTH_SHORT).show();
             }
 

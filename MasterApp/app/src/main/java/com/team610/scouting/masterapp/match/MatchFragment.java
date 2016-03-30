@@ -33,13 +33,8 @@ import com.team610.scouting.masterapp.team.TeamDialog;
  */
 public class MatchFragment extends ScoutingFragment {
     // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+
     private MatchData data;
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
 
 
@@ -249,18 +244,18 @@ public class MatchFragment extends ScoutingFragment {
             ((TextView) teleTable.findViewById(R.id.match_teleop_low_percent)).setText(t.lowGoalPercent() + "%");
 
             //Defences
-//            ViewGroup defenceView = (ViewGroup) getView().findViewById(R.id.class.getField("match_defence_team" + (i + 1)).getInt(R.id.class));
-//            ((TextView) defenceView.findViewById(R.id.defence_team_num)).setText(t.id + "");
-//            TableLayout defenceTable = (TableLayout) defenceView.findViewById(R.id.defence_table);
-//            for(int j = 1; j <= 4; j++){
-//                TableRow row = (TableRow) defenceTable.getChildAt(j);
-//                String defence = (String) Team.class.getField("defence"+j).get(t);
-//                long rating = Team.class.getField("defence"+j+"rating").getLong(t);
-//                long crosses = Team.class.getField("defence"+j+"crosses").getLong(t);
-//                row.setBackgroundColor(rating == 1 ? Color.GREEN : rating == 2 ? Color.YELLOW : rating == 3 ? Color.RED : Color.GRAY);
-//                ((TextView) row.getChildAt(0)).setText(defence);
-//                ((TextView) row.getChildAt(1)).setText(crosses + "");
-//            }
+            ViewGroup defenceView = (ViewGroup) getView().findViewById(R.id.class.getField("match_defence_team" + (i + 1)).getInt(R.id.class));
+            ((TextView) defenceView.findViewById(R.id.defence_team_num)).setText(t.id + "");
+            TableLayout defenceTable = (TableLayout) defenceView.findViewById(R.id.defence_table);
+            for(int j = 1; j <= 4; j++){
+                TableRow row = (TableRow) defenceTable.getChildAt(j);
+                String defence = (String) Team.class.getField("defence"+j).get(t);
+                long rating = Team.class.getField("defence"+j+"rating").getLong(t);
+                long crosses = Team.class.getField("defence"+j+"crosses").getLong(t);
+                row.setBackgroundColor(rating == 1 ? Color.GREEN : rating == 2 ? Color.YELLOW : rating == 3 ? Color.RED : Color.GRAY);
+                ((TextView) row.getChildAt(0)).setText(defence);
+                ((TextView) row.getChildAt(1)).setText(crosses + "");
+            }
         }
         Toast.makeText(getActivity(), "Match Data Loaded", Toast.LENGTH_SHORT).show();
     }

@@ -22,6 +22,7 @@ import com.team610.scouting.masterapp.team.TeamData;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -99,7 +100,7 @@ public class CommentFragment extends ScoutingFragment {
 
 
         String[] teams = MainActivity.teams.keySet().toArray(new String[MainActivity.teams.keySet().size()]);
-
+        Arrays.sort(teams);
         ListAdapter theAdapter = new ArrayAdapter<String>(this.getActivity(),
                 android.R.layout.simple_list_item_1, teams);
 
@@ -133,7 +134,7 @@ public class CommentFragment extends ScoutingFragment {
 
                         TeamData a = MainActivity.teams.get(teamNumPicked);
                         ArrayList<String> matchNums = new ArrayList<String>(Arrays.asList(a.comments.keySet().toArray(new String[a.comments.keySet().size()])));
-
+                        Collections.sort(matchNums);
                         HashMap comments = a.comments;
 
                         TextView[] textArray = new TextView[matchNums.size()];
@@ -173,7 +174,6 @@ public class CommentFragment extends ScoutingFragment {
 
 
                         for (int i = 0; i < matchNums.size(); i++) {
-
 //Create the tablerows
                             // Context c = getActivity().getApplicationContext();
                             tr_headA[i] = new TableRow(c);
@@ -212,25 +212,6 @@ public class CommentFragment extends ScoutingFragment {
                                     TableLayout.LayoutParams.WRAP_CONTENT));
 
                         }
-
-
-//                                Object[][] data = PhpRequest.getTable(610);
-//
-//
-//                                teamNumber.setText("Team Number: " + data[0][0]);
-//
-//
-//                                for (Object[] row : data) {
-//
-//                                    Log.d("Rows: ", ("" + row.length));
-//
-//                                    for (Object a : row) {
-//
-//                                        Log.d("ARRAY", (String) a);
-//
-//                                    }
-//
-//                                }
 
 
                     }

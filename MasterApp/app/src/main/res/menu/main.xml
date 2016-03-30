@@ -16,7 +16,7 @@
         <item
             android:id="@+id/action_defences"
             android:orderInCategory="100"
-            android:title="Post Match"
+            android:title="Defences"
             app:showAsAction="always" />
         <item
             android:id="@+id/action_matchNumber"
@@ -72,5 +72,12 @@
             android:orderInCategory="60"
             android:title="Red"
             app:showAsAction="ifRoom" />
+    </group>
+    <group android:id="@+id/metricMenuItems">
+        <item
+            android:id="@+id/display"
+            android:title="Display"
+            app:showAsAction="always"/>
+
     </group>
 </menu>
