@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity
         getMenuInflater().inflate(R.menu.main, menu);
         menu.setGroupVisible(R.id.matchMenuItems, false);
         menu.setGroupVisible(R.id.fieldMenuItems, false);
+        menu.setGroupVisible(R.id.metricMenuItems,false);
         actionbar = menu;
         actionbar.findItem(R.id.action_tournament).setTitle(currentTournament);
         return true;
@@ -125,6 +126,7 @@ public class MainActivity extends AppCompatActivity
         //Set Match menu items visible based on fragment choice
         actionbar.setGroupVisible(R.id.matchMenuItems, id == R.id.nav_matches);
         actionbar.setGroupVisible(R.id.fieldMenuItems, id == R.id.nav_field);
+        actionbar.setGroupVisible(R.id.metricMenuItems, id == R.id.nav_metrics);
         //Switch fragments based on id
         //TODO should probably use a switch statment
         if (id == R.id.nav_matches) {
@@ -139,6 +141,8 @@ public class MainActivity extends AppCompatActivity
             mFrag = new AllianceFragment();
         } else if (id == R.id.nav_comments) {
             mFrag = new CommentFragment();
+        }else if(id == R.id.nav_metrics){
+            mFrag = new MetricsFragment();
         }
         transaction.replace(R.id.main_container, mFrag).commit();
 

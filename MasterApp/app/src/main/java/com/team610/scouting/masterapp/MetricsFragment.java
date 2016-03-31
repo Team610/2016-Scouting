@@ -50,76 +50,88 @@ public class MetricsFragment extends ScoutingFragment {
             teams[i++] = t;
         }
         table.setDataAdapter(new MetricsTableAdapter(this, getActivity(), teams));
-        SimpleTableHeaderAdapter headerAdapter = new SimpleTableHeaderAdapter(getActivity(), "Team", "Auton", "Defence", "High %", "High Shots", "Low %", "Low Shots", "Hang %", "Challenge %", "Total Points");
+        SimpleTableHeaderAdapter headerAdapter = new SimpleTableHeaderAdapter(getActivity(), "Team", "Data");
         table.setHeaderAdapter(headerAdapter);
         table.setColumnComparator(0, new idComparator());
-        table.setColumnComparator(1,new sumComparator(this));
+        table.setColumnComparator(1, new sumComparator(this));
+
     }
+
     private static class idComparator implements Comparator<TeamData> {
 
         public int compare(TeamData one, TeamData two) {
             return (one.id) - (two.id);
         }
     }
+
     private static class sumComparator implements Comparator<TeamData> {
         MetricsFragment i;
-        sumComparator(MetricsFragment i){
+
+        sumComparator(MetricsFragment i) {
             this.i = i;
         }
+
         public int compare(TeamData one, TeamData two) {
-            return (int) (i.getSum(one) - i.getSum(two));
+            return (int) (i.getSum(two) - i.getSum(one));
         }
     }
-    public boolean[] checkedBoxes(){
-        TableLayout table = (TableLayout)  getActivity().findViewById(R.id.metric_table);
+
+    public boolean[] checkedBoxes() {
+        TableLayout table = (TableLayout) getActivity().findViewById(R.id.metric_table);
         boolean[] toReturn = new boolean[table.getChildCount()];
-        for(int i = 0; i < table.getChildCount(); i++){
+        for (int i = 0; i < table.getChildCount(); i++) {
             toReturn[i] = ((CheckBox) ((TableRow) table.getChildAt(i)).getChildAt(0)).isChecked();
         }
         return toReturn;
     }
 
-    public double getSum(TeamData team){
+    public double getSum(TeamData team) {
         double sum = 0D;
         boolean[] checkboxes = checkedBoxes();
-        for(int i = 0; i < checkboxes.length;i++){
-            if(checkboxes[i]){
-                switch(i){
+        for (int i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i]) {
+                switch (i) {
                     case 0:
-                        sum+= team.avgDefenceScore();
+                        sum += team.avgDefenceScore();
                         break;
                     case 1:
-                        sum+= team.avgAutonScore();
+                        sum += team.avgAutonScore();
                         break;
                     case 2:
-                        sum+= team.avgHighGoalScore();
+                        sum += team.avgHighGoalScore();
+                        break;
                     case 3:
-                        sum+= team.avgLowGoalScore();
+                        sum += team.avgLowGoalScore();
+                        break;
                     case 4:
-                        sum+= team.avgTotalPoints();
+                        sum += team.avgTotalPoints();
+                        break;
                 }
             }
         }
-        return sum;
+
+        return ((int)(sum * 100))/100D;
     }
 
     private class MetricsTableAdapter extends TableDataAdapter<TeamData> {
         MetricsFragment instance;
+
         public MetricsTableAdapter(MetricsFragment instance, Context context, TeamData[] data) {
-            super(context,data);
+            super(context, data);
             this.instance = instance;
+            this.sort(new sumComparator(instance));
         }
 
         @Override
         public View getCellView(int rowIndex, int columnIndex, ViewGroup parentView) {
             TeamData team = getRowData(rowIndex);
 
-            if(columnIndex == 0){
+            if (columnIndex == 0) {
                 TextView tv = new TextView(getContext());
-                tv.setText(team.id()+"");
+                tv.setText(team.id() + "");
                 return tv;
-            }else{
-               TextView tv = new TextView(getContext());
+            } else {
+                TextView tv = new TextView(getContext());
                 tv.setText(instance.getSum(team) + "");
                 return tv;
             }

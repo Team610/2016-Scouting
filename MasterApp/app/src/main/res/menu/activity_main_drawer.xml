@@ -26,6 +26,9 @@
             android:id="@+id/nav_comments"
             android:title="Comments"
             />
+        <item
+            android:id="@+id/nav_metrics"
+            android:title="Metrics"/>
     </group>
 
 
