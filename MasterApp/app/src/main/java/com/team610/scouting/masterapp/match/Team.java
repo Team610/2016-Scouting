@@ -57,6 +57,8 @@ public class Team {
     public String defence3;
     public String defence4;
 
+    public String alliance;
+
     public long fouls;
 
 

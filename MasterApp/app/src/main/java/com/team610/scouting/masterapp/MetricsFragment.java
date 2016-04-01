@@ -72,7 +72,7 @@ public class MetricsFragment extends ScoutingFragment {
         }
 
         public int compare(TeamData one, TeamData two) {
-            return (int) (i.getSum(two) - i.getSum(one));
+            return Double.compare(i.getSum(one), i.getSum(two));
         }
     }
 

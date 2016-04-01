@@ -242,6 +242,8 @@ public class MatchFragment extends ScoutingFragment {
             ((TextView) teleTable.findViewById(R.id.match_teleop_low_goals)).setText(t.lowGoalScores + "");
             ((TextView) teleTable.findViewById(R.id.match_teleop_low_attempts)).setText(t.lowGoalScores + t.lowGoalMisses + "");
             ((TextView) teleTable.findViewById(R.id.match_teleop_low_percent)).setText(t.lowGoalPercent() + "%");
+            ((TextView) teleTable.findViewById(R.id.teleop_alliance)).setText(t.alliance);
+
 
             //Defences
             ViewGroup defenceView = (ViewGroup) getView().findViewById(R.id.class.getField("match_defence_team" + (i + 1)).getInt(R.id.class));
@@ -256,6 +258,11 @@ public class MatchFragment extends ScoutingFragment {
                 ((TextView) row.getChildAt(0)).setText(defence);
                 ((TextView) row.getChildAt(1)).setText(crosses + "");
             }
+            TableRow row = (TableRow) defenceTable.getChildAt(5);
+            long rating = Team.class.getField("defence5rating").getLong(t);
+            long crosses = Team.class.getField("defence5crosses").getLong(t);
+            row.setBackgroundColor(rating == 1 ? Color.GREEN : rating == 2 ? Color.YELLOW : rating == 3 ? Color.RED : Color.GRAY);
+            ((TextView) row.getChildAt(1)).setText(crosses + "");
         }
         Toast.makeText(getActivity(), "Match Data Loaded", Toast.LENGTH_SHORT).show();
     }

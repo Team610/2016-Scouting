@@ -34,6 +34,7 @@ import com.team610.scouting.masterapp.team.TeamData;
 import com.team610.scouting.masterapp.team.TeamDialog;
 import com.team610.scouting.masterapp.team.TeamFragment;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -46,12 +47,13 @@ public class MainActivity extends AppCompatActivity
 
 
     public static Firebase rootRef;
-
+    public static HashMap<Integer, Double> simulatedRP; //Key is id, double is predicited RP
+    public static ArrayList<SimulatedMatch> simMatches; //List of saved matches
     Menu actionbar;
 
     public static ScoutingFragment mFrag;
     static final String[] tournaments = {"GTC", "GTE", "WATERLOO", "WORLDS"};
-    public static String currentTournament = "GTE";//TODO default when on that date
+    public static String currentTournament = "WATERLOO";//TODO default when on that date
 
 
     public static HashMap<String, TeamData> teams;
@@ -62,7 +64,8 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        simulatedRP = new HashMap<>();
+        simMatches = new ArrayList<>();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -88,7 +91,8 @@ public class MainActivity extends AppCompatActivity
         getMenuInflater().inflate(R.menu.main, menu);
         menu.setGroupVisible(R.id.matchMenuItems, false);
         menu.setGroupVisible(R.id.fieldMenuItems, false);
-        menu.setGroupVisible(R.id.metricMenuItems,false);
+        menu.setGroupVisible(R.id.metricMenuItems, false);
+        menu.setGroupVisible(R.id.simulationMenuItems, false);
         actionbar = menu;
         actionbar.findItem(R.id.action_tournament).setTitle(currentTournament);
         return true;
@@ -105,7 +109,7 @@ public class MainActivity extends AppCompatActivity
             ((MatchFragment) mFrag).onMenuTap(id);
         } else if (mFrag instanceof FieldFragment) {
             ((FieldFragment) mFrag).onMenuTap(id);
-        }else if(mFrag instanceof MetricsFragment || mFrag instanceof SimulationFragment){
+        } else if (id == R.id.display && (mFrag instanceof MetricsFragment || mFrag instanceof SimulationFragment || mFrag instanceof StandingsFragment)) {
             try {
                 mFrag.updateViewsFromThe6ix();
             } catch (NoSuchFieldException e) {
@@ -113,6 +117,8 @@ public class MainActivity extends AppCompatActivity
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             }
+        } else if (id == R.id.save_match && mFrag instanceof SimulationFragment) {
+            ((SimulationFragment) mFrag).saveMatch();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -126,7 +132,8 @@ public class MainActivity extends AppCompatActivity
         //Set Match menu items visible based on fragment choice
         actionbar.setGroupVisible(R.id.matchMenuItems, id == R.id.nav_matches);
         actionbar.setGroupVisible(R.id.fieldMenuItems, id == R.id.nav_field);
-        actionbar.setGroupVisible(R.id.metricMenuItems, id == R.id.nav_metrics || id == R.id.nav_sim);
+        actionbar.setGroupVisible(R.id.metricMenuItems, id == R.id.nav_metrics || id == R.id.nav_sim || id == R.id.nav_standings);
+        actionbar.setGroupVisible(R.id.simulationMenuItems, id == R.id.nav_sim);
         //Switch fragments based on id
         //TODO should probably use a switch statment
         if (id == R.id.nav_matches) {
@@ -141,10 +148,12 @@ public class MainActivity extends AppCompatActivity
             mFrag = new AllianceFragment();
         } else if (id == R.id.nav_comments) {
             mFrag = new CommentFragment();
-        }else if(id == R.id.nav_metrics){
+        } else if (id == R.id.nav_metrics) {
             mFrag = new MetricsFragment();
-        }else if(id == R.id.nav_sim){
+        } else if (id == R.id.nav_sim) {
             mFrag = new SimulationFragment();
+        } else if (id == R.id.nav_standings) {
+            mFrag = new StandingsFragment();
         }
         transaction.replace(R.id.main_container, mFrag).commit();
 
@@ -266,7 +275,7 @@ public class MainActivity extends AppCompatActivity
                             data = teamData.child("teleop");
                             long val = (long) data.child("defence" + i + "rating").getValue();
                             if (val != 0) {
-                                if(val == 3) redRating++;
+                                if (val == 3) redRating++;
                                 team.defences.get(d)[0] += val;
                                 team.defences.get(d)[3]++;
                             }
@@ -298,7 +307,14 @@ public class MainActivity extends AppCompatActivity
                         team.shotFromCourtyard = team.shotFromCourtyard || (boolean) data.child("shotFromPopShot").getValue();
                         team.shotFromCorner = team.shotFromCorner || (boolean) data.child("shotFromCorner").getValue();
 
-                        team.scouts.put(match.getKey(),(String) data.child("scoutName").getValue());
+                        team.scouts.put(match.getKey(), (String) data.child("scoutName").getValue());
+                        if (!currentTournament.equals("GTE")) {
+                            if (data.child("RP") != null) {
+                                team.RP += (Long) data.child("RP").getValue();
+                            }
+                            team.captures += (boolean) data.child("capture").getValue() ? 1 : 0;
+                            team.breaches += (boolean) data.child("breach").getValue() ? 1 : 0;
+                        }
                     }
 
 
@@ -310,7 +326,10 @@ public class MainActivity extends AppCompatActivity
                     e.printStackTrace();
                 }
                 System.out.println("NAH");
-              //  printErrors();
+                for (TeamData t : teams.values()) {
+                    simulatedRP.put(t.id, Double.valueOf(t.RP));
+                }
+               // printErrors();
                 Toast.makeText(MainActivity.mFrag.getActivity(), "Team Data Loaded", Toast.LENGTH_SHORT).show();
             }
 
@@ -380,6 +399,7 @@ public class MainActivity extends AppCompatActivity
                 int defenceErrors = 0;
                 int teamIDErrors = 0;
                 int noScout = 0;
+                int rpErrors = 0;
                 HashMap<String, Integer> scouts = new HashMap<>();
                 for (DataSnapshot match : tournament.getChildren()) {
                     for (DataSnapshot team : match.getChildren()) {
@@ -388,11 +408,17 @@ public class MainActivity extends AppCompatActivity
                         } else {
                             String s = (String) team.child("misc").child("scoutName").getValue();
                             if (!scouts.containsKey(s)) {
-                                scouts.put(s,1);
+                                scouts.put(s, 1);
                             } else {
-                                scouts.put(s,scouts.get(s) + 1);
+                                scouts.put(s, scouts.get(s) + 1);
                             }
                         }
+
+                        if (team.child("misc").child("RP") == null) {
+                            rpErrors++;
+                            System.out.println("RP NULL " + match.getKey() + "  " + team.getKey());
+                        }
+
                     }
                     if (match.getChildrenCount() != 6L) {
                         System.out.println(match.getKey() + " has " + match.getChildrenCount() + " teams");
@@ -433,9 +459,11 @@ public class MainActivity extends AppCompatActivity
                         }
                     }
                 }
-                for(String s : scouts.keySet()){
+                for (String s : scouts.keySet()) {
                     System.out.println(s + ":  " + scouts.get(s) + " matches");
                 }
+
+
                 System.out.println("Defence Errors: " + defenceErrors);
                 System.out.println("Team Num Errors: " + teamNumErrors);
                 System.out.println("Team ID Errors: " + teamIDErrors);

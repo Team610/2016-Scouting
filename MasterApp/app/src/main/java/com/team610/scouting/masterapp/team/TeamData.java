@@ -44,9 +44,12 @@ public class TeamData {
     public int hangs;
     public int challenges;
 
+    public long RP;
 
-    public int breaches;
-    public int captures;
+    String alliance;
+
+    public long breaches;
+    public long captures;
 
     public boolean shotFromCourtyard,
             shotFromCheckMate,
@@ -122,7 +125,7 @@ public class TeamData {
 
     public double avgTotalPoints() {
 
-        return (avgLowGoalScore() * 2 + avgHighGoalScore() * 5 + avgDefenceScore());
+        return (avgLowGoalScore() * 2 + avgHighGoalScore() * 5 + avgDefenceScore() + avgAutonScore());
     }
 }
 

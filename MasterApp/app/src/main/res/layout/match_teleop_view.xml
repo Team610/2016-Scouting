@@ -114,34 +114,18 @@
                 android:id="@+id/match_teleop_court_percent"
                 />
         </TableRow>
-<!--
-        <TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Defenses"
-                />
-            <ImageView
-                android:layout_height="@dimen/teleop_circle_width"
-                android:layout_width="@dimen/teleop_circle_width"
-                android:src="@drawable/green_circle"
-                android:id="@+id/teleop_green_circle"
-                />
-            <ImageView
-                android:layout_height="@dimen/teleop_circle_width"
-                android:layout_width="@dimen/teleop_circle_width"
-                android:paddingLeft="10dp"
-                android:src="@drawable/yellow_circle"
-                android:id="@+id/teleop_yellow_circle"
-                />
-            <ImageView
-                android:layout_height="@dimen/teleop_circle_width"
-                android:layout_width="@dimen/teleop_circle_width"
-                android:src="@drawable/red_circle"
-                android:id="@+id/teleop_red_circle"
-                />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/teleop_alliance" />
+        </TableRow>
 
-        </TableRow> -->
 
     </TableLayout>
 </RelativeLayout>

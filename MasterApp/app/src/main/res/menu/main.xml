@@ -80,4 +80,11 @@
             app:showAsAction="always"/>
 
     </group>
+    <group android:id="@+id/simulationMenuItems">
+        <item
+            android:id="@+id/save_match"
+            android:title="Save Match"
+            app:showAsAction="always"/>
+
+    </group>
 </menu>
