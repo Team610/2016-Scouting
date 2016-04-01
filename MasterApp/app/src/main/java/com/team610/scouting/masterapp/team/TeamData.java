@@ -16,6 +16,7 @@ public class TeamData {
         defences = new HashMap<>();
         comments = new HashMap<>();
         matches = new ArrayList<>();
+        scouts= new HashMap<>();
     }
 
     public int id;
@@ -26,7 +27,7 @@ public class TeamData {
 
     public double getRating(Defence d) {
         if(defences.get(d)[3] == 0) return 0;
-        return ((int) (1000 * defences.get(d)[0]) / defences.get(d)[3])/ 1000D;
+        return ((int) (1000 * (defences.get(d)[0] / defences.get(d)[3])))/ 1000D;
     }
 
     public double getTimesCrossed(Defence d){
@@ -68,6 +69,7 @@ public class TeamData {
     //TODO
     public HashMap<String, String> comments; //Key is match number, object is comment
 
+    public HashMap<String, String> scouts; //Key is match number, object is comment
     /*
     public double courtyardPercent(){
         if(courtyardMisses + courtyardScores == 0) return -1;

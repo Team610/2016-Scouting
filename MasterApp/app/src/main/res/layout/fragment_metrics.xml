@@ -69,11 +69,13 @@
                 />
         </TableRow>
     </TableLayout>
+
     <de.codecrafters.tableview.SortableTableView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/metric_table"
         android:id="@+id/metric_display_table"
         table:columnCount="2"
-        />
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/metric_table"
+        android:layout_toEndOf="@+id/metric_table" />
 </RelativeLayout>

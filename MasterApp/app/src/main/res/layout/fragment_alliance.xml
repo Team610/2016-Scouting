@@ -27,29 +27,34 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Portcullis"
+                android:paddingRight="14dp"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ChevalDeFrise"
+                android:paddingRight="14dp"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Moat"
+                android:paddingRight="14dp"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Ramparts"
+                android:paddingRight="14dp"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingRight="14dp"
                 android:text="Drawbridge"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -57,24 +62,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sally Port"
+                android:paddingRight="14dp"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rock Wall"
+                android:paddingRight="14dp"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rough Terrain"
+                android:paddingRight="14dp"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Low Bar"
+                android:paddingRight="14dp"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
         </TableRow>
 

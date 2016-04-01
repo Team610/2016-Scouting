@@ -29,6 +29,9 @@
         <item
             android:id="@+id/nav_metrics"
             android:title="Metrics"/>
+        <item
+            android:id="@+id/nav_sim"
+            android:title="Simulation"/>
     </group>
 
 

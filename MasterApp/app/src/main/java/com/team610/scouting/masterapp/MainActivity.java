@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity
             ((MatchFragment) mFrag).onMenuTap(id);
         } else if (mFrag instanceof FieldFragment) {
             ((FieldFragment) mFrag).onMenuTap(id);
-        }else if(mFrag instanceof MetricsFragment){
+        }else if(mFrag instanceof MetricsFragment || mFrag instanceof SimulationFragment){
             try {
                 mFrag.updateViewsFromThe6ix();
             } catch (NoSuchFieldException e) {
@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity
         //Set Match menu items visible based on fragment choice
         actionbar.setGroupVisible(R.id.matchMenuItems, id == R.id.nav_matches);
         actionbar.setGroupVisible(R.id.fieldMenuItems, id == R.id.nav_field);
-        actionbar.setGroupVisible(R.id.metricMenuItems, id == R.id.nav_metrics);
+        actionbar.setGroupVisible(R.id.metricMenuItems, id == R.id.nav_metrics || id == R.id.nav_sim);
         //Switch fragments based on id
         //TODO should probably use a switch statment
         if (id == R.id.nav_matches) {
@@ -143,6 +143,8 @@ public class MainActivity extends AppCompatActivity
             mFrag = new CommentFragment();
         }else if(id == R.id.nav_metrics){
             mFrag = new MetricsFragment();
+        }else if(id == R.id.nav_sim){
+            mFrag = new SimulationFragment();
         }
         transaction.replace(R.id.main_container, mFrag).commit();
 
@@ -294,7 +296,9 @@ public class MainActivity extends AppCompatActivity
                         team.shotFromCheckMate = team.shotFromCheckMate || (boolean) data.child("shotFromCheckMate").getValue();
                         team.shotFromDefences = team.shotFromDefences || (boolean) data.child("shotFromDefences").getValue();
                         team.shotFromCourtyard = team.shotFromCourtyard || (boolean) data.child("shotFromPopShot").getValue();
-                        //TODO    team.shotFromCorner = team.shotFromCorner || (boolean) data.child("sho")
+                        team.shotFromCorner = team.shotFromCorner || (boolean) data.child("shotFromCorner").getValue();
+
+                        team.scouts.put(match.getKey(),(String) data.child("scoutName").getValue());
                     }
 
 
@@ -339,7 +343,7 @@ public class MainActivity extends AppCompatActivity
         builder.show();
     }
 
-    public TeamData getTeam(int id) {
+    public static TeamData getTeam(int id) {
         if (teams == null || teams.isEmpty()) {
             return null;
         } else {

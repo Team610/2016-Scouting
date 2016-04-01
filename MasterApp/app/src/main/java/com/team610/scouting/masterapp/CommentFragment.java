@@ -100,7 +100,14 @@ public class CommentFragment extends ScoutingFragment {
 
 
         String[] teams = MainActivity.teams.keySet().toArray(new String[MainActivity.teams.keySet().size()]);
-        Arrays.sort(teams);
+        int[] nums = new int[teams.length];
+        for(int i = 0; i < nums.length; i++){
+            nums[i] = Integer.valueOf(teams[i]);
+        }
+        Arrays.sort(nums);
+        for(int i = 0; i < nums.length; i++){
+            teams[i] = nums[i] + "";
+        }
         ListAdapter theAdapter = new ArrayAdapter<String>(this.getActivity(),
                 android.R.layout.simple_list_item_1, teams);
 
@@ -115,20 +122,14 @@ public class CommentFragment extends ScoutingFragment {
                     public void onItemClick(AdapterView<?> adapterView,
                                             View view, int position, long l) {
 
-                        String teamPicked = "Team picked: "
-                                + String.valueOf(adapterView
-                                .getItemAtPosition(position));
-                        String positionchosen = " " + position;
-                        Toast.makeText(getActivity(),
-                                teamPicked + positionchosen, Toast.LENGTH_SHORT)
-                                .show();
-
 
 //                        teamNumber = (TextView) parentActivity
 //                                .findViewById(R.id.team_number_TV);
 
                         String teamNumPicked = String.valueOf(adapterView
                                 .getItemAtPosition(position));
+
+
 
                         tl.removeAllViews();
 
@@ -196,9 +197,11 @@ public class CommentFragment extends ScoutingFragment {
                             textArray[i] = new TextView(c);
                             textArray[i].setId(i + 99);
                             String comment = a.comments.get("" + matchNums.get(i));
+                            String scout = a.scouts.get(matchNums.get(i));
+                            comment += "- " + scout;
                             final int CHAR_LIMIT = 50;
                             for (int k = 0; comment.length() - k * CHAR_LIMIT > CHAR_LIMIT; k++) {
-                                int lastIndex = comment.substring(0, 40 * (k + 1)).lastIndexOf(' ');
+                                int lastIndex = comment.substring(0, CHAR_LIMIT * (k + 1)).lastIndexOf(' ');
                                 comment = comment.substring(0, lastIndex) + "\n" + comment.substring(lastIndex + 1);
                             }
                             textArray[i].setText(comment);

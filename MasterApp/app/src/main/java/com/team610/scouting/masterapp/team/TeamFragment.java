@@ -70,7 +70,7 @@ public class TeamFragment extends ScoutingFragment {
         if (getArguments() != null) {
             id = getArguments().getInt("TEAM");
             left = getArguments().getBoolean("LEFT");
-            team = ((MainActivity) getActivity()).getTeam(id);
+            team = MainActivity.getTeam(id);
         }
     }
 
@@ -168,7 +168,6 @@ public class TeamFragment extends ScoutingFragment {
         ((TextView) averages.findViewById(R.id.courtyardScoreBox)).setText(team.avgCourtyardDrops() + "");
         ((TextView) averages.findViewById(R.id.hangingScoreBox)).setText(team.hangingPercentage() + "");
         ((TextView) averages.findViewById(R.id.challengeScoreBox)).setText(team.challengePercentage() + "");
-        ((TextView) averages.findViewById(R.id.hangingScoreBox)).setText(team.hangingPercentage() + "");
 
         ((TextView) teamFrag.findViewById(R.id.matchText)).setText("Matches: " + team.matches.size());
 
