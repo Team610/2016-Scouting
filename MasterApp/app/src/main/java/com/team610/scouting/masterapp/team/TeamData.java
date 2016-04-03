@@ -16,7 +16,7 @@ public class TeamData {
         defences = new HashMap<>();
         comments = new HashMap<>();
         matches = new ArrayList<>();
-        scouts= new HashMap<>();
+        scouts = new HashMap<>();
     }
 
     public int id;
@@ -26,16 +26,16 @@ public class TeamData {
     public HashMap<Defence, Double[]> defences;
 
     public double getRating(Defence d) {
-        if(defences.get(d)[3] == 0) return 0;
-        return ((int) (1000 * (defences.get(d)[0] / defences.get(d)[3])))/ 1000D;
+        if (defences.get(d)[3] == 0) return 0;
+        return ((int) (1000 * (defences.get(d)[0] / defences.get(d)[3]))) / 1000D;
     }
 
-    public double getTimesCrossed(Defence d){
+    public double getTimesCrossed(Defence d) {
         return defences.get(d)[1];
     }
 
-    public void putDefence(Defence d, Double[] array){
-        defences.put(d,array);
+    public void putDefence(Defence d, Double[] array) {
+        defences.put(d, array);
     }
 
     public long autonScore = 0;
@@ -124,8 +124,7 @@ public class TeamData {
     }
 
     public double avgTotalPoints() {
-
-        return (avgLowGoalScore() * 2 + avgHighGoalScore() * 5 + avgDefenceScore() + avgAutonScore());
+        return (avgLowGoalScore() * 2 + avgHighGoalScore() * 5 + avgDefenceScore() + avgAutonScore() + hangingPercentage() / 100D * 15 + challengePercentage() / 100D * 5);
     }
 }
 

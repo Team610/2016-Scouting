@@ -316,8 +316,6 @@ public class MainActivity extends AppCompatActivity
                             team.breaches += (boolean) data.child("breach").getValue() ? 1 : 0;
                         }
                     }
-
-
                 }
                 System.out.println(redRating);
                 try {
@@ -326,10 +324,11 @@ public class MainActivity extends AppCompatActivity
                     e.printStackTrace();
                 }
                 System.out.println("NAH");
-                for (TeamData t : teams.values()) {
-                    simulatedRP.put(t.id, Double.valueOf(t.RP));
-                }
-               // printErrors();
+                if (simulatedRP.isEmpty())
+                    for (TeamData t : teams.values()) {
+                        simulatedRP.put(t.id, Double.valueOf(t.RP));
+                    }
+                // printErrors();
                 Toast.makeText(MainActivity.mFrag.getActivity(), "Team Data Loaded", Toast.LENGTH_SHORT).show();
             }
 

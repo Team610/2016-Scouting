@@ -53,7 +53,7 @@ public class StandingsFragment extends ScoutingFragment {
             double redRP =  m.redCapture / 100D + (m.redBreach ? 1 : 0) + (m.redWin ? 2 : 0);
             System.out.println("RED RP " + redRP);
             for (int i = 0; i < 3; i++) {
-                TeamData t = m.blue[i];
+                TeamData t = m.red[i];
                 if (!MainActivity.simulatedRP.containsKey(t.id)) {
                     MainActivity.simulatedRP.put(t.id, t.RP + redRP);
                 } else {

@@ -187,7 +187,7 @@ public class SimulationFragment extends ScoutingFragment {
             count += t.avgHighGoalScore() + t.avgLowGoalScore();
         }
         if (count < 8) {
-            return -1;
+            return 0;
         } else {
             double percent = 100;//1
             for (TeamData t : red) {
@@ -201,7 +201,7 @@ public class SimulationFragment extends ScoutingFragment {
 
     public void saveMatch() {
         if(blue[0] == null) return;
-        boolean redWin = (blue[0].avgTotalPoints() + blue[1].avgTotalPoints() + blue[2].avgTotalPoints()) > (red[0].avgTotalPoints() + red[1].avgTotalPoints() + red[2].avgTotalPoints());
+        boolean redWin = (blue[0].avgTotalPoints() + blue[1].avgTotalPoints() + blue[2].avgTotalPoints()) < (red[0].avgTotalPoints() + red[1].avgTotalPoints() + red[2].avgTotalPoints());
         boolean redBreach = red[0].avgDefenceScore() + red[1].avgDefenceScore() + red[2].avgDefenceScore() >= 40;
         boolean blueBreach = blue[0].avgDefenceScore() + blue[1].avgDefenceScore() + blue[2].avgDefenceScore() >= 40;
 
