@@ -78,6 +78,7 @@ public class MatchData {
     public boolean shotFromCheckMate = false;
     public boolean shotFromPopShot = false;
     public boolean shotFromCorner = false;
+    public int rankingPoints = 0;
 
     public static int prevMatch = 0;
 
@@ -213,6 +214,7 @@ public class MatchData {
 
         misc.put("capture", instance.capture);
         misc.put("breach", instance.breach);
+        misc.put("RP", instance.rankingPoints);
         misc.put("challenge", instance.challenge);
         misc.put("hang", instance.hang);
         misc.put("scoutName", instance.scoutName);

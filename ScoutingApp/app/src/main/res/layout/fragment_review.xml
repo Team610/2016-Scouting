@@ -419,5 +419,35 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="RP: "
+        android:id="@+id/ranking_points_TextView"
+        android:layout_below="@+id/scout_name_TextView"
+        android:layout_alignLeft="@+id/scout_name_TextView"
+        android:layout_alignStart="@+id/scout_name_TextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Breach: "
+        android:id="@+id/breach_TextView"
+        android:layout_below="@+id/ranking_points_TextView"
+        android:layout_alignLeft="@+id/ranking_points_TextView"
+        android:layout_alignStart="@+id/ranking_points_TextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Capture: "
+        android:id="@+id/capture_TextView"
+        android:layout_below="@+id/breach_TextView"
+        android:layout_alignLeft="@+id/breach_TextView"
+        android:layout_alignStart="@+id/breach_TextView" />
+
 
 </RelativeLayout>

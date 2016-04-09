@@ -59,6 +59,7 @@ public class ReviewFragment extends Fragment {
     TextView defensiveRating;
     TextView scoutName;
     TextView comment;
+    TextView rankingPoints;
 
 
     MatchData match;
@@ -247,6 +248,15 @@ public class ReviewFragment extends Fragment {
         scoutName = (TextView) v.findViewById(R.id.scout_name_TextView);
         scoutName.setText("Scout: " + match.scoutName);
 
+        breach = (TextView) v.findViewById(R.id.breach_TextView);
+        breach.setText("Breach: "+ match.breach);
+
+        capture = (TextView) v.findViewById(R.id.capture_TextView);
+        capture.setText("Capture: " + match.capture);
+
+        rankingPoints = (TextView) v.findViewById(R.id.ranking_points_TextView);
+        rankingPoints.setText("RP: " + match.rankingPoints);
+
         comment = (TextView) v.findViewById(R.id.comment_TextView);
         comment.setText(match.comment);
 
@@ -302,7 +312,7 @@ public class ReviewFragment extends Fragment {
                     builder.show();
 
                 }else{
-                    builder.show();
+                    //builder.show();
                     if(errors.equals(""))
                     MatchData.newMatch();
 

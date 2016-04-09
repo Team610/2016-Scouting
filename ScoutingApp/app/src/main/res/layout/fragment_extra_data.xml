@@ -28,16 +28,17 @@
 
 
 
-    <!--
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Alliance:"
             android:id="@+id/alliance_title_TextView"
-            android:layout_centerVertical="true"
-            android:layout_alignLeft="@+id/defenceSlider_TableLayout"
-            android:layout_alignStart="@+id/defenceSlider_TableLayout" />
+            android:layout_above="@+id/checkmate_CheckBox"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/shot_location_title_TextView"
+            android:layout_toEndOf="@+id/shot_location_title_TextView" />
 
         <CheckBox
             android:layout_width="wrap_content"
@@ -57,14 +58,14 @@
             android:layout_alignLeft="@+id/breach_CheckBox"
             android:layout_alignStart="@+id/breach_CheckBox" />
 
-            -->
+
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hang"
             android:id="@+id/hang_CheckBox"
-            android:layout_below="@+id/next_Button"
+            android:layout_above="@+id/back_Button"
             android:layout_alignLeft="@+id/defenceSlider_TableLayout"
             android:layout_alignStart="@+id/defenceSlider_TableLayout" />
 
@@ -160,10 +161,10 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="High Shot from:"
             android:id="@+id/shot_location_title_TextView"
-            android:layout_marginLeft="20dp"
-            android:layout_alignTop="@+id/back_Button"
-            android:layout_toRightOf="@+id/challenge_CheckBox"
-            android:layout_toEndOf="@+id/challenge_CheckBox" />
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/challenge_CheckBox"
+            android:layout_alignLeft="@+id/challenge_CheckBox"
+            android:layout_alignStart="@+id/challenge_CheckBox" />
 
         <CheckBox
             android:layout_width="wrap_content"
@@ -209,4 +210,23 @@
         android:layout_below="@+id/next_Button"
         android:layout_alignLeft="@+id/next_Button"
         android:layout_alignStart="@+id/next_Button" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="RP: "
+        android:id="@+id/ranking_points_title_TextView"
+        android:layout_below="@+id/capture_CheckBox"
+        android:layout_alignLeft="@+id/capture_CheckBox"
+        android:layout_alignStart="@+id/capture_CheckBox" />
+
+    <EditText
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/ranking_points_EditText"
+        android:layout_below="@+id/capture_CheckBox"
+        android:layout_toRightOf="@+id/ranking_points_title_TextView" />
 </RelativeLayout>
