@@ -1,6 +1,7 @@
 package com.team610.scouting.scoutingapp;
 
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +21,7 @@ public class MatchData {
     public String alliance;
 
     //Change
-    static String competition = "WATERLOO";
+    static String competition = "WORLDS";
 
 
     //Auton
@@ -224,7 +225,14 @@ public class MatchData {
         misc.put("shotFromCheckMate", instance.shotFromCheckMate);
         misc.put("shotFromPopShot", instance.shotFromPopShot);
         misc.put("shotFromCorner", instance.shotFromCorner);
-        miscRef.updateChildren(misc);
+        miscRef.updateChildren(misc, new Firebase.CompletionListener() {
+            @Override
+            public void onComplete(FirebaseError firebaseError, Firebase firebase) {
+                if(firebaseError != null){
+                    firebaseError.toException().printStackTrace();
+                }
+            }
+        });
     }
 
 

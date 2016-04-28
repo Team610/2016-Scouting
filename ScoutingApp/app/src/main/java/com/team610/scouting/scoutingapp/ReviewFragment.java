@@ -261,7 +261,7 @@ public class ReviewFragment extends Fragment {
         comment.setText(match.comment);
 
         submitButton.setOnClickListener(new View.OnClickListener() {
-            boolean moveOn = false;
+            boolean moveOn = true;
 
             @Override
             public void onClick(View v) {
@@ -272,6 +272,7 @@ public class ReviewFragment extends Fragment {
                 builder.setTitle("ERROR");
                 MatchData i = MatchData.getInstance();
                 String errors = "";
+                moveOn = true;
                 if (i.scoutName.equals("")) {
                     errors += "No Scout Name\n";
                 }
@@ -281,6 +282,13 @@ public class ReviewFragment extends Fragment {
                 if(i.team == 0){
                     errors+= "No Team Number\n";
                 }
+                if(i.match > 130){ //should be 125
+                    errors+= "Impossible Match Number\n";
+                }
+
+                //zero rp points
+
+                //match number > than 125
 
 
 //                if (errors.equals("")) {
@@ -288,20 +296,24 @@ public class ReviewFragment extends Fragment {
 //                    errors = "Good Job";
 //                }
                 if(!errors.equals("")){
+                    moveOn = false;
                     builder.setMessage(errors);
                     builder.show();
                 }
-                else if (i.match - i.prevMatch != 1) {
+                else{
+                    if (i.match - i.prevMatch != 1) {
 
                     builder.setMessage("This match number does not succeed the previous match\n Are you sure this is the correct number").
                             setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    MatchData.newMatch();
+                                    if(moveOn) {
+                                        MatchData.newMatch();
 
-                                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                                    MatchSetup mFrag = MatchSetup.getInstance();
-                                    transaction.replace(R.id.main_container, mFrag).commit();
+                                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                                        MatchSetup mFrag = MatchSetup.getInstance();
+                                        transaction.replace(R.id.main_container, mFrag).commit();
+                                    }
                                 }
                             }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                         @Override
@@ -311,14 +323,24 @@ public class ReviewFragment extends Fragment {
                     });
                     builder.show();
 
-                }else{
-                    //builder.show();
-                    if(errors.equals(""))
-                    MatchData.newMatch();
+                    }
+                    if(i.rankingPoints == 0){
+                        builder.setMessage("Data currently says that the team score no RP points\n Are you sure this is correct?").
+                                setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        moveOn = true;
+                                    }
+                                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                moveOn = false;
+                            }
+                        });
+                        builder.show();
+                    }
 
-                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                    MatchSetup mFrag = MatchSetup.getInstance();
-                    transaction.replace(R.id.main_container, mFrag).commit();
+
                 }
 
 

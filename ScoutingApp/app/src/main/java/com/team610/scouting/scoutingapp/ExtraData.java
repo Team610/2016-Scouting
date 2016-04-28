@@ -43,10 +43,12 @@ public class ExtraData extends Fragment implements SeekBar.OnSeekBarChangeListen
 
     //0 is no defence
     int defenceRating;
+    int rP = 0;
 
 
     CheckBox captureCheck;
     CheckBox breachCheck;
+    CheckBox winCheck, lossCheck, tieCheck;
     CheckBox challengeCheck;
     CheckBox hangCheck;
     EditText commentText;
@@ -79,7 +81,13 @@ public class ExtraData extends Fragment implements SeekBar.OnSeekBarChangeListen
     public void saveData(){
 
         thisMatch.breach = breachCheck.isChecked();
+        if(breachCheck.isChecked()){
+            rP+=1;
+        }
         thisMatch.capture = captureCheck.isChecked();
+        if(captureCheck.isChecked()){
+            rP+=1;
+        }
         thisMatch.challenge = challengeCheck.isChecked();
         thisMatch.hang = hangCheck.isChecked();
         thisMatch.comment = commentText.getText().toString();
@@ -90,11 +98,15 @@ public class ExtraData extends Fragment implements SeekBar.OnSeekBarChangeListen
         thisMatch.shotFromPopShot = shotPopShotCheck.isChecked();
         thisMatch.shotFromCorner = shotCornerCheck.isChecked();
 
-        if(rankingPoints != null && rankingPoints.getText() != null) {
-            if (rankingPoints.getText().toString().length() > 0) {
-                thisMatch.rankingPoints = Integer.parseInt(rankingPoints.getText().toString());
-            }
+        if(winCheck.isChecked()){
+            rP += 2;
         }
+        else if(tieCheck.isChecked()){
+            rP += 1;
+        }
+
+        thisMatch.rankingPoints = rP;
+
     }
 
 
@@ -189,13 +201,16 @@ public class ExtraData extends Fragment implements SeekBar.OnSeekBarChangeListen
 
         captureCheck = (CheckBox) v.findViewById(R.id.capture_CheckBox);
         challengeCheck = (CheckBox) v.findViewById(R.id.challenge_CheckBox);
+        winCheck = (CheckBox) v.findViewById(R.id.win_CheckBox);
+        tieCheck = (CheckBox) v.findViewById(R.id.tie_CheckBox);
+        lossCheck = (CheckBox) v.findViewById(R.id.loss_CheckBox);
         hangCheck = (CheckBox) v.findViewById(R.id.hang_CheckBox);
         breachCheck = (CheckBox) v.findViewById(R.id.breach_CheckBox);
         nextPage = (Button) v.findViewById(R.id.next_Button);
         backPage = (Button) v.findViewById(R.id.back_Button);
         commentText = (EditText) v.findViewById(R.id.comment_EditText);
         scoutNameText = (EditText) v.findViewById(R.id.scout_name_EditText);
-        rankingPoints = (EditText) v.findViewById(R.id.ranking_points_EditText);
+
 
         shotDefencesCheck = (CheckBox) v.findViewById(R.id.defences_CheckBox);
         shotCheckMateCheck = (CheckBox) v.findViewById(R.id.checkmate_CheckBox);

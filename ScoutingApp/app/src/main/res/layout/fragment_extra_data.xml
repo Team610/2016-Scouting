@@ -133,9 +133,10 @@
             android:layout_width="450dp"
             android:layout_height="wrap_content"
             android:id="@+id/defenceSlider_TableLayout"
-            android:layout_alignBottom="@+id/scout_name_EditText"
-            android:layout_alignRight="@+id/next_Button"
-            android:layout_alignEnd="@+id/next_Button">
+            android:layout_below="@+id/loss_CheckBox"
+            android:layout_alignRight="@+id/back_Button"
+            android:layout_alignEnd="@+id/back_Button"
+            android:layout_marginTop="30dp">
 
             <include
                 android:id="@+id/tableRow1_ref"
@@ -211,22 +212,31 @@
         android:layout_alignLeft="@+id/next_Button"
         android:layout_alignStart="@+id/next_Button" />
 
-    <TextView
+    <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="RP: "
-        android:id="@+id/ranking_points_title_TextView"
+        android:text="Win"
+        android:id="@+id/win_CheckBox"
         android:layout_below="@+id/capture_CheckBox"
         android:layout_alignLeft="@+id/capture_CheckBox"
         android:layout_alignStart="@+id/capture_CheckBox" />
 
-    <EditText
-        android:layout_width="40dp"
+    <CheckBox
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/ranking_points_EditText"
-        android:layout_below="@+id/capture_CheckBox"
-        android:layout_toRightOf="@+id/ranking_points_title_TextView" />
+        android:text="Tie"
+        android:id="@+id/tie_CheckBox"
+        android:layout_alignTop="@+id/corner_shot_CheckBox"
+        android:layout_alignLeft="@+id/win_CheckBox"
+        android:layout_alignStart="@+id/win_CheckBox" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Loss"
+        android:id="@+id/loss_CheckBox"
+        android:layout_below="@+id/tie_CheckBox"
+        android:layout_alignLeft="@+id/tie_CheckBox"
+        android:layout_alignStart="@+id/tie_CheckBox" />
+
 </RelativeLayout>
