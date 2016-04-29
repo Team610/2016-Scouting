@@ -279,11 +279,11 @@ public class ReviewFragment extends Fragment {
                 if (i.comment.equals("")) {
                     errors += "No Comment\n";
                 }
-                if(i.team == 0){
-                    errors+= "No Team Number\n";
+                if (i.team == 0) {
+                    errors += "No Team Number\n";
                 }
-                if(i.match > 130){ //should be 125
-                    errors+= "Impossible Match Number\n";
+                if (i.match > 130) { //should be 125
+                    errors += "Impossible Match Number\n";
                 }
 
                 //zero rp points
@@ -295,58 +295,44 @@ public class ReviewFragment extends Fragment {
 //                    builder.setTitle("Success");
 //                    errors = "Good Job";
 //                }
-                if(!errors.equals("")){
+                if (!errors.equals("")) {
                     moveOn = false;
                     builder.setMessage(errors);
                     builder.show();
-                }
-                else{
-                    if (i.match - i.prevMatch != 1) {
-
-                    builder.setMessage("This match number does not succeed the previous match\n Are you sure this is the correct number").
-                            setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    if(moveOn) {
-                                        MatchData.newMatch();
-
-                                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                                        MatchSetup mFrag = MatchSetup.getInstance();
-                                        transaction.replace(R.id.main_container, mFrag).commit();
-                                    }
-                                }
-                            }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            moveOn = false;
-                        }
-                    });
-                    builder.show();
-
-                    }
-                    if(i.rankingPoints == 0){
-                        builder.setMessage("Data currently says that the team score no RP points\n Are you sure this is correct?").
-                                setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        moveOn = true;
-                                    }
-                                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                moveOn = false;
-                            }
-                        });
-                        builder.show();
-                    }
-
+                } else {
+//                    if (i.match - MatchData.prevMatch != 1) {
+//
+//                    builder.setMessage("This match number does not succeed the previous match\n Are you sure this is the correct number").
+//                            setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//                                @Override
+//                                public void onClick(DialogInterface dialog, int which) {
+//                                    if(moveOn) {
+//                                        MatchData.newMatch();
+//
+//                                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//                                        MatchSetup mFrag = MatchSetup.getInstance();
+//                                        transaction.replace(R.id.main_container, mFrag).commit();
+//                                    }
+//                                }
+//                            }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            moveOn = false;
+//                        }
+//                    });
+//                    builder.show();
 
                 }
-
-
-
-
+                if (moveOn) {
+                    MatchData.newMatch();
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    MatchSetup mFrag = MatchSetup.getInstance();
+                    transaction.replace(R.id.main_container, mFrag).commit();
+                }
             }
+
+
+
 
 
         });
