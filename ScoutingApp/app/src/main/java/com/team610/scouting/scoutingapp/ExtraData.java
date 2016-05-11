@@ -80,6 +80,7 @@ public class ExtraData extends Fragment implements SeekBar.OnSeekBarChangeListen
 
     public void saveData(){
 
+        rP = 0;
         thisMatch.breach = breachCheck.isChecked();
         if(breachCheck.isChecked()){
             rP+=1;

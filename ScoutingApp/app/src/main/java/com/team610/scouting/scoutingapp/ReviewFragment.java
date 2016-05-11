@@ -299,39 +299,43 @@ public class ReviewFragment extends Fragment {
                     moveOn = false;
                     builder.setMessage(errors);
                     builder.show();
-                } else {
-//                    if (i.match - MatchData.prevMatch != 1) {
-//
-//                    builder.setMessage("This match number does not succeed the previous match\n Are you sure this is the correct number").
-//                            setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-//                                @Override
-//                                public void onClick(DialogInterface dialog, int which) {
-//                                    if(moveOn) {
-//                                        MatchData.newMatch();
-//
-//                                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//                                        MatchSetup mFrag = MatchSetup.getInstance();
-//                                        transaction.replace(R.id.main_container, mFrag).commit();
-//                                    }
-//                                }
-//                            }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            moveOn = false;
-//                        }
-//                    });
-//                    builder.show();
+                }
+                else if (i.match - MatchData.prevMatch != 1) {
+
+                        builder.setMessage("This match number does not succeed the previous match\n Are you sure this is the correct number").
+                                setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        if (moveOn) {
+                                            MatchData.newMatch();
+
+                                            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                                            MatchSetup mFrag = MatchSetup.getInstance();
+                                            transaction.replace(R.id.main_container, mFrag).commit();
+                                        }
+                                    }
+                                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                moveOn = false;
+                            }
+                        });
+                        builder.show();
 
                 }
-                if (moveOn) {
+                else{
                     MatchData.newMatch();
-                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                    MatchSetup mFrag = MatchSetup.getInstance();
-                    transaction.replace(R.id.main_container, mFrag).commit();
+                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                        MatchSetup mFrag = MatchSetup.getInstance();
+                        transaction.replace(R.id.main_container, mFrag).commit();
                 }
-            }
-
-
+//                    if (moveOn) {
+//                        MatchData.newMatch();
+//                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//                        MatchSetup mFrag = MatchSetup.getInstance();
+//                        transaction.replace(R.id.main_container, mFrag).commit();
+//                    }
+                }
 
 
 
